@@ -14,6 +14,8 @@
       --accent: #0b6b5f;
       --accent-two: #9b6a24;
       --soft: #edf5f1;
+      --warm: #fff4dc;
+      --ink-soft: #2f3933;
     }
     * { box-sizing: border-box; }
     body {
@@ -79,6 +81,84 @@
     .analysis h2, .detailed-summary h2, .news-anchor h2, .research-questions h2,
     .research-sources h2, .detailed-report h2, .uncertainties h2, .follow-up h2 { font-size: 1.05rem; margin-top: 0; }
     .analysis p, .detailed-summary p, .news-anchor p, .detailed-report p { margin: 0 0 12px; }
+    .report-body {
+      max-width: 820px;
+      display: grid;
+      gap: 14px;
+    }
+    .report-body p {
+      color: var(--ink-soft);
+      margin: 0;
+      font-size: 1.03rem;
+    }
+    .report-lede {
+      padding: 16px 18px;
+      background: #fbf8ed;
+      border-left: 5px solid var(--accent-two);
+      font-size: 1.12rem !important;
+    }
+    .report-callout {
+      padding: 14px 16px;
+      background: var(--soft);
+      border: 1px solid #c7ded6;
+      border-left: 5px solid var(--accent);
+    }
+    strong.signal, strong.metric {
+      color: #123f38;
+      font-weight: 800;
+    }
+    mark {
+      background: linear-gradient(transparent 56%, rgba(221, 166, 74, .34) 56%);
+      color: inherit;
+      padding: 0 .08em;
+    }
+    .question-list {
+      counter-reset: question;
+      list-style: none;
+      padding-left: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .question-list li {
+      counter-increment: question;
+      display: grid;
+      grid-template-columns: 2.1rem 1fr;
+      gap: 10px;
+      align-items: start;
+      background: #fbfcfa;
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+    }
+    .question-list li::before {
+      content: counter(question);
+      width: 1.7rem;
+      height: 1.7rem;
+      border-radius: 50%;
+      display: inline-grid;
+      place-items: center;
+      background: var(--accent);
+      color: white;
+      font-weight: 700;
+      font-size: .9rem;
+    }
+    .source-list, .note-list {
+      display: grid;
+      gap: 9px;
+      padding-left: 20px;
+    }
+    .source-title {
+      display: grid;
+      gap: 2px;
+    }
+    .source-meta {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .source-meta::before { content: "来源 · "; }
+    .note-list li strong {
+      display: block;
+      margin-bottom: 2px;
+    }
     .research-sources li, .research-questions li, .uncertainties li, .follow-up li { margin: 0 0 8px; }
     .topic-index { columns: 2; padding-left: 20px; }
     .topic-index li { break-inside: avoid; margin: 0 0 8px; }
@@ -112,31 +192,31 @@
 
         <section class="research-questions">
           <h2>研究问题</h2>
-          <ul><li>为什么欧盟要在 AI Act 落地前调整高风险 AI 时间表？</li><li>企业减负和新增深伪色情禁令为什么会出现在同一个协议里？</li><li>后续真正难点会不会转向行业法规和 AI Act 的衔接？</li></ul>
+          <ol class="question-list"><li><span>为什么欧盟要在 AI Act 落地前调整高<strong class="signal">风险</strong> AI 时间表？</span></li><li><span>企业减负和新增深伪色情禁令为什么会出现在同一个协议里？</span></li><li><span>后续<strong class="signal">真正</strong>难点会不会转向行业法规和 AI Act 的衔接？</span></li></ol>
         </section>
     
 
         <section class="research-sources">
           <h2>研究来源</h2>
-          <ul><li><a href="https://digital-strategy.ec.europa.eu/en/news/eu-agrees-simplify-ai-rules-boost-innovation-and-ban-nudification-apps-protect-citizens">EU agrees to simplify AI rules to boost innovation and ban nudification apps to protect citizens</a> · European Commission</li><li><a href="https://www.consilium.europa.eu/en/press/press-releases/2026/05/07/artificial-intelligence-council-and-parliament-agree-to-simplify-and-streamline-rules/">Artificial Intelligence: Council and Parliament agree to simplify and streamline rules</a> · Council of the EU</li><li><a href="https://www.europarl.europa.eu/pdfs/news/expert/2026/5/press_release/20260427IPR42011/20260427IPR42011_en.pdf">AI Act: deal on simplification measures, ban on nudifier apps</a> · European Parliament</li><li><a href="https://digital-strategy.ec.europa.eu/en/library/digital-omnibus-ai-regulation-proposal">Digital Omnibus on AI Regulation Proposal</a> · European Commission</li><li><a href="https://data.consilium.europa.eu/doc/document/ST-15708-2025-INIT/en/pdf">COM(2025) 836 final, Digital Omnibus on AI proposal</a> · Council of the EU document register</li><li><a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-113">Article 113: Entry into force and application</a> · European Commission AI Act Service Desk</li><li><a href="https://digital-strategy.ec.europa.eu/en/policies/ai-act-standardisation">Standardisation of the AI Act</a> · European Commission</li><li><a href="https://www.edpb.europa.eu/system/files/2026-01/edpb_edps_jointopinion_202601_proposal_ai-omnibus_en.pdf">Joint Opinion 1/2026 on the Digital Omnibus on AI</a> · EDPB and EDPS</li><li><a href="https://edri.org/our-work/commissions-digital-omnibus-is-a-major-rollback-of-eu-digital-protections/">Commission&#x27;s Digital Omnibus is a major rollback of EU digital protections</a> · EDRi</li><li><a href="https://www.accessnow.org/press-release/a-call-to-eu-legislators-protect-transparency-safeguard-in-ai-act/">A call to EU legislators: protect rights and reject the call to delete transparency safeguard in AI Act</a> · Access Now</li><li><a href="https://cdn.digitaleurope.org/uploads/2026/02/AI-omnibus-a-necessary-pause-to-enable-real-simplification-1.pdf">AI omnibus: a necessary pause to enable real simplification</a> · DigitalEurope</li><li><a href="https://www.delorscentre.eu/en/publications/detail/publication/the-eus-digital-and-ai-omnibus">The EU&#x27;s Digital and AI Omnibus is Heading in the Wrong Direction</a> · Jacques Delors Centre</li></ul>
+          <ul class="source-list"><li><span class="source-title"><a href="https://digital-strategy.ec.europa.eu/en/news/eu-agrees-simplify-ai-rules-boost-innovation-and-ban-nudification-apps-protect-citizens">EU agrees to simplify AI rules to boost innovation and ban nudification apps to protect citizens</a><span class="source-meta">European Commission</span></span></li><li><span class="source-title"><a href="https://www.consilium.europa.eu/en/press/press-releases/2026/05/07/artificial-intelligence-council-and-parliament-agree-to-simplify-and-streamline-rules/">Artificial Intelligence: Council and Parliament agree to simplify and streamline rules</a><span class="source-meta">Council of the EU</span></span></li><li><span class="source-title"><a href="https://www.europarl.europa.eu/pdfs/news/expert/2026/5/press_release/20260427IPR42011/20260427IPR42011_en.pdf">AI Act: deal on simplification measures, ban on nudifier apps</a><span class="source-meta">European Parliament</span></span></li><li><span class="source-title"><a href="https://digital-strategy.ec.europa.eu/en/library/digital-omnibus-ai-regulation-proposal">Digital Omnibus on AI Regulation Proposal</a><span class="source-meta">European Commission</span></span></li><li><span class="source-title"><a href="https://data.consilium.europa.eu/doc/document/ST-15708-2025-INIT/en/pdf">COM(2025) 836 final, Digital Omnibus on AI proposal</a><span class="source-meta">Council of the EU document register</span></span></li><li><span class="source-title"><a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-113">Article 113: Entry into force and application</a><span class="source-meta">European Commission AI Act Service Desk</span></span></li><li><span class="source-title"><a href="https://digital-strategy.ec.europa.eu/en/policies/ai-act-standardisation">Standardisation of the AI Act</a><span class="source-meta">European Commission</span></span></li><li><span class="source-title"><a href="https://www.edpb.europa.eu/system/files/2026-01/edpb_edps_jointopinion_202601_proposal_ai-omnibus_en.pdf">Joint Opinion 1/2026 on the Digital Omnibus on AI</a><span class="source-meta">EDPB and EDPS</span></span></li><li><span class="source-title"><a href="https://edri.org/our-work/commissions-digital-omnibus-is-a-major-rollback-of-eu-digital-protections/">Commission&#x27;s Digital Omnibus is a major rollback of EU digital protections</a><span class="source-meta">EDRi</span></span></li><li><span class="source-title"><a href="https://www.accessnow.org/press-release/a-call-to-eu-legislators-protect-transparency-safeguard-in-ai-act/">A call to EU legislators: protect rights and reject the call to delete transparency safeguard in AI Act</a><span class="source-meta">Access Now</span></span></li><li><span class="source-title"><a href="https://cdn.digitaleurope.org/uploads/2026/02/AI-omnibus-a-necessary-pause-to-enable-real-simplification-1.pdf">AI omnibus: a necessary pause to enable real simplification</a><span class="source-meta">DigitalEurope</span></span></li><li><span class="source-title"><a href="https://www.delorscentre.eu/en/publications/detail/publication/the-eus-digital-and-ai-omnibus">The EU&#x27;s Digital and AI Omnibus is Heading in the Wrong Direction</a><span class="source-meta">Jacques Delors Centre</span></span></li></ul>
         </section>
     
 
         <section class="detailed-report">
           <h2>研究报告</h2>
-          <p>2026 年 5 月 7 日，欧盟委员会把一项临时政治协议包装成“简化 AI 规则、促进创新、禁止 nudification apps（非自愿裸化应用）”。这个标题很容易被读成欧盟在 AI Act（人工智能法案）落地前后退了一步。更准确的判断是：欧盟共同立法者没有取消 AI Act 的风险分级架构，也没有把高风险 AI 系统从监管中拿掉；他们是在承认一个执行现实：法律文本已经生效，禁止性条款和通用目的 AI 模型义务已经按阶段进入适用，但高风险系统所依赖的协调标准、指南、数据库、监管沙盒、行业法衔接和主管机关能力，并没有同样成熟。</p><p>这次协议最硬的变化是时间表。按照欧盟委员会、欧盟理事会和欧洲议会发布的材料，某些高风险用途的独立 AI 系统，包括生物识别、关键基础设施、教育、就业、迁移、庇护和边境管理等场景，义务适用日改为 2027 年 12 月 2 日；嵌入产品的高风险 AI 系统，例如升降机、玩具以及其他受欧盟产品安全和市场监管规则覆盖的安全部件，适用日改为 2028 年 8 月 2 日。旧法案第 113 条本来把多数规则的总适用日放在 2026 年 8 月 2 日，并把 Article 6(1)（第 6 条第 1 款）及相应义务放在 2027 年 8 月 2 日。新的政治协议把“何时开始执行”从一个统一倒计时，改成按系统类型和执行工具成熟度重排。</p><p>欧盟委员会给出的理由并不神秘。2025 年 11 月 Digital Omnibus on AI（AI 数字一揽子简化方案）提案已经把问题说得很直接：成员国主管机关和合格评定机构指定进度、协调标准、指南和合规工具都存在延迟风险，这会显著推高企业和公共机关的合规成本，也可能拖慢创新。委员会还估算，简化措施可能带来约 2.972 亿至 4.332 亿欧元的行政负担节省。这个数字不应被当成政策成败的全部证据，但它说明欧盟内部已经把 AI Act 的执行摩擦视为竞争力问题，而不只是法务部门的抱怨。</p><p>标准问题是这次延期最有说服力的一环。AI Act 对高风险系统要求风险管理、数据治理、日志、透明度、人类监督、准确性、鲁棒性、网络安全和质量管理。对企业来说，这些词写在法规里不等于能立刻转化成工程检查表。欧盟委员会自己的标准化说明也承认，协调标准由 CEN-CENELEC（欧洲标准化委员会和欧洲电工标准化委员会）等组织制定，标准被欧盟官方公报引用后，才会给企业带来“符合性推定”。截至 2025 年 10 月，首个面向 AI Act 监管用途的质量管理体系协调标准才进入公开征询；第一批标准预计在 2026 年发布，之后还要经过委员会审查。也就是说，若 2026 年 8 月就全面启动高风险义务，很多企业会在标准未完全落地时承担形式上清楚、技术上不稳的合规责任。</p><p>但把延期解释成“欧盟变亲科技了”仍然太粗。协议同时新增了对非自愿性亲密内容和儿童性虐待材料相关 AI 系统的禁止。欧洲议会的说明更具体：禁止投放以生成这类内容为目的的 AI 系统；禁止在没有合理安全措施防止这类生成的情况下把相关系统投放市场；也禁止部署者以生成这类内容为目的使用系统。受影响内容可以是图像、视频或音频，企业需要在 2026 年 12 月 2 日前完成调整。这个安排把“减负”和“新增禁令”放在同一个政治包里，说明欧盟并不是简单撤退，而是在重新划线：对执行条件不成熟的高风险制度给出缓冲，对已经发生且社会可见度极高的 AI 性剥削风险则加快禁止。</p><p>这也解释了为什么 nudification apps（非自愿裸化应用）会出现在一个企业减负方案里。它不是一个边角议题，而是 AI 生成能力扩散后的最低共识风险。非自愿生成他人裸体、亲密部位或性行为内容，通常不需要复杂部署场景，也不需要企业级采购；它面向普通用户、传播成本低、受害者救济难，且对未成年人伤害尤其严重。欧盟如果只讨论高风险义务延期，会被批评为把基本权利保护向后推；把裸化应用和 AI 辅助生成儿童性虐待材料纳入禁令，则是在政治上表明：简化不是全面宽松，至少有些行为被认为不需要等标准成熟就可以禁止。</p><p>真正复杂的部分在行业法规衔接。AI Act 本来就是一部横向法规，但很多高风险 AI 并不以独立软件形态出现，而是嵌在机械、医疗器械、玩具、升降机、水上交通工具等产品安全制度里。欧盟理事会材料显示，这次协议试图处理“同一 AI 要求被 AI Act 和行业法重复覆盖”的问题：如果行业法已经有类似的 AI 具体要求，可以通过实施法案限制 AI Act 在特定情形中的适用；机械法规还被排除出 AI Act 的直接适用路径，改由委员会在机械法规下通过授权法案加入与高风险 AI 相关的健康和安全要求。这个设计不是小修小补，它会决定企业未来到底面对一套合格评定，还是在两个规则体系之间反复证明同一件事。</p><p>支持延期的一方强调的正是这种可执行性。行业组织 DigitalEurope（数字欧洲）在 2026 年 2 月的立场文件中主张，把高风险义务时间表单独快速处理，明确 2027 年 12 月和 2028 年 8 月两个默认日期，可以给企业和主管机关法律确定性；它还认为，即使标准被正式引用，企业也通常需要时间把标准整合进产品、流程和治理体系。这个观点有现实基础：大型合规体系不是发布日期当天就能上线，尤其在医疗、工业和基础设施场景，供应链、测试、文档和质量体系都需要同步改造。</p><p>反方或审慎来源提醒的是另一种风险：延期和简化可能变成实质削弱。EDPB-EDPS（欧洲数据保护委员会和欧洲数据保护监督员）在 2026 年 1 月的联合意见中并未否认实施挑战，甚至支持在不降低基本权利保护的前提下减少行政负担；但他们明确担心核心高风险条款推迟适用会影响快速演变的 AI 环境中的基本权利保护，并建议尽可能缩短延迟，保留某些透明度义务的原时间表。EDRi（欧洲数字权利组织）和 Access Now（现在就访问组织）则更尖锐地批评 Omnibus（综合修法包）有放松保护、削弱透明度和问责的倾向，尤其反对删除或弱化高风险系统“自认为不属于高风险”时的公开登记保障。值得注意的是，这次临时协议据理事会说明恢复了相关登记义务，也恢复了处理特殊类别个人数据时的“严格必要”标准，这显示谈判确实吸收了部分反对意见。</p><p>因此，这条新闻的关键不是“延期是否等于放松”，而是“延期换来了什么”。如果延期期间标准、指南、成员国主管机关、欧盟数据库、AI Office（AI 办公室）能力和行业法实施法案都能补齐，AI Act 可能会从一部宏大的风险框架变成比较可执行的治理机器。相反，如果延期只让企业继续观望，或者让高风险系统在就业、教育、执法、边境、信贷和公共服务场景中继续缺少可见登记、风险管理和救济通道，那么“简化”就会被证明只是把监管成本从企业账面转移给受影响个人。</p><p>后续观察应放在几个节点上。第一，临时政治协议仍需理事会和欧洲议会正式批准，并经过法律语言修订，最终条文可能和新闻稿有细节差异。第二，2026 年 12 月 2 日不只是裸化应用调整期限，也是 AI 生成内容透明度方案的一个新节点，水印和机器可读标识会牵动平台、生成式 AI 工具和媒体工作流。第三，2027 年 8 月 2 日的国家监管沙盒期限、2027 年 12 月 2 日的独立高风险系统义务、2028 年 8 月 2 日的产品嵌入系统义务，会逐步检验欧盟是否真能把“创新友好”和“基本权利保护”同时落到执行层。第四，医疗器械、机械、玩具等行业规则与 AI Act 的衔接实施法案，可能比抽象的 AI 政策口号更能决定企业真实合规负担。</p><p>我的判断是，欧盟不是放弃 AI Act，而是在给它补执行条件，同时也在承受政治代价。把高风险规则后移，会让企业获得更稳定的准备窗口，也会让权利保护承受更长的空窗期；把非自愿裸化和儿童性虐待材料生成纳入禁令，则是在同一个包里压住“监管退潮”的观感。这个组合并不优雅，却很能说明 2026 年的欧盟 AI 治理已经进入第二阶段：不再是写出世界第一部综合 AI 法案，而是证明它能在标准、行业法、执法机关、企业流程和受害者保护之间真正运转。</p>
+          <div class="report-body"><p class="report-lede"><strong><strong class="metric">2026 年</strong> 5 月 <strong class="metric">7 日</strong>，欧盟委员会把一项临时政治协议包装成“简化 AI 规则、促进创新、禁止 nudification apps（非自愿裸化应用）”。</strong>这个标题很容易被读成欧盟在 AI Act（人工智能法案）落地前后退了一步。更准确的判断是：欧盟共同立法者没有取消 AI Act 的<strong class="signal">风险</strong>分级架构，也没有把高风险 AI 系统从监管中拿掉；他们是在承认一个执行现实：法律文本已经生效，禁止性条款和通用目的 AI 模型义务已经按阶段进入适用，但高风险系统所依赖的协调标准、指南、数据库、监管沙盒、行业法衔接和主管机关能力，并没有同样成熟。</p><p class="report-callout"><mark>这次协议最硬的变化是时间表。</mark>按照欧盟委员会、欧盟理事会和欧洲议会发布的材料，某些高风险用途的独立 AI 系统，包括生物识别、<strong class="signal">关键</strong>基础设施、教育、就业、迁移、庇护和边境管理等场景，义务适用日改为 <strong class="metric">2027 年</strong> 12 月 <strong class="metric">2 日</strong>；嵌入产品的高风险 AI 系统，例如升降机、玩具以及其他受欧盟产品安全和市场监管规则覆盖的安全部件，适用日改为 <strong class="metric">2028 年</strong> 8 月 <strong class="metric">2 日</strong>。旧法案第 113 条本来把多数规则的总适用日放在 <strong class="metric">2026 年</strong> 8 月 <strong class="metric">2 日</strong>，并把 Article 6(1)（第 6 条第 1 款）及相应义务放在 <strong class="metric">2027 年</strong> 8 月 <strong class="metric">2 日</strong>。新的政治协议把“何时开始执行”从一个统一倒计时，改成按系统类型和执行工具成熟度重排。</p><p class="report-callout"><mark>欧盟委员会给出的理由并不神秘。</mark><strong class="metric">2025 年</strong> 11 月 Digital Omnibus on AI（AI 数字一揽子简化方案）提案已经把问题说得很直接：成员国主管机关和合格评定机构指定进度、协调标准、指南和合规工具都存在延迟<strong class="signal">风险</strong>，这会显著推高企业和公共机关的合规成本，也可能拖慢创新。委员会还估算，简化措施可能带来约 2.972 亿至 4.332 亿欧元的行政负担节省。这个数字不应被当成政策成败的全部证据，但它说明欧盟内部已经把 AI Act 的执行摩擦视为竞争力问题，而不只是法务部门的抱怨。</p><p class="report-callout"><mark>标准问题是这次延期最有说服力的一环。</mark>AI Act 对高<strong class="signal">风险</strong>系统要求风险管理、数据治理、日志、透明度、人类监督、准确性、鲁棒性、网络安全和质量管理。对企业来说，这些词写在法规里不等于能立刻转化成工程检查表。欧盟委员会自己的标准化说明也承认，协调标准由 CEN-CENELEC（欧洲标准化委员会和欧洲电工标准化委员会）等组织制定，标准被欧盟官方公报引用后，才会给企业带来“符合性推定”。截至 <strong class="metric">2025 年</strong> 10 月，首个面向 AI Act 监管用途的质量管理体系协调标准才进入公开征询；第一批标准预计在 <strong class="metric">2026 年</strong>发布，之后还要经过委员会审查。也就是说，若 <strong class="metric">2026 年</strong> 8 月就全面启动高风险义务，很多企业会在标准未完全落地时承担形式上清楚、技术上不稳的合规责任。</p><p class="report-paragraph">但把延期解释成“欧盟变亲科技了”仍然太粗。协议同时新增了对非自愿性亲密内容和儿童性虐待材料相关 AI 系统的禁止。欧洲议会的说明更具体：禁止投放以生成这类内容为目的的 AI 系统；禁止在没有合理安全措施防止这类生成的情况下把相关系统投放市场；也禁止部署者以生成这类内容为目的使用系统。受影响内容可以是图像、视频或音频，企业需要在 <strong class="metric">2026 年</strong> 12 月 <strong class="metric">2 日</strong>前完成调整。这个安排把“减负”和“新增禁令”放在同一个政治包里，说明欧盟并不是简单撤退，而是在重新划线：对执行条件不成熟的高<strong class="signal">风险</strong>制度给出缓冲，对已经发生且社会可见度极高的 AI 性剥削风险则加快禁止。</p><p class="report-paragraph">这也解释了为什么 nudification apps（非自愿裸化应用）会出现在一个企业减负方案里。它不是一个边角议题，而是 AI 生成能力扩散后的最低共识<strong class="signal">风险</strong>。非自愿生成他人裸体、亲密部位或性行为内容，通常不需要复杂部署场景，也不需要企业级采购；它面向普通用户、传播成本低、受害者救济难，且对未成年人伤害尤其严重。欧盟如果只讨论高风险义务延期，会被批评为把基本权利保护向后推；把裸化应用和 AI 辅助生成儿童性虐待材料纳入禁令，则是在政治上表明：简化不是全面宽松，至少有些行为被认为不需要等标准成熟就可以禁止。</p><p class="report-paragraph"><strong class="signal">真正</strong>复杂的部分在行业法规衔接。AI Act 本来就是一部横向法规，但很多高风险 AI 并不以独立软件形态出现，而是嵌在机械、医疗器械、玩具、升降机、水上交通工具等产品安全制度里。欧盟理事会材料显示，这次协议试图处理“同一 AI 要求被 AI Act 和行业法重复覆盖”的问题：如果行业法已经有类似的 AI 具体要求，可以通过实施法案限制 AI Act 在特定情形中的适用；机械法规还被排除出 AI Act 的直接适用路径，改由委员会在机械法规下通过授权法案加入与高风险 AI 相关的健康和安全要求。这个设计不是小修小补，它会决定企业未来到底面对一套合格评定，还是在两个规则体系之间反复证明同一件事。</p><p class="report-paragraph">支持延期的一方强调的正是这种可执行性。行业组织 DigitalEurope（数字欧洲）在 <strong class="metric">2026 年</strong> 2 月的立场文件中主张，把高<strong class="signal">风险</strong>义务时间表单独快速处理，明确 <strong class="metric">2027 年</strong> 12 月和 <strong class="metric">2028 年</strong> 8 月两个默认日期，可以给企业和主管机关法律确定性；它还认为，即使标准被正式引用，企业也通常需要时间把标准整合进产品、流程和治理体系。这个观点有现实基础：大型合规体系不是发布日期当天就能上线，尤其在医疗、工业和基础设施场景，供应链、测试、文档和质量体系都需要同步改造。</p><p class="report-paragraph">反方或审慎来源提醒的是另一种风险：延期和简化可能变成实质削弱。EDPB-EDPS（欧洲数据保护委员会和欧洲数据保护监督员）在 <strong class="metric">2026 年</strong> 1 月的联合意见中并未否认实施挑战，甚至支持在不降低基本权利保护的前提下减少行政负担；但他们明确担心<strong class="signal">核心</strong>高风险条款推迟适用会影响快速演变的 AI 环境中的基本权利保护，并建议尽可能缩短延迟，保留某些透明度义务的原时间表。EDRi（欧洲数字权利组织）和 Access Now（现在就访问组织）则更尖锐地批评 Omnibus（综合修法包）有放松保护、削弱透明度和问责的倾向，尤其反对删除或弱化高风险系统“自认为不属于高风险”时的公开登记保障。值得注意的是，这次临时协议据理事会说明恢复了相关登记义务，也恢复了处理特殊类别个人数据时的“严格必要”标准，这显示谈判确实吸收了部分反对意见。</p><p class="report-paragraph">因此，这条新闻的<strong class="signal">关键</strong>不是“延期是否等于放松”，而是“延期换来了什么”。如果延期期间标准、指南、成员国主管机关、欧盟数据库、AI Office（AI 办公室）能力和行业法实施法案都能补齐，AI Act 可能会从一部宏大的风险框架变成比较可执行的治理机器。相反，如果延期只让企业继续观望，或者让高风险系统在就业、教育、执法、边境、信贷和公共服务场景中继续缺少可见登记、风险管理和救济通道，那么“简化”就会被证明只是把监管成本从企业账面转移给受影响个人。</p><p class="report-paragraph"><strong class="signal">后续</strong>观察应放在几个节点上。第一，临时政治协议仍需理事会和欧洲议会正式批准，并经过法律语言修订，最终条文可能和新闻稿有细节差异。第二，<strong class="metric">2026 年</strong> 12 月 <strong class="metric">2 日</strong>不只是裸化应用调整期限，也是 AI 生成内容透明度方案的一个新节点，水印和机器可读标识会牵动平台、生成式 AI 工具和媒体工作流。第三，<strong class="metric">2027 年</strong> 8 月 <strong class="metric">2 日</strong>的国家监管沙盒期限、<strong class="metric">2027 年</strong> 12 月 <strong class="metric">2 日</strong>的独立高风险系统义务、<strong class="metric">2028 年</strong> 8 月 <strong class="metric">2 日</strong>的产品嵌入系统义务，会逐步检验欧盟是否真能把“创新友好”和“基本权利保护”同时落到执行层。第四，医疗器械、机械、玩具等行业规则与 AI Act 的衔接实施法案，可能比抽象的 AI 政策口号更能决定企业真实合规负担。</p><p class="report-paragraph">我的判断是，欧盟不是放弃 AI Act，而是在给它补执行条件，同时也在承受政治代价。把高风险规则后移，会让企业获得更稳定的准备窗口，也会让权利保护承受更长的空窗期；把非自愿裸化和儿童性虐待材料生成纳入禁令，则是在同一个包里压住“监管退潮”的观感。这个组合并不优雅，却很能说明 <strong class="metric">2026 年</strong>的欧盟 AI 治理已经进入第二阶段：不再是写出世界第一部综合 AI 法案，而是证明它能在标准、行业法、执法机关、企业流程和受害者保护之间<strong class="signal">真正</strong>运转。</p></div>
         </section>
     
 
         <section class="uncertainties">
           <h2>不确定性</h2>
-          <ul><li>临时政治协议仍需正式批准和法律语言修订，最终条文可能改变具体义务、例外和适用范围。</li><li>非自愿裸化应用禁令中的“合理安全措施”、部署者责任、音频内容边界和平台责任仍需等待最终文本和执法实践。</li><li>行业法与 AI Act 的衔接会依赖后续实施法案和授权法案，特别是机械、医疗器械、玩具、升降机等产品类别。</li><li>协调标准、指南、国家监管沙盒和 AI Office 能力是否按期补齐，仍是判断延期是否合理的核心变量。</li><li>报告基于截至 2026 年 5 月 11 日可核对的公开来源；后续正式文本可能覆盖新闻稿口径。</li></ul>
+          <ul class="note-list"><li><span>临时政治协议仍需正式批准和法律语言修订，最终条文可能改变具体义务、例外和适用范围。</span></li><li><span>非自愿裸化应用禁令中的“合理安全措施”、部署者责任、音频内容边界和平台责任仍需等待最终文本和执法实践。</span></li><li><span>行业法与 AI Act 的衔接会依赖<strong class="signal">后续</strong>实施法案和授权法案，特别是机械、医疗器械、玩具、升降机等产品类别。</span></li><li><span>协调标准、指南、国家监管沙盒和 AI Office 能力是否按期补齐，仍是判断延期是否合理的<strong class="signal">核心</strong>变量。</span></li><li><span>报告基于截至 <strong class="metric">2026 年</strong> 5 月 <strong class="metric">11 日</strong>可核对的公开来源；<strong class="signal">后续</strong>正式文本可能覆盖新闻稿口径。</span></li></ul>
         </section>
     
 
         <section class="follow-up">
           <h2>后续跟踪变量</h2>
-          <ul><li>欧洲议会和欧盟理事会正式批准时间及法律语言修订后的最终文本</li><li>2026 年 12 月 2 日裸化应用禁令与 AI 生成内容透明度义务节点</li><li>2027 年 8 月 2 日成员国监管沙盒建立情况</li><li>2027 年 12 月 2 日独立高风险 AI 系统义务适用准备度</li><li>2028 年 8 月 2 日嵌入产品的高风险 AI 系统义务适用准备度</li><li>CEN-CENELEC 协调标准是否按期发布并被欧盟官方公报引用</li><li>医疗器械、机械、玩具、升降机等行业法规与 AI Act 的衔接实施法案</li><li>首批成员国主管机关、AI Office 和数据保护机构的执法或解释案例</li></ul>
+          <ul class="note-list"><li><span>欧洲议会和欧盟理事会正式批准时间及法律语言修订后的最终文本</span></li><li><span><strong class="metric">2026 年</strong> 12 月 <strong class="metric">2 日</strong>裸化应用禁令与 AI 生成内容透明度义务节点</span></li><li><span><strong class="metric">2027 年</strong> 8 月 <strong class="metric">2 日</strong>成员国监管沙盒建立情况</span></li><li><span><strong class="metric">2027 年</strong> 12 月 <strong class="metric">2 日</strong>独立高<strong class="signal">风险</strong> AI 系统义务适用准备度</span></li><li><span><strong class="metric">2028 年</strong> 8 月 <strong class="metric">2 日</strong>嵌入产品的高<strong class="signal">风险</strong> AI 系统义务适用准备度</span></li><li><span>CEN-CENELEC 协调标准是否按期发布并被欧盟官方公报引用</span></li><li><span>医疗器械、机械、玩具、升降机等行业法规与 AI Act 的衔接实施法案</span></li><li><span>首批成员国主管机关、AI Office 和数据保护机构的执法或解释案例</span></li></ul>
         </section>
     
       </article>

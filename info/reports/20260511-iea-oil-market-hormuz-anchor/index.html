@@ -14,6 +14,8 @@
       --accent: #0b6b5f;
       --accent-two: #9b6a24;
       --soft: #edf5f1;
+      --warm: #fff4dc;
+      --ink-soft: #2f3933;
     }
     * { box-sizing: border-box; }
     body {
@@ -79,6 +81,84 @@
     .analysis h2, .detailed-summary h2, .news-anchor h2, .research-questions h2,
     .research-sources h2, .detailed-report h2, .uncertainties h2, .follow-up h2 { font-size: 1.05rem; margin-top: 0; }
     .analysis p, .detailed-summary p, .news-anchor p, .detailed-report p { margin: 0 0 12px; }
+    .report-body {
+      max-width: 820px;
+      display: grid;
+      gap: 14px;
+    }
+    .report-body p {
+      color: var(--ink-soft);
+      margin: 0;
+      font-size: 1.03rem;
+    }
+    .report-lede {
+      padding: 16px 18px;
+      background: #fbf8ed;
+      border-left: 5px solid var(--accent-two);
+      font-size: 1.12rem !important;
+    }
+    .report-callout {
+      padding: 14px 16px;
+      background: var(--soft);
+      border: 1px solid #c7ded6;
+      border-left: 5px solid var(--accent);
+    }
+    strong.signal, strong.metric {
+      color: #123f38;
+      font-weight: 800;
+    }
+    mark {
+      background: linear-gradient(transparent 56%, rgba(221, 166, 74, .34) 56%);
+      color: inherit;
+      padding: 0 .08em;
+    }
+    .question-list {
+      counter-reset: question;
+      list-style: none;
+      padding-left: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .question-list li {
+      counter-increment: question;
+      display: grid;
+      grid-template-columns: 2.1rem 1fr;
+      gap: 10px;
+      align-items: start;
+      background: #fbfcfa;
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+    }
+    .question-list li::before {
+      content: counter(question);
+      width: 1.7rem;
+      height: 1.7rem;
+      border-radius: 50%;
+      display: inline-grid;
+      place-items: center;
+      background: var(--accent);
+      color: white;
+      font-weight: 700;
+      font-size: .9rem;
+    }
+    .source-list, .note-list {
+      display: grid;
+      gap: 9px;
+      padding-left: 20px;
+    }
+    .source-title {
+      display: grid;
+      gap: 2px;
+    }
+    .source-meta {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .source-meta::before { content: "来源 · "; }
+    .note-list li strong {
+      display: block;
+      margin-bottom: 2px;
+    }
     .research-sources li, .research-questions li, .uncertainties li, .follow-up li { margin: 0 0 8px; }
     .topic-index { columns: 2; padding-left: 20px; }
     .topic-index li { break-inside: avoid; margin: 0 0 8px; }
@@ -112,31 +192,31 @@
 
         <section class="research-questions">
           <h2>研究问题</h2>
-          <ul><li>为什么 IEA 把霍尔木兹海峡流量恢复称为缓解油市压力的最重要变量？</li><li>替代出口路线和库存释放为什么无法完全抵消中东出口损失？</li><li>供应冲击如何通过炼厂、成品油、化工原料和航空燃料传导到需求侧？</li><li>World Bank 对能源价格、通胀和发展中经济体的判断如何补充 IEA 的油市视角？</li></ul>
+          <ol class="question-list"><li><span>为什么 IEA 把霍尔木兹海峡流量恢复称为缓解油市压力的最重要变量？</span></li><li><span>替代出口路线和库存释放为什么无法完全抵消中东出口损失？</span></li><li><span>供应冲击如何通过炼厂、成品油、化工原料和航空燃料传导到需求侧？</span></li><li><span>World Bank 对能源价格、通胀和发展中经济体的判断如何补充 IEA 的油市视角？</span></li></ol>
         </section>
     
 
         <section class="research-sources">
           <h2>研究来源</h2>
-          <ul><li><a href="https://www.iea.org/reports/oil-market-report-april-2026">Oil Market Report - April 2026</a> · IEA</li><li><a href="https://blogs.worldbank.org/en/opendata/strait-of-hormuz-disruption-sends-oil-prices-surging">Strait of Hormuz disruption sends oil prices surging</a> · World Bank Data Blog</li><li><a href="https://www.worldbank.org/en/news/press-release/2026/04/28/commodity-markets-outlook-april-2026-press-release">Middle East War to Spark Biggest Energy Price Surge in Four Years</a> · World Bank</li></ul>
+          <ul class="source-list"><li><span class="source-title"><a href="https://www.iea.org/reports/oil-market-report-april-2026">Oil Market Report - April 2026</a><span class="source-meta">IEA</span></span></li><li><span class="source-title"><a href="https://blogs.worldbank.org/en/opendata/strait-of-hormuz-disruption-sends-oil-prices-surging">Strait of Hormuz disruption sends oil prices surging</a><span class="source-meta">World Bank Data Blog</span></span></li><li><span class="source-title"><a href="https://www.worldbank.org/en/news/press-release/2026/04/28/commodity-markets-outlook-april-2026-press-release">Middle East War to Spark Biggest Energy Price Surge in Four Years</a><span class="source-meta">World Bank</span></span></li></ul>
         </section>
     
 
         <section class="detailed-report">
           <h2>研究报告</h2>
-          <p>IEA 这期 Oil Market Report 最值得保留的判断，是它把油市从价格屏幕重新拉回物理世界。油价当然刺眼，IEA 提到 3 月现货原油和价差大幅上行，World Bank 也写到 Brent 在 3 月底较冲突前显著上涨。但这篇报告真正的锚点不是价格本身，而是霍尔木兹海峡流量突然收缩以后，原油、天然气液体、成品油、炼厂、库存和需求同时被迫重排。能源市场平时看起来像一串金融价格，危机里会显露出它首先是一套港口、航道、管线、储罐和炼厂组成的物理系统。</p><p>IEA 的数字显示这次冲击的量级非常罕见。2026 年 3 月，全球油供应减少 1010 万桶/日，降至 9700 万桶/日；OPEC+ 产量环比下降 940 万桶/日，非 OPEC+ 供应也下滑。报告把原因指向中东能源基础设施受到攻击、霍尔木兹海峡油轮运输持续受限，以及由此形成的出口和生产中断。World Bank 的商品市场展望也将其称为创纪录的供应冲击，并把初始全球供应减少量估计在约 1000 万桶/日。两个机构口径不完全相同，但方向一致：这不是普通风险溢价，而是可交付货物流量突然不够。</p><p>霍尔木兹的重要性来自它连接的不是一个国家，而是一组出口依赖海峡的产油国和气液产品链条。IEA 写到，4 月初通过海峡的原油、天然气液体和成品油装载量平均约 380 万桶/日，而危机前 2 月超过 2000 万桶/日。替代路线确实在扩张，沙特西海岸、阿联酋富查伊拉、伊拉克通往土耳其杰伊汉的管线出口合计从战前不足 400 万桶/日升至约 720 万桶/日。但这组数字也说明替代路线只能缓冲，不能完整替换。海峡不是普通运输节点，它是全球油贸中的集中阀门。</p><p>油市紧张最早会表现为价格，但更深的压力会出现在库存位置上。IEA 提到，3 月全球观察库存下降 8500 万桶，海湾以外地区库存消耗显著；同时，因为海峡出口受限，中东地区的海上浮仓和陆上库存反而增加。这个看似矛盾的结构很关键：世界不是没油，而是油在错误的位置、错误的形态、错误的时间。进口地区炼厂和消费端需要替代货源，中东部分供应却因为航运和出口通道受限无法顺利抵达市场。库存从缓冲器变成地理错配的计量器。</p><p>炼厂端把这场冲击从原油市场推向成品油市场。IEA 说，原料供应和基础设施损坏使全球产品市场收紧，4 月中东和亚洲部分受限炼厂削减开工约 600 万桶/日，全球炼厂原油加工量预期在 2026 年平均下降。成品油裂解价差一度显著上行，World Bank 也强调能源冲击会传导到化肥和食品。这里的机制是：原油少了并不只意味着汽油价格变化，还会影响石化原料、LPG、航空燃料、柴油和化肥成本。不同产品的紧张程度，取决于炼厂配置、原料可替代性和地区库存。</p><p>需求破坏已经不是理论推演。IEA 写到，油价和供应稀缺持续后，需求收缩会从中东和亚太扩散，最初集中在石脑油、LPG 和航空燃料；3 月全球油需求同比估计减少 80 万桶/日，4 月可能减少 230 万桶/日，全年需求预期也从上月的增长修正为小幅下降。World Bank 的博客同样提到，2026 年二季度需求可能明显下滑。需求破坏不是消费者自愿节能这么简单，它常常来自航班取消、石化厂降负荷、企业能源成本上升和收入被燃料价格挤压。</p><p>这解释了为什么 IEA 把“恢复霍尔木兹流量”列为单一最重要变量。如果海峡稳定恢复，价格仍可能高于冲突前，但市场至少能重新估算运输时间、保险成本、库存补充和炼厂排产。如果海峡只是不完全开放，或者每隔几天又因军事、保险、港口和制裁风险停摆，市场就不能用一次性冲击定价，而要为持续不确定性定价。替代路线越接近瓶颈，边际一桶油的运输成本和时间价值就越高。</p><p>World Bank 的宏观视角补上了另一层：能源冲击会沿着通胀、食品、化肥和发展融资扩散。该机构预计 2026 年能源价格将大幅上行，商品价格上涨会推高通胀并拖慢增长；如果冲突延长，Brent 均价情景可能明显高于基准，发展中经济体通胀和增长压力会更重。它特别强调贫困人口和高债务发展中经济体承受更大压力，因为食品和燃料在支出中占比更高。油市供应链问题因此会变成财政、货币和粮食安全问题。</p><p>这也是为什么单纯讨论战略储备释放并不够。库存可以争取时间，却不能替代持续流量；替代管线可以绕开一部分风险，却很难同时处理不同油种、港口排队、保险条款、船舶位置和炼厂适配。更麻烦的是，油市和气市、化肥、航运之间并非彼此独立。LPG、石脑油和中间馏分供应收缩，会让化工、农业和航空部门用不同方式被迫降负荷。能源冲击因此不是一个价格冲击落到终端消费者身上就结束，它会在工业链条里被拆成若干个具体瓶颈，逐段改变生产计划和库存策略，也改变各国政策工具的先后顺序。</p><p>这篇报告也提醒，不要把油价故事写成单向上涨叙事。IEA 的基准情景假设中东油气出口到年中逐步恢复，但无法完全回到冲突前水平；World Bank 也把基准建立在急性中断结束、霍尔木兹到年底逐步恢复的假设上。下行情景包括供应恢复快于预期、美国或 OPEC+ 增产、航运更快正常化、全球增长走弱和电动车采用加快；上行情景则包括冲突重新升级、基础设施损伤加深、管线和港口替代路线受限，以及停产后复产不顺。风险是双向的，只是短期上行尾部更厚。</p><p>对长期观察者来说，这次霍尔木兹冲击的意义在于它暴露了能源安全的双重结构。一方面，全球经济比 1970 年代更节能，替代能源、战略储备和需求管理工具更多；另一方面，关键航道、炼厂配置、石化原料和航空燃料仍然高度依赖物理连续性。金融市场可以每秒重新定价，船舶、管线、港口和炼厂不能。IEA 的报告因此不是一篇油价短评，而是一张供应链压力测试表：哪里能绕行，哪里只能等待，哪里会把冲击传给食品、财政和通胀。</p><p>后续最值得盯的变量，应该从价格扩展到流量。霍尔木兹日均通行和装载、替代路线吞吐、商业库存和浮仓、亚洲炼厂开工、成品油裂解价差、化肥价格、航运保险成本、主要进口国的需求管理政策，这些指标共同决定冲击是否进入缓和阶段。单看 Brent 或 WTI 会漏掉真实瓶颈，因为价格可能先回落，而库存、炼厂和航运风险仍然没有恢复。能源危机的结束，不是屏幕上价格少跌几美元，而是物理流量重新变得可预测，并且这种可预测性足以让炼厂、贸易商和进口国重新安排几个月后的计划。</p>
+          <div class="report-body"><p class="report-lede"><strong>IEA 这期 Oil Market Report 最值得保留的判断，是它把油市从价格屏幕重新拉回物理世界。</strong>油价当然刺眼，IEA 提到 3 月现货原油和价差大幅上行，World Bank 也写到 Brent 在 3 月底较冲突前显著上涨。但这篇报告<strong class="signal">真正</strong>的锚点不是价格本身，而是霍尔木兹海峡流量突然收缩以后，原油、天然气液体、成品油、炼厂、库存和需求同时被迫重排。能源市场平时看起来像一串金融价格，危机里会显露出它首先是一套港口、航道、管线、储罐和炼厂组成的物理系统。</p><p class="report-callout"><mark>IEA 的数字显示这次冲击的量级非常罕见。</mark><strong class="metric">2026 年</strong> 3 月，全球油供应减少 <strong class="metric">1010 万桶/日</strong>，降至 <strong class="metric">9700 万桶/日</strong>；OPEC+ 产量环比下降 <strong class="metric">940 万桶/日</strong>，非 OPEC+ 供应也下滑。报告把原因指向中东能源基础设施受到攻击、霍尔木兹海峡油轮运输持续受限，以及由此形成的出口和生产中断。World Bank 的商品市场展望也将其称为创纪录的供应冲击，并把初始全球供应减少量估计在约 <strong class="metric">1000 万桶/日</strong>。两个机构口径不完全相同，但方向一致：这不是普通<strong class="signal">风险</strong>溢价，而是可交付货物流量突然不够。</p><p class="report-paragraph">霍尔木兹的重要性来自它连接的不是一个国家，而是一组出口依赖海峡的产油国和气液产品链条。IEA 写到，4 月初通过海峡的原油、天然气液体和成品油装载量平均约 <strong class="metric">380 万桶/日</strong>，而危机前 2 月超过 <strong class="metric">2000 万桶/日</strong>。替代路线确实在扩张，沙特西海岸、阿联酋富查伊拉、伊拉克通往土耳其杰伊汉的管线出口合计从战前不足 <strong class="metric">400 万桶/日</strong>升至约 <strong class="metric">720 万桶/日</strong>。但这组数字也说明替代路线只能缓冲，不能完整替换。海峡不是普通运输节点，它是全球油贸中的集中阀门。</p><p class="report-callout"><mark>油市紧张最早会表现为价格，但更深的压力会出现在库存位置上。</mark>IEA 提到，3 月全球观察库存下降 8500 万桶，海湾以外地区库存消耗显著；同时，因为海峡出口受限，中东地区的海上浮仓和陆上库存反而增加。这个看似矛盾的结构很<strong class="signal">关键</strong>：世界不是没油，而是油在错误的位置、错误的形态、错误的时间。进口地区炼厂和消费端需要替代货源，中东部分供应却因为航运和出口通道受限无法顺利抵达市场。库存从缓冲器变成地理错配的计量器。</p><p class="report-paragraph">炼厂端把这场冲击从原油市场推向成品油市场。IEA 说，原料供应和基础设施损坏使全球产品市场收紧，4 月中东和亚洲部分受限炼厂削减开工约 <strong class="metric">600 万桶/日</strong>，全球炼厂原油加工量预期在 <strong class="metric">2026 年</strong>平均下降。成品油裂解价差一度显著上行，World Bank 也强调能源冲击会传导到化肥和食品。这里的机制是：原油少了并不只意味着汽油价格变化，还会影响石化原料、LPG、航空燃料、柴油和化肥成本。不同产品的紧张程度，取决于炼厂配置、原料可替代性和地区库存。</p><p class="report-paragraph">需求破坏已经不是理论推演。IEA 写到，油价和供应稀缺持续后，需求收缩会从中东和亚太扩散，最初集中在石脑油、LPG 和航空燃料；3 月全球油需求同比估计减少 <strong class="metric">80 万桶/日</strong>，4 月可能减少 <strong class="metric">230 万桶/日</strong>，全年需求预期也从上月的增长修正为小幅下降。World Bank 的博客同样提到，<strong class="metric">2026 年</strong>二季度需求可能明显下滑。需求破坏不是消费者自愿节能这么简单，它常常来自航班取消、石化厂降负荷、企业能源成本上升和收入被燃料价格挤压。</p><p class="report-callout"><mark><strong class="signal">这解释了</strong>为什么 IEA 把“恢复霍尔木兹流量”列为单一最重要变量。</mark>如果海峡稳定恢复，价格仍可能高于冲突前，但市场至少能重新估算运输时间、保险成本、库存补充和炼厂排产。如果海峡只是不完全开放，或者每隔几天又因军事、保险、港口和制裁风险停摆，市场就不能用一次性冲击定价，而要为持续<strong class="signal">不确定性</strong>定价。替代路线越接近瓶颈，边际一桶油的运输成本和时间价值就越高。</p><p class="report-paragraph">World Bank 的宏观视角补上了另一层：能源冲击会沿着通胀、食品、化肥和发展融资扩散。该机构预计 <strong class="metric">2026 年</strong>能源价格将大幅上行，商品价格上涨会推高通胀并拖慢增长；如果冲突延长，Brent 均价情景可能明显高于基准，发展中经济体通胀和增长压力会更重。它特别强调贫困人口和高债务发展中经济体承受更大压力，因为食品和燃料在支出中占比更高。油市供应链问题<strong class="signal">因此</strong>会变成财政、货币和粮食安全问题。</p><p class="report-paragraph">这也是为什么单纯讨论战略储备释放并不够。库存可以争取时间，却不能替代持续流量；替代管线可以绕开一部分<strong class="signal">风险</strong>，却很难同时处理不同油种、港口排队、保险条款、船舶位置和炼厂适配。更麻烦的是，油市和气市、化肥、航运之间并非彼此独立。LPG、石脑油和中间馏分供应收缩，会让化工、农业和航空部门用不同方式被迫降负荷。能源冲击因此不是一个价格冲击落到终端消费者身上就结束，它会在工业链条里被拆成若干个具体瓶颈，逐段改变生产计划和库存策略，也改变各国政策工具的先后顺序。</p><p class="report-paragraph">这篇报告也提醒，不要把油价故事写成单向上涨叙事。IEA 的基准情景假设中东油气出口到年中逐步恢复，但无法完全回到冲突前水平；World Bank 也把基准建立在急性中断结束、霍尔木兹到年底逐步恢复的假设上。下行情景包括供应恢复快于预期、美国或 OPEC+ 增产、航运更快正常化、全球增长走弱和电动车采用加快；上行情景则包括冲突重新升级、基础设施损伤加深、管线和港口替代路线受限，以及停产后复产不顺。<strong class="signal">风险</strong>是双向的，只是短期上行尾部更厚。</p><p class="report-paragraph">对长期观察者来说，这次霍尔木兹冲击的意义在于它暴露了能源安全的双重结构。一方面，全球经济比 <strong class="metric">1970 年</strong>代更节能，替代能源、战略储备和需求管理工具更多；另一方面，<strong class="signal">关键</strong>航道、炼厂配置、石化原料和航空燃料仍然高度依赖物理连续性。金融市场可以每秒重新定价，船舶、管线、港口和炼厂不能。IEA 的报告因此不是一篇油价短评，而是一张供应链压力测试表：哪里能绕行，哪里只能等待，哪里会把冲击传给食品、财政和通胀。</p><p class="report-paragraph"><strong class="signal">后续</strong>最值得盯的变量，应该从价格扩展到流量。霍尔木兹日均通行和装载、替代路线吞吐、商业库存和浮仓、亚洲炼厂开工、成品油裂解价差、化肥价格、航运保险成本、主要进口国的需求管理政策，这些指标共同决定冲击是否进入缓和阶段。单看 Brent 或 WTI 会漏掉真实瓶颈，因为价格可能先回落，而库存、炼厂和航运风险仍然没有恢复。能源危机的结束，不是屏幕上价格少跌几美元，而是物理流量重新变得可预测，并且这种可预测性足以让炼厂、贸易商和进口国重新安排几个月后的计划。</p></div>
         </section>
     
 
         <section class="uncertainties">
           <h2>不确定性</h2>
-          <ul><li>IEA 报告基于 2026 年 4 月中旬局势，停火、封锁、保险和航运恢复都可能迅速改变供需预测。</li><li>World Bank 的价格和增长情景依赖冲突是否延长、霍尔木兹是否逐步恢复以及替代供应是否兑现。</li><li>替代路线的可持续吞吐、港口瓶颈、保险成本和管线约束仍存在不确定性。</li><li>本文是能源市场研究，不构成油价预测、交易建议或投资建议。</li></ul>
+          <ul class="note-list"><li><span>IEA 报告基于 <strong class="metric">2026 年</strong> 4 月中旬局势，停火、封锁、保险和航运恢复都可能迅速改变供需预测。</span></li><li><span>World Bank 的价格和增长情景依赖冲突是否延长、霍尔木兹是否逐步恢复以及替代供应是否兑现。</span></li><li><span>替代路线的可持续吞吐、港口瓶颈、保险成本和管线约束仍存在<strong class="signal">不确定性</strong>。</span></li><li><span>本文是能源市场研究，不构成油价预测、交易建议或投资建议。</span></li></ul>
         </section>
     
 
         <section class="follow-up">
           <h2>后续跟踪变量</h2>
-          <ul><li>霍尔木兹海峡原油、NGL 和成品油日均装载量</li><li>沙特西海岸、富查伊拉和伊拉克-杰伊汉路线实际吞吐</li><li>全球商业库存、浮仓和亚洲进口地区库存变化</li><li>炼厂开工率、成品油裂解价差和石化原料供应</li><li>Brent 现货、期货价差和地区原油价差</li><li>化肥价格、食品价格和发展中经济体通胀修正</li></ul>
+          <ul class="note-list"><li><span>霍尔木兹海峡原油、NGL 和成品油日均装载量</span></li><li><span>沙特西海岸、富查伊拉和伊拉克-杰伊汉路线实际吞吐</span></li><li><span>全球商业库存、浮仓和亚洲进口地区库存变化</span></li><li><span>炼厂开工率、成品油裂解价差和石化原料供应</span></li><li><span>Brent 现货、期货价差和地区原油价差</span></li><li><span>化肥价格、食品价格和发展中经济体通胀修正</span></li></ul>
         </section>
     
       </article>
