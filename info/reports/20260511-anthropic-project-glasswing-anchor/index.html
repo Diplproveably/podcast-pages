@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Glasswing 把 AI 安全问题倒过来：先让防御者用最危险的能力</title>
+  <style>
+    :root {
+      --bg: #f6f5ef;
+      --paper: #ffffff;
+      --text: #1f2520;
+      --muted: #66716a;
+      --line: #d9ded7;
+      --accent: #0b6b5f;
+      --accent-two: #9b6a24;
+      --soft: #edf5f1;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Avenir Next", "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.72;
+      letter-spacing: 0;
+    }
+    main {
+      width: min(1040px, calc(100% - 34px));
+      margin: 0 auto;
+      padding: 38px 0 72px;
+    }
+    header {
+      border-bottom: 2px solid var(--text);
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 4.6rem);
+      line-height: 1.05;
+      margin: 0 0 16px;
+    }
+    h2 { margin: 8px 0 10px; line-height: 1.28; font-size: 1.35rem; }
+    a { color: var(--accent); text-underline-offset: 3px; overflow-wrap: anywhere; }
+    .subtitle { max-width: 760px; color: var(--muted); font-size: 1.05rem; }
+    .nav { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 18px; }
+    .info-list { display: grid; gap: 16px; }
+    .info-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 20px 22px;
+      box-shadow: 0 18px 50px rgba(31, 37, 32, .06);
+    }
+    .meta { color: var(--muted); font-size: .92rem; }
+    .summary { font-size: 1.02rem; }
+    .why {
+      background: var(--soft);
+      border-left: 4px solid var(--accent);
+      padding: 10px 12px;
+      color: #26322d;
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .tags span {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 3px 9px;
+      color: var(--muted);
+      font-size: .86rem;
+      background: #fbfcfa;
+    }
+    .actions { margin-bottom: 0; }
+    .analysis, .detailed-summary, .news-anchor, .research-questions, .research-sources,
+    .detailed-report, .uncertainties, .follow-up {
+      border-top: 1px solid var(--line);
+      margin-top: 18px;
+      padding-top: 14px;
+    }
+    .anchor-report { border-left: 5px solid var(--accent-two); }
+    .analysis h2, .detailed-summary h2, .news-anchor h2, .research-questions h2,
+    .research-sources h2, .detailed-report h2, .uncertainties h2, .follow-up h2 { font-size: 1.05rem; margin-top: 0; }
+    .analysis p, .detailed-summary p, .news-anchor p, .detailed-report p { margin: 0 0 12px; }
+    .research-sources li, .research-questions li, .uncertainties li, .follow-up li { margin: 0 0 8px; }
+    .topic-index { columns: 2; padding-left: 20px; }
+    .topic-index li { break-inside: avoid; margin: 0 0 8px; }
+    footer { color: var(--muted); margin-top: 34px; font-size: .9rem; }
+    @media (max-width: 720px) {
+      .topic-index { columns: 1; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    
+            <header>
+              <h1>Project Glasswing 把 AI 安全问题倒过来：先让防御者用最危险的能力</h1>
+              <p class="subtitle">新闻锚点驱动的主题研究报告 · 2026-04-07</p>
+              <div class="nav"><a href="../../">返回信息流</a><a href="https://www.anthropic.com/glasswing">打开锚点来源</a></div>
+            </header>
+            
+      <article class="info-card anchor-report">
+        <div class="meta">2026-04-07 · 主题研究报告</div>
+        <h2>Project Glasswing 把 AI 安全问题倒过来：先让防御者用最危险的能力</h2>
+        <p class="summary">Anthropic 发布 Project Glasswing，让 AWS、Apple、Google、Microsoft、Linux Foundation 等伙伴使用未公开的 Claude Mythos Preview 做防御性漏洞发现。重点不是模型发布，而是 AI 时代软件安全的披露、修复和访问控制机制。</p>
+        <p class="why"><strong>新闻锚点：</strong><a href="https://www.anthropic.com/glasswing">Project Glasswing: Securing critical software for the AI era</a> · Anthropic</p>
+        <div class="tags"><span>ai-security</span> <span>developer-tooling</span> <span>software-supply-chain</span></div>
+      
+        <section class="news-anchor">
+          <h2>新闻锚点</h2>
+          <p><a href="https://www.anthropic.com/glasswing">Project Glasswing: Securing critical software for the AI era</a> · Anthropic</p>
+        </section>
+            
+
+        <section class="research-questions">
+          <h2>研究问题</h2>
+          <ul><li>为什么 Anthropic 选择不公开 Mythos Preview，而是先给防御者使用？</li><li>AI 自动发现漏洞会怎样改变开源维护者和大厂安全团队的分工？</li><li>这种能力扩散前，行业应如何重做漏洞披露和补丁流程？</li></ul>
+        </section>
+    
+
+        <section class="research-sources">
+          <h2>研究来源</h2>
+          <ul><li><a href="https://www.anthropic.com/glasswing">Project Glasswing: Securing critical software for the AI era</a> · Anthropic</li><li><a href="https://red.anthropic.com/">Frontier Red Team blog</a> · Anthropic</li><li><a href="https://www.anthropic.com/project/glasswing">Project Glasswing</a> · Anthropic</li></ul>
+        </section>
+    
+
+        <section class="detailed-report">
+          <h2>研究报告</h2>
+          <p>Project Glasswing 的重要性不在于 Anthropic 又展示了一个强模型，而在于它把 AI 安全问题倒过来处理。Claude Mythos Preview 被描述为一个未公开的前沿模型，能够在主要操作系统、浏览器和关键软件中发现大量高严重性漏洞。按普通产品节奏，这类能力本该成为模型发布卖点；但 Anthropic 选择限制公开，把它放进一个防御性合作项目里，让 AWS、Apple、Broadcom、Cisco、CrowdStrike、Google、JPMorganChase、Linux Foundation、Microsoft、NVIDIA、Palo Alto Networks 等伙伴优先用于扫描和修复关键软件。</p><p>这件事揭示了一个新边界：当模型可以接近或超过顶级安全研究者的漏洞发现能力时，发布模型就不再只是产品策略，而是安全治理。Anthropic 的论证是，AI 会降低发现和利用漏洞的门槛，攻击者迟早也会获得类似能力；因此防御者必须先得到足够强的工具，把长期隐藏的漏洞提前找出来、修掉，并更新披露和补丁流程。它承诺最高 1 亿美元模型使用额度，并向开源安全组织和 Apache Software Foundation 捐赠资金，说明开源维护者被放到了这场防御竞赛的中心位置。</p><p>这篇材料尤其适合放进信息流，因为它不是单纯的网络安全新闻，而是 AI 能力扩散的治理样本。问题不再是模型能不能发现漏洞，而是这种能力如何分发、谁能访问、如何审计、如何避免把利用细节提前泄漏、如何让开源项目有能力响应。后续要看的不是 Anthropic 的 benchmark，而是 90 天内公开报告会披露多少已修复漏洞，合作伙伴是否形成可复用流程，开源项目是否得到实际支持，以及其他模型公司是否建立类似的受控防御访问机制。</p>
+        </section>
+    
+
+        <section class="uncertainties">
+          <h2>不确定性</h2>
+          <ul><li>具体漏洞细节很多需要等修复后才披露，外部难以独立验证全部发现数量。</li><li>Mythos Preview 不公开，能力边界主要来自 Anthropic 自述和伙伴反馈。</li><li>受控访问能否真正领先于攻击者获得类似能力，仍取决于模型扩散速度。</li></ul>
+        </section>
+    
+
+        <section class="follow-up">
+          <h2>后续跟踪变量</h2>
+          <ul><li>Anthropic 90 天公开报告</li><li>已修复漏洞数量和披露质量</li><li>开源安全组织获得资金后的实际响应能力</li><li>其他 AI 公司是否跟进受控防御访问机制</li></ul>
+        </section>
+    
+      </article>
+    
+            
+    <footer>公开资料研究索引，包含来源链接、摘要、研究报告和不确定性提示。</footer>
+  </main>
+</body>
+</html>

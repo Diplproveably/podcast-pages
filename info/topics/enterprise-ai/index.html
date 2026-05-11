@@ -69,18 +69,17 @@
       background: #fbfcfa;
     }
     .actions { margin-bottom: 0; }
-    .analysis {
+    .analysis, .detailed-summary, .news-anchor, .research-questions, .research-sources,
+    .detailed-report, .uncertainties, .follow-up {
       border-top: 1px solid var(--line);
       margin-top: 18px;
       padding-top: 14px;
     }
-    .detailed-summary {
-      border-top: 1px solid var(--line);
-      margin-top: 20px;
-      padding-top: 16px;
-    }
-    .analysis h2, .detailed-summary h2 { font-size: 1.05rem; margin-top: 0; }
-    .analysis p, .detailed-summary p { margin: 0 0 12px; }
+    .anchor-report { border-left: 5px solid var(--accent-two); }
+    .analysis h2, .detailed-summary h2, .news-anchor h2, .research-questions h2,
+    .research-sources h2, .detailed-report h2, .uncertainties h2, .follow-up h2 { font-size: 1.05rem; margin-top: 0; }
+    .analysis p, .detailed-summary p, .news-anchor p, .detailed-report p { margin: 0 0 12px; }
+    .research-sources li, .research-questions li, .uncertainties li, .follow-up li { margin: 0 0 8px; }
     .topic-index { columns: 2; padding-left: 20px; }
     .topic-index li { break-inside: avoid; margin: 0 0 8px; }
     footer { color: var(--muted); margin-top: 34px; font-size: .9rem; }
@@ -94,7 +93,7 @@
     
         <header>
           <h1>enterprise-ai</h1>
-          <p class="subtitle">这个主题下的公开资料卡片。</p>
+          <p class="subtitle">这个主题下的公开主题研究报告和资料卡片。</p>
           <div class="nav"><a href="../../">返回信息流</a></div>
         </header>
         <section class="info-list">
@@ -110,7 +109,7 @@
     
         </section>
         
-    <footer>公开资料索引，只包含标题、摘要和来源链接。</footer>
+    <footer>公开资料研究索引，包含来源链接、摘要、研究报告和不确定性提示。</footer>
   </main>
 </body>
 </html>

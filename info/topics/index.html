@@ -69,18 +69,17 @@
       background: #fbfcfa;
     }
     .actions { margin-bottom: 0; }
-    .analysis {
+    .analysis, .detailed-summary, .news-anchor, .research-questions, .research-sources,
+    .detailed-report, .uncertainties, .follow-up {
       border-top: 1px solid var(--line);
       margin-top: 18px;
       padding-top: 14px;
     }
-    .detailed-summary {
-      border-top: 1px solid var(--line);
-      margin-top: 20px;
-      padding-top: 16px;
-    }
-    .analysis h2, .detailed-summary h2 { font-size: 1.05rem; margin-top: 0; }
-    .analysis p, .detailed-summary p { margin: 0 0 12px; }
+    .anchor-report { border-left: 5px solid var(--accent-two); }
+    .analysis h2, .detailed-summary h2, .news-anchor h2, .research-questions h2,
+    .research-sources h2, .detailed-report h2, .uncertainties h2, .follow-up h2 { font-size: 1.05rem; margin-top: 0; }
+    .analysis p, .detailed-summary p, .news-anchor p, .detailed-report p { margin: 0 0 12px; }
+    .research-sources li, .research-questions li, .uncertainties li, .follow-up li { margin: 0 0 8px; }
     .topic-index { columns: 2; padding-left: 20px; }
     .topic-index li { break-inside: avoid; margin: 0 0 8px; }
     footer { color: var(--muted); margin-top: 34px; font-size: .9rem; }
@@ -94,14 +93,14 @@
     
     <header>
       <h1>主题归档</h1>
-      <p class="subtitle">按公开卡片标签生成的归档入口。</p>
+      <p class="subtitle">按公开条目标签生成的归档入口。</p>
       <div class="nav"><a href="../">返回信息流</a></div>
     </header>
     <ul class="topic-index">
-      <li><a href="agentic-workflows/">agentic-workflows</a> · 3</li><li><a href="agriculture/">agriculture</a> · 1</li><li><a href="ai-at-work/">ai-at-work</a> · 1</li><li><a href="ai-business/">ai-business</a> · 1</li><li><a href="ai-education/">ai-education</a> · 1</li><li><a href="ai-policy/">ai-policy</a> · 1</li><li><a href="ai-research/">ai-research</a> · 1</li><li><a href="ai-tools/">ai-tools</a> · 1</li><li><a href="china-policy/">china-policy</a> · 1</li><li><a href="commodities/">commodities</a> · 1</li><li><a href="content-strategy/">content-strategy</a> · 1</li><li><a href="cost-control/">cost-control</a> · 1</li><li><a href="developer-tooling/">developer-tooling</a> · 1</li><li><a href="enterprise-ai/">enterprise-ai</a> · 1</li><li><a href="geopolitics/">geopolitics</a> · 1</li><li><a href="industry/">industry</a> · 1</li><li><a href="macro/">macro</a> · 3</li><li><a href="macro-context/">macro-context</a> · 1</li><li><a href="media-business/">media-business</a> · 1</li><li><a href="model-capability/">model-capability</a> · 1</li><li><a href="model-platforms/">model-platforms</a> · 1</li><li><a href="organization-design/">organization-design</a> · 1</li><li><a href="podcast/">podcast</a> · 1</li><li><a href="policy/">policy</a> · 1</li><li><a href="social-impact/">social-impact</a> · 1</li><li><a href="user-behavior/">user-behavior</a> · 1</li>
+      <li><a href="agentic-workflows/">agentic-workflows</a> · 3</li><li><a href="agriculture/">agriculture</a> · 1</li><li><a href="ai-at-work/">ai-at-work</a> · 1</li><li><a href="ai-business/">ai-business</a> · 2</li><li><a href="ai-education/">ai-education</a> · 1</li><li><a href="ai-policy/">ai-policy</a> · 5</li><li><a href="ai-research/">ai-research</a> · 1</li><li><a href="ai-security/">ai-security</a> · 1</li><li><a href="ai-tools/">ai-tools</a> · 2</li><li><a href="capital-markets/">capital-markets</a> · 1</li><li><a href="china-economy/">china-economy</a> · 1</li><li><a href="china-policy/">china-policy</a> · 2</li><li><a href="commodities/">commodities</a> · 1</li><li><a href="content-strategy/">content-strategy</a> · 3</li><li><a href="cost-control/">cost-control</a> · 1</li><li><a href="developer-tooling/">developer-tooling</a> · 2</li><li><a href="energy/">energy</a> · 1</li><li><a href="enterprise-ai/">enterprise-ai</a> · 1</li><li><a href="eu-regulation/">eu-regulation</a> · 2</li><li><a href="finance-macro/">finance-macro</a> · 4</li><li><a href="fiscal-policy/">fiscal-policy</a> · 1</li><li><a href="frontend-workflow/">frontend-workflow</a> · 1</li><li><a href="geopolitics/">geopolitics</a> · 3</li><li><a href="industry/">industry</a> · 2</li><li><a href="macro/">macro</a> · 3</li><li><a href="macro-context/">macro-context</a> · 1</li><li><a href="media-business/">media-business</a> · 1</li><li><a href="model-capability/">model-capability</a> · 1</li><li><a href="model-platforms/">model-platforms</a> · 1</li><li><a href="organization-design/">organization-design</a> · 1</li><li><a href="podcast/">podcast</a> · 1</li><li><a href="policy/">policy</a> · 1</li><li><a href="politics-policy/">politics-policy</a> · 3</li><li><a href="social-impact/">social-impact</a> · 1</li><li><a href="software-supply-chain/">software-supply-chain</a> · 1</li><li><a href="us-policy/">us-policy</a> · 1</li><li><a href="user-behavior/">user-behavior</a> · 1</li>
     </ul>
     
-    <footer>公开资料索引，只包含标题、摘要和来源链接。</footer>
+    <footer>公开资料研究索引，包含来源链接、摘要、研究报告和不确定性提示。</footer>
   </main>
 </body>
 </html>

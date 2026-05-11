@@ -69,18 +69,17 @@
       background: #fbfcfa;
     }
     .actions { margin-bottom: 0; }
-    .analysis {
+    .analysis, .detailed-summary, .news-anchor, .research-questions, .research-sources,
+    .detailed-report, .uncertainties, .follow-up {
       border-top: 1px solid var(--line);
       margin-top: 18px;
       padding-top: 14px;
     }
-    .detailed-summary {
-      border-top: 1px solid var(--line);
-      margin-top: 20px;
-      padding-top: 16px;
-    }
-    .analysis h2, .detailed-summary h2 { font-size: 1.05rem; margin-top: 0; }
-    .analysis p, .detailed-summary p { margin: 0 0 12px; }
+    .anchor-report { border-left: 5px solid var(--accent-two); }
+    .analysis h2, .detailed-summary h2, .news-anchor h2, .research-questions h2,
+    .research-sources h2, .detailed-report h2, .uncertainties h2, .follow-up h2 { font-size: 1.05rem; margin-top: 0; }
+    .analysis p, .detailed-summary p, .news-anchor p, .detailed-report p { margin: 0 0 12px; }
+    .research-sources li, .research-questions li, .uncertainties li, .follow-up li { margin: 0 0 8px; }
     .topic-index { columns: 2; padding-left: 20px; }
     .topic-index li { break-inside: avoid; margin: 0 0 8px; }
     footer { color: var(--muted); margin-top: 34px; font-size: .9rem; }
@@ -94,11 +93,27 @@
     
         <header>
           <h1>geopolitics</h1>
-          <p class="subtitle">这个主题下的公开资料卡片。</p>
+          <p class="subtitle">这个主题下的公开主题研究报告和资料卡片。</p>
           <div class="nav"><a href="../../">返回信息流</a></div>
         </header>
         <section class="info-list">
           
+      <article class="info-card anchor-report">
+        <div class="meta">2026-04-15 · 主题研究报告</div>
+        <h2><a href="../../reports/20260511-imf-fiscal-monitor-debt-anchor/">IMF Fiscal Monitor 的警告：债务风险不只在赤字，而在再定价机制</a></h2>
+        <p class="summary">IMF 2026 年 4 月 Fiscal Monitor 预计全球公共债务 2025 年接近 GDP 的 94%，并将在 2029 年达到 100%。报告把债务、利息、国防和战略自主支出、非银杠杆和美债安全溢价变化放在同一张风险图里。</p>
+        <p class="why"><strong>新闻锚点：</strong><a href="https://www.imf.org/en/publications/fm/issues/2026/04/15/fiscal-monitor-april-2026">Fiscal Policy under Pressure: High Debt, Rising Risks</a> · International Monetary Fund</p>
+        <div class="tags"><span>finance-macro</span> <span>fiscal-policy</span> <span>geopolitics</span></div>
+      </article>
+    
+      <article class="info-card anchor-report">
+        <div class="meta">2026-04-14 · 主题研究报告</div>
+        <h2><a href="../../reports/20260511-iea-oil-market-hormuz-anchor/">霍尔木兹不是油价故事的背景板，而是全球供应链的单点变量</a></h2>
+        <p class="summary">IEA 4 月 Oil Market Report 把 2026 年油市重写：全球供应 3 月骤降 1010 万桶/日，霍尔木兹海峡流量受限，替代通道扩张但不足以填补缺口。报告关键在于供应链物理瓶颈，而不只是价格波动。</p>
+        <p class="why"><strong>新闻锚点：</strong><a href="https://www.iea.org/reports/oil-market-report-april-2026">Oil Market Report - April 2026</a> · International Energy Agency</p>
+        <div class="tags"><span>energy</span> <span>finance-macro</span> <span>geopolitics</span></div>
+      </article>
+    
       <article class="info-card">
         <div class="meta">2026-04-14 · International Monetary Fund</div>
         <h2><a href="../../cards/20260511-imf-world-economic-outlook-april-2026/">World Economic Outlook, April 2026: Global Economy in the Shadow of War</a></h2>
@@ -110,7 +125,7 @@
     
         </section>
         
-    <footer>公开资料索引，只包含标题、摘要和来源链接。</footer>
+    <footer>公开资料研究索引，包含来源链接、摘要、研究报告和不确定性提示。</footer>
   </main>
 </body>
 </html>

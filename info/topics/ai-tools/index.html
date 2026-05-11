@@ -69,18 +69,17 @@
       background: #fbfcfa;
     }
     .actions { margin-bottom: 0; }
-    .analysis {
+    .analysis, .detailed-summary, .news-anchor, .research-questions, .research-sources,
+    .detailed-report, .uncertainties, .follow-up {
       border-top: 1px solid var(--line);
       margin-top: 18px;
       padding-top: 14px;
     }
-    .detailed-summary {
-      border-top: 1px solid var(--line);
-      margin-top: 20px;
-      padding-top: 16px;
-    }
-    .analysis h2, .detailed-summary h2 { font-size: 1.05rem; margin-top: 0; }
-    .analysis p, .detailed-summary p { margin: 0 0 12px; }
+    .anchor-report { border-left: 5px solid var(--accent-two); }
+    .analysis h2, .detailed-summary h2, .news-anchor h2, .research-questions h2,
+    .research-sources h2, .detailed-report h2, .uncertainties h2, .follow-up h2 { font-size: 1.05rem; margin-top: 0; }
+    .analysis p, .detailed-summary p, .news-anchor p, .detailed-report p { margin: 0 0 12px; }
+    .research-sources li, .research-questions li, .uncertainties li, .follow-up li { margin: 0 0 8px; }
     .topic-index { columns: 2; padding-left: 20px; }
     .topic-index li { break-inside: avoid; margin: 0 0 8px; }
     footer { color: var(--muted); margin-top: 34px; font-size: .9rem; }
@@ -94,11 +93,19 @@
     
         <header>
           <h1>ai-tools</h1>
-          <p class="subtitle">这个主题下的公开资料卡片。</p>
+          <p class="subtitle">这个主题下的公开主题研究报告和资料卡片。</p>
           <div class="nav"><a href="../../">返回信息流</a></div>
         </header>
         <section class="info-list">
           
+      <article class="info-card anchor-report">
+        <div class="meta">2026-04-17 · 主题研究报告</div>
+        <h2><a href="../../reports/20260511-anthropic-claude-design-anchor/">Claude Design 的意义不只是生成图，而是把设计变成可交接的工作流</a></h2>
+        <p class="summary">Anthropic 发布 Claude Design，支持从提示、图片、文档、代码库和网页捕获生成设计、原型、幻灯片和 HTML，并可交接给 Claude Code。它代表 AI 内容生产工具从单张图生成转向团队工作流。</p>
+        <p class="why"><strong>新闻锚点：</strong><a href="https://www.anthropic.com/news/claude-design-anthropic-labs">Introducing Claude Design by Anthropic Labs</a> · Anthropic</p>
+        <div class="tags"><span>ai-tools</span> <span>content-strategy</span> <span>frontend-workflow</span></div>
+      </article>
+    
       <article class="info-card">
         <div class="meta">2026-04-23 · OpenAI</div>
         <h2><a href="../../cards/20260511-openai-gpt-55/">Introducing GPT-5.5</a></h2>
@@ -110,7 +117,7 @@
     
         </section>
         
-    <footer>公开资料索引，只包含标题、摘要和来源链接。</footer>
+    <footer>公开资料研究索引，包含来源链接、摘要、研究报告和不确定性提示。</footer>
   </main>
 </body>
 </html>

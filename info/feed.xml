@@ -1,80 +1,729 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>信息流</title>
     <link>https://diplproveably.github.io/podcast-pages/info/</link>
     <description>公开长文、研究报告和一手资料索引</description>
-    <lastBuildDate>Mon, 11 May 2026 15:43:16 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2026 16:19:29 +0800</lastBuildDate>
     
     <item>
-      <title>Introducing GPT-5.5</title>
-      <link>https://diplproveably.github.io/podcast-pages/info/cards/20260511-openai-gpt-55/</link>
-      <guid isPermaLink="false">20260511-openai-gpt-55</guid>
-      <pubDate>Thu, 23 Apr 2026 00:00:00 +0000</pubDate>
-      <description>OpenAI 发布 GPT-5.5，并把重点放在长程任务、代理式编码、知识工作、科研辅助和推理效率上。文章值得看的地方不只是模型分数，而是它把模型能力、工程工具使用、token 效率、网络安全防护和 API 部署要求放在同一个框架里，能帮助判断下一阶段 AI 工具从聊天界面转向“可持续执行任务”的方向。</description>
+      <title>AI 生成内容要标出来，欧盟把透明度义务推进到执行倒计时</title>
+      <link>https://diplproveably.github.io/podcast-pages/info/reports/20260511-eu-ai-transparency-guidelines-anchor/</link>
+      <guid isPermaLink="false">20260511-eu-ai-transparency-guidelines-anchor</guid>
+      <pubDate>Mon, 11 May 2026 22:30:00 +0800</pubDate>
+      <description>欧盟委员会发布 AI Act 第 50 条透明度义务指南草案，征求意见到 2026 年 6 月 3 日。核心变化是 AI 交互告知、AI 生成内容机器可读标记、deepfake 披露和公共利益文本披露即将进入执行阶段。</description>
+      <content:encoded>AI 生成内容要标出来，欧盟把透明度义务推进到执行倒计时
+
+新闻锚点：Commission opens consultation on draft guidelines for AI transparency obligations https://digital-strategy.ec.europa.eu/en/news/commission-opens-consultation-draft-guidelines-ai-transparency-obligations
+
+欧盟委员会发布 AI Act 第 50 条透明度义务指南草案，征求意见到 2026 年 6 月 3 日。核心变化是 AI 交互告知、AI 生成内容机器可读标记、deepfake 披露和公共利益文本披露即将进入执行阶段。
+
+研究问题：
+- AI 内容标记从原则走到执行，会改变哪些产品设计？
+- 机器可读标记、deepfake 标签和公共利益文本披露分别解决什么风险？
+- 平台、媒体和生成式 AI 工具还有多少合规窗口？
+
+研究来源：
+- Commission opens consultation on draft guidelines for AI transparency obligations | European Commission | https://digital-strategy.ec.europa.eu/en/news/commission-opens-consultation-draft-guidelines-ai-transparency-obligations
+- Draft guidelines on Article 50 transparency obligations | European Commission | https://digital-strategy.ec.europa.eu/en/library/draft-guidelines-implementation-transparency-obligations-certain-ai-systems-under-article-50-ai-act
+- Code of Practice on marking and labelling of AI-generated content | European Commission | https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content
+
+研究报告：
+欧盟 5 月 8 日这份指南草案不是新立法，而是把 AI Act 第 50 条的透明度义务变成更接近产品和内容流程的执行口径。它的核心非常具体：人在欧盟境内与 AI 系统交互时，原则上要知道自己面对的是 AI；AI 生成或操纵的音频、图像、视频和文本，要有机器可读标记，便于检测；deepfake、情绪识别、生物识别分类和面向公共利益的信息发布，也要有相应披露。换句话说，欧盟正在把“AI 生成内容应该可识别”从伦理口号推进到产品要求。
+
+这件事值得看，是因为它抓住了 AI 治理里一个比模型安全更贴近日常信息生态的问题：普通用户不一定知道自己在和 AI 交互，也不一定能判断一段图像、声音或公共事务文本是不是被生成或操纵。透明度义务并不直接证明内容真假，但它改变了默认状态。以前平台和工具可以把生成内容混进普通内容流里，现在至少需要在某些场景下留下可检测痕迹，或向被影响的人说明系统性质。对内容生产工具、社交平台、媒体机构和企业营销系统来说，这会变成设计问题，而不是法务附注。
+
+后续争议会集中在边界。什么叫用户明显知道自己在和 AI 交互？什么样的编辑辅助没有实质改变语义？公共利益文本披露是否会覆盖新闻摘要、政策解读、财经评论和政务内容？机器可读标记究竟靠水印、元数据、指纹、日志，还是多种机制组合？这些问题没有统一答案前，企业很难只靠“加一句说明”完成合规。欧盟把征求意见截止日设在 2026 年 6 月 3 日，而规则适用节点是 2026 年 8 月 2 日，这意味着真正的合规窗口并不长。
+
+不确定性：
+- 指南仍是草案，最终版本可能因反馈调整。
+- 机器可读标记的技术方案依赖后续行为准则、标准和行业实践。
+- 创意、讽刺、公共利益文本和人工编辑责任的边界仍可能争议很大。
+
+后续跟踪变量：
+- 2026-06-03 征求意见截止后的修订版本
+- AI 生成内容标记与标签行为准则最终版
+- 主要平台和生成式 AI 工具的标签产品改动
+- 成员国监管机构的首批问询或执法案例</content:encoded>
+    </item>
+    <item>
+      <title>欧盟 AI Act 延期，不是放松监管，而是在补执行条件</title>
+      <link>https://diplproveably.github.io/podcast-pages/info/reports/20260511-eu-ai-act-simplification-anchor/</link>
+      <guid isPermaLink="false">20260511-eu-ai-act-simplification-anchor</guid>
+      <pubDate>Mon, 11 May 2026 22:30:00 +0800</pubDate>
+      <description>欧盟共同立法者就 AI Act 简化修订达成政治协议，把部分高风险 AI 义务后移，同时补上非自愿私密内容生成系统的禁止规则。它更像是执行节奏调整，而不是放弃 AI Act。</description>
+      <content:encoded>欧盟 AI Act 延期，不是放松监管，而是在补执行条件
+
+新闻锚点：EU agrees to simplify AI rules to boost innovation and ban nudification apps https://digital-strategy.ec.europa.eu/en/news/eu-agrees-simplify-ai-rules-boost-innovation-and-ban-nudification-apps-protect-citizens
+
+欧盟共同立法者就 AI Act 简化修订达成政治协议，把部分高风险 AI 义务后移，同时补上非自愿私密内容生成系统的禁止规则。它更像是执行节奏调整，而不是放弃 AI Act。
+
+研究问题：
+- 为什么欧盟要在 AI Act 落地前调整高风险 AI 时间表？
+- 企业减负和新增深伪色情禁令为什么会出现在同一个协议里？
+- 后续真正难点会不会转向行业法规和 AI Act 的衔接？
+
+研究来源：
+- EU agrees to simplify AI rules to boost innovation and ban nudification apps | European Commission | https://digital-strategy.ec.europa.eu/en/news/eu-agrees-simplify-ai-rules-boost-innovation-and-ban-nudification-apps-protect-citizens
+- Artificial intelligence: Council and Parliament agree to simplify and streamline rules | Council of the EU | https://www.consilium.europa.eu/en/press/press-releases/2026/05/07/artificial-intelligence-council-and-parliament-agree-to-simplify-and-streamline-rules/
+- Digital Omnibus on AI regulation proposal | European Commission | https://digital-strategy.ec.europa.eu/en/library/digital-omnibus-ai-regulation-proposal
+
+研究报告：
+这条新闻最容易被误读成“欧盟 AI Act 退缩了”。更准确的说法是：欧盟共同立法者在 2026 年 5 月 7 日达成政治协议，把一部分最重的高风险 AI 义务推迟，并把执行时间表重新排顺。欧盟委员会公开说明，生物识别、关键基础设施、教育、就业、移民、边境控制等高风险领域的规则将从 2027 年 12 月 2 日适用；嵌入升降机、玩具等产品的高风险 AI 系统，则到 2028 年 8 月 2 日适用。这里的关键词不是取消，而是排序。AI Act 已经立起来，但标准、指南、监管沙盒、行业法衔接和企业执行工具并没有同样成熟。
+
+这次协议有一个很有张力的结构：一手给企业减负，一手把非自愿私密内容生成工具放进更明确的禁止范围。前者回应的是欧洲企业长期抱怨的合规成本、规则重叠和不确定性；后者回应的是 AI 生成色情、深伪和儿童性虐待材料带来的现实社会风险。欧盟的政治叙事并不是在竞争力和基本权利之间二选一，而是试图把规则变成更可执行的版本：该延期的延期，该禁止的禁止，该由行业法规衔接的就减少重复。
+
+真正值得继续看的，是 AI Act 从立法文本进入执行机器之后会发生什么。欧洲监管的难点不再只是写一个风险分级框架，而是不同产品安全法规、不同成员国主管机关、AI Office、监管沙盒、标准组织和企业合规团队如何接上。机械、玩具、医疗器械、基础设施系统本来就处在行业安全规则里，如果 AI Act 叠加得太粗，会制造重复和责任不清；如果衔接得太松，又可能留下监管空白。后续的核心变量是最终文本、实施法案、行业标准和首批执法案例。
+
+不确定性：
+- 目前是政治协议，仍需欧洲议会和理事会正式通过，最终细节要看正式文本。
+- 不能写成所有高风险 AI 规则取消；官方口径是延期、简化和避免重复。
+- nudification apps 禁令的具体边界和合理安全措施仍要看最终文本与执法指南。
+
+后续跟踪变量：
+- 欧洲议会和理事会正式通过时间
+- 2026-12-02、2027-12-02、2028-08-02 三个合规节点
+- 成员国监管沙盒和行业标准是否按期补齐
+- 医疗器械、机械、玩具等行业法规与 AI Act 的衔接条款</content:encoded>
+    </item>
+    <item>
+      <title>Claude Design 的意义不只是生成图，而是把设计变成可交接的工作流</title>
+      <link>https://diplproveably.github.io/podcast-pages/info/reports/20260511-anthropic-claude-design-anchor/</link>
+      <guid isPermaLink="false">20260511-anthropic-claude-design-anchor</guid>
+      <pubDate>Mon, 11 May 2026 22:30:00 +0800</pubDate>
+      <description>Anthropic 发布 Claude Design，支持从提示、图片、文档、代码库和网页捕获生成设计、原型、幻灯片和 HTML，并可交接给 Claude Code。它代表 AI 内容生产工具从单张图生成转向团队工作流。</description>
+      <content:encoded>Claude Design 的意义不只是生成图，而是把设计变成可交接的工作流
+
+新闻锚点：Introducing Claude Design by Anthropic Labs https://www.anthropic.com/news/claude-design-anthropic-labs
+
+Anthropic 发布 Claude Design，支持从提示、图片、文档、代码库和网页捕获生成设计、原型、幻灯片和 HTML，并可交接给 Claude Code。它代表 AI 内容生产工具从单张图生成转向团队工作流。
+
+研究问题：
+- Claude Design 和传统 AI 图片/设计工具的差异在哪里？
+- 品牌系统、组织共享和代码交接为什么重要？
+- 这类工具会怎样改变内容、产品和营销团队的分工？
+
+研究来源：
+- Introducing Claude Design by Anthropic Labs | Anthropic | https://www.anthropic.com/news/claude-design-anthropic-labs
+- Claude Design | Anthropic | https://claude.ai/design
+- Claude Design related Canva integration quote | Anthropic | https://www.anthropic.com/news/claude-design-anthropic-labs
+
+研究报告：
+Claude Design 乍看像又一个 AI 设计工具，但它真正值得看的地方不是能不能生成漂亮画面，而是把设计工作变成一条可交接的链路。Anthropic 说它可以根据提示、图片、DOCX、PPTX、XLSX、代码库和网页捕获生成设计、原型、幻灯片、一页纸、营销素材和 standalone HTML。用户可以通过对话、行内评论、直接编辑和自定义滑杆调整结果；团队还能让 Claude 读取代码库和设计文件，建立品牌系统，让后续项目自动使用颜色、字体和组件。
+
+这个定位和普通生成图工具差异很大。普通生成图解决的是单个资产，Claude Design 试图解决的是探索、协作、导出和工程交接。它支持组织范围共享、Canva/PDF/PPTX/HTML 导出，并可把设计打包交给 Claude Code 实现。换句话说，它不是只服务设计师，也服务产品经理、创始人、营销人员和前端实现者。设计从专业软件里的静态稿，变成一个可以讨论、试错、复用设计系统并进入代码流程的中间产物。
+
+风险在于，这类工具很容易制造大量看似完整但未经审校的界面和材料。真正的价值不在于让每个人都生产更多初稿，而在于减少表达想法和交接意图的摩擦。对内容生产和个人知识工作来说，这条新闻的启发是：AI 工具的下一步不是生成单点素材，而是把文稿、网页、PPT、原型、代码和品牌规范连成一条流水线。后续可以看 Claude Design 是否真的能进入企业设计系统，是否能稳定输出可维护 HTML，以及从设计到 Claude Code 的交接包能否减少返工。
+
+不确定性：
+- 目前是 research preview，功能稳定性和大规模企业使用效果还需要观察。
+- 官方案例多来自合作伙伴和产品叙事，外部长期评测较少。
+- 设计质量、可访问性和工程可维护性仍需要人工审校。
+
+后续跟踪变量：
+- Claude Design 企业启用率和权限控制能力
+- 导出 HTML/PPTX/Canva 的质量和可编辑性
+- 与 Claude Code 交接后真实减少返工的程度
+- 是否出现设计系统漂移、版权素材和品牌一致性问题</content:encoded>
+    </item>
+    <item>
+      <title>中国一季度 5.0% 的真正看点，是新动能、PPI 转正和外部冲击的缓冲结构</title>
+      <link>https://diplproveably.github.io/podcast-pages/info/reports/20260511-china-q1-economy-2026-anchor/</link>
+      <guid isPermaLink="false">20260511-china-q1-economy-2026-anchor</guid>
+      <pubDate>Mon, 11 May 2026 22:30:00 +0800</pubDate>
+      <description>国家统计局披露中国 2026 年一季度 GDP 同比增长 5.0%，服务业、高技术制造、消费品以旧换新、网上消费和 PPI 转正共同构成开局叙事。重点不是单个增速，而是结构性缓冲能否持续。</description>
+      <content:encoded>中国一季度 5.0% 的真正看点，是新动能、PPI 转正和外部冲击的缓冲结构
+
+新闻锚点：国家统计局副局长就2026年一季度国民经济运行情况答记者问 https://www.stats.gov.cn/sj/sjjd/202604/t20260416_1963332.html
+
+国家统计局披露中国 2026 年一季度 GDP 同比增长 5.0%，服务业、高技术制造、消费品以旧换新、网上消费和 PPI 转正共同构成开局叙事。重点不是单个增速，而是结构性缓冲能否持续。
+
+研究问题：
+- 一季度 5.0% 增长背后的结构性支撑是什么？
+- PPI 转正到底是能源冲击，还是国内供需改善和反内卷治理？
+- 外部能源和地缘冲击下，中国经济的缓冲结构能否延续？
+
+研究来源：
+- 国家统计局副局长就2026年一季度国民经济运行情况答记者问 | 国家统计局 | https://www.stats.gov.cn/sj/sjjd/202604/t20260416_1963332.html
+- 2026年一季度国内生产总值初步核算结果 | 国家统计局 | https://www.stats.gov.cn/sj/zxfb/202604/t20260417_1963336.html
+- 2026年一季度财政收支情况 | 财政部 | https://gks.mof.gov.cn/tongjishuju/202604/t20260424_3988324.htm
+
+研究报告：
+中国一季度 GDP 同比增长 5.0% 这条新闻，如果只看总量数字，很容易写成普通宏观简报。更有价值的读法，是把国家统计局答记者问里几条结构线串起来：服务业增加值同比增长 5.2%，装备制造业和高技术制造业增长更快，社会消费品零售额增速比上年四季度加快，固定资产投资由负转正，货物进出口季度增速为近五年较高水平。官方叙事想说明的不是单个季度高增，而是在复杂外部环境下，供给、消费、投资和出口都有一定缓冲。
+
+一个值得单独看的是 PPI 转正。3 月工业生产者出厂价格同比上涨 0.5%，结束连续 41 个月同比下降。外部能源和有色金属价格上涨确实有影响，但统计局把更主要原因归为国内供求改善、产业智能化和绿色化升级、市场竞争秩序优化。比如算力需求带动光纤制造、外存储设备及部件、电子专用材料价格上涨，整治内卷式竞争带动光伏设备、锂电价格改善。这个解释如果成立，PPI 转正就不只是输入性成本，而可能是部分行业供需关系修复的信号；如果不成立，它也可能只是能源和原材料冲击的暂时反映。
+
+消费和投资也有观察价值。一季度消费品以旧换新销售额超过 4300 亿元，惠及 6000 多万人次；网上商品和服务零售额同比增长 8%；高技术服务业投资增长 12.3%，其中专业技术服务业和信息服务业增速较高。这里的核心问题是政策性消费、数字消费、新质生产力投资和传统地产相关拖累之间能否形成新的平衡。外部方面，中东局势和能源价格会持续扰动，但官方强调中国能源结构和产业链供应链韧性可以缓冲冲击。后续判断应避免简单乐观或悲观，重点看二季度消费延续性、PPI 是否持续、民间投资和房地产链条能否改善、出口是否承受更多地缘和贸易压力。
+
+不确定性：
+- 一季度数据是阶段性数据，后续会受二季度外部冲击、政策节奏和价格变化影响。
+- PPI 转正的国内供需因素和国际能源因素权重仍需用后续月份验证。
+- 以旧换新和投资扩张有政策驱动成分，持续性需要观察居民收入和企业预期。
+
+后续跟踪变量：
+- 二季度 GDP、消费和固定资产投资增速
+- PPI 是否连续转正及行业分布
+- 民间投资、房地产开发投资和制造业投资差异
+- 出口增速、能源价格和外部需求变化
+- 居民收入、就业和服务消费恢复情况</content:encoded>
+    </item>
+    <item>
+      <title>IMF Fiscal Monitor 的警告：债务风险不只在赤字，而在再定价机制</title>
+      <link>https://diplproveably.github.io/podcast-pages/info/reports/20260511-imf-fiscal-monitor-debt-anchor/</link>
+      <guid isPermaLink="false">20260511-imf-fiscal-monitor-debt-anchor</guid>
+      <pubDate>Mon, 11 May 2026 22:30:00 +0800</pubDate>
+      <description>IMF 2026 年 4 月 Fiscal Monitor 预计全球公共债务 2025 年接近 GDP 的 94%，并将在 2029 年达到 100%。报告把债务、利息、国防和战略自主支出、非银杠杆和美债安全溢价变化放在同一张风险图里。</description>
+      <content:encoded>IMF Fiscal Monitor 的警告：债务风险不只在赤字，而在再定价机制
+
+新闻锚点：Fiscal Policy under Pressure: High Debt, Rising Risks https://www.imf.org/en/publications/fm/issues/2026/04/15/fiscal-monitor-april-2026
+
+IMF 2026 年 4 月 Fiscal Monitor 预计全球公共债务 2025 年接近 GDP 的 94%，并将在 2029 年达到 100%。报告把债务、利息、国防和战略自主支出、非银杠杆和美债安全溢价变化放在同一张风险图里。
+
+研究问题：
+- 为什么 IMF 把全球公共债务达到 GDP 100% 的时间提前？
+- 高债务风险为什么和非银金融、美债安全溢价有关？
+- 战争冲击下财政支持应该怎样避免放大通胀和债务风险？
+
+研究来源：
+- Fiscal Monitor: Fiscal Policy under Pressure: High Debt, Rising Risks | IMF | https://www.imf.org/en/publications/fm/issues/2026/04/15/fiscal-monitor-april-2026
+- War Shock Requires Disciplined Fiscal Reaction | IMF Blog | https://www.imf.org/en/blogs/articles/2026/04/15/war-shock-requires-disciplined-fiscal-reaction
+- World Economic Outlook, April 2026 | IMF | https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026
+
+研究报告：
+IMF 2026 年 4 月 Fiscal Monitor 的核心警告很直接：全球公共债务在 2025 年已经升到接近 GDP 的 94%，并预计到 2029 年达到 100%，比一年前预测提前一年。这个数字本身已经重要，但报告真正值得看的地方，是它不把债务风险简化成政府花太多钱。IMF 把社会支出、国防、战略自主、利息负担、中东冲突的财政后果、非银金融杠杆和美债安全溢价变化放到同一个框架里，说明公共债务问题正在和市场结构变化互相放大。
+
+在过去很多宏观讨论里，高债务风险主要被理解为财政赤字和利息支出。但这份报告提醒，主权债市场本身也在变。政府债券越来越依赖短端发行和非银投资者吸收，杠杆化非银中介参与度提高，美债作为全球安全资产的溢价如果被侵蚀，重新定价可能会比传统财政模型更快传导。也就是说，债务的脆弱性不只来自存量太高，还来自谁持有、用多大杠杆持有、在压力时是否会被迫卖出。
+
+战争冲击让财政选择更难。能源和食品价格上涨时，政府自然有压力补贴家庭和企业，但 IMF 特别反对广泛能源补贴，因为它成本高、扭曲价格信号、难退出，还可能和货币政策抑制通胀的方向相冲突。更稳妥的路径是临时、精准、面向脆弱群体，同时保留财政可持续性。这不是投资建议，而是一个政策框架：当供给冲击和高债务同时出现，财政不再有无限缓冲。未来几年判断宏观环境时，需要同时看债务路径、利率、国防和产业政策开支、能源冲击，以及非银金融在主权债市场里的行为。
+
+不确定性：
+- IMF 预测基于 2026 年 4 月 1 日前可得数据，冲突和能源价格路径可能迅速改变。
+- 全球债务指标掩盖了国家差异，不能把所有经济体风险等同处理。
+- 美债安全溢价和非银杠杆风险难以用单一指标实时衡量。
+
+后续跟踪变量：
+- 全球公共债务/GDP 是否继续上修
+- 主要经济体利息支出占财政收入比例
+- 短期国债发行占比和非银金融持有变化
+- 能源补贴是否从临时措施变成长期财政负担</content:encoded>
+    </item>
+    <item>
+      <title>IMF GFSR 看的是放大器：油价、债券、非银和 AI 估值如何互相传染</title>
+      <link>https://diplproveably.github.io/podcast-pages/info/reports/20260511-imf-gfsr-amplification-risks-anchor/</link>
+      <guid isPermaLink="false">20260511-imf-gfsr-amplification-risks-anchor</guid>
+      <pubDate>Mon, 11 May 2026 22:30:00 +0800</pubDate>
+      <description>IMF 2026 年 4 月全球金融稳定报告把中东战争、通胀预期、金融条件收紧、非银杠杆、私募信贷、主权债和 AI 股票估值集中放进同一套放大机制里。重点不是预测市场涨跌，而是看压力如何传导。</description>
+      <content:encoded>IMF GFSR 看的是放大器：油价、债券、非银和 AI 估值如何互相传染
+
+新闻锚点：Global Financial Markets Confront the War in the Middle East and Amplification Risks https://www.imf.org/en/publications/gfsr/issues/2026/04/14/global-financial-stability-report-april-2026
+
+IMF 2026 年 4 月全球金融稳定报告把中东战争、通胀预期、金融条件收紧、非银杠杆、私募信贷、主权债和 AI 股票估值集中放进同一套放大机制里。重点不是预测市场涨跌，而是看压力如何传导。
+
+研究问题：
+- 为什么 IMF 说当前金融风险是非对称的？
+- 非银金融、主权债和 AI 估值集中如何成为放大通道？
+- 股债同时下跌会怎样改变传统避险逻辑？
+
+研究来源：
+- Global Financial Stability Report, April 2026 | IMF | https://www.imf.org/en/publications/gfsr/issues/2026/04/14/global-financial-stability-report-april-2026
+- Global Financial Stability Report | IMF | https://www.imf.org/en/publications/gfsr
+- World Economic Outlook, April 2026 | IMF | https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026
+
+研究报告：
+IMF 2026 年 4 月 GFSR 的关键词不是危机，而是放大。报告承认市场功能到发布时仍然有序，但认为风险是非对称的：中东战争推高能源价格，带来通胀压力和政策利率预期上修；债券收益率上行、股票下跌，特别是商品进口型和脆弱新兴市场资产受冲击更大。如果冲突拉长或通胀预期脱锚，金融条件可能比增长和通胀本身更快恶化。
+
+报告把几个容易分开讨论的风险放到一张图里。公共债务高、短期债发行增加，会提高主权债再融资压力，也可能重新激活主权和银行之间的风险循环。新兴市场里，套利交易平仓和资本外流会放大汇率压力。非银金融机构，包括对冲基金和杠杆 ETF，可能在波动中被迫去杠杆，形成流动性紧缩。私募信贷虽然当前流动性错配有限，但借款人压力和散户化敞口上升也会变成测试点。股票市场里，AI 相关企业估值集中被 IMF 单独点出，说明 AI 叙事已经进入金融稳定观察范围。
+
+这份报告对阅读市场新闻很有用，因为它提醒不要把冲击看成单点事件。油价上涨不是只影响能源股或 CPI，它会改变通胀预期、利率路径、债券价格、财政压力、资本流动、企业融资和估值体系。更麻烦的是，频繁供给冲击削弱了传统股债对冲关系，可能出现股票和债券同时下跌，投资组合的防守逻辑也会变差。这里不应写成交易建议，而应写成风险地图：下一阶段要看的是非银杠杆、主权债流动性、新兴市场资本流、AI 估值集中度和政策流动性工具是否准备好。
+
+不确定性：
+- GFSR 是风险评估，不是市场时点预测，不能据此推出具体资产方向。
+- AI 估值集中风险很难和真实生产率提升区分，需要后续盈利和投资数据验证。
+- 非银杠杆和私募信贷数据透明度有限，压力可能滞后暴露。
+
+后续跟踪变量：
+- 能源价格和通胀预期是否持续上行
+- 主权债收益率和短端发行压力
+- 新兴市场资本流、汇率和外汇储备变化
+- AI 相关股票集中度、盈利兑现和融资条件
+- 央行和监管机构流动性工具准备情况</content:encoded>
+    </item>
+    <item>
+      <title>霍尔木兹不是油价故事的背景板，而是全球供应链的单点变量</title>
+      <link>https://diplproveably.github.io/podcast-pages/info/reports/20260511-iea-oil-market-hormuz-anchor/</link>
+      <guid isPermaLink="false">20260511-iea-oil-market-hormuz-anchor</guid>
+      <pubDate>Mon, 11 May 2026 22:30:00 +0800</pubDate>
+      <description>IEA 4 月 Oil Market Report 把 2026 年油市重写：全球供应 3 月骤降 1010 万桶/日，霍尔木兹海峡流量受限，替代通道扩张但不足以填补缺口。报告关键在于供应链物理瓶颈，而不只是价格波动。</description>
+      <content:encoded>霍尔木兹不是油价故事的背景板，而是全球供应链的单点变量
+
+新闻锚点：Oil Market Report - April 2026 https://www.iea.org/reports/oil-market-report-april-2026
+
+IEA 4 月 Oil Market Report 把 2026 年油市重写：全球供应 3 月骤降 1010 万桶/日，霍尔木兹海峡流量受限，替代通道扩张但不足以填补缺口。报告关键在于供应链物理瓶颈，而不只是价格波动。
+
+研究问题：
+- 为什么霍尔木兹海峡恢复通行被 IEA 称为最重要变量？
+- 替代通道能缓解多少中东出口损失？
+- 供应冲击为什么会同时压低需求、抬高炼厂和库存压力？
+
+研究来源：
+- Oil Market Report - April 2026 | IEA | https://www.iea.org/reports/oil-market-report-april-2026
+- Strait of Hormuz disruption sends oil prices surging | World Bank Blogs | https://blogs.worldbank.org/en/opendata/strait-of-hormuz-disruption-sends-oil-prices-surging
+- Commodity Markets Outlook April 2026 press release | World Bank | https://www.worldbank.org/en/news/press-release/2026/04/28/commodity-markets-outlook-april-2026-press-release
+
+研究报告：
+IEA 4 月 Oil Market Report 把 2026 年油市从普通价格周期改写成物理供应链冲击。报告称，伊朗战争改变了全球油市展望，2026 年油品需求预计收缩 8 万桶/日；二季度需求下降 150 万桶/日可能是新冠以来最剧烈的一次。更关键的是供应端：3 月全球石油供应骤降 1010 万桶/日至 9700 万桶/日，OPEC+ 月度产量下降 940 万桶/日。这个级别的数字说明，市场不是在消化预期，而是在重新寻找实际可运出的桶。
+
+霍尔木兹海峡是这份报告的轴心。IEA 说，恢复霍尔木兹海峡流量仍是缓解能源供应、价格和全球经济压力的最重要变量。危机前，每天超过 2000 万桶原油、液化天然气和成品油经过该海峡；4 月初，相关装载量平均只有约 380 万桶/日。沙特西海岸、阿联酋富查伊拉、伊拉克到土耳其杰伊汉的管道等替代路线已经把出口提高到约 720 万桶/日，但仍无法填补总体缺口。换句话说，替代通道存在，但不是自由开关。
+
+这类冲击会沿着多个方向传导。炼厂缺原料会降低开工，成品油裂解价差可能飙升，库存被快速抽取；消费者和企业因价格高企减少需求，航空燃油、石化原料和运输成本受压；发展中国家的进口账单和通胀压力上升。世界银行也提示，能源、化肥、金属和食品价格会形成累积波，最终通过通胀和债务成本打到最脆弱群体。后续不应只看 Brent 报价，而要看海峡实际通行、替代路线、库存消耗、炼厂开工、成品油价格和农资价格。
+
+不确定性：
+- IEA 报告基于 4 月中旬快速变化局势，停火和航运恢复情况可能改变预测。
+- 替代路线可持续运力、保险成本和港口瓶颈仍有不确定性。
+- 油价和需求收缩会反过来改变产量、库存和政策释放储备行为。
+
+后续跟踪变量：
+- 霍尔木兹海峡日均装载和通行量
+- 替代出口路线的实际吞吐
+- 全球商业库存和浮仓变化
+- 炼厂开工、成品油裂解价差和化肥价格
+- 中东停火是否转化为稳定航运恢复</content:encoded>
+    </item>
+    <item>
+      <title>Project Glasswing 把 AI 安全问题倒过来：先让防御者用最危险的能力</title>
+      <link>https://diplproveably.github.io/podcast-pages/info/reports/20260511-anthropic-project-glasswing-anchor/</link>
+      <guid isPermaLink="false">20260511-anthropic-project-glasswing-anchor</guid>
+      <pubDate>Mon, 11 May 2026 22:30:00 +0800</pubDate>
+      <description>Anthropic 发布 Project Glasswing，让 AWS、Apple、Google、Microsoft、Linux Foundation 等伙伴使用未公开的 Claude Mythos Preview 做防御性漏洞发现。重点不是模型发布，而是 AI 时代软件安全的披露、修复和访问控制机制。</description>
+      <content:encoded>Project Glasswing 把 AI 安全问题倒过来：先让防御者用最危险的能力
+
+新闻锚点：Project Glasswing: Securing critical software for the AI era https://www.anthropic.com/glasswing
+
+Anthropic 发布 Project Glasswing，让 AWS、Apple、Google、Microsoft、Linux Foundation 等伙伴使用未公开的 Claude Mythos Preview 做防御性漏洞发现。重点不是模型发布，而是 AI 时代软件安全的披露、修复和访问控制机制。
+
+研究问题：
+- 为什么 Anthropic 选择不公开 Mythos Preview，而是先给防御者使用？
+- AI 自动发现漏洞会怎样改变开源维护者和大厂安全团队的分工？
+- 这种能力扩散前，行业应如何重做漏洞披露和补丁流程？
+
+研究来源：
+- Project Glasswing: Securing critical software for the AI era | Anthropic | https://www.anthropic.com/glasswing
+- Frontier Red Team blog | Anthropic | https://red.anthropic.com/
+- Project Glasswing | Anthropic | https://www.anthropic.com/project/glasswing
+
+研究报告：
+Project Glasswing 的重要性不在于 Anthropic 又展示了一个强模型，而在于它把 AI 安全问题倒过来处理。Claude Mythos Preview 被描述为一个未公开的前沿模型，能够在主要操作系统、浏览器和关键软件中发现大量高严重性漏洞。按普通产品节奏，这类能力本该成为模型发布卖点；但 Anthropic 选择限制公开，把它放进一个防御性合作项目里，让 AWS、Apple、Broadcom、Cisco、CrowdStrike、Google、JPMorganChase、Linux Foundation、Microsoft、NVIDIA、Palo Alto Networks 等伙伴优先用于扫描和修复关键软件。
+
+这件事揭示了一个新边界：当模型可以接近或超过顶级安全研究者的漏洞发现能力时，发布模型就不再只是产品策略，而是安全治理。Anthropic 的论证是，AI 会降低发现和利用漏洞的门槛，攻击者迟早也会获得类似能力；因此防御者必须先得到足够强的工具，把长期隐藏的漏洞提前找出来、修掉，并更新披露和补丁流程。它承诺最高 1 亿美元模型使用额度，并向开源安全组织和 Apache Software Foundation 捐赠资金，说明开源维护者被放到了这场防御竞赛的中心位置。
+
+这篇材料尤其适合放进信息流，因为它不是单纯的网络安全新闻，而是 AI 能力扩散的治理样本。问题不再是模型能不能发现漏洞，而是这种能力如何分发、谁能访问、如何审计、如何避免把利用细节提前泄漏、如何让开源项目有能力响应。后续要看的不是 Anthropic 的 benchmark，而是 90 天内公开报告会披露多少已修复漏洞，合作伙伴是否形成可复用流程，开源项目是否得到实际支持，以及其他模型公司是否建立类似的受控防御访问机制。
+
+不确定性：
+- 具体漏洞细节很多需要等修复后才披露，外部难以独立验证全部发现数量。
+- Mythos Preview 不公开，能力边界主要来自 Anthropic 自述和伙伴反馈。
+- 受控访问能否真正领先于攻击者获得类似能力，仍取决于模型扩散速度。
+
+后续跟踪变量：
+- Anthropic 90 天公开报告
+- 已修复漏洞数量和披露质量
+- 开源安全组织获得资金后的实际响应能力
+- 其他 AI 公司是否跟进受控防御访问机制</content:encoded>
+    </item>
+    <item>
+      <title>美国 AI 立法框架的刀口，不在六项原则，而在联邦统一标准</title>
+      <link>https://diplproveably.github.io/podcast-pages/info/reports/20260511-us-national-ai-legislative-framework-anchor/</link>
+      <guid isPermaLink="false">20260511-us-national-ai-legislative-framework-anchor</guid>
+      <pubDate>Mon, 11 May 2026 22:30:00 +0800</pubDate>
+      <description>白宫 2026 年 3 月发布国家 AI 立法框架，提出儿童保护、社区、版权、言论自由、创新和劳动力六项目标。真正的政策焦点是建立全国统一 AI 标准，限制州级 AI 法律拼图。</description>
+      <content:encoded>美国 AI 立法框架的刀口，不在六项原则，而在联邦统一标准
+
+新闻锚点：President Donald J. Trump Unveils National AI Legislative Framework https://www.whitehouse.gov/releases/2026/03/president-donald-j-trump-unveils-national-ai-legislative-framework/
+
+白宫 2026 年 3 月发布国家 AI 立法框架，提出儿童保护、社区、版权、言论自由、创新和劳动力六项目标。真正的政策焦点是建立全国统一 AI 标准，限制州级 AI 法律拼图。
+
+研究问题：
+- 白宫为什么把州级 AI 法律视为美国 AI 竞争力问题？
+- 版权、儿童安全、数据中心电价和言论自由如何被放进同一套框架？
+- 这份文件离真正的联邦 AI 法案还有多远？
+
+研究来源：
+- President Donald J. Trump Unveils National AI Legislative Framework | The White House | https://www.whitehouse.gov/releases/2026/03/president-donald-j-trump-unveils-national-ai-legislative-framework/
+- National Policy Framework for Artificial Intelligence Legislative Recommendations | The White House | https://www.whitehouse.gov/wp-content/uploads/2026/03/03.20.26-National-Policy-Framework-for-Artificial-Intelligence-Legislative-Recommendations.pdf
+- White House Unveils America’s AI Action Plan | The White House | https://www.whitehouse.gov/releases/2025/07/white-house-unveils-americas-ai-action-plan/
+
+研究报告：
+白宫 2026 年 3 月 20 日发布的 National AI Legislative Framework 容易被新闻标题压缩成六项目标：保护儿童、强化社区、尊重知识产权、保护言论自由、促进创新、发展 AI 劳动力。但如果只看这些原则，文章会变得很空。真正的政策刀口是联邦统一标准。白宫认为州级 AI 法律碎片化会增加企业合规成本、拖慢创新、削弱美国在 AI 竞赛中的速度，因此希望国会建立全国性框架，并预占部分州级 AI 规则空间。
+
+这份框架把几个原本分散的矛盾放到同一张桌上。儿童安全和 AI 伴侣、深度伪造和诈骗、版权训练和创作者权益、数据中心电价和电网、言论自由和模型治理、劳动力培训和产业优势，都被放进同一套联邦叙事。它并没有把每个问题都解决掉，尤其是版权训练是否属于 fair use，白宫更倾向于让法院处理。但它给出了一种政治排序：美国 AI 政策首先要服务于技术主导地位和统一市场，然后在这个边界内处理儿童、消费者、创作者和地方治理问题。
+
+这也是美国和欧盟 AI 治理路径的差异。欧盟的动作是已经有 AI Act，再调整执行时间表和透明度义务；美国这份文件更像把行政路线推向国会，试图把州级先行监管收束到联邦框架里。后续不确定性很大，因为它只是立法建议，不是已经生效的法律。真正值得跟踪的不是白宫文件本身，而是国会是否出现综合 AI 法案，司法部是否挑战州 AI 法，版权案件是否给出关键判例，以及数据中心供电、儿童安全、数字人格权是否会先行单独立法。
+
+不确定性：
+- 这只是立法建议，国会是否通过、何时通过和最终版本都不确定。
+- 白宫新闻稿强调六项目标，但正式框架还处理州法预占问题，表述需要区分。
+- 版权训练问题没有被最终解决，关键仍在法院判例和潜在许可机制。
+
+后续跟踪变量：
+- 国会是否提出综合 AI 法案
+- 司法部 AI Litigation Task Force 是否挑战具体州法
+- 科罗拉多、加州、纽约等州 AI 法律的调整或诉讼
+- AI 版权训练案件和数字人格权立法进展</content:encoded>
+    </item>
+    <item>
+      <title>北京 AI 产业两年冲万亿，真正的抓手是算力、数据、场景和资本</title>
+      <link>https://diplproveably.github.io/podcast-pages/info/reports/20260511-beijing-ai-innovation-highland-anchor/</link>
+      <guid isPermaLink="false">20260511-beijing-ai-innovation-highland-anchor</guid>
+      <pubDate>Mon, 11 May 2026 22:30:00 +0800</pubDate>
+      <description>北京发布人工智能创新高地建设行动计划，提出两年推动 AI 核心产业规模突破万亿元、建设 10 万卡级国产智算集群、形成标杆应用和创新街区。它是城市级 AI 产业工程，而不只是大模型政策。</description>
+      <content:encoded>北京 AI 产业两年冲万亿，真正的抓手是算力、数据、场景和资本
+
+新闻锚点：北京发布人工智能创新高地建设行动计划 https://jxj.beijing.gov.cn/ztzl/ywzt/hbjh/hbdt/zcwj/rgznzc/202603/t20260316_4557526.html
+
+北京发布人工智能创新高地建设行动计划，提出两年推动 AI 核心产业规模突破万亿元、建设 10 万卡级国产智算集群、形成标杆应用和创新街区。它是城市级 AI 产业工程，而不只是大模型政策。
+
+研究问题：
+- 北京为什么把 AI 目标写成万亿产业和 10 万卡国产智算集群？
+- 九大行动里哪些是真正的产业基础设施？
+- 从模型竞争到场景中试，北京想解决的瓶颈是什么？
+
+研究来源：
+- 北京发布人工智能创新高地建设行动计划 | 北京市经济和信息化局 | https://jxj.beijing.gov.cn/ztzl/ywzt/hbjh/hbdt/zcwj/rgznzc/202603/t20260316_4557526.html
+- 北京市发改委会议稿 | 北京市发展和改革委员会 | https://fgw.beijing.gov.cn/gzdt/fgzs/tpxw/202601/t20260106_4404914.htm
+- 北京加快打造人工智能万亿级产业集群 | 北京市科委、中关村管委会 | https://kw.beijing.gov.cn/xwdt/kcyx/xwdtcyfz/202603/t20260302_4546431.html
+
+研究报告：
+北京这份行动计划的重点不在于又提出了一个 AI 口号，而在于它把人工智能写成城市级产业工程。官方公开口径里最醒目的数字是：两年推动人工智能核心产业规模突破万亿元，建成 10 万卡级国产智算集群，新增高质量数据 100PB 以上，实施 100 项以上标杆应用，集聚 2000 亿元以上产业基金，并争取新增上市企业和独角兽企业。这些指标把 AI 从模型发布会拉回到产业条件：算力能不能供给、数据能不能流动、应用能不能中试、资本能不能接住、治理能不能跟上。
+
+九大行动里最值得拆开的，是技术创新策源、智算自主生态强基、高质量数据聚能、全域应用赋能、科学智能范式革新和具身智能全链跨越。它们对应的不是单点补贴，而是一套从底层芯片、算力集群、模型适配、行业数据、场景验证到安全压力测试的基础设施。北京已有高校、科研院所、大模型企业、互联网平台、机器人和自动驾驶产业链，但如果没有公共算力、数据供给和中试场景，这些资源很容易分散在各自系统里。行动计划实际是在把分散能力压成城市平台。
+
+这类政策最需要避免过度解读。万亿目标能不能实现，取决于统计口径、企业成长、资本市场和应用收入，而不只是模型数量。10 万卡国产智算集群也需要继续看芯片型号、算力折算、软件栈和开放方式。真正可以持续跟踪的，不是口号，而是从 3 万卡到 10 万卡的扩容进度、首批创新街区是否形成企业集聚、标杆应用是否能跨部门复用、具身智能和科学智能是否出现可展示的中试成果。如果这些变量跟不上，万亿目标就只是规模叙事；如果跟上，北京的 AI 政策会成为中国城市级 AI 竞争的样板。
+
+不确定性：
+- 公开稿多为发布会和政策解读，完整逐条正式文本仍需继续跟踪。
+- 核心产业规模统计口径需要明确，不能把所有数字经济收入都直接算作 AI。
+- 10 万卡国产智算集群的芯片、算力折算和开放机制尚不充分透明。
+
+后续跟踪变量：
+- 国产智算集群从 3 万卡到 10 万卡的建设进度
+- 高质量数据 100PB 的来源、治理和开放机制
+- 100 项标杆应用的领域、验收和复制情况
+- 新增上市企业、独角兽和产业基金实际落地</content:encoded>
     </item>
     <item>
       <title>Improving token efficiency in GitHub Agentic Workflows</title>
       <link>https://diplproveably.github.io/podcast-pages/info/cards/20260511-github-agentic-token-efficiency/</link>
       <guid isPermaLink="false">20260511-github-agentic-token-efficiency</guid>
-      <pubDate>Thu, 07 May 2026 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 11 May 2026 12:00:00 +0800</pubDate>
       <description>GitHub 这篇文章把代理式工作流的成本问题拆成可观测、可优化、可复盘的工程问题：哪些步骤其实只是确定性取数，哪些 MCP 工具 schema 被反复塞进上下文，哪些规则错误会导致代理进入长回合循环。它比普通产品更新更有价值，因为它给出了真实生产系统里如何削减 token 消耗、如何衡量有效 token、如何把代理优化代理的闭环落地。</description>
-    </item>
-    <item>
-      <title>The 2026 AI Index Report</title>
-      <link>https://diplproveably.github.io/podcast-pages/info/cards/20260511-stanford-ai-index-2026/</link>
-      <guid isPermaLink="false">20260511-stanford-ai-index-2026</guid>
-      <pubDate>Mon, 13 Apr 2026 00:00:00 +0000</pubDate>
-      <description>Stanford HAI 的 2026 AI Index 是年度基准型材料，覆盖研发、技术性能、负责任 AI、经济、科学、医疗、教育、政策治理和公众态度。它的价值在于把模型能力、投资、数据中心、教育使用、AI 治理、公众信任等分散话题压到同一组指标里，适合作为后续判断 AI 新闻时的背景底图。</description>
+      <content:encoded>Improving token efficiency in GitHub Agentic Workflows
+
+GitHub 这篇文章把代理式工作流的成本问题拆成可观测、可优化、可复盘的工程问题：哪些步骤其实只是确定性取数，哪些 MCP 工具 schema 被反复塞进上下文，哪些规则错误会导致代理进入长回合循环。它比普通产品更新更有价值，因为它给出了真实生产系统里如何削减 token 消耗、如何衡量有效 token、如何把代理优化代理的闭环落地。
+
+GitHub 这篇文章讨论的是一个非常实际的问题：代理式工作流如果在每个 pull request、维护任务或 CI 流程中自动运行，成本会在后台悄悄累积。文章的价值在于，它没有把“token 用得多”当成抽象抱怨，而是把 token 消耗变成可记录、可度量、可优化的工程对象。GitHub 先建立统一的 token usage artifact，把不同代理框架、不同模型、输入输出 token、缓存读写、时间戳等信息归一化，再把这些数据和工作流日志结合起来分析。
+
+文章的第二层是“工作流优化工作流”。GitHub 建立了 Daily Token Usage Auditor 和 Daily Token Optimizer：前者聚合近期运行数据，找出消耗异常、最贵工作流和轮次异常；后者读取工作流源码与日志，生成具体优化建议。这个闭环很重要，因为它说明代理系统的优化不能只靠人工拍脑袋，而要让代理运行本身留下足够证据，再用另一个自动化流程检查这些证据。文章还指出，优化器自己也会出现在每日报告中，形成一种小型自我审计循环。
+
+最具体的优化来自工具和数据获取方式。文章说，一个常见低效点是 MCP 工具注册过多。由于 LLM API 通常是无状态的，工具名称和 JSON schema 会反复进入上下文；如果一个 MCP 服务有 40 个工具，而代理只用其中两个，其余工具的 schema 就成了每一轮都要携带的负担。GitHub 的做法是根据实际调用情况裁剪未使用工具。另一个更结构性的优化，是把 GitHub MCP 调用替换为 GitHub CLI。获取 diff、文件内容、review comment 这类确定性数据，不一定要经过模型推理，可以在代理启动前用 CLI 下载到工作区，或在运行中通过轻量代理转发 CLI 请求。这样可以把数据获取移出 LLM 推理循环。
+
+文章还提醒，衡量效率并不简单。token 数下降不一定意味着真正更好，因为模型不同、输入输出 token 成本不同、缓存 token 权重不同，而且优化可能只是让工作流做得更少。GitHub 因此提出 Effective Tokens 之类的统一度量，用模型和 token 类型的权重校正成本。对任何自动化信息系统来说，这篇文章给出的经验是：搜索、抓取、去重、HTML 生成、公开扫描等确定性环节应尽量脚本化；LLM 更适合放在主题判断、摘要、风险识别和审校环节。后续值得追踪的是，代理工作流是否能像传统 CI 一样形成成本仪表盘、异常检测和持续优化规范。
+
+适合作为代理系统工程成本、上下文治理、工具裁剪和自动化工作流优化的参考。
+
+这篇文章比一般 Copilot 新闻更像工程复盘。它把 token 浪费拆成几类：工具定义太重、上下文重复注入、模型做了本可以由确定性程序完成的工作、错误规则导致代理多轮空转。这个视角适合用于审视任何自动化流程：哪些环节应该交给脚本，哪些环节才值得交给 LLM。
+
+阅读时可以把它当成资料整理系统的性能设计参考。比如新闻收集任务里，搜索、去重、HTML 生成、公开扫描都应该尽量脚本化；LLM 更适合做主题判断、摘要、风险识别和风格选择。这样既减少上下文压力，也能让失败点更清楚。
+
+后续可追踪的不是单个优化技巧，而是 GitHub 如何把“代理运行成本”做成可度量对象。只要 token 成本、工具 schema、上下文窗口和多轮循环能被观测，代理工作流才有持续迭代的基础。
+
+https://github.blog/ai-and-ml/github-copilot/improving-token-efficiency-in-github-agentic-workflows/</content:encoded>
     </item>
     <item>
       <title>The changing shape and new economics of news podcasting: From listening to watching, from podcasts to shows</title>
       <link>https://diplproveably.github.io/podcast-pages/info/cards/20260511-reuters-institute-news-podcasting/</link>
       <guid isPermaLink="false">20260511-reuters-institute-news-podcasting</guid>
-      <pubDate>Thu, 07 May 2026 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 11 May 2026 12:00:00 +0800</pubDate>
       <description>Reuters Institute 这份报告讨论新闻播客从音频转向视频、从单集节目转向 show、从免费分发转向订阅与多平台经营的变化。它既看用户研究，也看纽约时报、卫报、经济学人、金融时报等出版机构的策略，对理解播客为什么越来越像视频栏目、为什么人格化谈话节目挤压叙事型节目，很有参考价值。</description>
+      <content:encoded>The changing shape and new economics of news podcasting: From listening to watching, from podcasts to shows
+
+Reuters Institute 这份报告讨论新闻播客从音频转向视频、从单集节目转向 show、从免费分发转向订阅与多平台经营的变化。它既看用户研究，也看纽约时报、卫报、经济学人、金融时报等出版机构的策略，对理解播客为什么越来越像视频栏目、为什么人格化谈话节目挤压叙事型节目，很有参考价值。
+
+Reuters Institute 这份报告讨论的是新闻播客形态和商业模式的转变。传统播客的核心是音频 RSS、耳机收听和单集分发，但报告指出新闻播客正在越来越多地变成跨平台 show：它可以被观看、剪辑、在社交平台传播、进入 YouTube 和视频平台，也可以和订阅、会员、活动、广告和出版机构品牌绑定。换句话说，播客不再只是一个音频文件，而是一个围绕主持人、栏目和多平台分发组织起来的媒体产品。
+
+报告的一个重要观察是，从 listening 到 watching 的变化会改变制作逻辑。音频播客强调陪伴感、低成本收听和深度谈话；视频化之后，节目需要考虑画面、主持人表现、剪辑片段、平台推荐和视觉传播。新闻机构因此不只是把原有音频上传到更多平台，而是重新设计节目形态，让它更像“可观看的栏目”。这会推动人格化谈话节目上升，也可能挤压制作成本更高、节奏更慢的叙事型音频。
+
+经济层面，报告关注新闻播客的新商业组合。广告仍然重要，但订阅、会员、平台合作、视频广告、品牌赞助和机构内容生态也越来越关键。对纽约时报、卫报、经济学人、金融时报等机构而言，播客既是独立收入来源，也是扩大影响力、吸引年轻受众和增强用户黏性的入口。新闻播客的价值不只在单集播放量，还在于它能把受众带入更大的媒体产品体系。
+
+这份报告对内容整理也有启发。如果播客越来越像跨平台 show，那么文字整理、摘要页、主题归档和 RSS 也可以成为内容二次发现的一部分。重点不是把整集音频搬成全文，而是把一集内容转化为可搜索、可引用、可复读的知识入口。后续需要观察的是：视频平台是否会重新定义“播客”的主渠道；主持人个人品牌是否强于机构品牌；以及深度音频怎样在成本、传播和订阅之间找到平衡。
+
+报告还提示了一个更深的媒体趋势：新闻机构正在从“生产内容”转向“经营关系”。播客的听众往往和主持人建立稳定关系，视频化和社交分发又会放大主持人的人格标签。机构需要在个人品牌和编辑品牌之间取得平衡：主持人越强，节目越容易传播；但如果过度依赖个人，机构的可控性和长期资产也会受影响。对内容生产者来说，这份报告的价值是提醒：一个节目是否有未来，不只看选题质量，还看它能否形成稳定入口、复用片段、积累信任，并在不同平台上保持识别度。
+
+对读者来说，这份报告也解释了为什么许多节目开始同时重视标题、切片、视频封面、主持人人设和订阅入口。内容质量仍是基础，但传播结构已经从单一收听转向跨平台反复触达。
+
+适合作为播客、内容生产和媒体商业模式变化的背景材料。
+
+这份报告最有用的地方，是把 podcast 从“音频内容”重新定义为跨平台 show。新闻播客正在进入 YouTube、短视频、订阅产品、活动和会员体系，节目不再只是 RSS 里的音频文件，而是一个可以被剪辑、观看、订阅、搜索和社交传播的内容品牌。
+
+对播客整理和网页发布来说，这份报告提供了反向启发：如果听众越来越多从视频平台和社交平台进入节目，那么整理稿、摘要页、RSS 和主题归档也可以成为节目二次发现的一部分。不是把音频变成全文搬运，而是把一集内容整理成可检索、可收藏、可再次阅读的资料入口。
+
+阅读时可以重点看经济结构：广告、订阅、平台分发、视频制作成本、主持人人格化和机构品牌之间的张力。它能解释为什么许多播客越来越像访谈栏目，也解释为什么深度叙事型音频会面对更高制作成本和更难变现的问题。
+
+https://reutersinstitute.politics.ox.ac.uk/changing-shape-and-new-economics-news-podcasting-listening-watching-podcasts-shows</content:encoded>
     </item>
     <item>
       <title>Agents, human agency, and the opportunity for every organization</title>
       <link>https://diplproveably.github.io/podcast-pages/info/cards/20260511-microsoft-work-trend-index/</link>
       <guid isPermaLink="false">20260511-microsoft-work-trend-index</guid>
-      <pubDate>Tue, 05 May 2026 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 11 May 2026 12:00:00 +0800</pubDate>
       <description>微软 2026 Work Trend Index 把“AI 代理进入组织”描述成组织结构问题，而不只是员工多用了一个工具。报告结合 Microsoft 365 匿名生产力信号和跨市场调查，讨论代理接管执行后，人类如何重新承担判断、拆分任务、重构流程和形成学习型组织。对理解企业为什么从个人提效转向流程再造很有帮助。</description>
-    </item>
-    <item>
-      <title>World Economic Outlook, April 2026: Global Economy in the Shadow of War</title>
-      <link>https://diplproveably.github.io/podcast-pages/info/cards/20260511-imf-world-economic-outlook-april-2026/</link>
-      <guid isPermaLink="false">20260511-imf-world-economic-outlook-april-2026</guid>
-      <pubDate>Tue, 14 Apr 2026 00:00:00 +0000</pubDate>
-      <description>IMF 4 月《世界经济展望》把中东战争、商品价格、通胀预期、财政缓冲和地缘碎片化放在同一宏观图景下分析。报告给出的重点不是短线资产判断，而是战争与防务开支如何改变增长、通胀、债务、社会支出和新兴市场脆弱性。适合作为宏观讨论里的高权威背景材料。</description>
-    </item>
-    <item>
-      <title>Commodity Markets Outlook, April 2026</title>
-      <link>https://diplproveably.github.io/podcast-pages/info/cards/20260511-world-bank-commodity-markets-outlook/</link>
-      <guid isPermaLink="false">20260511-world-bank-commodity-markets-outlook</guid>
-      <pubDate>Wed, 01 Apr 2026 00:00:00 +0000</pubDate>
-      <description>世界银行商品市场页面汇总了 2026 年 4 月《Commodity Markets Outlook》和最新价格数据，重点是中东战争对能源、化肥、食品、金属和整体商品价格的冲击。它适合和 IMF 展望配套阅读：IMF 讲宏观传导和政策权衡，World Bank 更细地落到商品指数、能源价格和发展中经济体输入成本。</description>
+      <content:encoded>Agents, human agency, and the opportunity for every organization
+
+微软 2026 Work Trend Index 把“AI 代理进入组织”描述成组织结构问题，而不只是员工多用了一个工具。报告结合 Microsoft 365 匿名生产力信号和跨市场调查，讨论代理接管执行后，人类如何重新承担判断、拆分任务、重构流程和形成学习型组织。对理解企业为什么从个人提效转向流程再造很有帮助。
+
+微软这份 Work Trend Index 的核心不是“员工会不会使用 AI”，而是组织结构如何围绕 AI 代理重排。它把 AI 代理描述为一种新的组织资源：不再只是个人的副驾驶，而是能够承担部分执行任务、串联工作流、进入团队协作结构的数字劳动力。报告标题同时强调 agents 和 human agency，说明微软想表达的不是人被完全替代，而是人在目标设定、判断、授权、审校和责任承担上的角色变得更重要。
+
+报告的关键背景是企业已经经历了第一波个人提效式 AI 使用，但真正的组织收益不会自动出现。个人可以用 AI 写邮件、总结文档、生成表格，但当代理进入企业级流程时，问题变成：哪些任务可以委托，谁来定义成功标准，代理在什么权限下运行，错误由谁负责，团队如何把零散自动化改造成稳定流程。微软用组织图谱的语言讨论这个变化，意味着 AI 采用会从工具采购转向流程再设计。
+
+这份报告还值得和 GitHub 的代理成本文章一起看。微软讨论组织层面的代理配置：员工不只是操作者，也要成为编排者和监督者；GitHub 讨论工程层面的代理运行：工具 schema、数据下载、token 成本和异常轮次。两者合起来说明，未来成熟的 AI 工作方式需要两套能力：管理层要重新设计工作边界，工程层要让代理运行可观测、可审计、可优化。
+
+对个人信息工作台来说，这份报告的启发是：自动化不是把所有判断都交给模型，而是把可重复、可检查、可回滚的部分交给脚本或代理，把主题选择、风险判断、公开发布边界留给人。它也提醒，AI 的价值不会只体现在单次输出质量上，还会体现在组织是否能建立新角色、新流程和新评价方式。后续值得追踪的是，企业会不会出现专门的 agent manager、AI workflow designer、自动化审计员等角色，以及现有中层管理和运营岗位如何被重塑。
+
+更具体地说，这类报告的读法不应停在“AI 会提高生产率”。它关心的是组织怎样把任务拆成可委托、可监督、可交付的单元。一个员工如果只是把 AI 当成写作助手，收益主要停留在个人时间节省；一个组织如果能把代理放进销售、客服、财务、法务、研发和运营流程，就必须重新设计权限、审计、质量检查和跨部门交接。报告因此暗含一个管理问题：组织能否把 AI 从个人技巧变成制度化能力。后续看企业 AI 新闻时，可以用这份报告判断对方是在卖工具、卖自动化流程，还是在卖一种新的组织操作系统。
+
+匹配 AI 工作方式、组织效率和企业采用的长期主题；可以和 GitHub 代理工作流、OpenAI 模型能力材料交叉阅读。
+
+这份报告的重点不是“AI 会替代多少岗位”这种抽象判断，而是组织图谱如何改变：代理承担更多执行，人类转向目标设定、流程拆解、判断、监督和跨部门协调。它把 AI 放到团队结构里讨论，适合用来理解企业为什么会从个人工具采购走向流程重构。
+
+读的时候可以特别注意 Microsoft 对 human agency 的处理。报告不是说人退出工作，而是说人类角色更像编排者、审校者和责任承担者。这个框架也适合映射到个人工作台：信息收集、网页发布、资料归档可以自动化，但主题选择、风险判断和最终发布边界仍需要人设定。
+
+这份材料适合和 GitHub token 效率文章搭配：一个讲组织层面的代理配置，一个讲工程层面的代理成本。两者合起来能帮助判断哪些 AI 工作流只是演示，哪些有机会成为稳定生产系统。
+
+https://www.microsoft.com/en-us/worklab/work-trend-index/agents-human-agency-and-the-opportunity-for-every-organization</content:encoded>
     </item>
     <item>
       <title>Building a new enterprise AI services company with Blackstone, Hellman &amp; Friedman, and Goldman Sachs</title>
       <link>https://diplproveably.github.io/podcast-pages/info/cards/20260511-anthropic-enterprise-ai-services-company/</link>
       <guid isPermaLink="false">20260511-anthropic-enterprise-ai-services-company</guid>
-      <pubDate>Mon, 04 May 2026 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 11 May 2026 12:00:00 +0800</pubDate>
       <description>Anthropic 宣布与 Blackstone、Hellman &amp; Friedman、Goldman Sachs 等合作成立企业 AI 服务公司，目标不是单纯卖模型接口，而是把 Claude 嵌入中型企业的重要运营环节。这个动作说明前沿模型公司的企业路线正在从“给 API 和订阅”走向“深度交付、工程团队常驻、围绕具体业务流程定制系统”。</description>
+      <content:encoded>Building a new enterprise AI services company with Blackstone, Hellman &amp; Friedman, and Goldman Sachs
+
+Anthropic 宣布与 Blackstone、Hellman &amp; Friedman、Goldman Sachs 等合作成立企业 AI 服务公司，目标不是单纯卖模型接口，而是把 Claude 嵌入中型企业的重要运营环节。这个动作说明前沿模型公司的企业路线正在从“给 API 和订阅”走向“深度交付、工程团队常驻、围绕具体业务流程定制系统”。
+
+Anthropic 这条消息表面上是公司合作公告，实质上反映的是 AI 商业化路线的变化。模型公司过去主要通过 API、聊天订阅、企业账号和平台生态触达客户，但越来越多企业并不只是缺一个模型接口，而是缺把模型嵌入实际业务流程的工程能力、合规经验和组织改造能力。Anthropic 与 Blackstone、Hellman &amp; Friedman、Goldman Sachs 等合作成立企业 AI 服务公司，说明前沿模型公司正在向交付层延伸。
+
+这类企业服务公司的核心价值不是“替客户接入 Claude”这么简单，而是帮助中型企业识别哪些流程适合 AI、怎样处理权限和数据边界、如何设计人机协作、如何评估效果、如何在安全和合规要求下持续运行。对于金融、医疗、制造、区域银行、专业服务等行业来说，模型能力只是起点，真正困难的是流程知识、系统集成、内部培训、风险控制和长期维护。
+
+从商业模式看，这个动作也值得关注。API 收入和订阅收入更像产品化收入，而企业 AI 服务更接近咨询、系统集成和长期运营。模型公司如果直接或间接参与服务交付，就会进入传统咨询公司、企业软件厂商、云服务商和系统集成商的边界地带。合作方中有私募、金融和企业网络资源，也说明 Anthropic 可能希望借助这些机构触达大量中型企业客户，而不是只服务最早有内部 AI 团队的大公司。
+
+这条消息适合和微软组织报告一起读。微软讲代理进入组织后如何重塑工作关系，Anthropic 这条则说明谁来帮助企业完成这种重塑。后续需要追踪的是：这类服务公司会不会成为模型公司的重要收入渠道；客户到底买的是模型能力、业务流程改造还是合规可控的自动化交付；以及模型公司是否会在服务层积累行业数据和流程模板，从而形成新的竞争壁垒。
+
+还可以从生态控制权的角度读这条消息。企业 AI 落地通常会沉淀一批流程模板、行业知识、评估标准和安全实践。如果这些经验只留在咨询公司手里，模型公司只是底层供应商；如果模型公司通过服务公司参与交付，就可能反过来影响客户怎样定义 AI 项目、怎样选择模型、怎样衡量投入产出。Anthropic 这次合作因此不只是销售渠道扩张，也是争夺企业 AI 实施标准的一步。未来类似公司能否做大，取决于它能不能把项目制交付产品化，把一次性定制经验沉淀成可复制的行业方案。
+
+读者还可以关注它是否会改变合作伙伴结构。私募和金融机构掌握大量中型企业资源，如果它们把 AI 服务作为运营改造工具，模型公司的客户获取方式就会从开发者生态扩展到资本和治理网络。
+
+匹配 AI 商业化、企业落地和代理系统交付模式；可以帮助判断 AI 公司收入结构和生态合作的变化。
+
+这条消息的重点在商业形态。Anthropic 没有只强调模型能力，而是强调工程团队、客户现场、行业流程和长期支持。这说明企业 AI 的难点可能不在模型是否聪明，而在模型如何进入合规、财务、医疗、制造、区域银行等具体流程。
+
+这也反映出模型公司正在补齐交付层。API 和订阅适合开发者与知识工作者，但中型企业往往缺少内部 AI 工程能力，需要系统集成、流程梳理和持续运维。Anthropic 与金融和私募机构合作，等于把模型能力、客户网络、资金和交付团队组合起来。
+
+后续可以观察两个变量：这类服务公司会不会成为模型公司的重要收入通道；以及企业客户是购买模型、购买插件，还是购买一整套业务流程改造。这个问题会影响 AI 平台、咨询公司和企业软件厂商的边界。
+
+https://www.anthropic.com/news/enterprise-ai-services-company</content:encoded>
+    </item>
+    <item>
+      <title>Introducing GPT-5.5</title>
+      <link>https://diplproveably.github.io/podcast-pages/info/cards/20260511-openai-gpt-55/</link>
+      <guid isPermaLink="false">20260511-openai-gpt-55</guid>
+      <pubDate>Mon, 11 May 2026 12:00:00 +0800</pubDate>
+      <description>OpenAI 发布 GPT-5.5，并把重点放在长程任务、代理式编码、知识工作、科研辅助和推理效率上。文章值得看的地方不只是模型分数，而是它把模型能力、工程工具使用、token 效率、网络安全防护和 API 部署要求放在同一个框架里，能帮助判断下一阶段 AI 工具从聊天界面转向“可持续执行任务”的方向。</description>
+      <content:encoded>Introducing GPT-5.5
+
+OpenAI 发布 GPT-5.5，并把重点放在长程任务、代理式编码、知识工作、科研辅助和推理效率上。文章值得看的地方不只是模型分数，而是它把模型能力、工程工具使用、token 效率、网络安全防护和 API 部署要求放在同一个框架里，能帮助判断下一阶段 AI 工具从聊天界面转向“可持续执行任务”的方向。
+
+OpenAI 这篇发布稿把 GPT-5.5 定位为面向“真实工作”的模型，而不是单纯面向聊天或单轮问答的升级。文章开头强调的关键词是更强的理解意图、更长程的任务执行、更好的工具使用、更高的效率和更严格的安全部署。它试图说明 GPT-5.5 的主要变化不只是智力测试分数上升，而是模型能在软件工程、电脑操作、知识工作、科学研究和跨工具任务中持续推进，减少用户对每一步的手工管理。对读者来说，核心问题是：模型是否已经从“回答者”变成“可委托工作的执行者”。
+
+在模型能力部分，文章把 agentic coding 放在第一位。GPT-5.5 被描述为 OpenAI 当时最强的代理式编码模型，在 Terminal-Bench、SWE-Bench Pro、Expert-SWE 等评测中强调规划、命令行操作、真实 issue 修复和长程工程任务。更值得注意的是，OpenAI 没有只展示 benchmark，也放入了一些早期使用者对系统理解、上下文保持、预判测试和代码审查需求的反馈。这部分传递的信号是，模型正在从写代码片段转向理解代码库、定位修复点、处理大改动和完成验证。对开发工作流来说，这意味着未来评估模型时不能只看单题正确率，还要看它能否在复杂环境中保持目标、约束和回归风险。
+
+知识工作部分把这种能力扩展到文档、表格、幻灯片、运营研究、财务审查和业务报告。文章举了 OpenAI 内部用 Codex 处理演讲请求、K-1 税务表格、周报生成等例子，重点是模型可以把大量材料变成结构化输出，并通过工具完成验证。科学研究部分则把 GPT-5.5 描述为研究伙伴：它能参与数据分析、基因表达数据解读、生物信息学任务、数学证明和可视化工具构建。这里的关键不是把模型神化，而是观察它在哪些研究环节能节省时间：提出分析路径、处理数据、生成代码、检查假设、形成报告。
+
+基础设施和安全部分同样重要。OpenAI 强调 GPT-5.5 在更强能力下仍维持接近 GPT-5.4 的服务延迟，并且在完成同类 Codex 任务时使用更少 token。文章还提到模型参与优化自身服务基础设施，例如分析生产流量、改进负载均衡和分区启发式算法。安全方面，OpenAI 把网络安全能力单独列为重点，说明更强的模型既能帮助防御，也会带来滥用风险，因此需要分类器、访问控制、可信访问、监测和外部红队。整体看，这篇文章最值得保留的不是“新模型更强”这句结论，而是它把能力、效率、工具使用、部署成本和安全门槛放到同一个发布叙事里。后续需要追踪的是：实际用户的长程任务完成率是否稳定，API 安全要求会怎样影响第三方产品，以及 token 效率下降是否真的改变代理系统的成本模型。
+
+适合作为近期 AI 能力变化、代理式工具使用和内容生产自动化的基准材料。
+
+这篇材料可以按三层阅读：第一层看模型能力声明，尤其是长程编码、电脑使用、知识工作和科研辅助；第二层看效率指标，OpenAI 把 token 消耗和任务完成质量放在一起讲，说明前沿模型竞争已经从“能不能答”推进到“能不能低摩擦持续做事”；第三层看安全和 API 部署门槛，越强的代理模型越需要把防滥用、权限和审计放进产品设计。
+
+对资料整理系统来说，这篇文章的价值在于给了一个判断自动化工作流的坐标：以后不是简单问模型问题，而是把搜索、阅读、整理、验证、发布连成闭环。读的时候可以重点观察它如何描述浏览、文件生成和跨工具操作，因为这些能力会直接影响知识库、内容整理和网页发布这类工作流。
+
+后续可以追踪三个问题：GPT-5.5 在真实长任务中的失败模式是什么；API 部署限制会怎样影响第三方工具接入；更低 token 消耗会不会改变代理系统的成本结构。
+
+https://openai.com/index/introducing-gpt-5-5/</content:encoded>
+    </item>
+    <item>
+      <title>World Economic Outlook, April 2026: Global Economy in the Shadow of War</title>
+      <link>https://diplproveably.github.io/podcast-pages/info/cards/20260511-imf-world-economic-outlook-april-2026/</link>
+      <guid isPermaLink="false">20260511-imf-world-economic-outlook-april-2026</guid>
+      <pubDate>Mon, 11 May 2026 12:00:00 +0800</pubDate>
+      <description>IMF 4 月《世界经济展望》把中东战争、商品价格、通胀预期、财政缓冲和地缘碎片化放在同一宏观图景下分析。报告给出的重点不是短线资产判断，而是战争与防务开支如何改变增长、通胀、债务、社会支出和新兴市场脆弱性。适合作为宏观讨论里的高权威背景材料。</description>
+      <content:encoded>World Economic Outlook, April 2026: Global Economy in the Shadow of War
+
+IMF 4 月《世界经济展望》把中东战争、商品价格、通胀预期、财政缓冲和地缘碎片化放在同一宏观图景下分析。报告给出的重点不是短线资产判断，而是战争与防务开支如何改变增长、通胀、债务、社会支出和新兴市场脆弱性。适合作为宏观讨论里的高权威背景材料。
+
+IMF 2026 年 4 月《世界经济展望》的主题是战争阴影下的全球经济。报告把中东战争作为新的宏观冲击，放在已经存在的贸易壁垒、政策不确定性和地缘碎片化背景中讨论。IMF 的基准情景假设冲突在持续时间和范围上相对有限，在这个前提下，全球增长被预计放缓到 2026 年 3.1%、2027 年 3.2%，全球总体通胀 2026 年小幅回升，2027 年再恢复下降趋势。报告特别强调，新兴市场和发展中经济体受到增长放缓与通胀上行的压力更明显。
+
+第一章讨论全球前景与政策。战争通过商品价格、通胀预期和金融条件影响全球经济，尤其会冲击商品进口国和原本就有脆弱性的经济体。IMF 把下行风险列得很清楚：冲突持续更久或扩散，地缘政治碎片化加深，AI 带来的生产率预期被重新评估，贸易紧张重新升级，都可能削弱增长并扰动金融市场。同时，高公共债务和政策缓冲下降让许多经济体更容易受到冲击。政策建议的关键词是适应性、可信政策框架和国际合作。
+
+第二章把防务开支作为宏观变量来分析。报告指出，地缘紧张会推动防务支出上升，典型防务支出扩张会在约两年半时间里显著增加政府支出，其中相当部分通过赤字融资。短期看，防务支出可能刺激经济活动；但中期会带来通胀压力、财政赤字扩大、公共债务上升、外部平衡恶化，并可能挤出社会支出。对战时经济体来说，这种代价更高，公共债务和社会支出压力更明显。
+
+第三章讨论冲突和战后恢复的宏观后果。IMF 用二战后的冲突数据说明，战争会造成持久产出损失，这类损失往往超过金融危机或严重自然灾害，并且会外溢到其他国家。恢复过程取决于和平能否持续，也依赖宏观稳定、债务重组、国际支持、制度重建和资本存量恢复。读这份报告时要注意，它不是投资建议，而是宏观风险框架：战争、商品、通胀、财政、外部融资和社会支出之间会形成连锁反应。后续可追踪的是中东冲突是否扩大，能源和食品价格是否继续扰动通胀，以及各国防务开支上升是否挤压财政空间。
+
+这份报告对财经和时政信息流尤其重要，因为它把地缘政治从“新闻事件”变成“宏观变量”。战争或冲突并不只是影响风险偏好，还会改变能源和食品价格、国防预算、财政赤字、公共债务、货币政策约束和社会支出空间。它还提醒读者，AI 生产率预期本身也可能成为宏观风险：如果市场或政策过度预期 AI 带来的增长，而实际兑现较慢，资产价格、投资计划和财政判断都可能面临再定价。后续读财经新闻时，可以把这份报告作为风险清单，而不是单纯看增长预测数字。
+
+匹配宏观经济、资产配置背景和政策风险；适合作为后续阅读市场与政策新闻时的背景资料。
+
+这份 WEO 的价值在于把战争、商品价格、财政空间、通胀预期和增长压力放到同一个宏观框架里。它不是为短线市场交易服务，而是帮助理解冲击如何通过能源、食品、防务支出、公共债务和国际资本流动传导到不同经济体。
+
+阅读时可以特别关注两类国家的差异：发达经济体面对的是通胀、财政和产业安全的平衡；新兴市场更容易受到外部融资、进口成本和粮食能源价格波动影响。这个差异决定了同一个地缘事件不会在所有国家产生相同后果。
+
+这份报告适合和 World Bank 商品市场报告配套。IMF 提供宏观叙事和政策权衡，World Bank 更具体地呈现能源、金属、食品和化肥价格。两者一起读，可以减少单看市场价格时的碎片感。
+
+https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026</content:encoded>
+    </item>
+    <item>
+      <title>The 2026 AI Index Report</title>
+      <link>https://diplproveably.github.io/podcast-pages/info/cards/20260511-stanford-ai-index-2026/</link>
+      <guid isPermaLink="false">20260511-stanford-ai-index-2026</guid>
+      <pubDate>Mon, 11 May 2026 12:00:00 +0800</pubDate>
+      <description>Stanford HAI 的 2026 AI Index 是年度基准型材料，覆盖研发、技术性能、负责任 AI、经济、科学、医疗、教育、政策治理和公众态度。它的价值在于把模型能力、投资、数据中心、教育使用、AI 治理、公众信任等分散话题压到同一组指标里，适合作为后续判断 AI 新闻时的背景底图。</description>
+      <content:encoded>The 2026 AI Index Report
+
+Stanford HAI 的 2026 AI Index 是年度基准型材料，覆盖研发、技术性能、负责任 AI、经济、科学、医疗、教育、政策治理和公众态度。它的价值在于把模型能力、投资、数据中心、教育使用、AI 治理、公众信任等分散话题压到同一组指标里，适合作为后续判断 AI 新闻时的背景底图。
+
+Stanford HAI 的 AI Index 是年度型底图材料，不适合当成一条普通新闻读。它的价值在于把 AI 的多个维度放在同一个资料框架里：技术性能、研发投入、产业采用、经济影响、科学应用、医疗、教育、政策治理、公众态度和负责任 AI。日常 AI 新闻往往围绕模型发布、融资、产品功能和公司竞争，但 AI Index 提供的是判断这些新闻的背景坐标。
+
+这份报告适合作为信息流的校准器。比如模型发布可以对应技术性能章节，企业服务可以对应产业采用和经济影响，学生使用 AI 可以对应教育章节，政府监管可以对应政策治理章节，公众信任和安全争议可以对应社会态度和负责任 AI。这样读者不会被单个热点牵着走，而是能把新闻放进更慢、更结构化的趋势里。
+
+阅读策略上，不需要从第一页读到最后一页。更好的方法是先挑几个和近期信息流强相关的板块：模型能力与评测、AI 投资和产业采用、教育与工作、治理和公众态度。然后在未来遇到具体事件时回到相关章节找数据。比如当某家公司宣称模型大幅提升效率时，可以用 AI Index 的长期评测趋势和成本数据做背景；当某个国家出台政策时，可以看全球政策数量、监管方向和治理工具的变化。
+
+这份报告也能防止信息源过度单调。如果每天只看模型公司公告，会误以为 AI 只有技术竞赛；如果只看政策新闻，又会低估模型能力变化。AI Index 把技术、资本、教育、医疗、治理和公众态度放到一起，提醒读者 AI 是一个跨经济、社会和制度的系统性变化。后续可以把它作为年度基准，每次更新信息流时检查：今天的信息是否过度集中在某一类 AI 新闻，是否需要补充财经、政策、教育或社会影响维度。
+
+另一个阅读重点是报告的“慢变量”。模型发布和融资新闻很容易占据信息流，但 AI 对经济和社会的影响经常通过慢变量体现：研发人员和资本向哪里集中，数据中心和能源需求如何变化，学校和企业采用速度如何，监管机构是否建立评测和责任框架，公众信任是否随使用频率上升或下降。AI Index 的意义就是把这些慢变量固定下来。后续如果看到某个模型公司、政策机构或产业报告给出很强的单点结论，可以用 AI Index 反问：这个结论在年度数据里有没有支撑，它是长期趋势的一部分，还是短期商业叙事。
+
+具体到操作上，这份报告可以变成一个长期索引：把技术能力、产业投资、政策治理、教育应用和社会态度分别做成标签，日常信息流中的每篇文章都归到这些标签下。这样既能避免只追逐模型发布，也能更早发现制度、资本和用户行为层面的变化。
+
+匹配 AI 产业、政策、教育和社会影响；适合作为信息中枢长期引用的年度基准。
+
+AI Index 适合作为年度底图，而不是一次性读完的新闻。它的强项是把模型指标、资本投入、产业采用、政策治理、公众态度和教育影响放在同一个时间轴上。后续遇到任何 AI 热点，都可以回到这份报告里找背景变量。
+
+阅读策略上，不必逐页看。可以先看技术性能、经济影响、政策治理、教育和公众态度几章，再把具体新闻挂到这些章节上。比如模型发布对应技术性能和成本，企业服务对应经济采用，学校和青少年使用对应教育与社会影响。
+
+这份报告也适合用作信息中枢的长期校准器：如果每天收集的 AI 新闻只围绕模型发布和融资，AI Index 会提醒还需要看治理、劳动力、教育、医疗、能耗和国际竞争这些更慢但更重要的变量。
+
+https://hai.stanford.edu/ai-index/2026-ai-index-report</content:encoded>
+    </item>
+    <item>
+      <title>Commodity Markets Outlook, April 2026</title>
+      <link>https://diplproveably.github.io/podcast-pages/info/cards/20260511-world-bank-commodity-markets-outlook/</link>
+      <guid isPermaLink="false">20260511-world-bank-commodity-markets-outlook</guid>
+      <pubDate>Mon, 11 May 2026 12:00:00 +0800</pubDate>
+      <description>世界银行商品市场页面汇总了 2026 年 4 月《Commodity Markets Outlook》和最新价格数据，重点是中东战争对能源、化肥、食品、金属和整体商品价格的冲击。它适合和 IMF 展望配套阅读：IMF 讲宏观传导和政策权衡，World Bank 更细地落到商品指数、能源价格和发展中经济体输入成本。</description>
+      <content:encoded>Commodity Markets Outlook, April 2026
+
+世界银行商品市场页面汇总了 2026 年 4 月《Commodity Markets Outlook》和最新价格数据，重点是中东战争对能源、化肥、食品、金属和整体商品价格的冲击。它适合和 IMF 展望配套阅读：IMF 讲宏观传导和政策权衡，World Bank 更细地落到商品指数、能源价格和发展中经济体输入成本。
+
+世界银行商品市场页面提供的是商品价格和商品市场报告入口，适合和 IMF 的宏观展望搭配阅读。IMF 更关注增长、通胀、财政和政策权衡，World Bank 则把问题落到能源、金属、食品、化肥和整体商品价格上。对理解宏观变化来说，商品不是孤立价格，而是把地缘冲突、运输、农业投入、制造业成本、家庭消费和新兴市场外部压力连接起来的链条。
+
+2026 年 4 月这期商品市场展望的背景是中东战争可能改变能源和其他商品的风险溢价。能源价格会直接影响运输、发电、工业生产和家庭成本，也会通过化肥、农机、粮食加工和物流传导到农业。食品价格则关系到低收入国家和家庭消费压力，金属价格又连接制造业、基建、新能源、电网和数据中心投资。读这类报告时，不能只看某一种商品涨跌，而要看它在产业链中的位置。
+
+这份材料对农业和产业链观察尤其有用。比如化肥价格上升会提高农业生产成本，能源价格波动会影响大豆、玉米、小麦等农产品的种植和运输，金属价格变化会影响机械化、基础设施和电力投资。对中国、东北农业、进口大豆和全球粮食贸易这类主题，商品市场报告提供的是上游价格背景。它能解释为什么一个农产品话题往往不只是农业问题，而是能源、汇率、贸易政策和地缘风险共同作用。
+
+后续阅读可以抓三个方向。第一，战争是否会继续推高能源风险溢价，并通过油气价格影响通胀。第二，化肥和食品价格是否出现新的压力，尤其对进口依赖高、财政空间有限的经济体。第三，金属价格是否受到 AI 数据中心、电网扩建、新能源投资和传统制造业需求的共同拉动。总体来说，这份报告不是给出单一结论，而是提供跨品类价格框架，让读者把宏观、农业、能源和产业链放在同一张图里。
+
+它还提供了一个避免碎片化阅读的方法：把商品分成能源、农业、化肥、金属和贵金属等组，再看每一组背后的驱动。能源受战争、航运、库存和产能影响；农业受天气、能源、化肥和贸易政策影响；金属受制造业周期、基建、电网、新能源和数据中心投资影响。不同商品之间还会互相传导，例如天然气影响化肥，化肥影响粮食成本，能源影响运输和加工。明天增加财经信息时，类似报告可以作为商品与宏观之间的桥梁，避免只收集孤立价格新闻。
+
+这类报告还适合和企业利润、居民通胀感受、财政补贴和国际收支一起看。商品价格变化通常不会只停留在期货盘面，它会逐步进入生产成本、进口账单、食品价格和政策压力。
+
+因此，它适合作为明日财经内容里的基础材料，用来连接能源、农业、制造业和通胀，而不是只记录价格涨跌。
+
+匹配宏观、能源、农业投入品和商品周期；对理解食品、化肥、能源价格链条有帮助。
+
+商品市场报告比宏观总览更贴近成本链条。能源价格影响运输、发电和工业生产，化肥价格影响农业投入，食品价格影响家庭消费和社会稳定，金属价格又和制造业、基建、新能源和数据中心投资有关。把这些放在一起看，能更清楚地理解通胀和产业链压力。
+
+这份材料尤其适合和农业、东北、大豆、能源、化肥等主题连接。单个农产品价格常常只是表面，背后可能是能源、运输、汇率、贸易政策和天气共同作用。World Bank 的价值在于提供跨品类的价格框架。
+
+后续可以追踪三个方向：战争冲击是否继续推高能源风险溢价；化肥和食品价格是否影响农业生产成本；金属价格是否被 AI 数据中心、电网和新能源建设重新定价。
+
+https://www.worldbank.org/en/research/commodity-markets</content:encoded>
     </item>
     <item>
       <title>2026年政府工作报告（全文） / Full text: Report on the Work of the Government (2026)</title>
       <link>https://diplproveably.github.io/podcast-pages/info/cards/20260511-china-government-work-report-2026/</link>
       <guid isPermaLink="false">20260511-china-government-work-report-2026</guid>
-      <pubDate>Thu, 19 Mar 2026 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 11 May 2026 12:00:00 +0800</pubDate>
       <description>这份中英文并列的 2026 年政府工作报告全文，提供了观察中国年度政策目标、产业方向、就业、消费、农业、科技、制造业和十五五规划取向的一手文本。它不是评论文章，但适合作为后续读任何中国宏观、产业、地方财政、农业和科技政策新闻时的政策原文底座。</description>
+      <content:encoded>2026年政府工作报告（全文） / Full text: Report on the Work of the Government (2026)
+
+这份中英文并列的 2026 年政府工作报告全文，提供了观察中国年度政策目标、产业方向、就业、消费、农业、科技、制造业和十五五规划取向的一手文本。它不是评论文章，但适合作为后续读任何中国宏观、产业、地方财政、农业和科技政策新闻时的政策原文底座。
+
+政府工作报告适合作为政策原文底座，而不是当作普通新闻标题来读。它提供的是年度政策目标、工作重点和资源配置方向，后续所有关于财政、产业、就业、消费、农业、科技、制造业、地方债务和社会民生的新闻，都可以回到这份文本中寻找上位表述。报告的价值不在于单句口号，而在于政策之间的组合关系：稳增长、促就业、扩内需、发展新质生产力、保障粮食安全、推进科技创新、化解风险，往往会同时出现并相互牵制。
+
+从宏观角度看，报告通常会给出对经济增长、就业、物价、财政和货币政策的年度安排。读者需要关注的是这些目标之间如何平衡：如果强调扩大内需，就要看消费、投资、公共服务和收入分配怎么配套；如果强调科技和制造业，就要看财政、金融、产业政策和地方执行如何支持；如果强调风险化解，就要看房地产、地方债、中小金融机构和社会稳定之间的关系。
+
+从产业角度看，报告中的科技、制造业、数字经济、人工智能、绿色转型、农业现代化等内容，是后续判断政策新闻的重要参照。比如某地推出产业基金、某部门出台监管规则、某行业获得支持，不能孤立理解，而要看它是否落在年度政策主线之内。农业和粮食安全部分也值得和商品市场、化肥、能源、大豆进口、东北农业和机械化放在一起看，因为它们共同决定农业投入、产量安全和贸易依赖。
+
+这份文本还适合做时政和财经信息流的稳定锚点。日常新闻经常截取某一句政策表述，容易造成过度解读；直接看全文可以减少这种偏差。后续整理中国财经和时政信息时，可以把这份报告作为背景：哪些内容是政策延续，哪些是新的强调，哪些只是地方执行层面的变化。需要注意的是，公开页只把它作为资料入口，不把政策文本解读成投资建议或具体行动建议。
+
+明天增加时政和财经内容时，这类原文尤其适合作为参照物。很多市场或产业新闻会使用“政策支持”“新质生产力”“扩大内需”“风险化解”等词，但这些词在原文中的位置和上下文不同，含义也不同。详细总结政策文本时，需要区分三层：第一是年度目标和总基调，第二是具体领域安排，第三是可能影响产业和地方执行的机制。这样后续面对二手解读时，就能判断它是在忠实解释政策，还是把某个词拉出来做过度叙事。
+
+它也适合作为地方新闻的校验工具。地方项目、产业园区、专项债、消费券、科技补贴等新闻如果脱离全国政策框架，很容易被包装成孤立亮点；放回报告中，才能判断其政策层级和持续性。
+
+这也是为什么时政类材料需要保留原文入口和详细总结，避免只凭二手标题判断政策含义。
+
+匹配宏观政策、产业链、农业和中国社会观察；公开来源、官方全文，只作为资料入口。
+
+政府工作报告适合作为政策原文底座，而不是把它当成普通新闻。它给出年度目标、政策重点、产业方向和财政民生安排，后续读任何地方政策、产业补贴、就业、消费、农业、科技和制造业新闻时，都可以回到这份文本里找上位表述。
+
+阅读时可以先抓几个关键词：就业、消费、科技、制造业、农业、粮食安全、地方财政、十五五、开放和风险化解。它们不是孤立段落，而是政策资源分配和地方执行的信号。比如农业和粮食安全，会和化肥、机械化、东北农业、进口大豆、县域经济这些主题连接。
+
+这份文本的意义在于提供原始政策语境。后续二手解读如果只挑一句话做标题，容易失真；把全文作为参考，可以更容易判断一条政策新闻到底是新信号，还是已有政策框架里的延续。
+
+http://www.china.org.cn/2026-03/19/content_118384399.shtml</content:encoded>
     </item>
     <item>
       <title>How Teens Use and View AI</title>
       <link>https://diplproveably.github.io/podcast-pages/info/cards/20260511-pew-teens-ai-use/</link>
       <guid isPermaLink="false">20260511-pew-teens-ai-use</guid>
-      <pubDate>Tue, 24 Feb 2026 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 11 May 2026 12:00:00 +0800</pubDate>
       <description>Pew Research Center 这份报告调查美国青少年如何使用 AI 聊天机器人：找信息、做作业、总结内容、娱乐、情感支持、获取新闻，以及他们如何看待 AI 对个人和社会的影响。它的价值在于把教育、信息获取、AI 陪伴、作弊判断和社会预期放在一个样本框架里，适合观察下一代用户实际如何把 AI 纳入日常。</description>
+      <content:encoded>How Teens Use and View AI
+
+Pew Research Center 这份报告调查美国青少年如何使用 AI 聊天机器人：找信息、做作业、总结内容、娱乐、情感支持、获取新闻，以及他们如何看待 AI 对个人和社会的影响。它的价值在于把教育、信息获取、AI 陪伴、作弊判断和社会预期放在一个样本框架里，适合观察下一代用户实际如何把 AI 纳入日常。
+
+Pew Research Center 这份报告从青少年真实使用场景切入，而不是从模型能力或公司叙事切入。它关注美国青少年如何使用 AI 聊天机器人，以及他们如何看待 AI 对学习、信息获取、娱乐、情感支持、新闻接触和社会未来的影响。这个视角很重要，因为青少年不是把 AI 当成新奇技术来观看，而是在作业、搜索、总结、聊天和休闲中把它纳入日常。
+
+报告适合按用途来读。青少年可能用 AI 查资料、解释概念、完成或辅助作业、总结文本、生成创意、娱乐互动、寻求情感支持、获取新闻或一般信息。不同用途的教育含义完全不同：查资料可能提高信息获取效率，代写作业可能削弱学习过程，概念解释可能变成个性化辅导，情感陪伴则涉及心理和社会关系边界。学校和家庭如果只用“禁止”或“放开”两个选项，很难覆盖这些复杂场景。
+
+这份报告也提醒，AI 素养不是单纯会不会使用工具，而是能不能判断输出可靠性、能不能保留自己的推理过程、能不能区分辅助学习和替代学习、能不能理解隐私和依赖风险。对青少年来说，AI 可能同时是学习助手、娱乐产品、搜索入口和社交陪伴。它会改变信息获取习惯，也可能改变学生对写作、阅读、记忆和独立解决问题的态度。
+
+把这份材料和企业 AI 报告放在一起看，会发现一个共同主题：AI 普及后，人类角色不是消失，而是被重新定义。在成人组织里，人要学会编排和审校代理；在学生场景里，人要学会把 AI 用作支架而不是替代思考。后续值得追踪的是学校政策如何从作弊治理转向能力培养，AI 陪伴产品是否影响青少年社交和心理支持，以及搜索和新闻消费是否会被聊天式入口重塑。
+
+这份报告也适合放进更大的社会变化框架里。青少年是最早把 AI 当成日常基础设施的一代，他们的使用方式会反过来影响教育制度、搜索产品、内容平台和家庭规则。如果 AI 成为默认的信息入口，学生可能更少练习传统检索和资料筛选；如果 AI 成为作业助手，学校就必须重新设计评价方式；如果 AI 成为情感陪伴，平台责任、隐私和心理依赖问题会变得更重要。后续追踪这类材料时，重点不只是使用率，而是 AI 正在替代哪些认知和社交环节。
+
+这份报告还提醒内容产品设计者，青少年不是被动接受技术的一群人。他们会主动寻找省力方法、娱乐方式和陪伴对象，因此规则设计必须承认真实使用，而不是只停留在道德评价。
+
+后续如果继续追踪 AI 教育，应同时看学生、教师、学校制度和平台设计四个层面。
+
+这会影响下一代学习习惯。
+
+适合作为 AI 教育、内容消费、青少年用户行为和社会影响的背景材料。
+
+Pew 这份报告值得看，是因为它从真实用户行为切入，而不是从模型能力切入。青少年用 AI 找信息、做作业、总结内容、娱乐、获得情感支持，也会形成自己对作弊、学习、社会影响和个人未来的判断。它能帮助理解 AI 工具如何进入日常生活。
+
+对教育和学习产品来说，报告里的关键不是简单判断“该不该用 AI”，而是区分不同用途：查资料、解题、润色、总结、陪伴、娱乐、获取新闻，这些行为对学习能力和信息判断的影响不一样。学校政策如果只用一刀切禁用，很难覆盖实际使用场景。
+
+这份材料还适合和 Microsoft 的组织报告一起看：成人工作场景里，人类角色变成编排和审校；学生场景里，AI 可能改变信息获取、作业完成和自我效能感。两个场景共同说明，AI 普及后的核心问题会越来越多地落到能力培养和责任边界上。
+
+https://www.pewresearch.org/internet/2026/02/24/how-teens-use-and-view-ai/</content:encoded>
     </item>
   </channel>
 </rss>
