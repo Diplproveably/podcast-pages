@@ -98,19 +98,26 @@
       font-size: 1.12rem !important;
     }
     .report-callout {
-      padding: 14px 16px;
-      background: var(--soft);
-      border: 1px solid #c7ded6;
-      border-left: 5px solid var(--accent);
+      padding: 13px 16px;
+      background: #fbfcfa;
+      border: 1px solid #dbe7e1;
+      border-left: 4px solid var(--accent);
+      box-shadow: inset 0 0 0 9999px rgba(11, 107, 95, .025);
     }
     strong.signal, strong.metric {
       color: #123f38;
       font-weight: 800;
     }
     mark {
-      background: linear-gradient(transparent 56%, rgba(221, 166, 74, .34) 56%);
+      background: rgba(221, 166, 74, .22);
       color: inherit;
-      padding: 0 .08em;
+      padding: 0 .12em;
+      border-radius: 3px;
+    }
+    .signal-mark {
+      background: rgba(221, 166, 74, .24);
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
     }
     .question-list {
       counter-reset: question;
@@ -155,7 +162,7 @@
       font-size: .9rem;
     }
     .source-meta::before { content: "来源 · "; }
-    .note-list li strong {
+    .note-list li > .list-key {
       display: block;
       margin-bottom: 2px;
     }
@@ -204,7 +211,7 @@
 
         <section class="detailed-report">
           <h2>研究报告</h2>
-          <div class="report-body"><p class="report-lede"><strong>Anthropic 在 <strong class="metric">2026 年</strong> 4 月 <strong class="metric">7 日</strong>发布 Project Glasswing 时，<strong class="signal">真正</strong>抛出的不是一个普通产品问题，而是一个能力扩散问题：如果一个通用前沿模型已经能在主流操作系统、浏览器、开源基础设施和闭源软件中发现并验证严重漏洞，那么模型公司还应不应该按常规节奏把它变成人人可用的商品？</strong>Anthropic 给出的答案很明确：Claude Mythos Preview 不做一般公开发布，而是先给一组<strong class="signal">关键</strong>软件、云、硬件、金融和开源基础设施相关组织使用，让防御者先扫描、修补和重做流程。</p><p class="report-callout"><mark>这件事的要点不在“AI 又会找漏洞了”。</mark>过去几年，AI 辅助漏洞发现已经有多个公开信号：Google Project Zero 和 DeepMind 的 Big Sleep 已经在真实开源项目中发现过此前未知的可利用内存安全问题；Google 后续又把 CodeMender 表述为自动修复<strong class="signal">关键</strong>代码漏洞的防御代理；DARPA AI Cyber Challenge 则把“发现漏洞并生成补丁”变成公开竞赛，并把补丁质量放在发现本身之前。Project Glasswing 的新意在于，Anthropic 把这种能力明确提升到前沿模型治理层面：漏洞发现不再只是安全工具能力，而成为模型发布权限、行业协调和国家安全讨论的一部分。</p><p class="report-paragraph">Anthropic 官方叙事里，Mythos Preview 的危险来自两点叠加。第一，它不是一个专门训练出来的“黑客工具”，而是通用编码、推理、代理式搜索和计算机使用能力上升后的副产品。第二，它不仅能指出可疑代码，还能在部分测试中完成验证、组合和利用链条的构造。Anthropic 的 Frontier Red Team 文章披露了一些已经修复的高层案例，并反复强调大部分发现尚不能公开。本文不复述利用方法，只保留治理含义：当模型能把“找 bug”“判断严重性”“写报告”“辅助修补”连成半自动流程时，传统漏洞披露体系的瓶颈会从发现端转向分诊、修补、验证、发布和下游部署。</p><p class="report-callout"><mark><strong class="signal">这解释了</strong> Anthropic 为什么不把 Mythos Preview 当作普通旗舰模型发布。</mark>一般模型发布面对的是产品竞争：更强的代码能力、更高的评测分数、更便宜的 token、更好的企业接入。但 Mythos 的网络安全能力改变了发布伦理。如果公开入口只需要账号、API key 或信用卡，能力就会同时进入安全团队、灰产组织、勒索团伙、情报机构和机会主义攻击者手里。Anthropic 的判断是，类似能力在 6 到 <strong class="metric">18 个月</strong>内可能由其他模型扩散，防御者需要一个提前窗口。这不是“永久封存危险能力”，而是用受控访问买时间。</p><p class="report-callout"><mark>Project Glasswing 的伙伴名单也说明了 Anthropic 认为哪里最需要先补课。</mark>AWS、Apple、Broadcom、Cisco、CrowdStrike、Google、JPMorganChase、Linux Foundation、Microsoft、NVIDIA、Palo Alto Networks 等组织覆盖云、终端、网络设备、浏览器/操作系统生态、金融基础设施、开源治理和安全产品。另有约 40 个<strong class="signal">关键</strong>软件维护组织获得访问。Anthropic 承诺最高 1 亿美元模型使用额度，并向 OpenSSF、Alpha-Omega 和 Apache Software Foundation 相关开源安全工作捐赠合计 400 万美元。这个组合不是慈善点缀，而是承认开源维护者长期承担了现代软件供应链的底层风险，却没有大厂安全团队同等的人力、工具和响应预算。</p><p class="report-paragraph">对开源维护者来说，AI 漏洞发现的到来会带来一种反直觉压力：发现能力变强不一定立刻让生态更安全，反而可能让维护者先被报告洪水淹没。一个项目原本一年处理几个高质量安全报告，突然变成几十个模型生成的疑似问题；每个问题都需要确认影响范围、判断可利用性、写补丁、避免破坏兼容性、通知下游发行版和厂商、申请 CVE、协调公开时间。OpenSSF 长期推动协调漏洞披露，把目标写成让披露成为常态化、易用、可被工具支持的流程。Mythos 类能力出现后，这不再是最佳实践建议，而是开源基础设施能否承受自动化发现浪潮的前置条件。</p><p class="report-paragraph">对大厂安全团队来说，分工也会变化。过去大厂拥有模糊测试、代码审计、红队、PSIRT、漏洞赏金和补丁发布渠道；开源维护者更多依赖志愿者判断、社区报告和下游厂商协助。AI 代理会把发现成本继续压低，但修复成本不会等比例下降，尤其是操作系统、浏览器、加密库、媒体库、云控制面和网络设备这类基础软件。大厂的角色会从“自己把自己的产品修好”扩展为“帮助上游项目把问题修到可发布、帮助下游客户把补丁部署到位、帮助行业把重复问题归类为漏洞类型治理”。这也是为什么 CISA 的 Secure by Design、NIST SSDF 和 KEV 目录都重要：它们把安全从事件响应推进到生命周期、责任归属和修补优先级。</p><p class="report-paragraph">最需要重做的是披露和补丁流程，而不是再写一份“AI 安全原则”。NIST SSDF 要求软件生产者把安全实践嵌入开发生命周期，并建立漏洞披露、PSIRT、响应剧本和根因治理；CISA 的 KEV 目录把“已被利用且有清晰修复动作”的漏洞变成优先级信号，BOD 22-01 还给美国联邦民用机构设定了加速修补义务；CISA Secure by Design Pledge 要求厂商发布漏洞披露政策、给善意研究者安全港，并公开补丁采用等指标。这些规则在 Mythos 时代会被进一步压缩：问题不是有没有报告邮箱，而是能不能处理机器级规模的发现，能不能把低质量报告挡在外面，能不能对高危问题快速完成补丁、回归测试、下游通知和部署追踪。</p><p class="report-paragraph">审慎看，Anthropic 的论证仍然有几个缺口。Mythos Preview 不公开，外部很难独立复现其整体能力边界；Anthropic 披露的案例大多来自自己和伙伴的测试，未修复漏洞又无法公开细节，这使得外界只能在有限透明度下判断“危险阈值”是否被跨过。Scientific American 引述英国 AI Security Institute 的早期评估，认为<strong class="signal">风险</strong>是真实的，但可能比公司叙事更有边界。TechCrunch 还报道过未经授权访问 Mythos 的指称，Anthropic 回应称正在调查第三方环境相关报告且未见影响自有系统证据。这些信息提醒我们：受控访问不是天然安全，它本身也需要供应商权限管理、审计、隔离和追责。</p><p class="report-paragraph">因此，Project Glasswing 最有价值的部分不是“Anthropic 做了一个更强模型”，而是把行业逼到一个新问题前：模型公司不能只说自己有危险能力，安全行业也不能只等厂商公开漏洞。合理的下一步应当包括四件事。第一，前沿模型公司为高风险网络安全能力建立分级访问、使用审计和外部评估。第二，开源基金会和<strong class="signal">关键</strong>项目建立可扩容的协调披露队列、分诊机制和补丁支持资金。第三，大厂把 AI 发现结果转化为上游修复、下游部署和补丁采用率，而不是只在自家安全产品里消化。第四，政府和行业组织把 KEV、SSDF、Secure by Design、CVD 和供应链安全要求接成同一套操作流程。Project Glasswing 接下来最值得看的不是宣传口号，而是 90 天报告：如果它能说明漏洞如何被分诊、哪些类型最常见、修补周期如何缩短、维护者获得了什么支持、补丁采用怎样被追踪，它才真正证明“先给防御者使用”是一种可复制的行业治理实验。</p><p class="report-paragraph">这里还要警惕另一个叙事陷阱：把模型发现漏洞的数量直接等同于安全提升。安全结果需要落在可验证的补丁、被维护者接受的修复、没有引入严重回归的发布、下游实际升级和长期漏洞类型下降上。DARPA AIxCC 把补丁质量放在发现之前，Google CodeMender 强调人类最终签核，CISA 关注已被利用漏洞的优先修补，指向的都是同一件事：AI 可以放大发现速度，但不能替代责任链条。Project Glasswing 如果能把这种责任链条做出来，它的意义才会超过一次模型发布。</p></div>
+          <div class="report-body"><p class="report-lede"><strong>Anthropic 在 <strong class="metric">2026 年</strong> 4 月 <strong class="metric">7 日</strong>发布 Project Glasswing 时，<mark class="signal-mark"><strong class="signal">真正</strong></mark>抛出的不是一个普通产品问题，而是一个能力扩散问题：如果一个通用前沿模型已经能在主流操作系统、浏览器、开源基础设施和闭源软件中发现并验证严重漏洞，那么模型公司还应不应该按常规节奏把它变成人人可用的商品？</strong>Anthropic 给出的答案很明确：Claude Mythos Preview 不做一般公开发布，而是先给一组<mark class="signal-mark"><strong class="signal">关键</strong></mark>软件、云、硬件、金融和开源基础设施相关组织使用，让防御者先扫描、修补和重做流程。</p><p class="report-callout"><strong>这件事的要点不在“AI 又会找漏洞了”。</strong>过去几年，AI 辅助漏洞发现已经有多个公开信号：Google Project Zero 和 DeepMind 的 Big Sleep 已经在真实开源项目中发现过此前未知的可利用内存安全问题；Google 后续又把 CodeMender 表述为自动修复<mark class="signal-mark"><strong class="signal">关键</strong></mark>代码漏洞的防御代理；DARPA AI Cyber Challenge 则把“发现漏洞并生成补丁”变成公开竞赛，并把补丁质量放在发现本身之前。Project Glasswing 的新意在于，Anthropic 把这种能力明确提升到前沿模型治理层面：漏洞发现不再只是安全工具能力，而成为模型发布权限、行业协调和国家安全讨论的一部分。</p><p class="report-paragraph">Anthropic 官方叙事里，Mythos Preview 的危险来自两点叠加。第一，它不是一个专门训练出来的“黑客工具”，而是通用编码、推理、代理式搜索和计算机使用能力上升后的副产品。第二，它不仅能指出可疑代码，还能在部分测试中完成验证、组合和利用链条的构造。Anthropic 的 Frontier Red Team 文章披露了一些已经修复的高层案例，并反复强调大部分发现尚不能公开。本文不复述利用方法，只保留治理含义：当模型能把“找 bug”“判断严重性”“写报告”“辅助修补”连成半自动流程时，传统漏洞披露体系的瓶颈会从发现端转向分诊、修补、验证、发布和下游部署。</p><p class="report-callout"><strong><mark class="signal-mark"><strong class="signal">这解释了</strong></mark> Anthropic 为什么不把 Mythos Preview 当作普通旗舰模型发布。</strong>一般模型发布面对的是产品竞争：更强的代码能力、更高的评测分数、更便宜的 token、更好的企业接入。但 Mythos 的网络安全能力改变了发布伦理。如果公开入口只需要账号、API key 或信用卡，能力就会同时进入安全团队、灰产组织、勒索团伙、情报机构和机会主义攻击者手里。Anthropic 的判断是，类似能力在 6 到 <strong class="metric">18 个月</strong>内可能由其他模型扩散，防御者需要一个提前窗口。这不是“永久封存危险能力”，而是用受控访问买时间。</p><p class="report-paragraph">Project Glasswing 的伙伴名单也说明了 Anthropic 认为哪里最需要先补课。AWS、Apple、Broadcom、Cisco、CrowdStrike、Google、JPMorganChase、Linux Foundation、Microsoft、NVIDIA、Palo Alto Networks 等组织覆盖云、终端、网络设备、浏览器/操作系统生态、金融基础设施、开源治理和安全产品。另有约 40 个<mark class="signal-mark"><strong class="signal">关键</strong></mark>软件维护组织获得访问。Anthropic 承诺最高 1 亿美元模型使用额度，并向 OpenSSF、Alpha-Omega 和 Apache Software Foundation 相关开源安全工作捐赠合计 400 万美元。这个组合不是慈善点缀，而是承认开源维护者长期承担了现代软件供应链的底层风险，却没有大厂安全团队同等的人力、工具和响应预算。</p><p class="report-paragraph">对开源维护者来说，AI 漏洞发现的到来会带来一种反直觉压力：发现能力变强不一定立刻让生态更安全，反而可能让维护者先被报告洪水淹没。一个项目原本一年处理几个高质量安全报告，突然变成几十个模型生成的疑似问题；每个问题都需要确认影响范围、判断可利用性、写补丁、避免破坏兼容性、通知下游发行版和厂商、申请 CVE、协调公开时间。OpenSSF 长期推动协调漏洞披露，把目标写成让披露成为常态化、易用、可被工具支持的流程。Mythos 类能力出现后，这不再是最佳实践建议，而是开源基础设施能否承受自动化发现浪潮的前置条件。</p><p class="report-paragraph">对大厂安全团队来说，分工也会变化。过去大厂拥有模糊测试、代码审计、红队、PSIRT、漏洞赏金和补丁发布渠道；开源维护者更多依赖志愿者判断、社区报告和下游厂商协助。AI 代理会把发现成本继续压低，但修复成本不会等比例下降，尤其是操作系统、浏览器、加密库、媒体库、云控制面和网络设备这类基础软件。大厂的角色会从“自己把自己的产品修好”扩展为“帮助上游项目把问题修到可发布、帮助下游客户把补丁部署到位、帮助行业把重复问题归类为漏洞类型治理”。这也是为什么 CISA 的 Secure by Design、NIST SSDF 和 KEV 目录都重要：它们把安全从事件响应推进到生命周期、责任归属和修补优先级。</p><p class="report-paragraph">最需要重做的是披露和补丁流程，而不是再写一份“AI 安全原则”。NIST SSDF 要求软件生产者把安全实践嵌入开发生命周期，并建立漏洞披露、PSIRT、响应剧本和根因治理；CISA 的 KEV 目录把“已被利用且有清晰修复动作”的漏洞变成优先级信号，BOD 22-01 还给美国联邦民用机构设定了加速修补义务；CISA Secure by Design Pledge 要求厂商发布漏洞披露政策、给善意研究者安全港，并公开补丁采用等指标。这些规则在 Mythos 时代会被进一步压缩：问题不是有没有报告邮箱，而是能不能处理机器级规模的发现，能不能把低质量报告挡在外面，能不能对高危问题快速完成补丁、回归测试、下游通知和部署追踪。</p><p class="report-paragraph">审慎看，Anthropic 的论证仍然有几个缺口。Mythos Preview 不公开，外部很难独立复现其整体能力边界；Anthropic 披露的案例大多来自自己和伙伴的测试，未修复漏洞又无法公开细节，这使得外界只能在有限透明度下判断“危险阈值”是否被跨过。Scientific American 引述英国 AI Security Institute 的早期评估，认为<mark class="signal-mark"><strong class="signal">风险</strong></mark>是真实的，但可能比公司叙事更有边界。TechCrunch 还报道过未经授权访问 Mythos 的指称，Anthropic 回应称正在调查第三方环境相关报告且未见影响自有系统证据。这些信息提醒我们：受控访问不是天然安全，它本身也需要供应商权限管理、审计、隔离和追责。</p><p class="report-paragraph">因此，Project Glasswing 最有价值的部分不是“Anthropic 做了一个更强模型”，而是把行业逼到一个新问题前：模型公司不能只说自己有危险能力，安全行业也不能只等厂商公开漏洞。合理的下一步应当包括四件事。第一，前沿模型公司为高风险网络安全能力建立分级访问、使用审计和外部评估。第二，开源基金会和关键项目建立可扩容的协调披露队列、分诊机制和补丁支持资金。第三，大厂把 AI 发现结果转化为上游修复、下游部署和补丁采用率，而不是只在自家安全产品里消化。第四，政府和行业组织把 KEV、SSDF、Secure by Design、CVD 和供应链安全要求接成同一套操作流程。Project Glasswing 接下来最值得看的不是宣传口号，而是 90 天报告：如果它能说明漏洞如何被分诊、哪些类型最常见、修补周期如何缩短、维护者获得了什么支持、补丁采用怎样被追踪，它才<mark class="signal-mark"><strong class="signal">真正</strong></mark>证明“先给防御者使用”是一种可复制的行业治理实验。</p><p class="report-paragraph">这里还要警惕另一个叙事陷阱：把模型发现漏洞的数量直接等同于安全提升。安全结果需要落在可验证的补丁、被维护者接受的修复、没有引入严重回归的发布、下游实际升级和长期漏洞类型下降上。DARPA AIxCC 把补丁质量放在发现之前，Google CodeMender 强调人类最终签核，CISA 关注已被利用漏洞的优先修补，指向的都是同一件事：AI 可以放大发现速度，但不能替代责任链条。Project Glasswing 如果能把这种责任链条做出来，它的意义才会超过一次模型发布。</p></div>
         </section>
     
 
@@ -216,7 +223,7 @@
 
         <section class="follow-up">
           <h2>后续跟踪变量</h2>
-          <ul class="note-list"><li><span>Anthropic 承诺的 90 天公开报告是否披露可验证的修复数量、漏洞类别、平均分诊与修补周期。</span></li><li><span>OpenSSF、Alpha-Omega、Apache Software Foundation 获得资金后，是否形成可复制的维护者支持流程。</span></li><li><span>Project Glasswing 伙伴是否公开补丁采用率、上游修复贡献、下游客户部署情况。</span></li><li><span>CISA、NIST、AI 安全评估机构和模型公司是否建立针对高<strong class="signal">风险</strong>网络安全能力的访问分级和外部评估机制。</span></li><li><span>其他前沿模型公司是否推出类似受控防御访问，或直接把同级能力产品化。</span></li></ul>
+          <ul class="note-list"><li><span>Anthropic 承诺的 90 天公开报告是否披露可验证的修复数量、漏洞类别、平均分诊与修补周期。</span></li><li><span>OpenSSF、Alpha-Omega、Apache Software Foundation 获得资金后，是否形成可复制的维护者支持流程。</span></li><li><span>Project Glasswing 伙伴是否公开补丁采用率、上游修复贡献、下游客户部署情况。</span></li><li><span>CISA、NIST、AI 安全评估机构和模型公司是否建立针对高<mark class="signal-mark"><strong class="signal">风险</strong></mark>网络安全能力的访问分级和外部评估机制。</span></li><li><span>其他前沿模型公司是否推出类似受控防御访问，或直接把同级能力产品化。</span></li></ul>
         </section>
     
       </article>

@@ -98,19 +98,26 @@
       font-size: 1.12rem !important;
     }
     .report-callout {
-      padding: 14px 16px;
-      background: var(--soft);
-      border: 1px solid #c7ded6;
-      border-left: 5px solid var(--accent);
+      padding: 13px 16px;
+      background: #fbfcfa;
+      border: 1px solid #dbe7e1;
+      border-left: 4px solid var(--accent);
+      box-shadow: inset 0 0 0 9999px rgba(11, 107, 95, .025);
     }
     strong.signal, strong.metric {
       color: #123f38;
       font-weight: 800;
     }
     mark {
-      background: linear-gradient(transparent 56%, rgba(221, 166, 74, .34) 56%);
+      background: rgba(221, 166, 74, .22);
       color: inherit;
-      padding: 0 .08em;
+      padding: 0 .12em;
+      border-radius: 3px;
+    }
+    .signal-mark {
+      background: rgba(221, 166, 74, .24);
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
     }
     .question-list {
       counter-reset: question;
@@ -155,7 +162,7 @@
       font-size: .9rem;
     }
     .source-meta::before { content: "来源 · "; }
-    .note-list li strong {
+    .note-list li > .list-key {
       display: block;
       margin-bottom: 2px;
     }
@@ -192,7 +199,7 @@
 
         <section class="research-questions">
           <h2>研究问题</h2>
-          <ol class="question-list"><li><span>为什么 IMF 说当前金融稳定<strong class="signal">风险</strong>具有非对称性，而不是简单说市场已经失控？</span></li><li><span>中东战争和油价冲击如何通过通胀、利率、主权债和美元流动性进入金融稳定框架？</span></li><li><span>非银金融、回购市场、杠杆 ETF、期权卖波动策略和私募信贷为什么会成为放大通道？</span></li><li><span>AI 估值集中、数据中心融资和循环融资如何把科技叙事转化为宏观金融脆弱性？</span></li><li><span>股债同时下跌会怎样削弱传统避险逻辑，并改变政策和投资组合<strong class="signal">风险</strong>理解？</span></li></ol>
+          <ol class="question-list"><li><span>为什么 IMF 说当前金融稳定<mark class="signal-mark"><strong class="signal">风险</strong></mark>具有非对称性，而不是简单说市场已经失控？</span></li><li><span>中东战争和油价冲击如何通过通胀、利率、主权债和美元流动性进入金融稳定框架？</span></li><li><span>非银金融、回购市场、杠杆 ETF、期权卖波动策略和私募信贷为什么会成为放大通道？</span></li><li><span>AI 估值集中、数据中心融资和循环融资如何把科技叙事转化为宏观金融脆弱性？</span></li><li><span>股债同时下跌会怎样削弱传统避险逻辑，并改变政策和投资组合<mark class="signal-mark"><strong class="signal">风险</strong></mark>理解？</span></li></ol>
         </section>
     
 
@@ -204,19 +211,19 @@
 
         <section class="detailed-report">
           <h2>研究报告</h2>
-          <div class="report-body"><p class="report-lede"><strong>这期 IMF GFSR 最值得保留下来的词不是“战争”，而是“放大”。</strong>如果只把它读成中东战争导致油价上涨，结论会过窄；如果只把它读成 AI 股票估值偏高，结论又会过散。IMF <strong class="signal">真正</strong>在做的是把一组原本分散在不同市场版面的变量重新接线：油价冲击先改变通胀和利率路径，利率路径再改变股债估值、主权债融资和美元流动性，非银机构在波动中因为保证金、赎回和杠杆约束被迫调仓，私募信贷和 AI 相关投资把更长周期的信用风险藏在不透明资产里。报告说“风险是非对称的”，意思不是市场必然崩盘，而是平静状态本身不能证明系统已经消化了尾部情景。</p><p class="report-callout"><mark>IMF 的基准描述相当克制。</mark>到报告发布时，市场功能大体仍然有序，短期融资市场仍能运转，价格修正还没有演变成全面流动性压力。报告甚至承认，地缘政治冲击在历史上对全球资产价格的影响常常有限而短暂，尤其是在发达经济体市场中。但这正是它的审慎之处：如果市场只是根据“冲突会阶段性降温”的经验来定价，而没有充分反映更长战争、更高能源价格、更黏通胀和更紧融资条件的组合，那么表面有序就可能只是<strong class="signal">风险</strong>尚未被迫兑现。FSB 主席 Andrew Bailey 在 <strong class="metric">2026 年</strong> 4 月致 G20 的信中也用了相近的语言：多个脆弱点同时结晶的概率上升，可能形成金融稳定的“双重或三重打击”。</p><p class="report-callout"><mark>油价是第一枚触发器，但不是终点。</mark>IEA <strong class="metric">2026 年</strong> 4 月《Oil Market Report》描述的是一个物理供应和贸易流都被扰动的市场：两周停火带来喘息，但能否恢复霍尔木兹海峡常态航运仍不确定；进口国在更小的供应池里寻找替代油源，实货原油价格一度接近每桶 150 美元，明显高于期货价格，成品油涨幅更陡。宏观金融含义在于，油价冲击不是只进入能源股利润表，而是进入通胀预期、消费者实际收入、企业成本、央行反应函数和财政补贴压力。IMF WEO 对能源补贴的警惕也在这里：广泛价格压制可能削弱价格信号，保留需求，反而把外部冲击转化成财政负担和跨国溢出。</p><p class="report-paragraph">第二个放大器是主权债市场。IMF 指出，<strong class="signal">核心</strong>主权债市场债务率高、发行供给大、短期债依赖增加，投资者基础也更价格敏感。利率上行时，政府再融资成本和滚续频率同时上升；债券价格下跌又会降低回购交易中的抵押品价值，推高保证金和融资成本。这个链条危险的地方在于，主权债既是政府融资工具，也是金融系统抵押品和定价基准。正常时期，债券收益率上行可以被解释为通胀和增长预期变化；压力时期，它会影响银行资产负债表、非银杠杆交易、保险和养老金组合，以及新兴市场外币融资条件。主权债不再只是宏观财政问题，而是市场微观结构问题。</p><p class="report-callout"><mark>新兴市场处在这条链的更脆弱一端。</mark>IMF GFSR 第二章专门讨论非银投资者对新兴市场跨境组合资金的影响：非银资金能提供融资，也更容易随全球<strong class="signal">风险</strong>偏好变化而移动，尤其是对冲基金、投资基金、被动基金和 ETF 等更敏感的资金。战争和油价冲击下，商品进口国、外储较低、债务较高、制度质量较弱的经济体会更容易面对资本外流、汇率贬值和本币债券收益率上升。若市场压力持续，政府可能转向本国银行和央行吸收债务，重新强化主权-银行循环；这会把汇率、通胀、财政和金融稳定压到同一张资产负债表上。</p><p class="report-paragraph">第三个放大器是非银金融本身。FSB <strong class="metric">2025 年</strong>关于非银杠杆的最终报告把问题说得很清楚：非银杠杆既可能出现在<strong class="signal">核心</strong>金融市场，也可能通过银行、券商等杠杆提供方传回系统重要机构。IMF 这次给了更具体的场景：回购市场吃紧会迫使现金-期货基差交易等高杠杆固定收益策略平仓；期权市场里卖波动率的头寸若突然撤退，会把低波动环境变成跳升波动；杠杆 ETF 在下跌时需要再平衡卖出底层资产，可能形成顺周期压力。非银不是单一行业标签，它是一组资金、杠杆、保证金、赎回和交易规则的集合；问题往往不在某个机构“资不抵债”，而在很多机构在同一个方向上同时缩表。</p><p class="report-paragraph">私募信贷是另一个更慢、更不透明的通道。IMF 对私募信贷没有使用最激烈的措辞，反而说当前流动性错配仍然有限，但借款人压力和零售敞口上升可能测试半流动性结构。这个表述和 FSB <strong class="metric">2026 年</strong> 5 月私募信贷报告、英格兰银行 <strong class="metric">2026 年</strong> 4 月 FPC 记录相互印证：私募信贷市场已经扩大到 <strong class="metric">1.5 万亿</strong>至 <strong class="metric">2 万亿</strong>美元量级，和银行、保险、私募股权基金之间的联系加深；它过去主要面对机构投资者和中型企业，如今更容易进入大型企业融资和财富管理渠道。<strong class="signal">风险</strong>不一定来自每天盯盘的价格暴跌，而可能来自估值不透明、资产质量争议、赎回限制、再融资意愿下降，以及压力从少数借款人扩散成对整个资产类别的信心折价。</p><p class="report-paragraph">AI 估值集中是这份 GFSR 最有时代感的一块。IMF 没有否认 AI 可能带来真实生产率收益，但它把 AI 相关公司估值、数据中心融资和“循环融资”放进金融稳定框架。BIS <strong class="metric">2026 年</strong>关于 AI 融资的 Bulletin 也指出，AI 投资正在从企业现金流逐渐转向债务融资，私募信贷作用上升；<strong class="signal">风险</strong>目前看起来温和，但可持续性取决于企业能否兑现很高的盈利预期。RBA 在 <strong class="metric">2026 年</strong> 3 月金融稳定评估中进一步提醒，AI 相关收入公司已经占 S&amp;P 500 市值的 <strong class="metric">40%</strong> 以上，AI 公司之间相互授信、入股和承诺采购可能降低现金流透明度、抬高收入预期，并把损失传递给银行、债券投资者和私募信贷。也就是说，AI 风险不是“科技股贵”这么简单，而是估值、资本开支、数据中心地产、电力约束、债务融资和信用提供者之间开始互相锁定。</p><p class="report-paragraph">股债同时下跌是这套风险地图的第四个<strong class="signal">关键</strong>变化。传统组合里，债券常被视为股票下跌时的防守资产；但如果冲击来自能源供给、通胀预期和政策利率路径，债券未必会提供缓冲。IMF 明确写到，更频繁的供给冲击削弱了股债对冲关系，提高了同步抛售风险。美联储 <strong class="metric">2026 年</strong> 5 月《Financial Stability Report》也把地缘政治风险、油价冲击、AI、私募信贷和持续通胀列为市场联系人最常提到的近端风险，并同时指出股票估值压力仍高、对冲基金杠杆接近历史高位且集中在大型基金。这里的核心不是预测哪类资产下跌，而是承认传统“风险资产跌、政府债涨”的避险叙事在供给冲击环境里会变弱。</p><p class="report-paragraph">把这些通道连起来，才会看到 IMF 所说的“非对称”。上行情景当然存在：战争降温，能源价格回落，通胀预期稳定，股市重新上涨，融资条件放松，AI 投资继续由现金流和稳健债务支撑。但下行情景的结构更陡：油价上行推高通胀和利率预期，股债一起承压，期权和 ETF 机制放大波动，回购和保证金压力迫使杠杆基金卖出，主权债买盘变薄，新兴市场资本流出，私募信贷和 AI 相关融资被重新定价。宏观增长还没大幅下修前，金融条件可能已经先行收紧；而金融条件收紧又会反过来伤害增长和债务偿付能力。</p><p class="report-paragraph">政策含义因此也不应被简化成一句“监管非银”或“防范 AI 泡沫”。IMF 的建议更接近一份操作清单：流动性和融资工具要能实际启动，央行和监管治理要能稳住预期，通胀从实际价格向预期扩散的过程要被监测，新兴市场要强化政策框架和外部缓冲，公共债务要回到可持续路径，Basel III 要完成实施，非银监管和跨境数据共享要补上。FSB 对非银杠杆的建议同样强调识别和监测、数据粒度、银行与非银之间的对手方披露，以及跨境合作。这些建议看起来技术性很强，原因正是<strong class="signal">风险</strong>已经不只在银行资本充足率里，而在市场结构、交易策略和信息缺口里。</p><p class="report-paragraph">这篇报告最好被读成风险地图，而不是交易地图。它不支持任何具体资产买卖判断，也不提供收益预测。它<strong class="signal">真正</strong>有用的地方，是帮助读者避免把新闻拆碎：油价不是只有能源价格，主权债不是只有财政赤字，非银不是只有影子银行，AI 不是只有科技股故事，股债相关性也不是一个静态历史常识。<strong class="metric">2026 年</strong>的金融稳定问题更像一组同步齿轮：每一个齿轮单独看都还能解释，但当油价、通胀、债券供给、杠杆交易、私募信贷、AI 资本开支和新兴市场资金流同时转向，系统脆弱性就会从“可观察的波动”变成“需要政策工具介入的市场功能问题”。</p></div>
+          <div class="report-body"><p class="report-lede"><strong>这期 IMF GFSR 最值得保留下来的词不是“战争”，而是“放大”。</strong>如果只把它读成中东战争导致油价上涨，结论会过窄；如果只把它读成 AI 股票估值偏高，结论又会过散。IMF <mark class="signal-mark"><strong class="signal">真正</strong></mark>在做的是把一组原本分散在不同市场版面的变量重新接线：油价冲击先改变通胀和利率路径，利率路径再改变股债估值、主权债融资和美元流动性，非银机构在波动中因为保证金、赎回和杠杆约束被迫调仓，私募信贷和 AI 相关投资把更长周期的信用风险藏在不透明资产里。报告说“风险是非对称的”，意思不是市场必然崩盘，而是平静状态本身不能证明系统已经消化了尾部情景。</p><p class="report-callout"><strong>IMF 的基准描述相当克制。</strong>到报告发布时，市场功能大体仍然有序，短期融资市场仍能运转，价格修正还没有演变成全面流动性压力。报告甚至承认，地缘政治冲击在历史上对全球资产价格的影响常常有限而短暂，尤其是在发达经济体市场中。但这正是它的审慎之处：如果市场只是根据“冲突会阶段性降温”的经验来定价，而没有充分反映更长战争、更高能源价格、更黏通胀和更紧融资条件的组合，那么表面有序就可能只是<mark class="signal-mark"><strong class="signal">风险</strong></mark>尚未被迫兑现。FSB 主席 Andrew Bailey 在 <strong class="metric">2026 年</strong> 4 月致 G20 的信中也用了相近的语言：多个脆弱点同时结晶的概率上升，可能形成金融稳定的“双重或三重打击”。</p><p class="report-paragraph">油价是第一枚触发器，但不是终点。IEA <strong class="metric">2026 年</strong> 4 月《Oil Market Report》描述的是一个物理供应和贸易流都被扰动的市场：两周停火带来喘息，但能否恢复霍尔木兹海峡常态航运仍不确定；进口国在更小的供应池里寻找替代油源，实货原油价格一度接近每桶 150 美元，明显高于期货价格，成品油涨幅更陡。宏观金融含义在于，油价冲击不是只进入能源股利润表，而是进入通胀预期、消费者实际收入、企业成本、央行反应函数和财政补贴压力。IMF WEO 对能源补贴的警惕也在这里：广泛价格压制可能削弱价格信号，保留需求，反而把外部冲击转化成财政负担和跨国溢出。</p><p class="report-paragraph">第二个放大器是主权债市场。IMF 指出，<mark class="signal-mark"><strong class="signal">核心</strong></mark>主权债市场债务率高、发行供给大、短期债依赖增加，投资者基础也更价格敏感。利率上行时，政府再融资成本和滚续频率同时上升；债券价格下跌又会降低回购交易中的抵押品价值，推高保证金和融资成本。这个链条危险的地方在于，主权债既是政府融资工具，也是金融系统抵押品和定价基准。正常时期，债券收益率上行可以被解释为通胀和增长预期变化；压力时期，它会影响银行资产负债表、非银杠杆交易、保险和养老金组合，以及新兴市场外币融资条件。主权债不再只是宏观财政问题，而是市场微观结构问题。</p><p class="report-callout"><strong>新兴市场处在这条链的更脆弱一端。</strong>IMF GFSR 第二章专门讨论非银投资者对新兴市场跨境组合资金的影响：非银资金能提供融资，也更容易随全球<mark class="signal-mark"><strong class="signal">风险</strong></mark>偏好变化而移动，尤其是对冲基金、投资基金、被动基金和 ETF 等更敏感的资金。战争和油价冲击下，商品进口国、外储较低、债务较高、制度质量较弱的经济体会更容易面对资本外流、汇率贬值和本币债券收益率上升。若市场压力持续，政府可能转向本国银行和央行吸收债务，重新强化主权-银行循环；这会把汇率、通胀、财政和金融稳定压到同一张资产负债表上。</p><p class="report-paragraph">第三个放大器是非银金融本身。FSB <strong class="metric">2025 年</strong>关于非银杠杆的最终报告把问题说得很清楚：非银杠杆既可能出现在<mark class="signal-mark"><strong class="signal">核心</strong></mark>金融市场，也可能通过银行、券商等杠杆提供方传回系统重要机构。IMF 这次给了更具体的场景：回购市场吃紧会迫使现金-期货基差交易等高杠杆固定收益策略平仓；期权市场里卖波动率的头寸若突然撤退，会把低波动环境变成跳升波动；杠杆 ETF 在下跌时需要再平衡卖出底层资产，可能形成顺周期压力。非银不是单一行业标签，它是一组资金、杠杆、保证金、赎回和交易规则的集合；问题往往不在某个机构“资不抵债”，而在很多机构在同一个方向上同时缩表。</p><p class="report-paragraph">私募信贷是另一个更慢、更不透明的通道。IMF 对私募信贷没有使用最激烈的措辞，反而说当前流动性错配仍然有限，但借款人压力和零售敞口上升可能测试半流动性结构。这个表述和 FSB <strong class="metric">2026 年</strong> 5 月私募信贷报告、英格兰银行 <strong class="metric">2026 年</strong> 4 月 FPC 记录相互印证：私募信贷市场已经扩大到 <strong class="metric">1.5 万亿</strong>至 <strong class="metric">2 万亿</strong>美元量级，和银行、保险、私募股权基金之间的联系加深；它过去主要面对机构投资者和中型企业，如今更容易进入大型企业融资和财富管理渠道。<mark class="signal-mark"><strong class="signal">风险</strong></mark>不一定来自每天盯盘的价格暴跌，而可能来自估值不透明、资产质量争议、赎回限制、再融资意愿下降，以及压力从少数借款人扩散成对整个资产类别的信心折价。</p><p class="report-paragraph">AI 估值集中是这份 GFSR 最有时代感的一块。IMF 没有否认 AI 可能带来真实生产率收益，但它把 AI 相关公司估值、数据中心融资和“循环融资”放进金融稳定框架。BIS <strong class="metric">2026 年</strong>关于 AI 融资的 Bulletin 也指出，AI 投资正在从企业现金流逐渐转向债务融资，私募信贷作用上升；<mark class="signal-mark"><strong class="signal">风险</strong></mark>目前看起来温和，但可持续性取决于企业能否兑现很高的盈利预期。RBA 在 <strong class="metric">2026 年</strong> 3 月金融稳定评估中进一步提醒，AI 相关收入公司已经占 S&amp;P 500 市值的 <strong class="metric">40%</strong> 以上，AI 公司之间相互授信、入股和承诺采购可能降低现金流透明度、抬高收入预期，并把损失传递给银行、债券投资者和私募信贷。也就是说，AI 风险不是“科技股贵”这么简单，而是估值、资本开支、数据中心地产、电力约束、债务融资和信用提供者之间开始互相锁定。</p><p class="report-paragraph">股债同时下跌是这套风险地图的第四个<mark class="signal-mark"><strong class="signal">关键</strong></mark>变化。传统组合里，债券常被视为股票下跌时的防守资产；但如果冲击来自能源供给、通胀预期和政策利率路径，债券未必会提供缓冲。IMF 明确写到，更频繁的供给冲击削弱了股债对冲关系，提高了同步抛售风险。美联储 <strong class="metric">2026 年</strong> 5 月《Financial Stability Report》也把地缘政治风险、油价冲击、AI、私募信贷和持续通胀列为市场联系人最常提到的近端风险，并同时指出股票估值压力仍高、对冲基金杠杆接近历史高位且集中在大型基金。这里的核心不是预测哪类资产下跌，而是承认传统“风险资产跌、政府债涨”的避险叙事在供给冲击环境里会变弱。</p><p class="report-paragraph">把这些通道连起来，才会看到 IMF 所说的“非对称”。上行情景当然存在：战争降温，能源价格回落，通胀预期稳定，股市重新上涨，融资条件放松，AI 投资继续由现金流和稳健债务支撑。但下行情景的结构更陡：油价上行推高通胀和利率预期，股债一起承压，期权和 ETF 机制放大波动，回购和保证金压力迫使杠杆基金卖出，主权债买盘变薄，新兴市场资本流出，私募信贷和 AI 相关融资被重新定价。宏观增长还没大幅下修前，金融条件可能已经先行收紧；而金融条件收紧又会反过来伤害增长和债务偿付能力。</p><p class="report-paragraph">政策含义因此也不应被简化成一句“监管非银”或“防范 AI 泡沫”。IMF 的建议更接近一份操作清单：流动性和融资工具要能实际启动，央行和监管治理要能稳住预期，通胀从实际价格向预期扩散的过程要被监测，新兴市场要强化政策框架和外部缓冲，公共债务要回到可持续路径，Basel III 要完成实施，非银监管和跨境数据共享要补上。FSB 对非银杠杆的建议同样强调识别和监测、数据粒度、银行与非银之间的对手方披露，以及跨境合作。这些建议看起来技术性很强，原因正是<mark class="signal-mark"><strong class="signal">风险</strong></mark>已经不只在银行资本充足率里，而在市场结构、交易策略和信息缺口里。</p><p class="report-paragraph">这篇报告最好被读成风险地图，而不是交易地图。它不支持任何具体资产买卖判断，也不提供收益预测。它<mark class="signal-mark"><strong class="signal">真正</strong></mark>有用的地方，是帮助读者避免把新闻拆碎：油价不是只有能源价格，主权债不是只有财政赤字，非银不是只有影子银行，AI 不是只有科技股故事，股债相关性也不是一个静态历史常识。<strong class="metric">2026 年</strong>的金融稳定问题更像一组同步齿轮：每一个齿轮单独看都还能解释，但当油价、通胀、债券供给、杠杆交易、私募信贷、AI 资本开支和新兴市场资金流同时转向，系统脆弱性就会从“可观察的波动”变成“需要政策工具介入的市场功能问题”。</p></div>
         </section>
     
 
         <section class="uncertainties">
           <h2>不确定性</h2>
-          <ul class="note-list"><li><span>IMF GFSR 主要反映截至 <strong class="metric">2026 年</strong> 3 月 <strong class="metric">13 日</strong>的信息，部分图表使用至 <strong class="metric">2026 年</strong> 4 月 <strong class="metric">2 日</strong>的数据；中东战争、停火、能源贸易和金融市场状态可能在报告后继续变化。</span></li><li><span>IEA 4 月油市报告是免费删节版，公开页面和 PDF 能确认供给扰动、实货价格和霍尔木兹<strong class="signal">不确定性</strong>，但更细的库存、地区供需和贸易流数据可能在订阅版中。</span></li><li><span>AI 估值集中<strong class="signal">风险</strong>很难和真实生产率提升分离；当前可确认的是融资、估值和市场集中度上升，不能据此断言 AI 投资必然失败。</span></li><li><span>非银杠杆、私募信贷和半流动性产品的数据透明度有限，<strong class="signal">风险</strong>可能滞后暴露，也可能因为监管、融资工具和市场自我调整而被缓和。</span></li><li><span>本文是宏观金融研究报告，不构成投资建议、资产买卖建议或收益预测。</span></li></ul>
+          <ul class="note-list"><li><span>IMF GFSR 主要反映截至 <strong class="metric">2026 年</strong> 3 月 <strong class="metric">13 日</strong>的信息，部分图表使用至 <strong class="metric">2026 年</strong> 4 月 <strong class="metric">2 日</strong>的数据；中东战争、停火、能源贸易和金融市场状态可能在报告后继续变化。</span></li><li><span>IEA 4 月油市报告是免费删节版，公开页面和 PDF 能确认供给扰动、实货价格和霍尔木兹<mark class="signal-mark"><strong class="signal">不确定性</strong></mark>，但更细的库存、地区供需和贸易流数据可能在订阅版中。</span></li><li><span>AI 估值集中<mark class="signal-mark"><strong class="signal">风险</strong></mark>很难和真实生产率提升分离；当前可确认的是融资、估值和市场集中度上升，不能据此断言 AI 投资必然失败。</span></li><li><span>非银杠杆、私募信贷和半流动性产品的数据透明度有限，<mark class="signal-mark"><strong class="signal">风险</strong></mark>可能滞后暴露，也可能因为监管、融资工具和市场自我调整而被缓和。</span></li><li><span>本文是宏观金融研究报告，不构成投资建议、资产买卖建议或收益预测。</span></li></ul>
         </section>
     
 
         <section class="follow-up">
           <h2>后续跟踪变量</h2>
-          <ul class="note-list"><li><span>中东战争、停火执行、霍尔木兹航运流量和 IEA <strong class="signal">后续</strong>油市修订</span></li><li><span>Brent 实货价格、期货曲线、成品油裂解价差和能源通胀向<strong class="signal">核心</strong>通胀的传导</span></li><li><span>G4 主权债收益率、期限溢价、拍卖需求、短期债发行占比和回购市场利率</span></li><li><span>对冲基金杠杆、基差交易规模、期权隐含波动率、卖波动策略和杠杆 ETF 规模</span></li><li><span>新兴市场组合资金流、汇率、外储、外币债到期和本地银行吸收主权债的程度</span></li><li><span>私募信贷违约、赎回限制、BDCs 与 interval funds 净流量、银行对非银信贷承诺</span></li><li><span>AI 相关公司市值集中度、数据中心资本开支、外部债务融资、循环融资和收入兑现情况</span></li></ul>
+          <ul class="note-list"><li><span>中东战争、停火执行、霍尔木兹航运流量和 IEA <mark class="signal-mark"><strong class="signal">后续</strong></mark>油市修订</span></li><li><span>Brent 实货价格、期货曲线、成品油裂解价差和能源通胀向<mark class="signal-mark"><strong class="signal">核心</strong></mark>通胀的传导</span></li><li><span>G4 主权债收益率、期限溢价、拍卖需求、短期债发行占比和回购市场利率</span></li><li><span>对冲基金杠杆、基差交易规模、期权隐含波动率、卖波动策略和杠杆 ETF 规模</span></li><li><span>新兴市场组合资金流、汇率、外储、外币债到期和本地银行吸收主权债的程度</span></li><li><span>私募信贷违约、赎回限制、BDCs 与 interval funds 净流量、银行对非银信贷承诺</span></li><li><span>AI 相关公司市值集中度、数据中心资本开支、外部债务融资、循环融资和收入兑现情况</span></li></ul>
         </section>
     
       </article>
