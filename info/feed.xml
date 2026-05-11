@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>信息流</title>
+    <link>https://diplproveably.github.io/podcast-pages/info/</link>
+    <description>公开长文、研究报告和一手资料索引</description>
+    <lastBuildDate>Mon, 11 May 2026 12:58:52 +0800</lastBuildDate>
+    
+    <item>
+      <title>Introducing GPT-5.5</title>
+      <link>https://diplproveably.github.io/podcast-pages/info/cards/20260511-openai-gpt-55/</link>
+      <guid isPermaLink="false">20260511-openai-gpt-55</guid>
+      <pubDate>Thu, 23 Apr 2026 00:00:00 +0000</pubDate>
+      <description>OpenAI 发布 GPT-5.5，并把重点放在长程任务、代理式编码、知识工作、科研辅助和推理效率上。文章值得看的地方不只是模型分数，而是它把模型能力、工程工具使用、token 效率、网络安全防护和 API 部署要求放在同一个框架里，能帮助判断下一阶段 AI 工具从聊天界面转向“可持续执行任务”的方向。</description>
+    </item>
+    <item>
+      <title>Improving token efficiency in GitHub Agentic Workflows</title>
+      <link>https://diplproveably.github.io/podcast-pages/info/cards/20260511-github-agentic-token-efficiency/</link>
+      <guid isPermaLink="false">20260511-github-agentic-token-efficiency</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 +0000</pubDate>
+      <description>GitHub 这篇文章把代理式工作流的成本问题拆成可观测、可优化、可复盘的工程问题：哪些步骤其实只是确定性取数，哪些 MCP 工具 schema 被反复塞进上下文，哪些规则错误会导致代理进入长回合循环。它比普通产品更新更有价值，因为它给出了真实生产系统里如何削减 token 消耗、如何衡量有效 token、如何把代理优化代理的闭环落地。</description>
+    </item>
+    <item>
+      <title>The 2026 AI Index Report</title>
+      <link>https://diplproveably.github.io/podcast-pages/info/cards/20260511-stanford-ai-index-2026/</link>
+      <guid isPermaLink="false">20260511-stanford-ai-index-2026</guid>
+      <pubDate>Mon, 13 Apr 2026 00:00:00 +0000</pubDate>
+      <description>Stanford HAI 的 2026 AI Index 是年度基准型材料，覆盖研发、技术性能、负责任 AI、经济、科学、医疗、教育、政策治理和公众态度。它的价值在于把模型能力、投资、数据中心、教育使用、AI 治理、公众信任等分散话题压到同一组指标里，适合作为后续判断 AI 新闻时的背景底图。</description>
+    </item>
+    <item>
+      <title>The changing shape and new economics of news podcasting: From listening to watching, from podcasts to shows</title>
+      <link>https://diplproveably.github.io/podcast-pages/info/cards/20260511-reuters-institute-news-podcasting/</link>
+      <guid isPermaLink="false">20260511-reuters-institute-news-podcasting</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 +0000</pubDate>
+      <description>Reuters Institute 这份报告讨论新闻播客从音频转向视频、从单集节目转向 show、从免费分发转向订阅与多平台经营的变化。它既看用户研究，也看纽约时报、卫报、经济学人、金融时报等出版机构的策略，对理解播客为什么越来越像视频栏目、为什么人格化谈话节目挤压叙事型节目，很有参考价值。</description>
+    </item>
+    <item>
+      <title>Agents, human agency, and the opportunity for every organization</title>
+      <link>https://diplproveably.github.io/podcast-pages/info/cards/20260511-microsoft-work-trend-index/</link>
+      <guid isPermaLink="false">20260511-microsoft-work-trend-index</guid>
+      <pubDate>Tue, 05 May 2026 00:00:00 +0000</pubDate>
+      <description>微软 2026 Work Trend Index 把“AI 代理进入组织”描述成组织结构问题，而不只是员工多用了一个工具。报告结合 Microsoft 365 匿名生产力信号和跨市场调查，讨论代理接管执行后，人类如何重新承担判断、拆分任务、重构流程和形成学习型组织。对理解企业为什么从个人提效转向流程再造很有帮助。</description>
+    </item>
+    <item>
+      <title>World Economic Outlook, April 2026: Global Economy in the Shadow of War</title>
+      <link>https://diplproveably.github.io/podcast-pages/info/cards/20260511-imf-world-economic-outlook-april-2026/</link>
+      <guid isPermaLink="false">20260511-imf-world-economic-outlook-april-2026</guid>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 +0000</pubDate>
+      <description>IMF 4 月《世界经济展望》把中东战争、商品价格、通胀预期、财政缓冲和地缘碎片化放在同一宏观图景下分析。报告给出的重点不是短线资产判断，而是战争与防务开支如何改变增长、通胀、债务、社会支出和新兴市场脆弱性。适合作为宏观讨论里的高权威背景材料。</description>
+    </item>
+    <item>
+      <title>Commodity Markets Outlook, April 2026</title>
+      <link>https://diplproveably.github.io/podcast-pages/info/cards/20260511-world-bank-commodity-markets-outlook/</link>
+      <guid isPermaLink="false">20260511-world-bank-commodity-markets-outlook</guid>
+      <pubDate>Wed, 01 Apr 2026 00:00:00 +0000</pubDate>
+      <description>世界银行商品市场页面汇总了 2026 年 4 月《Commodity Markets Outlook》和最新价格数据，重点是中东战争对能源、化肥、食品、金属和整体商品价格的冲击。它适合和 IMF 展望配套阅读：IMF 讲宏观传导和政策权衡，World Bank 更细地落到商品指数、能源价格和发展中经济体输入成本。</description>
+    </item>
+    <item>
+      <title>Building a new enterprise AI services company with Blackstone, Hellman &amp; Friedman, and Goldman Sachs</title>
+      <link>https://diplproveably.github.io/podcast-pages/info/cards/20260511-anthropic-enterprise-ai-services-company/</link>
+      <guid isPermaLink="false">20260511-anthropic-enterprise-ai-services-company</guid>
+      <pubDate>Mon, 04 May 2026 00:00:00 +0000</pubDate>
+      <description>Anthropic 宣布与 Blackstone、Hellman &amp; Friedman、Goldman Sachs 等合作成立企业 AI 服务公司，目标不是单纯卖模型接口，而是把 Claude 嵌入中型企业的重要运营环节。这个动作说明前沿模型公司的企业路线正在从“给 API 和订阅”走向“深度交付、工程团队常驻、围绕具体业务流程定制系统”。</description>
+    </item>
+    <item>
+      <title>2026年政府工作报告（全文） / Full text: Report on the Work of the Government (2026)</title>
+      <link>https://diplproveably.github.io/podcast-pages/info/cards/20260511-china-government-work-report-2026/</link>
+      <guid isPermaLink="false">20260511-china-government-work-report-2026</guid>
+      <pubDate>Thu, 19 Mar 2026 00:00:00 +0000</pubDate>
+      <description>这份中英文并列的 2026 年政府工作报告全文，提供了观察中国年度政策目标、产业方向、就业、消费、农业、科技、制造业和十五五规划取向的一手文本。它不是评论文章，但适合作为后续读任何中国宏观、产业、地方财政、农业和科技政策新闻时的政策原文底座。</description>
+    </item>
+    <item>
+      <title>How Teens Use and View AI</title>
+      <link>https://diplproveably.github.io/podcast-pages/info/cards/20260511-pew-teens-ai-use/</link>
+      <guid isPermaLink="false">20260511-pew-teens-ai-use</guid>
+      <pubDate>Tue, 24 Feb 2026 00:00:00 +0000</pubDate>
+      <description>Pew Research Center 这份报告调查美国青少年如何使用 AI 聊天机器人：找信息、做作业、总结内容、娱乐、情感支持、获取新闻，以及他们如何看待 AI 对个人和社会的影响。它的价值在于把教育、信息获取、AI 陪伴、作弊判断和社会预期放在一个样本框架里，适合观察下一代用户实际如何把 AI 纳入日常。</description>
+    </item>
+  </channel>
+</rss>

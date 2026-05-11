@@ -1,0 +1,148 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "信息流",
+  "home_page_url": "https://diplproveably.github.io/podcast-pages/info/",
+  "feed_url": "https://diplproveably.github.io/podcast-pages/info/feed.json",
+  "items": [
+    {
+      "id": "20260511-openai-gpt-55",
+      "url": "https://diplproveably.github.io/podcast-pages/info/cards/20260511-openai-gpt-55/",
+      "external_url": "https://openai.com/index/introducing-gpt-5-5/",
+      "title": "Introducing GPT-5.5",
+      "summary": "OpenAI 发布 GPT-5.5，并把重点放在长程任务、代理式编码、知识工作、科研辅助和推理效率上。文章值得看的地方不只是模型分数，而是它把模型能力、工程工具使用、token 效率、网络安全防护和 API 部署要求放在同一个框架里，能帮助判断下一阶段 AI 工具从聊天界面转向“可持续执行任务”的方向。",
+      "content_text": "Introducing GPT-5.5\n\nOpenAI 发布 GPT-5.5，并把重点放在长程任务、代理式编码、知识工作、科研辅助和推理效率上。文章值得看的地方不只是模型分数，而是它把模型能力、工程工具使用、token 效率、网络安全防护和 API 部署要求放在同一个框架里，能帮助判断下一阶段 AI 工具从聊天界面转向“可持续执行任务”的方向。\n\n适合作为近期 AI 能力变化、代理式工具使用和内容生产自动化的基准材料。\n\nhttps://openai.com/index/introducing-gpt-5-5/",
+      "date_published": "2026-04-23T00:00:00+00:00",
+      "tags": [
+        "ai-tools",
+        "agentic-workflows",
+        "model-capability"
+      ]
+    },
+    {
+      "id": "20260511-github-agentic-token-efficiency",
+      "url": "https://diplproveably.github.io/podcast-pages/info/cards/20260511-github-agentic-token-efficiency/",
+      "external_url": "https://github.blog/ai-and-ml/github-copilot/improving-token-efficiency-in-github-agentic-workflows/",
+      "title": "Improving token efficiency in GitHub Agentic Workflows",
+      "summary": "GitHub 这篇文章把代理式工作流的成本问题拆成可观测、可优化、可复盘的工程问题：哪些步骤其实只是确定性取数，哪些 MCP 工具 schema 被反复塞进上下文，哪些规则错误会导致代理进入长回合循环。它比普通产品更新更有价值，因为它给出了真实生产系统里如何削减 token 消耗、如何衡量有效 token、如何把代理优化代理的闭环落地。",
+      "content_text": "Improving token efficiency in GitHub Agentic Workflows\n\nGitHub 这篇文章把代理式工作流的成本问题拆成可观测、可优化、可复盘的工程问题：哪些步骤其实只是确定性取数，哪些 MCP 工具 schema 被反复塞进上下文，哪些规则错误会导致代理进入长回合循环。它比普通产品更新更有价值，因为它给出了真实生产系统里如何削减 token 消耗、如何衡量有效 token、如何把代理优化代理的闭环落地。\n\n适合作为代理系统工程成本、上下文治理、工具裁剪和自动化工作流优化的参考。\n\nhttps://github.blog/ai-and-ml/github-copilot/improving-token-efficiency-in-github-agentic-workflows/",
+      "date_published": "2026-05-07T00:00:00+00:00",
+      "tags": [
+        "agentic-workflows",
+        "developer-tooling",
+        "cost-control"
+      ]
+    },
+    {
+      "id": "20260511-stanford-ai-index-2026",
+      "url": "https://diplproveably.github.io/podcast-pages/info/cards/20260511-stanford-ai-index-2026/",
+      "external_url": "https://hai.stanford.edu/ai-index/2026-ai-index-report",
+      "title": "The 2026 AI Index Report",
+      "summary": "Stanford HAI 的 2026 AI Index 是年度基准型材料，覆盖研发、技术性能、负责任 AI、经济、科学、医疗、教育、政策治理和公众态度。它的价值在于把模型能力、投资、数据中心、教育使用、AI 治理、公众信任等分散话题压到同一组指标里，适合作为后续判断 AI 新闻时的背景底图。",
+      "content_text": "The 2026 AI Index Report\n\nStanford HAI 的 2026 AI Index 是年度基准型材料，覆盖研发、技术性能、负责任 AI、经济、科学、医疗、教育、政策治理和公众态度。它的价值在于把模型能力、投资、数据中心、教育使用、AI 治理、公众信任等分散话题压到同一组指标里，适合作为后续判断 AI 新闻时的背景底图。\n\n匹配 AI 产业、政策、教育和社会影响；适合作为信息中枢长期引用的年度基准。\n\nhttps://hai.stanford.edu/ai-index/2026-ai-index-report",
+      "date_published": "2026-04-13T00:00:00+00:00",
+      "tags": [
+        "ai-research",
+        "ai-policy",
+        "macro-context"
+      ]
+    },
+    {
+      "id": "20260511-reuters-institute-news-podcasting",
+      "url": "https://diplproveably.github.io/podcast-pages/info/cards/20260511-reuters-institute-news-podcasting/",
+      "external_url": "https://reutersinstitute.politics.ox.ac.uk/changing-shape-and-new-economics-news-podcasting-listening-watching-podcasts-shows",
+      "title": "The changing shape and new economics of news podcasting: From listening to watching, from podcasts to shows",
+      "summary": "Reuters Institute 这份报告讨论新闻播客从音频转向视频、从单集节目转向 show、从免费分发转向订阅与多平台经营的变化。它既看用户研究，也看纽约时报、卫报、经济学人、金融时报等出版机构的策略，对理解播客为什么越来越像视频栏目、为什么人格化谈话节目挤压叙事型节目，很有参考价值。",
+      "content_text": "The changing shape and new economics of news podcasting: From listening to watching, from podcasts to shows\n\nReuters Institute 这份报告讨论新闻播客从音频转向视频、从单集节目转向 show、从免费分发转向订阅与多平台经营的变化。它既看用户研究，也看纽约时报、卫报、经济学人、金融时报等出版机构的策略，对理解播客为什么越来越像视频栏目、为什么人格化谈话节目挤压叙事型节目，很有参考价值。\n\n适合作为播客、内容生产和媒体商业模式变化的背景材料。\n\nhttps://reutersinstitute.politics.ox.ac.uk/changing-shape-and-new-economics-news-podcasting-listening-watching-podcasts-shows",
+      "date_published": "2026-05-07T00:00:00+00:00",
+      "tags": [
+        "podcast",
+        "media-business",
+        "content-strategy"
+      ]
+    },
+    {
+      "id": "20260511-microsoft-work-trend-index",
+      "url": "https://diplproveably.github.io/podcast-pages/info/cards/20260511-microsoft-work-trend-index/",
+      "external_url": "https://www.microsoft.com/en-us/worklab/work-trend-index/agents-human-agency-and-the-opportunity-for-every-organization",
+      "title": "Agents, human agency, and the opportunity for every organization",
+      "summary": "微软 2026 Work Trend Index 把“AI 代理进入组织”描述成组织结构问题，而不只是员工多用了一个工具。报告结合 Microsoft 365 匿名生产力信号和跨市场调查，讨论代理接管执行后，人类如何重新承担判断、拆分任务、重构流程和形成学习型组织。对理解企业为什么从个人提效转向流程再造很有帮助。",
+      "content_text": "Agents, human agency, and the opportunity for every organization\n\n微软 2026 Work Trend Index 把“AI 代理进入组织”描述成组织结构问题，而不只是员工多用了一个工具。报告结合 Microsoft 365 匿名生产力信号和跨市场调查，讨论代理接管执行后，人类如何重新承担判断、拆分任务、重构流程和形成学习型组织。对理解企业为什么从个人提效转向流程再造很有帮助。\n\n匹配 AI 工作方式、组织效率和企业采用的长期主题；可以和 GitHub 代理工作流、OpenAI 模型能力材料交叉阅读。\n\nhttps://www.microsoft.com/en-us/worklab/work-trend-index/agents-human-agency-and-the-opportunity-for-every-organization",
+      "date_published": "2026-05-05T00:00:00+00:00",
+      "tags": [
+        "ai-at-work",
+        "organization-design",
+        "agentic-workflows"
+      ]
+    },
+    {
+      "id": "20260511-imf-world-economic-outlook-april-2026",
+      "url": "https://diplproveably.github.io/podcast-pages/info/cards/20260511-imf-world-economic-outlook-april-2026/",
+      "external_url": "https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026",
+      "title": "World Economic Outlook, April 2026: Global Economy in the Shadow of War",
+      "summary": "IMF 4 月《世界经济展望》把中东战争、商品价格、通胀预期、财政缓冲和地缘碎片化放在同一宏观图景下分析。报告给出的重点不是短线资产判断，而是战争与防务开支如何改变增长、通胀、债务、社会支出和新兴市场脆弱性。适合作为宏观讨论里的高权威背景材料。",
+      "content_text": "World Economic Outlook, April 2026: Global Economy in the Shadow of War\n\nIMF 4 月《世界经济展望》把中东战争、商品价格、通胀预期、财政缓冲和地缘碎片化放在同一宏观图景下分析。报告给出的重点不是短线资产判断，而是战争与防务开支如何改变增长、通胀、债务、社会支出和新兴市场脆弱性。适合作为宏观讨论里的高权威背景材料。\n\n匹配宏观经济、资产配置背景和政策风险；适合作为后续阅读市场与政策新闻时的背景资料。\n\nhttps://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026",
+      "date_published": "2026-04-14T00:00:00+00:00",
+      "tags": [
+        "macro",
+        "geopolitics",
+        "policy"
+      ]
+    },
+    {
+      "id": "20260511-world-bank-commodity-markets-outlook",
+      "url": "https://diplproveably.github.io/podcast-pages/info/cards/20260511-world-bank-commodity-markets-outlook/",
+      "external_url": "https://www.worldbank.org/en/research/commodity-markets",
+      "title": "Commodity Markets Outlook, April 2026",
+      "summary": "世界银行商品市场页面汇总了 2026 年 4 月《Commodity Markets Outlook》和最新价格数据，重点是中东战争对能源、化肥、食品、金属和整体商品价格的冲击。它适合和 IMF 展望配套阅读：IMF 讲宏观传导和政策权衡，World Bank 更细地落到商品指数、能源价格和发展中经济体输入成本。",
+      "content_text": "Commodity Markets Outlook, April 2026\n\n世界银行商品市场页面汇总了 2026 年 4 月《Commodity Markets Outlook》和最新价格数据，重点是中东战争对能源、化肥、食品、金属和整体商品价格的冲击。它适合和 IMF 展望配套阅读：IMF 讲宏观传导和政策权衡，World Bank 更细地落到商品指数、能源价格和发展中经济体输入成本。\n\n匹配宏观、能源、农业投入品和商品周期；对理解食品、化肥、能源价格链条有帮助。\n\nhttps://www.worldbank.org/en/research/commodity-markets",
+      "date_published": "2026-04-01T00:00:00+00:00",
+      "tags": [
+        "commodities",
+        "macro",
+        "agriculture"
+      ]
+    },
+    {
+      "id": "20260511-anthropic-enterprise-ai-services-company",
+      "url": "https://diplproveably.github.io/podcast-pages/info/cards/20260511-anthropic-enterprise-ai-services-company/",
+      "external_url": "https://www.anthropic.com/news/enterprise-ai-services-company",
+      "title": "Building a new enterprise AI services company with Blackstone, Hellman & Friedman, and Goldman Sachs",
+      "summary": "Anthropic 宣布与 Blackstone、Hellman & Friedman、Goldman Sachs 等合作成立企业 AI 服务公司，目标不是单纯卖模型接口，而是把 Claude 嵌入中型企业的重要运营环节。这个动作说明前沿模型公司的企业路线正在从“给 API 和订阅”走向“深度交付、工程团队常驻、围绕具体业务流程定制系统”。",
+      "content_text": "Building a new enterprise AI services company with Blackstone, Hellman & Friedman, and Goldman Sachs\n\nAnthropic 宣布与 Blackstone、Hellman & Friedman、Goldman Sachs 等合作成立企业 AI 服务公司，目标不是单纯卖模型接口，而是把 Claude 嵌入中型企业的重要运营环节。这个动作说明前沿模型公司的企业路线正在从“给 API 和订阅”走向“深度交付、工程团队常驻、围绕具体业务流程定制系统”。\n\n匹配 AI 商业化、企业落地和代理系统交付模式；可以帮助判断 AI 公司收入结构和生态合作的变化。\n\nhttps://www.anthropic.com/news/enterprise-ai-services-company",
+      "date_published": "2026-05-04T00:00:00+00:00",
+      "tags": [
+        "ai-business",
+        "enterprise-ai",
+        "model-platforms"
+      ]
+    },
+    {
+      "id": "20260511-china-government-work-report-2026",
+      "url": "https://diplproveably.github.io/podcast-pages/info/cards/20260511-china-government-work-report-2026/",
+      "external_url": "https://www.china.org.cn/2026-03/19/content_118384399.shtml",
+      "title": "2026年政府工作报告（全文） / Full text: Report on the Work of the Government (2026)",
+      "summary": "这份中英文并列的 2026 年政府工作报告全文，提供了观察中国年度政策目标、产业方向、就业、消费、农业、科技、制造业和十五五规划取向的一手文本。它不是评论文章，但适合作为后续读任何中国宏观、产业、地方财政、农业和科技政策新闻时的政策原文底座。",
+      "content_text": "2026年政府工作报告（全文） / Full text: Report on the Work of the Government (2026)\n\n这份中英文并列的 2026 年政府工作报告全文，提供了观察中国年度政策目标、产业方向、就业、消费、农业、科技、制造业和十五五规划取向的一手文本。它不是评论文章，但适合作为后续读任何中国宏观、产业、地方财政、农业和科技政策新闻时的政策原文底座。\n\n匹配宏观政策、产业链、农业和中国社会观察；公开来源、官方全文，只作为资料入口。\n\nhttps://www.china.org.cn/2026-03/19/content_118384399.shtml",
+      "date_published": "2026-03-19T00:00:00+00:00",
+      "tags": [
+        "china-policy",
+        "macro",
+        "industry"
+      ]
+    },
+    {
+      "id": "20260511-pew-teens-ai-use",
+      "url": "https://diplproveably.github.io/podcast-pages/info/cards/20260511-pew-teens-ai-use/",
+      "external_url": "https://www.pewresearch.org/internet/2026/02/24/how-teens-use-and-view-ai/",
+      "title": "How Teens Use and View AI",
+      "summary": "Pew Research Center 这份报告调查美国青少年如何使用 AI 聊天机器人：找信息、做作业、总结内容、娱乐、情感支持、获取新闻，以及他们如何看待 AI 对个人和社会的影响。它的价值在于把教育、信息获取、AI 陪伴、作弊判断和社会预期放在一个样本框架里，适合观察下一代用户实际如何把 AI 纳入日常。",
+      "content_text": "How Teens Use and View AI\n\nPew Research Center 这份报告调查美国青少年如何使用 AI 聊天机器人：找信息、做作业、总结内容、娱乐、情感支持、获取新闻，以及他们如何看待 AI 对个人和社会的影响。它的价值在于把教育、信息获取、AI 陪伴、作弊判断和社会预期放在一个样本框架里，适合观察下一代用户实际如何把 AI 纳入日常。\n\n适合作为 AI 教育、内容消费、青少年用户行为和社会影响的背景材料。\n\nhttps://www.pewresearch.org/internet/2026/02/24/how-teens-use-and-view-ai/",
+      "date_published": "2026-02-24T00:00:00+00:00",
+      "tags": [
+        "ai-education",
+        "social-impact",
+        "user-behavior"
+      ]
+    }
+  ]
+}
