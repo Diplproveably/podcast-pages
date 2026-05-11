@@ -74,8 +74,13 @@
       margin-top: 18px;
       padding-top: 14px;
     }
-    .analysis h2 { font-size: 1.05rem; margin-top: 0; }
-    .analysis p { margin: 0 0 12px; }
+    .detailed-summary {
+      border-top: 1px solid var(--line);
+      margin-top: 20px;
+      padding-top: 16px;
+    }
+    .analysis h2, .detailed-summary h2 { font-size: 1.05rem; margin-top: 0; }
+    .analysis p, .detailed-summary p { margin: 0 0 12px; }
     .topic-index { columns: 2; padding-left: 20px; }
     .topic-index li { break-inside: avoid; margin: 0 0 8px; }
     footer { color: var(--muted); margin-top: 34px; font-size: .9rem; }
@@ -100,6 +105,12 @@
         <p class="why">匹配 AI 工作方式、组织效率和企业采用的长期主题；可以和 GitHub 代理工作流、OpenAI 模型能力材料交叉阅读。</p>
         <div class="tags"><span>ai-at-work</span> <span>organization-design</span> <span>agentic-workflows</span></div>
         <p class="actions"><a href="https://www.microsoft.com/en-us/worklab/work-trend-index/agents-human-agency-and-the-opportunity-for-every-organization">打开原文</a></p>
+      
+        <section class="detailed-summary">
+          <h2>详细总结</h2>
+          <p>微软这份 Work Trend Index 的核心不是“员工会不会使用 AI”，而是组织结构如何围绕 AI 代理重排。它把 AI 代理描述为一种新的组织资源：不再只是个人的副驾驶，而是能够承担部分执行任务、串联工作流、进入团队协作结构的数字劳动力。报告标题同时强调 agents 和 human agency，说明微软想表达的不是人被完全替代，而是人在目标设定、判断、授权、审校和责任承担上的角色变得更重要。</p><p>报告的关键背景是企业已经经历了第一波个人提效式 AI 使用，但真正的组织收益不会自动出现。个人可以用 AI 写邮件、总结文档、生成表格，但当代理进入企业级流程时，问题变成：哪些任务可以委托，谁来定义成功标准，代理在什么权限下运行，错误由谁负责，团队如何把零散自动化改造成稳定流程。微软用组织图谱的语言讨论这个变化，意味着 AI 采用会从工具采购转向流程再设计。</p><p>这份报告还值得和 GitHub 的代理成本文章一起看。微软讨论组织层面的代理配置：员工不只是操作者，也要成为编排者和监督者；GitHub 讨论工程层面的代理运行：工具 schema、数据下载、token 成本和异常轮次。两者合起来说明，未来成熟的 AI 工作方式需要两套能力：管理层要重新设计工作边界，工程层要让代理运行可观测、可审计、可优化。</p><p>对个人信息工作台来说，这份报告的启发是：自动化不是把所有判断都交给模型，而是把可重复、可检查、可回滚的部分交给脚本或代理，把主题选择、风险判断、公开发布边界留给人。它也提醒，AI 的价值不会只体现在单次输出质量上，还会体现在组织是否能建立新角色、新流程和新评价方式。后续值得追踪的是，企业会不会出现专门的 agent manager、AI workflow designer、自动化审计员等角色，以及现有中层管理和运营岗位如何被重塑。</p><p>更具体地说，这类报告的读法不应停在“AI 会提高生产率”。它关心的是组织怎样把任务拆成可委托、可监督、可交付的单元。一个员工如果只是把 AI 当成写作助手，收益主要停留在个人时间节省；一个组织如果能把代理放进销售、客服、财务、法务、研发和运营流程，就必须重新设计权限、审计、质量检查和跨部门交接。报告因此暗含一个管理问题：组织能否把 AI 从个人技巧变成制度化能力。后续看企业 AI 新闻时，可以用这份报告判断对方是在卖工具、卖自动化流程，还是在卖一种新的组织操作系统。</p>
+        </section>
+    
       
         <section class="analysis">
           <h2>阅读提示</h2>

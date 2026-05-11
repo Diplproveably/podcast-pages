@@ -74,8 +74,13 @@
       margin-top: 18px;
       padding-top: 14px;
     }
-    .analysis h2 { font-size: 1.05rem; margin-top: 0; }
-    .analysis p { margin: 0 0 12px; }
+    .detailed-summary {
+      border-top: 1px solid var(--line);
+      margin-top: 20px;
+      padding-top: 16px;
+    }
+    .analysis h2, .detailed-summary h2 { font-size: 1.05rem; margin-top: 0; }
+    .analysis p, .detailed-summary p { margin: 0 0 12px; }
     .topic-index { columns: 2; padding-left: 20px; }
     .topic-index li { break-inside: avoid; margin: 0 0 8px; }
     footer { color: var(--muted); margin-top: 34px; font-size: .9rem; }
@@ -100,6 +105,12 @@
         <p class="why">适合作为代理系统工程成本、上下文治理、工具裁剪和自动化工作流优化的参考。</p>
         <div class="tags"><span>agentic-workflows</span> <span>developer-tooling</span> <span>cost-control</span></div>
         <p class="actions"><a href="https://github.blog/ai-and-ml/github-copilot/improving-token-efficiency-in-github-agentic-workflows/">打开原文</a></p>
+      
+        <section class="detailed-summary">
+          <h2>详细总结</h2>
+          <p>GitHub 这篇文章讨论的是一个非常实际的问题：代理式工作流如果在每个 pull request、维护任务或 CI 流程中自动运行，成本会在后台悄悄累积。文章的价值在于，它没有把“token 用得多”当成抽象抱怨，而是把 token 消耗变成可记录、可度量、可优化的工程对象。GitHub 先建立统一的 token usage artifact，把不同代理框架、不同模型、输入输出 token、缓存读写、时间戳等信息归一化，再把这些数据和工作流日志结合起来分析。</p><p>文章的第二层是“工作流优化工作流”。GitHub 建立了 Daily Token Usage Auditor 和 Daily Token Optimizer：前者聚合近期运行数据，找出消耗异常、最贵工作流和轮次异常；后者读取工作流源码与日志，生成具体优化建议。这个闭环很重要，因为它说明代理系统的优化不能只靠人工拍脑袋，而要让代理运行本身留下足够证据，再用另一个自动化流程检查这些证据。文章还指出，优化器自己也会出现在每日报告中，形成一种小型自我审计循环。</p><p>最具体的优化来自工具和数据获取方式。文章说，一个常见低效点是 MCP 工具注册过多。由于 LLM API 通常是无状态的，工具名称和 JSON schema 会反复进入上下文；如果一个 MCP 服务有 40 个工具，而代理只用其中两个，其余工具的 schema 就成了每一轮都要携带的负担。GitHub 的做法是根据实际调用情况裁剪未使用工具。另一个更结构性的优化，是把 GitHub MCP 调用替换为 GitHub CLI。获取 diff、文件内容、review comment 这类确定性数据，不一定要经过模型推理，可以在代理启动前用 CLI 下载到工作区，或在运行中通过轻量代理转发 CLI 请求。这样可以把数据获取移出 LLM 推理循环。</p><p>文章还提醒，衡量效率并不简单。token 数下降不一定意味着真正更好，因为模型不同、输入输出 token 成本不同、缓存 token 权重不同，而且优化可能只是让工作流做得更少。GitHub 因此提出 Effective Tokens 之类的统一度量，用模型和 token 类型的权重校正成本。对任何自动化信息系统来说，这篇文章给出的经验是：搜索、抓取、去重、HTML 生成、公开扫描等确定性环节应尽量脚本化；LLM 更适合放在主题判断、摘要、风险识别和审校环节。后续值得追踪的是，代理工作流是否能像传统 CI 一样形成成本仪表盘、异常检测和持续优化规范。</p>
+        </section>
+    
       
         <section class="analysis">
           <h2>阅读提示</h2>
