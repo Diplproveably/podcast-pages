@@ -7,15 +7,15 @@
   <style>
     :root {
       color-scheme: light;
-      --bg: #f3f5f1;
-      --paper: #ffffff;
-      --text: #17201c;
-      --muted: #617069;
-      --line: #cbd8d1;
-      --accent: #0f6b63;
-      --accent-two: #b7791f;
-      --soft: #eef6f1;
-      --marker: #102a25;
+      --bg: #f7f4ec;
+      --paper: #1f2523;
+      --text: #d7ddd3;
+      --muted: #6c8f8b;
+      --line: #6c8f8b;
+      --accent: #b56f3f;
+      --accent-two: #2f5f67;
+      --soft: #f7f4ec;
+      --marker: #d7ddd3;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -23,7 +23,7 @@
       margin: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: "Avenir Next", "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-family: "Iowan Old Style", "Georgia", "Songti SC", "Noto Serif CJK SC", serif;
       line-height: 1.78;
       letter-spacing: 0;
     }
@@ -61,6 +61,12 @@
       font-weight: 700;
       letter-spacing: .08em;
       text-transform: uppercase;
+    }
+    .mood {
+      max-width: 720px;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: .98rem;
     }
     .kicker::before {
       content: "";
@@ -147,7 +153,57 @@
       border: 1px solid var(--line);
       border-radius: 8px;
     }
+    ol {
+      margin: .4em 0 1.4em;
+      padding: 16px 18px 16px 32px;
+      background: color-mix(in srgb, var(--soft) 78%, var(--paper));
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
     li { margin: .46em 0; }
+    strong {
+      color: var(--marker);
+      font-weight: 780;
+      background: linear-gradient(transparent 62%, color-mix(in srgb, var(--accent-two) 26%, transparent) 0);
+      padding: 0 .04em;
+    }
+    blockquote {
+      margin: 1.7em 0;
+      padding: 18px 22px;
+      border-left: 5px solid var(--accent-two);
+      background: linear-gradient(90deg, var(--soft), color-mix(in srgb, var(--paper) 78%, var(--soft)));
+      color: var(--marker);
+      border-radius: 0 8px 8px 0;
+    }
+    blockquote p {
+      margin: .35em 0;
+      font-size: 1.08rem;
+    }
+    .table-wrap {
+      max-width: 100%;
+      overflow-x: auto;
+      margin: 1.3em 0 1.7em;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+    }
+    table {
+      width: 100%;
+      min-width: 560px;
+      border-collapse: collapse;
+      font-size: .96rem;
+    }
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      color: var(--marker);
+      background: var(--soft);
+      font-weight: 760;
+    }
     code {
       font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
       font-size: .86em;
@@ -204,10 +260,10 @@
     }
   </style>
 </head>
-<body>
+<body class="theme-custom-e5de1582e0">
   <div class="page">
     <header>
-      <div class="kicker">市场框架 · 播客脱水稿</div>
+      <div class="kicker">硅碳分流简报 · 播客脱水稿</div>
       <h1>指数月月谈：硅基消费 vs 碳基消费，你站哪边？</h1>
     </header>
     <div class="layout">
@@ -250,7 +306,10 @@
 <p>在节目讨论的 4 月以来数据里，涨幅靠前的是人工智能、芯片、半导体、新能源电池等方向；恒生科技虽然 4 月有反弹，但年初以来仍表现较弱。这为后文“硅基消费和碳基消费的分化”埋下了线索。</p>
 <p>ETF 份额变化是节目里特别强调的观察点。二级市场买卖只是 A 卖给 B，不改变基金份额；一级市场申购赎回才代表增量资金进入或离开。由于一级市场申购赎回常常带有大户或机构行为，它可以作为观察资金偏好的风向标。</p>
 <p>基于涨跌幅和份额变化，嘉宾把 ETF 放进四象限：</p>
-<p>1. 价格上涨、份额增加：既涨又有增量资金进入，可能体现追涨或资金继续配置。 2. 价格上涨、份额减少：上涨中有资金兑现，节目里提到 4 月不少宽基指数处在这一类。 3. 价格下跌、份额减少：下跌中资金离开，可能是杀跌。 4. 价格下跌、份额增加：价格还弱，但已有资金进入，左侧投资者会关注这种变化。</p>
+<ol><li>价格上涨、份额增加：既涨又有增量资金进入，可能体现追涨或资金继续配置。</li>
+<li>价格上涨、份额减少：上涨中有资金兑现，节目里提到 4 月不少宽基指数处在这一类。</li>
+<li>价格下跌、份额减少：下跌中资金离开，可能是杀跌。</li>
+<li>价格下跌、份额增加：价格还弱，但已有资金进入，左侧投资者会关注这种变化。</li></ol>
 <p>这张象限图不能回答“背后是谁在买”，也不能作为全部判断依据，但能帮助普通投资者理解不同 ETF 在涨跌和资金流动上的状态。</p>
 <h2 id="左侧看均值回归-右侧看热度和动量">左侧看均值回归，右侧看热度和动量</h2>
 <p>节目把投资者粗略分成左侧和右侧两类。</p>
