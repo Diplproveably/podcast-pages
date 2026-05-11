@@ -69,7 +69,19 @@
       background: #fbfcfa;
     }
     .actions { margin-bottom: 0; }
+    .analysis {
+      border-top: 1px solid var(--line);
+      margin-top: 18px;
+      padding-top: 14px;
+    }
+    .analysis h2 { font-size: 1.05rem; margin-top: 0; }
+    .analysis p { margin: 0 0 12px; }
+    .topic-index { columns: 2; padding-left: 20px; }
+    .topic-index li { break-inside: avoid; margin: 0 0 8px; }
     footer { color: var(--muted); margin-top: 34px; font-size: .9rem; }
+    @media (max-width: 720px) {
+      .topic-index { columns: 1; }
+    }
   </style>
 </head>
 <body>
@@ -88,6 +100,12 @@
         <p class="why">适合作为 AI 教育、内容消费、青少年用户行为和社会影响的背景材料。</p>
         <div class="tags"><span>ai-education</span> <span>social-impact</span> <span>user-behavior</span></div>
         <p class="actions"><a href="https://www.pewresearch.org/internet/2026/02/24/how-teens-use-and-view-ai/">打开原文</a></p>
+      
+        <section class="analysis">
+          <h2>阅读提示</h2>
+          <p>Pew 这份报告值得看，是因为它从真实用户行为切入，而不是从模型能力切入。青少年用 AI 找信息、做作业、总结内容、娱乐、获得情感支持，也会形成自己对作弊、学习、社会影响和个人未来的判断。它能帮助理解 AI 工具如何进入日常生活。</p><p>对教育和学习产品来说，报告里的关键不是简单判断“该不该用 AI”，而是区分不同用途：查资料、解题、润色、总结、陪伴、娱乐、获取新闻，这些行为对学习能力和信息判断的影响不一样。学校政策如果只用一刀切禁用，很难覆盖实际使用场景。</p><p>这份材料还适合和 Microsoft 的组织报告一起看：成人工作场景里，人类角色变成编排和审校；学生场景里，AI 可能改变信息获取、作业完成和自我效能感。两个场景共同说明，AI 普及后的核心问题会越来越多地落到能力培养和责任边界上。</p>
+        </section>
+    
       </article>
     
         

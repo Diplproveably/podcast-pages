@@ -69,7 +69,19 @@
       background: #fbfcfa;
     }
     .actions { margin-bottom: 0; }
+    .analysis {
+      border-top: 1px solid var(--line);
+      margin-top: 18px;
+      padding-top: 14px;
+    }
+    .analysis h2 { font-size: 1.05rem; margin-top: 0; }
+    .analysis p { margin: 0 0 12px; }
+    .topic-index { columns: 2; padding-left: 20px; }
+    .topic-index li { break-inside: avoid; margin: 0 0 8px; }
     footer { color: var(--muted); margin-top: 34px; font-size: .9rem; }
+    @media (max-width: 720px) {
+      .topic-index { columns: 1; }
+    }
   </style>
 </head>
 <body>
@@ -88,6 +100,12 @@
         <p class="why">匹配 AI 工作方式、组织效率和企业采用的长期主题；可以和 GitHub 代理工作流、OpenAI 模型能力材料交叉阅读。</p>
         <div class="tags"><span>ai-at-work</span> <span>organization-design</span> <span>agentic-workflows</span></div>
         <p class="actions"><a href="https://www.microsoft.com/en-us/worklab/work-trend-index/agents-human-agency-and-the-opportunity-for-every-organization">打开原文</a></p>
+      
+        <section class="analysis">
+          <h2>阅读提示</h2>
+          <p>这份报告的重点不是“AI 会替代多少岗位”这种抽象判断，而是组织图谱如何改变：代理承担更多执行，人类转向目标设定、流程拆解、判断、监督和跨部门协调。它把 AI 放到团队结构里讨论，适合用来理解企业为什么会从个人工具采购走向流程重构。</p><p>读的时候可以特别注意 Microsoft 对 human agency 的处理。报告不是说人退出工作，而是说人类角色更像编排者、审校者和责任承担者。这个框架也适合映射到个人工作台：信息收集、网页发布、资料归档可以自动化，但主题选择、风险判断和最终发布边界仍需要人设定。</p><p>这份材料适合和 GitHub token 效率文章搭配：一个讲组织层面的代理配置，一个讲工程层面的代理成本。两者合起来能帮助判断哪些 AI 工作流只是演示，哪些有机会成为稳定生产系统。</p>
+        </section>
+    
       </article>
     
         

@@ -10,7 +10,7 @@
       "external_url": "https://openai.com/index/introducing-gpt-5-5/",
       "title": "Introducing GPT-5.5",
       "summary": "OpenAI 发布 GPT-5.5，并把重点放在长程任务、代理式编码、知识工作、科研辅助和推理效率上。文章值得看的地方不只是模型分数，而是它把模型能力、工程工具使用、token 效率、网络安全防护和 API 部署要求放在同一个框架里，能帮助判断下一阶段 AI 工具从聊天界面转向“可持续执行任务”的方向。",
-      "content_text": "Introducing GPT-5.5\n\nOpenAI 发布 GPT-5.5，并把重点放在长程任务、代理式编码、知识工作、科研辅助和推理效率上。文章值得看的地方不只是模型分数，而是它把模型能力、工程工具使用、token 效率、网络安全防护和 API 部署要求放在同一个框架里，能帮助判断下一阶段 AI 工具从聊天界面转向“可持续执行任务”的方向。\n\n适合作为近期 AI 能力变化、代理式工具使用和内容生产自动化的基准材料。\n\nhttps://openai.com/index/introducing-gpt-5-5/",
+      "content_text": "Introducing GPT-5.5\n\nOpenAI 发布 GPT-5.5，并把重点放在长程任务、代理式编码、知识工作、科研辅助和推理效率上。文章值得看的地方不只是模型分数，而是它把模型能力、工程工具使用、token 效率、网络安全防护和 API 部署要求放在同一个框架里，能帮助判断下一阶段 AI 工具从聊天界面转向“可持续执行任务”的方向。\n\n适合作为近期 AI 能力变化、代理式工具使用和内容生产自动化的基准材料。\n\n这篇材料可以按三层阅读：第一层看模型能力声明，尤其是长程编码、电脑使用、知识工作和科研辅助；第二层看效率指标，OpenAI 把 token 消耗和任务完成质量放在一起讲，说明前沿模型竞争已经从“能不能答”推进到“能不能低摩擦持续做事”；第三层看安全和 API 部署门槛，越强的代理模型越需要把防滥用、权限和审计放进产品设计。\n\n对资料整理系统来说，这篇文章的价值在于给了一个判断自动化工作流的坐标：以后不是简单问模型问题，而是把搜索、阅读、整理、验证、发布连成闭环。读的时候可以重点观察它如何描述浏览、文件生成和跨工具操作，因为这些能力会直接影响知识库、内容整理和网页发布这类工作流。\n\n后续可以追踪三个问题：GPT-5.5 在真实长任务中的失败模式是什么；API 部署限制会怎样影响第三方工具接入；更低 token 消耗会不会改变代理系统的成本结构。\n\nhttps://openai.com/index/introducing-gpt-5-5/",
       "date_published": "2026-04-23T00:00:00+00:00",
       "tags": [
         "ai-tools",
@@ -24,7 +24,7 @@
       "external_url": "https://github.blog/ai-and-ml/github-copilot/improving-token-efficiency-in-github-agentic-workflows/",
       "title": "Improving token efficiency in GitHub Agentic Workflows",
       "summary": "GitHub 这篇文章把代理式工作流的成本问题拆成可观测、可优化、可复盘的工程问题：哪些步骤其实只是确定性取数，哪些 MCP 工具 schema 被反复塞进上下文，哪些规则错误会导致代理进入长回合循环。它比普通产品更新更有价值，因为它给出了真实生产系统里如何削减 token 消耗、如何衡量有效 token、如何把代理优化代理的闭环落地。",
-      "content_text": "Improving token efficiency in GitHub Agentic Workflows\n\nGitHub 这篇文章把代理式工作流的成本问题拆成可观测、可优化、可复盘的工程问题：哪些步骤其实只是确定性取数，哪些 MCP 工具 schema 被反复塞进上下文，哪些规则错误会导致代理进入长回合循环。它比普通产品更新更有价值，因为它给出了真实生产系统里如何削减 token 消耗、如何衡量有效 token、如何把代理优化代理的闭环落地。\n\n适合作为代理系统工程成本、上下文治理、工具裁剪和自动化工作流优化的参考。\n\nhttps://github.blog/ai-and-ml/github-copilot/improving-token-efficiency-in-github-agentic-workflows/",
+      "content_text": "Improving token efficiency in GitHub Agentic Workflows\n\nGitHub 这篇文章把代理式工作流的成本问题拆成可观测、可优化、可复盘的工程问题：哪些步骤其实只是确定性取数，哪些 MCP 工具 schema 被反复塞进上下文，哪些规则错误会导致代理进入长回合循环。它比普通产品更新更有价值，因为它给出了真实生产系统里如何削减 token 消耗、如何衡量有效 token、如何把代理优化代理的闭环落地。\n\n适合作为代理系统工程成本、上下文治理、工具裁剪和自动化工作流优化的参考。\n\n这篇文章比一般 Copilot 新闻更像工程复盘。它把 token 浪费拆成几类：工具定义太重、上下文重复注入、模型做了本可以由确定性程序完成的工作、错误规则导致代理多轮空转。这个视角适合用于审视任何自动化流程：哪些环节应该交给脚本，哪些环节才值得交给 LLM。\n\n阅读时可以把它当成资料整理系统的性能设计参考。比如新闻收集任务里，搜索、去重、HTML 生成、公开扫描都应该尽量脚本化；LLM 更适合做主题判断、摘要、风险识别和风格选择。这样既减少上下文压力，也能让失败点更清楚。\n\n后续可追踪的不是单个优化技巧，而是 GitHub 如何把“代理运行成本”做成可度量对象。只要 token 成本、工具 schema、上下文窗口和多轮循环能被观测，代理工作流才有持续迭代的基础。\n\nhttps://github.blog/ai-and-ml/github-copilot/improving-token-efficiency-in-github-agentic-workflows/",
       "date_published": "2026-05-07T00:00:00+00:00",
       "tags": [
         "agentic-workflows",
@@ -38,7 +38,7 @@
       "external_url": "https://hai.stanford.edu/ai-index/2026-ai-index-report",
       "title": "The 2026 AI Index Report",
       "summary": "Stanford HAI 的 2026 AI Index 是年度基准型材料，覆盖研发、技术性能、负责任 AI、经济、科学、医疗、教育、政策治理和公众态度。它的价值在于把模型能力、投资、数据中心、教育使用、AI 治理、公众信任等分散话题压到同一组指标里，适合作为后续判断 AI 新闻时的背景底图。",
-      "content_text": "The 2026 AI Index Report\n\nStanford HAI 的 2026 AI Index 是年度基准型材料，覆盖研发、技术性能、负责任 AI、经济、科学、医疗、教育、政策治理和公众态度。它的价值在于把模型能力、投资、数据中心、教育使用、AI 治理、公众信任等分散话题压到同一组指标里，适合作为后续判断 AI 新闻时的背景底图。\n\n匹配 AI 产业、政策、教育和社会影响；适合作为信息中枢长期引用的年度基准。\n\nhttps://hai.stanford.edu/ai-index/2026-ai-index-report",
+      "content_text": "The 2026 AI Index Report\n\nStanford HAI 的 2026 AI Index 是年度基准型材料，覆盖研发、技术性能、负责任 AI、经济、科学、医疗、教育、政策治理和公众态度。它的价值在于把模型能力、投资、数据中心、教育使用、AI 治理、公众信任等分散话题压到同一组指标里，适合作为后续判断 AI 新闻时的背景底图。\n\n匹配 AI 产业、政策、教育和社会影响；适合作为信息中枢长期引用的年度基准。\n\nAI Index 适合作为年度底图，而不是一次性读完的新闻。它的强项是把模型指标、资本投入、产业采用、政策治理、公众态度和教育影响放在同一个时间轴上。后续遇到任何 AI 热点，都可以回到这份报告里找背景变量。\n\n阅读策略上，不必逐页看。可以先看技术性能、经济影响、政策治理、教育和公众态度几章，再把具体新闻挂到这些章节上。比如模型发布对应技术性能和成本，企业服务对应经济采用，学校和青少年使用对应教育与社会影响。\n\n这份报告也适合用作信息中枢的长期校准器：如果每天收集的 AI 新闻只围绕模型发布和融资，AI Index 会提醒还需要看治理、劳动力、教育、医疗、能耗和国际竞争这些更慢但更重要的变量。\n\nhttps://hai.stanford.edu/ai-index/2026-ai-index-report",
       "date_published": "2026-04-13T00:00:00+00:00",
       "tags": [
         "ai-research",
@@ -52,7 +52,7 @@
       "external_url": "https://reutersinstitute.politics.ox.ac.uk/changing-shape-and-new-economics-news-podcasting-listening-watching-podcasts-shows",
       "title": "The changing shape and new economics of news podcasting: From listening to watching, from podcasts to shows",
       "summary": "Reuters Institute 这份报告讨论新闻播客从音频转向视频、从单集节目转向 show、从免费分发转向订阅与多平台经营的变化。它既看用户研究，也看纽约时报、卫报、经济学人、金融时报等出版机构的策略，对理解播客为什么越来越像视频栏目、为什么人格化谈话节目挤压叙事型节目，很有参考价值。",
-      "content_text": "The changing shape and new economics of news podcasting: From listening to watching, from podcasts to shows\n\nReuters Institute 这份报告讨论新闻播客从音频转向视频、从单集节目转向 show、从免费分发转向订阅与多平台经营的变化。它既看用户研究，也看纽约时报、卫报、经济学人、金融时报等出版机构的策略，对理解播客为什么越来越像视频栏目、为什么人格化谈话节目挤压叙事型节目，很有参考价值。\n\n适合作为播客、内容生产和媒体商业模式变化的背景材料。\n\nhttps://reutersinstitute.politics.ox.ac.uk/changing-shape-and-new-economics-news-podcasting-listening-watching-podcasts-shows",
+      "content_text": "The changing shape and new economics of news podcasting: From listening to watching, from podcasts to shows\n\nReuters Institute 这份报告讨论新闻播客从音频转向视频、从单集节目转向 show、从免费分发转向订阅与多平台经营的变化。它既看用户研究，也看纽约时报、卫报、经济学人、金融时报等出版机构的策略，对理解播客为什么越来越像视频栏目、为什么人格化谈话节目挤压叙事型节目，很有参考价值。\n\n适合作为播客、内容生产和媒体商业模式变化的背景材料。\n\n这份报告最有用的地方，是把 podcast 从“音频内容”重新定义为跨平台 show。新闻播客正在进入 YouTube、短视频、订阅产品、活动和会员体系，节目不再只是 RSS 里的音频文件，而是一个可以被剪辑、观看、订阅、搜索和社交传播的内容品牌。\n\n对播客整理和网页发布来说，这份报告提供了反向启发：如果听众越来越多从视频平台和社交平台进入节目，那么整理稿、摘要页、RSS 和主题归档也可以成为节目二次发现的一部分。不是把音频变成全文搬运，而是把一集内容整理成可检索、可收藏、可再次阅读的资料入口。\n\n阅读时可以重点看经济结构：广告、订阅、平台分发、视频制作成本、主持人人格化和机构品牌之间的张力。它能解释为什么许多播客越来越像访谈栏目，也解释为什么深度叙事型音频会面对更高制作成本和更难变现的问题。\n\nhttps://reutersinstitute.politics.ox.ac.uk/changing-shape-and-new-economics-news-podcasting-listening-watching-podcasts-shows",
       "date_published": "2026-05-07T00:00:00+00:00",
       "tags": [
         "podcast",
@@ -66,7 +66,7 @@
       "external_url": "https://www.microsoft.com/en-us/worklab/work-trend-index/agents-human-agency-and-the-opportunity-for-every-organization",
       "title": "Agents, human agency, and the opportunity for every organization",
       "summary": "微软 2026 Work Trend Index 把“AI 代理进入组织”描述成组织结构问题，而不只是员工多用了一个工具。报告结合 Microsoft 365 匿名生产力信号和跨市场调查，讨论代理接管执行后，人类如何重新承担判断、拆分任务、重构流程和形成学习型组织。对理解企业为什么从个人提效转向流程再造很有帮助。",
-      "content_text": "Agents, human agency, and the opportunity for every organization\n\n微软 2026 Work Trend Index 把“AI 代理进入组织”描述成组织结构问题，而不只是员工多用了一个工具。报告结合 Microsoft 365 匿名生产力信号和跨市场调查，讨论代理接管执行后，人类如何重新承担判断、拆分任务、重构流程和形成学习型组织。对理解企业为什么从个人提效转向流程再造很有帮助。\n\n匹配 AI 工作方式、组织效率和企业采用的长期主题；可以和 GitHub 代理工作流、OpenAI 模型能力材料交叉阅读。\n\nhttps://www.microsoft.com/en-us/worklab/work-trend-index/agents-human-agency-and-the-opportunity-for-every-organization",
+      "content_text": "Agents, human agency, and the opportunity for every organization\n\n微软 2026 Work Trend Index 把“AI 代理进入组织”描述成组织结构问题，而不只是员工多用了一个工具。报告结合 Microsoft 365 匿名生产力信号和跨市场调查，讨论代理接管执行后，人类如何重新承担判断、拆分任务、重构流程和形成学习型组织。对理解企业为什么从个人提效转向流程再造很有帮助。\n\n匹配 AI 工作方式、组织效率和企业采用的长期主题；可以和 GitHub 代理工作流、OpenAI 模型能力材料交叉阅读。\n\n这份报告的重点不是“AI 会替代多少岗位”这种抽象判断，而是组织图谱如何改变：代理承担更多执行，人类转向目标设定、流程拆解、判断、监督和跨部门协调。它把 AI 放到团队结构里讨论，适合用来理解企业为什么会从个人工具采购走向流程重构。\n\n读的时候可以特别注意 Microsoft 对 human agency 的处理。报告不是说人退出工作，而是说人类角色更像编排者、审校者和责任承担者。这个框架也适合映射到个人工作台：信息收集、网页发布、资料归档可以自动化，但主题选择、风险判断和最终发布边界仍需要人设定。\n\n这份材料适合和 GitHub token 效率文章搭配：一个讲组织层面的代理配置，一个讲工程层面的代理成本。两者合起来能帮助判断哪些 AI 工作流只是演示，哪些有机会成为稳定生产系统。\n\nhttps://www.microsoft.com/en-us/worklab/work-trend-index/agents-human-agency-and-the-opportunity-for-every-organization",
       "date_published": "2026-05-05T00:00:00+00:00",
       "tags": [
         "ai-at-work",
@@ -80,7 +80,7 @@
       "external_url": "https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026",
       "title": "World Economic Outlook, April 2026: Global Economy in the Shadow of War",
       "summary": "IMF 4 月《世界经济展望》把中东战争、商品价格、通胀预期、财政缓冲和地缘碎片化放在同一宏观图景下分析。报告给出的重点不是短线资产判断，而是战争与防务开支如何改变增长、通胀、债务、社会支出和新兴市场脆弱性。适合作为宏观讨论里的高权威背景材料。",
-      "content_text": "World Economic Outlook, April 2026: Global Economy in the Shadow of War\n\nIMF 4 月《世界经济展望》把中东战争、商品价格、通胀预期、财政缓冲和地缘碎片化放在同一宏观图景下分析。报告给出的重点不是短线资产判断，而是战争与防务开支如何改变增长、通胀、债务、社会支出和新兴市场脆弱性。适合作为宏观讨论里的高权威背景材料。\n\n匹配宏观经济、资产配置背景和政策风险；适合作为后续阅读市场与政策新闻时的背景资料。\n\nhttps://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026",
+      "content_text": "World Economic Outlook, April 2026: Global Economy in the Shadow of War\n\nIMF 4 月《世界经济展望》把中东战争、商品价格、通胀预期、财政缓冲和地缘碎片化放在同一宏观图景下分析。报告给出的重点不是短线资产判断，而是战争与防务开支如何改变增长、通胀、债务、社会支出和新兴市场脆弱性。适合作为宏观讨论里的高权威背景材料。\n\n匹配宏观经济、资产配置背景和政策风险；适合作为后续阅读市场与政策新闻时的背景资料。\n\n这份 WEO 的价值在于把战争、商品价格、财政空间、通胀预期和增长压力放到同一个宏观框架里。它不是为短线市场交易服务，而是帮助理解冲击如何通过能源、食品、防务支出、公共债务和国际资本流动传导到不同经济体。\n\n阅读时可以特别关注两类国家的差异：发达经济体面对的是通胀、财政和产业安全的平衡；新兴市场更容易受到外部融资、进口成本和粮食能源价格波动影响。这个差异决定了同一个地缘事件不会在所有国家产生相同后果。\n\n这份报告适合和 World Bank 商品市场报告配套。IMF 提供宏观叙事和政策权衡，World Bank 更具体地呈现能源、金属、食品和化肥价格。两者一起读，可以减少单看市场价格时的碎片感。\n\nhttps://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026",
       "date_published": "2026-04-14T00:00:00+00:00",
       "tags": [
         "macro",
@@ -94,7 +94,7 @@
       "external_url": "https://www.worldbank.org/en/research/commodity-markets",
       "title": "Commodity Markets Outlook, April 2026",
       "summary": "世界银行商品市场页面汇总了 2026 年 4 月《Commodity Markets Outlook》和最新价格数据，重点是中东战争对能源、化肥、食品、金属和整体商品价格的冲击。它适合和 IMF 展望配套阅读：IMF 讲宏观传导和政策权衡，World Bank 更细地落到商品指数、能源价格和发展中经济体输入成本。",
-      "content_text": "Commodity Markets Outlook, April 2026\n\n世界银行商品市场页面汇总了 2026 年 4 月《Commodity Markets Outlook》和最新价格数据，重点是中东战争对能源、化肥、食品、金属和整体商品价格的冲击。它适合和 IMF 展望配套阅读：IMF 讲宏观传导和政策权衡，World Bank 更细地落到商品指数、能源价格和发展中经济体输入成本。\n\n匹配宏观、能源、农业投入品和商品周期；对理解食品、化肥、能源价格链条有帮助。\n\nhttps://www.worldbank.org/en/research/commodity-markets",
+      "content_text": "Commodity Markets Outlook, April 2026\n\n世界银行商品市场页面汇总了 2026 年 4 月《Commodity Markets Outlook》和最新价格数据，重点是中东战争对能源、化肥、食品、金属和整体商品价格的冲击。它适合和 IMF 展望配套阅读：IMF 讲宏观传导和政策权衡，World Bank 更细地落到商品指数、能源价格和发展中经济体输入成本。\n\n匹配宏观、能源、农业投入品和商品周期；对理解食品、化肥、能源价格链条有帮助。\n\n商品市场报告比宏观总览更贴近成本链条。能源价格影响运输、发电和工业生产，化肥价格影响农业投入，食品价格影响家庭消费和社会稳定，金属价格又和制造业、基建、新能源和数据中心投资有关。把这些放在一起看，能更清楚地理解通胀和产业链压力。\n\n这份材料尤其适合和农业、东北、大豆、能源、化肥等主题连接。单个农产品价格常常只是表面，背后可能是能源、运输、汇率、贸易政策和天气共同作用。World Bank 的价值在于提供跨品类的价格框架。\n\n后续可以追踪三个方向：战争冲击是否继续推高能源风险溢价；化肥和食品价格是否影响农业生产成本；金属价格是否被 AI 数据中心、电网和新能源建设重新定价。\n\nhttps://www.worldbank.org/en/research/commodity-markets",
       "date_published": "2026-04-01T00:00:00+00:00",
       "tags": [
         "commodities",
@@ -108,7 +108,7 @@
       "external_url": "https://www.anthropic.com/news/enterprise-ai-services-company",
       "title": "Building a new enterprise AI services company with Blackstone, Hellman & Friedman, and Goldman Sachs",
       "summary": "Anthropic 宣布与 Blackstone、Hellman & Friedman、Goldman Sachs 等合作成立企业 AI 服务公司，目标不是单纯卖模型接口，而是把 Claude 嵌入中型企业的重要运营环节。这个动作说明前沿模型公司的企业路线正在从“给 API 和订阅”走向“深度交付、工程团队常驻、围绕具体业务流程定制系统”。",
-      "content_text": "Building a new enterprise AI services company with Blackstone, Hellman & Friedman, and Goldman Sachs\n\nAnthropic 宣布与 Blackstone、Hellman & Friedman、Goldman Sachs 等合作成立企业 AI 服务公司，目标不是单纯卖模型接口，而是把 Claude 嵌入中型企业的重要运营环节。这个动作说明前沿模型公司的企业路线正在从“给 API 和订阅”走向“深度交付、工程团队常驻、围绕具体业务流程定制系统”。\n\n匹配 AI 商业化、企业落地和代理系统交付模式；可以帮助判断 AI 公司收入结构和生态合作的变化。\n\nhttps://www.anthropic.com/news/enterprise-ai-services-company",
+      "content_text": "Building a new enterprise AI services company with Blackstone, Hellman & Friedman, and Goldman Sachs\n\nAnthropic 宣布与 Blackstone、Hellman & Friedman、Goldman Sachs 等合作成立企业 AI 服务公司，目标不是单纯卖模型接口，而是把 Claude 嵌入中型企业的重要运营环节。这个动作说明前沿模型公司的企业路线正在从“给 API 和订阅”走向“深度交付、工程团队常驻、围绕具体业务流程定制系统”。\n\n匹配 AI 商业化、企业落地和代理系统交付模式；可以帮助判断 AI 公司收入结构和生态合作的变化。\n\n这条消息的重点在商业形态。Anthropic 没有只强调模型能力，而是强调工程团队、客户现场、行业流程和长期支持。这说明企业 AI 的难点可能不在模型是否聪明，而在模型如何进入合规、财务、医疗、制造、区域银行等具体流程。\n\n这也反映出模型公司正在补齐交付层。API 和订阅适合开发者与知识工作者，但中型企业往往缺少内部 AI 工程能力，需要系统集成、流程梳理和持续运维。Anthropic 与金融和私募机构合作，等于把模型能力、客户网络、资金和交付团队组合起来。\n\n后续可以观察两个变量：这类服务公司会不会成为模型公司的重要收入通道；以及企业客户是购买模型、购买插件，还是购买一整套业务流程改造。这个问题会影响 AI 平台、咨询公司和企业软件厂商的边界。\n\nhttps://www.anthropic.com/news/enterprise-ai-services-company",
       "date_published": "2026-05-04T00:00:00+00:00",
       "tags": [
         "ai-business",
@@ -122,7 +122,7 @@
       "external_url": "http://www.china.org.cn/2026-03/19/content_118384399.shtml",
       "title": "2026年政府工作报告（全文） / Full text: Report on the Work of the Government (2026)",
       "summary": "这份中英文并列的 2026 年政府工作报告全文，提供了观察中国年度政策目标、产业方向、就业、消费、农业、科技、制造业和十五五规划取向的一手文本。它不是评论文章，但适合作为后续读任何中国宏观、产业、地方财政、农业和科技政策新闻时的政策原文底座。",
-      "content_text": "2026年政府工作报告（全文） / Full text: Report on the Work of the Government (2026)\n\n这份中英文并列的 2026 年政府工作报告全文，提供了观察中国年度政策目标、产业方向、就业、消费、农业、科技、制造业和十五五规划取向的一手文本。它不是评论文章，但适合作为后续读任何中国宏观、产业、地方财政、农业和科技政策新闻时的政策原文底座。\n\n匹配宏观政策、产业链、农业和中国社会观察；公开来源、官方全文，只作为资料入口。\n\nhttp://www.china.org.cn/2026-03/19/content_118384399.shtml",
+      "content_text": "2026年政府工作报告（全文） / Full text: Report on the Work of the Government (2026)\n\n这份中英文并列的 2026 年政府工作报告全文，提供了观察中国年度政策目标、产业方向、就业、消费、农业、科技、制造业和十五五规划取向的一手文本。它不是评论文章，但适合作为后续读任何中国宏观、产业、地方财政、农业和科技政策新闻时的政策原文底座。\n\n匹配宏观政策、产业链、农业和中国社会观察；公开来源、官方全文，只作为资料入口。\n\n政府工作报告适合作为政策原文底座，而不是把它当成普通新闻。它给出年度目标、政策重点、产业方向和财政民生安排，后续读任何地方政策、产业补贴、就业、消费、农业、科技和制造业新闻时，都可以回到这份文本里找上位表述。\n\n阅读时可以先抓几个关键词：就业、消费、科技、制造业、农业、粮食安全、地方财政、十五五、开放和风险化解。它们不是孤立段落，而是政策资源分配和地方执行的信号。比如农业和粮食安全，会和化肥、机械化、东北农业、进口大豆、县域经济这些主题连接。\n\n这份文本的意义在于提供原始政策语境。后续二手解读如果只挑一句话做标题，容易失真；把全文作为参考，可以更容易判断一条政策新闻到底是新信号，还是已有政策框架里的延续。\n\nhttp://www.china.org.cn/2026-03/19/content_118384399.shtml",
       "date_published": "2026-03-19T00:00:00+00:00",
       "tags": [
         "china-policy",
@@ -136,7 +136,7 @@
       "external_url": "https://www.pewresearch.org/internet/2026/02/24/how-teens-use-and-view-ai/",
       "title": "How Teens Use and View AI",
       "summary": "Pew Research Center 这份报告调查美国青少年如何使用 AI 聊天机器人：找信息、做作业、总结内容、娱乐、情感支持、获取新闻，以及他们如何看待 AI 对个人和社会的影响。它的价值在于把教育、信息获取、AI 陪伴、作弊判断和社会预期放在一个样本框架里，适合观察下一代用户实际如何把 AI 纳入日常。",
-      "content_text": "How Teens Use and View AI\n\nPew Research Center 这份报告调查美国青少年如何使用 AI 聊天机器人：找信息、做作业、总结内容、娱乐、情感支持、获取新闻，以及他们如何看待 AI 对个人和社会的影响。它的价值在于把教育、信息获取、AI 陪伴、作弊判断和社会预期放在一个样本框架里，适合观察下一代用户实际如何把 AI 纳入日常。\n\n适合作为 AI 教育、内容消费、青少年用户行为和社会影响的背景材料。\n\nhttps://www.pewresearch.org/internet/2026/02/24/how-teens-use-and-view-ai/",
+      "content_text": "How Teens Use and View AI\n\nPew Research Center 这份报告调查美国青少年如何使用 AI 聊天机器人：找信息、做作业、总结内容、娱乐、情感支持、获取新闻，以及他们如何看待 AI 对个人和社会的影响。它的价值在于把教育、信息获取、AI 陪伴、作弊判断和社会预期放在一个样本框架里，适合观察下一代用户实际如何把 AI 纳入日常。\n\n适合作为 AI 教育、内容消费、青少年用户行为和社会影响的背景材料。\n\nPew 这份报告值得看，是因为它从真实用户行为切入，而不是从模型能力切入。青少年用 AI 找信息、做作业、总结内容、娱乐、获得情感支持，也会形成自己对作弊、学习、社会影响和个人未来的判断。它能帮助理解 AI 工具如何进入日常生活。\n\n对教育和学习产品来说，报告里的关键不是简单判断“该不该用 AI”，而是区分不同用途：查资料、解题、润色、总结、陪伴、娱乐、获取新闻，这些行为对学习能力和信息判断的影响不一样。学校政策如果只用一刀切禁用，很难覆盖实际使用场景。\n\n这份材料还适合和 Microsoft 的组织报告一起看：成人工作场景里，人类角色变成编排和审校；学生场景里，AI 可能改变信息获取、作业完成和自我效能感。两个场景共同说明，AI 普及后的核心问题会越来越多地落到能力培养和责任边界上。\n\nhttps://www.pewresearch.org/internet/2026/02/24/how-teens-use-and-view-ai/",
       "date_published": "2026-02-24T00:00:00+00:00",
       "tags": [
         "ai-education",

@@ -69,7 +69,19 @@
       background: #fbfcfa;
     }
     .actions { margin-bottom: 0; }
+    .analysis {
+      border-top: 1px solid var(--line);
+      margin-top: 18px;
+      padding-top: 14px;
+    }
+    .analysis h2 { font-size: 1.05rem; margin-top: 0; }
+    .analysis p { margin: 0 0 12px; }
+    .topic-index { columns: 2; padding-left: 20px; }
+    .topic-index li { break-inside: avoid; margin: 0 0 8px; }
     footer { color: var(--muted); margin-top: 34px; font-size: .9rem; }
+    @media (max-width: 720px) {
+      .topic-index { columns: 1; }
+    }
   </style>
 </head>
 <body>
@@ -88,6 +100,12 @@
         <p class="why">适合作为代理系统工程成本、上下文治理、工具裁剪和自动化工作流优化的参考。</p>
         <div class="tags"><span>agentic-workflows</span> <span>developer-tooling</span> <span>cost-control</span></div>
         <p class="actions"><a href="https://github.blog/ai-and-ml/github-copilot/improving-token-efficiency-in-github-agentic-workflows/">打开原文</a></p>
+      
+        <section class="analysis">
+          <h2>阅读提示</h2>
+          <p>这篇文章比一般 Copilot 新闻更像工程复盘。它把 token 浪费拆成几类：工具定义太重、上下文重复注入、模型做了本可以由确定性程序完成的工作、错误规则导致代理多轮空转。这个视角适合用于审视任何自动化流程：哪些环节应该交给脚本，哪些环节才值得交给 LLM。</p><p>阅读时可以把它当成资料整理系统的性能设计参考。比如新闻收集任务里，搜索、去重、HTML 生成、公开扫描都应该尽量脚本化；LLM 更适合做主题判断、摘要、风险识别和风格选择。这样既减少上下文压力，也能让失败点更清楚。</p><p>后续可追踪的不是单个优化技巧，而是 GitHub 如何把“代理运行成本”做成可度量对象。只要 token 成本、工具 schema、上下文窗口和多轮循环能被观测，代理工作流才有持续迭代的基础。</p>
+        </section>
+    
       </article>
     
         

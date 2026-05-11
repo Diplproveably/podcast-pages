@@ -69,7 +69,19 @@
       background: #fbfcfa;
     }
     .actions { margin-bottom: 0; }
+    .analysis {
+      border-top: 1px solid var(--line);
+      margin-top: 18px;
+      padding-top: 14px;
+    }
+    .analysis h2 { font-size: 1.05rem; margin-top: 0; }
+    .analysis p { margin: 0 0 12px; }
+    .topic-index { columns: 2; padding-left: 20px; }
+    .topic-index li { break-inside: avoid; margin: 0 0 8px; }
     footer { color: var(--muted); margin-top: 34px; font-size: .9rem; }
+    @media (max-width: 720px) {
+      .topic-index { columns: 1; }
+    }
   </style>
 </head>
 <body>
@@ -82,6 +94,7 @@
         <a href="../">播客首页</a>
         <a href="feed.xml">RSS</a>
         <a href="feed.json">JSON Feed</a>
+        <a href="topics/">主题归档</a>
       </div>
     </header>
     <section class="info-list">

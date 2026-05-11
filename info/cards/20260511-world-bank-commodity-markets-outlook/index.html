@@ -69,7 +69,19 @@
       background: #fbfcfa;
     }
     .actions { margin-bottom: 0; }
+    .analysis {
+      border-top: 1px solid var(--line);
+      margin-top: 18px;
+      padding-top: 14px;
+    }
+    .analysis h2 { font-size: 1.05rem; margin-top: 0; }
+    .analysis p { margin: 0 0 12px; }
+    .topic-index { columns: 2; padding-left: 20px; }
+    .topic-index li { break-inside: avoid; margin: 0 0 8px; }
     footer { color: var(--muted); margin-top: 34px; font-size: .9rem; }
+    @media (max-width: 720px) {
+      .topic-index { columns: 1; }
+    }
   </style>
 </head>
 <body>
@@ -88,6 +100,12 @@
         <p class="why">匹配宏观、能源、农业投入品和商品周期；对理解食品、化肥、能源价格链条有帮助。</p>
         <div class="tags"><span>commodities</span> <span>macro</span> <span>agriculture</span></div>
         <p class="actions"><a href="https://www.worldbank.org/en/research/commodity-markets">打开原文</a></p>
+      
+        <section class="analysis">
+          <h2>阅读提示</h2>
+          <p>商品市场报告比宏观总览更贴近成本链条。能源价格影响运输、发电和工业生产，化肥价格影响农业投入，食品价格影响家庭消费和社会稳定，金属价格又和制造业、基建、新能源和数据中心投资有关。把这些放在一起看，能更清楚地理解通胀和产业链压力。</p><p>这份材料尤其适合和农业、东北、大豆、能源、化肥等主题连接。单个农产品价格常常只是表面，背后可能是能源、运输、汇率、贸易政策和天气共同作用。World Bank 的价值在于提供跨品类的价格框架。</p><p>后续可以追踪三个方向：战争冲击是否继续推高能源风险溢价；化肥和食品价格是否影响农业生产成本；金属价格是否被 AI 数据中心、电网和新能源建设重新定价。</p>
+        </section>
+    
       </article>
     
         

@@ -69,7 +69,19 @@
       background: #fbfcfa;
     }
     .actions { margin-bottom: 0; }
+    .analysis {
+      border-top: 1px solid var(--line);
+      margin-top: 18px;
+      padding-top: 14px;
+    }
+    .analysis h2 { font-size: 1.05rem; margin-top: 0; }
+    .analysis p { margin: 0 0 12px; }
+    .topic-index { columns: 2; padding-left: 20px; }
+    .topic-index li { break-inside: avoid; margin: 0 0 8px; }
     footer { color: var(--muted); margin-top: 34px; font-size: .9rem; }
+    @media (max-width: 720px) {
+      .topic-index { columns: 1; }
+    }
   </style>
 </head>
 <body>
@@ -88,6 +100,12 @@
         <p class="why">匹配 AI 产业、政策、教育和社会影响；适合作为信息中枢长期引用的年度基准。</p>
         <div class="tags"><span>ai-research</span> <span>ai-policy</span> <span>macro-context</span></div>
         <p class="actions"><a href="https://hai.stanford.edu/ai-index/2026-ai-index-report">打开原文</a></p>
+      
+        <section class="analysis">
+          <h2>阅读提示</h2>
+          <p>AI Index 适合作为年度底图，而不是一次性读完的新闻。它的强项是把模型指标、资本投入、产业采用、政策治理、公众态度和教育影响放在同一个时间轴上。后续遇到任何 AI 热点，都可以回到这份报告里找背景变量。</p><p>阅读策略上，不必逐页看。可以先看技术性能、经济影响、政策治理、教育和公众态度几章，再把具体新闻挂到这些章节上。比如模型发布对应技术性能和成本，企业服务对应经济采用，学校和青少年使用对应教育与社会影响。</p><p>这份报告也适合用作信息中枢的长期校准器：如果每天收集的 AI 新闻只围绕模型发布和融资，AI Index 会提醒还需要看治理、劳动力、教育、医疗、能耗和国际竞争这些更慢但更重要的变量。</p>
+        </section>
+    
       </article>
     
         

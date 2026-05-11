@@ -69,7 +69,19 @@
       background: #fbfcfa;
     }
     .actions { margin-bottom: 0; }
+    .analysis {
+      border-top: 1px solid var(--line);
+      margin-top: 18px;
+      padding-top: 14px;
+    }
+    .analysis h2 { font-size: 1.05rem; margin-top: 0; }
+    .analysis p { margin: 0 0 12px; }
+    .topic-index { columns: 2; padding-left: 20px; }
+    .topic-index li { break-inside: avoid; margin: 0 0 8px; }
     footer { color: var(--muted); margin-top: 34px; font-size: .9rem; }
+    @media (max-width: 720px) {
+      .topic-index { columns: 1; }
+    }
   </style>
 </head>
 <body>
@@ -88,6 +100,12 @@
         <p class="why">匹配 AI 商业化、企业落地和代理系统交付模式；可以帮助判断 AI 公司收入结构和生态合作的变化。</p>
         <div class="tags"><span>ai-business</span> <span>enterprise-ai</span> <span>model-platforms</span></div>
         <p class="actions"><a href="https://www.anthropic.com/news/enterprise-ai-services-company">打开原文</a></p>
+      
+        <section class="analysis">
+          <h2>阅读提示</h2>
+          <p>这条消息的重点在商业形态。Anthropic 没有只强调模型能力，而是强调工程团队、客户现场、行业流程和长期支持。这说明企业 AI 的难点可能不在模型是否聪明，而在模型如何进入合规、财务、医疗、制造、区域银行等具体流程。</p><p>这也反映出模型公司正在补齐交付层。API 和订阅适合开发者与知识工作者，但中型企业往往缺少内部 AI 工程能力，需要系统集成、流程梳理和持续运维。Anthropic 与金融和私募机构合作，等于把模型能力、客户网络、资金和交付团队组合起来。</p><p>后续可以观察两个变量：这类服务公司会不会成为模型公司的重要收入通道；以及企业客户是购买模型、购买插件，还是购买一整套业务流程改造。这个问题会影响 AI 平台、咨询公司和企业软件厂商的边界。</p>
+        </section>
+    
       </article>
     
         
