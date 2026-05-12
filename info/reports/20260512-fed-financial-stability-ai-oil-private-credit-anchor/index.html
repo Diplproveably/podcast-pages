@@ -1,235 +1,576 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="ledger" data-layout="newspaper">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>美联储金融稳定报告：油价、AI 和私募信贷正在进入同一张风险表</title>
   <style>
     :root {
-      --bg: #f6f5ef;
-      --paper: #ffffff;
-      --text: #1f2520;
-      --muted: #66716a;
-      --line: #d9ded7;
-      --accent: #0b6b5f;
-      --accent-two: #9b6a24;
-      --soft: #edf5f1;
-      --warm: #fff4dc;
-      --ink-soft: #2f3933;
+      --paper: #f5f1e3;
+      --ink: #171717;
+      --muted: #64615b;
+      --line: #1c1c1c;
+      --accent: #0d5c63;
+      --accent-two: #b54d1f;
+      --accent-three: #f0c84b;
+      --sand: #efe5cf;
+      --measure: 52rem;
+      --background-signature: ledger-newsprint;
+      --page-background: repeating-linear-gradient(0deg, rgba(13,92,99,.045) 0 1px, transparent 1px 13px), repeating-linear-gradient(90deg, rgba(181,77,31,.035) 0 1px, transparent 1px 86px), var(--paper);
     }
     * { box-sizing: border-box; }
+    html { background: #151515; }
     body {
       margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Avenir Next", "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
-      line-height: 1.72;
+      color: var(--ink);
+      background: var(--page-background);
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      line-height: 1.86;
       letter-spacing: 0;
     }
-    main {
-      width: min(1040px, calc(100% - 34px));
-      margin: 0 auto;
-      padding: 38px 0 72px;
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; overflow-wrap: anywhere; }
+    .issue-bar {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: .58rem clamp(1rem, 4vw, 3.2rem);
+      background: color-mix(in srgb, var(--paper) 92%, white);
+      border-bottom: 2px solid var(--line);
+      backdrop-filter: blur(12px);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
     }
-    header {
-      border-bottom: 2px solid var(--text);
-      margin-bottom: 24px;
-      padding-bottom: 24px;
+    .issue-bar strong { color: var(--accent); }
+    .issue-bar span:nth-child(2) { font-weight: 900; }
+    .issue-bar span:last-child { text-align: right; color: var(--muted); }
+    .magazine-cover {
+      min-height: clamp(420px, 62vh, 680px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(17rem, 25rem);
+      gap: clamp(2rem, 5vw, 4.2rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.5rem) clamp(1rem, 5vw, 5rem) clamp(2.2rem, 4vw, 3.2rem);
+      border-bottom: 2px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .magazine-cover::before {
+      content: "RISK";
+      position: absolute;
+      left: clamp(.7rem, 3vw, 2rem);
+      top: clamp(4rem, 9vw, 7rem);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(5rem, 17vw, 17rem);
+      line-height: .75;
+      letter-spacing: 0;
+      color: color-mix(in srgb, var(--accent-two) 13%, transparent);
+      pointer-events: none;
+    }
+    .kicker {
+      display: inline-flex;
+      gap: .6rem;
+      align-items: center;
+      font-weight: 900;
+      color: var(--accent);
+      border: 2px solid var(--line);
+      padding: .22rem .55rem;
+      background: var(--accent-three);
+      width: fit-content;
     }
     h1 {
-      font-size: clamp(2rem, 5vw, 4.6rem);
-      line-height: 1.05;
-      margin: 0 0 16px;
+      max-width: 12ch;
+      margin: 1.3rem 0 0;
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 7vw, 7.2rem);
+      line-height: .94;
+      letter-spacing: 0;
+      text-wrap: balance;
     }
-    h2 { margin: 8px 0 10px; line-height: 1.28; font-size: 1.35rem; }
-    a { color: var(--accent); text-underline-offset: 3px; overflow-wrap: anywhere; }
-    .subtitle { max-width: 760px; color: var(--muted); font-size: 1.05rem; }
-    .nav { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 18px; }
-    .info-list { display: grid; gap: 16px; }
-    .info-card {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 20px 22px;
-      box-shadow: 0 18px 50px rgba(31, 37, 32, .06);
+    .deck {
+      max-width: 56rem;
+      font-size: clamp(1.1rem, 1.65vw, 1.48rem);
+      line-height: 1.62;
+      margin: 2rem 0 0;
+      color: #24211d;
+      border-left: .65rem solid var(--accent);
+      padding-left: 1.2rem;
     }
-    .meta { color: var(--muted); font-size: .92rem; }
-    .summary { font-size: 1.02rem; }
-    .why {
-      background: var(--soft);
-      border-left: 4px solid var(--accent);
-      padding: 10px 12px;
-      color: #26322d;
+    .cover-meta { align-self: stretch; display: grid; align-content: end; gap: 1rem; }
+    .cover-card {
+      border: 2px solid var(--line);
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 9px 9px 0 var(--accent-two);
     }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-    .tags span {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 3px 9px;
-      color: var(--muted);
-      font-size: .86rem;
-      background: #fbfcfa;
-    }
-    .actions { margin-bottom: 0; }
-    .analysis, .detailed-summary, .news-anchor, .research-questions, .research-sources,
-    .detailed-report, .uncertainties, .follow-up {
-      border-top: 1px solid var(--line);
-      margin-top: 18px;
-      padding-top: 14px;
-    }
-    .anchor-report { border-left: 5px solid var(--accent-two); }
-    .analysis h2, .detailed-summary h2, .news-anchor h2, .research-questions h2,
-    .research-sources h2, .detailed-report h2, .uncertainties h2, .follow-up h2 { font-size: 1.05rem; margin-top: 0; }
-    .analysis p, .detailed-summary p, .news-anchor p, .detailed-report p { margin: 0 0 12px; }
-    .report-body {
-      max-width: 820px;
+    .cover-card h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.35; color: var(--accent); }
+    .cover-card ol, .cover-card ul { margin: 0; padding-left: 1.15rem; }
+    .cover-card li { margin: .48rem 0; line-height: 1.55; }
+    .article-shell {
       display: grid;
-      gap: 14px;
-    }
-    .report-body p {
-      color: var(--ink-soft);
-      margin: 0;
-      font-size: 1.03rem;
-    }
-    .report-lede {
-      padding: 16px 18px;
-      background: #fbf8ed;
-      border-left: 5px solid var(--accent-two);
-      font-size: 1.12rem !important;
-    }
-    .report-callout {
-      padding: 13px 16px;
-      background: #fbfcfa;
-      border: 1px solid #dbe7e1;
-      border-left: 4px solid var(--accent);
-      box-shadow: inset 0 0 0 9999px rgba(11, 107, 95, .025);
-    }
-    strong.signal, strong.metric {
-      color: #123f38;
-      font-weight: 800;
-    }
-    mark {
-      background: rgba(221, 166, 74, .22);
-      color: inherit;
-      padding: 0 .12em;
-      border-radius: 3px;
-    }
-    .signal-mark {
-      background: rgba(221, 166, 74, .24);
-      box-decoration-break: clone;
-      -webkit-box-decoration-break: clone;
-    }
-    .question-list {
-      counter-reset: question;
-      list-style: none;
-      padding-left: 0;
-      display: grid;
-      gap: 10px;
-    }
-    .question-list li {
-      counter-increment: question;
-      display: grid;
-      grid-template-columns: 2.1rem 1fr;
-      gap: 10px;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.6rem, 3vw, 3.2rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3rem);
       align-items: start;
-      background: #fbfcfa;
-      border: 1px solid var(--line);
-      padding: 10px 12px;
     }
-    .question-list li::before {
-      content: counter(question);
-      width: 1.7rem;
-      height: 1.7rem;
-      border-radius: 50%;
-      display: inline-grid;
-      place-items: center;
-      background: var(--accent);
-      color: white;
-      font-weight: 700;
-      font-size: .9rem;
-    }
-    .source-list, .note-list {
+    .editor-note {
+      grid-column: 1 / -1;
       display: grid;
-      gap: 9px;
-      padding-left: 20px;
+      grid-template-columns: minmax(10rem, 15rem) minmax(0, 1fr);
+      gap: 1.2rem;
+      border-top: 5px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: 1rem 0 1.1rem;
+      color: var(--muted);
+      font-size: .94rem;
+      line-height: 1.7;
     }
-    .source-title {
+    .editor-note b {
+      display: block;
+      color: var(--ink);
+      font-size: .82rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .25rem;
+    }
+    .editor-note p { margin: 0; }
+    .magazine-article { min-width: 0; font-size: clamp(1.04rem, 1.05vw, 1.18rem); }
+    .article-shell > .magazine-article { grid-column: 1; }
+    .magazine-article p { margin: 0 0 1.35rem; text-align: justify; text-wrap: pretty; }
+    .magazine-article .lede {
+      font-size: clamp(1.24rem, 2vw, 1.58rem);
+      line-height: 1.75;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+    .dropcap {
+      float: left;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 5.8rem;
+      line-height: .8;
+      padding: .18rem .55rem .1rem 0;
+      color: var(--accent);
+    }
+    .magazine-emphasis {
+      margin: 2rem 0 !important;
+      padding: 1.1rem 1.25rem;
+      border-left: .45rem solid var(--accent-two);
+      background: linear-gradient(90deg, color-mix(in srgb, var(--accent-two) 12%, transparent), transparent 78%);
+      font-weight: 600;
+    }
+    .pullquote {
+      margin: 2.4rem -4rem 2.4rem 0;
+      padding: 1.1rem 0 1.2rem 1.5rem;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      background: var(--paper);
+    }
+    .pullquote span { color: var(--accent); font-size: .78rem; font-weight: 900; letter-spacing: .13em; }
+    .pullquote p {
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-size: clamp(1.6rem, 3vw, 2.45rem);
+      line-height: 1.28;
+      margin: .35rem 0 0;
+      text-align: left;
+    }
+    .metric {
+      font-variant-numeric: tabular-nums;
+      color: var(--accent);
+      font-weight: 900;
+      background: linear-gradient(transparent 55%, color-mix(in srgb, var(--accent-three) 65%, transparent) 0);
+    }
+    .signal {
+      font-weight: 900;
+      text-decoration: underline;
+      text-decoration-color: var(--accent-two);
+      text-decoration-thickness: .18em;
+      text-underline-offset: .14em;
+    }
+    .companion-rail {
+      position: sticky;
+      top: 3.8rem;
+      grid-column: 2;
+      align-self: start;
+      border-top: 5px solid var(--line);
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+      padding-top: 1rem;
+    }
+    .companion-rail b { color: var(--ink); }
+    .backmatter {
+      grid-column: 1 / -1;
       display: grid;
-      gap: 2px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.2rem;
+      margin-top: 2.4rem;
+      border-top: 2px solid var(--line);
+      padding-top: 1.4rem;
     }
-    .source-meta {
+    .module { background: #fff; border: 2px solid var(--line); padding: 1rem 1.1rem; box-shadow: 6px 6px 0 var(--sand); }
+    .module h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.3; color: var(--accent); }
+    .module ul { margin: 0; padding-left: 1.1rem; }
+    .module li { margin: .5rem 0; line-height: 1.58; }
+    .source-list li { display: grid; gap: .12rem; margin-bottom: .8rem; }
+    .source-meta { color: var(--muted); font-size: .86rem; }
+    .source-meta::before { content: "来源 · "; }
+    .sources-module { grid-column: 1 / -1; }
+    .newspaper-masthead {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.8rem) clamp(1rem, 4vw, 3rem) 1.6rem;
+      border-bottom: 5px double var(--line);
+    }
+    .newspaper-kicker {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.4rem, 3vw, 3rem);
+      line-height: 1;
+      color: var(--accent);
+      text-transform: uppercase;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: .35rem 0;
+    }
+    .newspaper-masthead h1 {
+      max-width: 20ch;
+      font-size: clamp(2.6rem, 5.5vw, 6.2rem);
+      line-height: .98;
+    }
+    .newspaper-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem 1.1rem;
+      margin-top: 1rem;
+      padding-top: .8rem;
+      border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: .9rem;
     }
-    .source-meta::before { content: "来源 · "; }
-    .note-list li > .list-key {
-      display: block;
-      margin-bottom: 2px;
+    .market-strip {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr 1fr;
+      gap: 1rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      border-bottom: 2px solid var(--line);
+      background: color-mix(in srgb, var(--accent-three) 26%, var(--paper));
+      font-size: .94rem;
+      line-height: 1.55;
     }
-    .research-sources li, .research-questions li, .uncertainties li, .follow-up li { margin: 0 0 8px; }
-    .topic-index { columns: 2; padding-left: 20px; }
-    .topic-index li { break-inside: avoid; margin: 0 0 8px; }
-    footer { color: var(--muted); margin-top: 34px; font-size: .9rem; }
-    @media (max-width: 720px) {
-      .topic-index { columns: 1; }
+    .market-strip b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .08em; }
+    .market-strip p, .market-strip ol, .market-strip ul { margin: .35rem 0 0; }
+    .market-strip ol, .market-strip ul { padding-left: 1.1rem; }
+    .newspaper-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .newspaper-article .lede {
+      column-span: all;
+      border-top: 2px solid var(--line);
+      padding-top: 1rem;
+    }
+    .newspaper-article { grid-column: 1; }
+    .newspaper-rail {
+      position: sticky;
+      top: 3.8rem;
+      border-left: 2px solid var(--line);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .dossier-cover {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.6rem) clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
+      gap: clamp(1.5rem, 4vw, 3.8rem);
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+    }
+    .dossier-stamp {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      align-self: start;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      color: var(--accent);
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: color-mix(in srgb, var(--accent-three) 35%, white);
+    }
+    .dossier-cover h1 {
+      max-width: 18ch;
+      font-size: clamp(2.7rem, 6vw, 6.6rem);
+      line-height: .98;
+    }
+    .dossier-summary {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.5vw, 1.36rem);
+      border-left: .45rem solid var(--accent);
+      padding-left: 1rem;
+    }
+    .dossier-source { color: var(--muted); margin: 0; }
+    .dossier-shell {
+      display: grid;
+      grid-template-columns: minmax(12rem, 17rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .dossier-index {
+      position: sticky;
+      top: 3.8rem;
+      border-top: 5px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .dossier-index b { display: block; color: var(--ink); margin-bottom: .6rem; }
+    .dossier-index ol { margin: 0 0 1rem; padding-left: 1.1rem; }
+    .dossier-article { grid-column: 2; }
+    .field-cover {
+      min-height: clamp(460px, 64vh, 720px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr);
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      border-bottom: 2px solid var(--line);
+      background:
+        linear-gradient(135deg, transparent 0 48%, color-mix(in srgb, var(--accent-three) 24%, transparent) 48% 52%, transparent 52%),
+        var(--paper);
+    }
+    .field-topline {
+      grid-column: 1 / -1;
+      width: fit-content;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: .25rem .7rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .field-cover h1 {
+      max-width: 16ch;
+      font-size: clamp(2.8rem, 6.4vw, 7rem);
+    }
+    .field-deck {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.55vw, 1.38rem);
+      line-height: 1.62;
+      border-left: .5rem solid var(--accent-two);
+      padding-left: 1rem;
+    }
+    .field-map {
+      border: 2px solid var(--line);
+      background: rgba(255,255,255,.76);
+      padding: 1rem;
+      box-shadow: 10px 10px 0 color-mix(in srgb, var(--accent) 70%, black);
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+    .field-map b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .1em; }
+    .field-map ol { margin: .55rem 0 1rem; padding-left: 1.2rem; }
+    .field-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(13rem, 17rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .field-log {
+      position: sticky;
+      top: 3.8rem;
+      border-left: .35rem solid var(--accent-two);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .field-article { grid-column: 1; }
+    .lab-cover {
+      padding: clamp(2.6rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      min-height: clamp(420px, 58vh, 650px);
+      display: grid;
+      align-content: center;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+      background:
+        linear-gradient(90deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        linear-gradient(0deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        var(--paper);
+    }
+    .lab-label {
+      width: fit-content;
+      background: var(--ink);
+      color: #fff;
+      padding: .28rem .65rem;
+      font-size: .82rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .lab-cover h1 {
+      max-width: 22ch;
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 5.8rem);
+      line-height: 1.04;
+    }
+    .lab-deck {
+      max-width: 62rem;
+      font-size: clamp(1.06rem, 1.45vw, 1.32rem);
+      border-top: 2px solid var(--accent);
+      padding-top: 1rem;
+    }
+    .protocol-strip {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .75rem;
+      border-bottom: 2px solid var(--line);
+      font-size: .88rem;
+    }
+    .protocol-strip div {
+      border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
+      padding: .75rem;
+      background: rgba(255,255,255,.68);
+      min-width: 0;
+    }
+    .protocol-strip b {
+      display: block;
+      color: var(--accent-two);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .protocol-strip span { overflow-wrap: anywhere; }
+    .lab-shell {
+      display: grid;
+      grid-template-columns: minmax(14rem, 19rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .lab-notes {
+      position: sticky;
+      top: 3.8rem;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      background: #fff;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .lab-notes b { color: var(--ink); }
+    .lab-notes ol { padding-left: 1.1rem; }
+    .lab-article { grid-column: 2; }
+    footer { color: var(--muted); padding: 0 clamp(1rem, 4vw, 3rem) 3rem; max-width: 1220px; margin: 0 auto; font-size: .9rem; }
+    @media (max-width: 1100px) {
+      .magazine-cover { grid-template-columns: 1fr; min-height: auto; }
+      .cover-meta { max-width: 42rem; }
+      .article-shell { grid-template-columns: 1fr; }
+      .editor-note { grid-template-columns: 1fr; }
+      .companion-rail { position: static; grid-column: 1; }
+      .backmatter { grid-column: 1; grid-template-columns: 1fr; }
+      .pullquote { margin-right: 0; }
+      h1 { max-width: 11ch; }
+      .market-strip, .protocol-strip { grid-template-columns: 1fr; }
+      .newspaper-shell, .dossier-shell, .field-shell, .lab-shell { grid-template-columns: 1fr; }
+      .newspaper-rail, .dossier-index, .field-log, .lab-notes { position: static; }
+      .dossier-article, .lab-article { grid-column: 1; }
+      .dossier-cover, .field-cover { grid-template-columns: 1fr; min-height: auto; }
+      .dossier-stamp { grid-column: 1; grid-row: auto; }
+    }
+    @media (max-width: 640px) {
+      .issue-bar { grid-template-columns: 1fr; gap: .15rem; }
+      .issue-bar span:last-child { text-align: left; }
+      .magazine-cover { padding-top: 2.4rem; }
+      h1 { font-size: clamp(2.65rem, 16vw, 4.8rem); }
+      .deck { border-left-width: .45rem; padding-left: .8rem; }
+      .magazine-article p { text-align: left; }
+      .dropcap { font-size: 4.6rem; }
+      .module { box-shadow: 4px 4px 0 var(--sand); }
     }
   </style>
 </head>
 <body>
-  <main>
-    
-            <header>
-              <h1>美联储金融稳定报告：油价、AI 和私募信贷正在进入同一张风险表</h1>
-              <p class="subtitle">新闻锚点驱动的主题研究报告 · 2026-05-08</p>
-              <div class="nav"><a href="../../">返回信息流</a><a href="https://www.federalreserve.gov/publications/financial-stability-report.htm?onlybody=showonlybody">打开锚点来源</a></div>
-            </header>
-            
-      <article class="info-card anchor-report">
-        <div class="meta">2026-05-08 · 主题研究报告</div>
-        <h2>美联储金融稳定报告：油价、AI 和私募信贷正在进入同一张风险表</h2>
-        <p class="summary">美联储 2026 年 5 月金融稳定报告把地缘冲突、油价冲击、AI、私募信贷和通胀并列为主要近端风险。值得注意的是，AI 不再只是科技股估值问题，私募信贷也不再只是非银增长问题，它们正在通过融资、估值、软件商业模式和银行风险管理连成一张表。</p>
-        <p class="why"><strong>新闻锚点：</strong><a href="https://www.federalreserve.gov/publications/financial-stability-report.htm?onlybody=showonlybody">Financial Stability Report, May 2026</a> · Federal Reserve Board</p>
-        <div class="tags"><span>finance-macro</span> <span>capital-markets</span> <span>ai-business</span></div>
-      
-        <section class="news-anchor">
-          <h2>新闻锚点</h2>
-          <p><a href="https://www.federalreserve.gov/publications/financial-stability-report.htm?onlybody=showonlybody">Financial Stability Report, May 2026</a> · Federal Reserve Board</p>
-        </section>
-            
 
-        <section class="research-questions">
-          <h2>研究问题</h2>
-          <ol class="question-list"><li><span>为什么美联储把 AI、油价、私募信贷和通胀放在同一张金融稳定<mark class="signal-mark"><strong class="signal">风险</strong></mark>图里？</span></li><li><span>私募信贷赎回和估值不透明为什么暂时可控，但仍需要监测？</span></li><li><span>银行体系<mark class="signal-mark"><strong class="signal">风险</strong></mark>和非银风险之间的传导边界在哪里？</span></li><li><span>这份报告对利率、监管和<mark class="signal-mark"><strong class="signal">风险</strong></mark>管理的实际含义是什么？</span></li></ol>
-        </section>
+  <div class="issue-bar"><span><strong>Infohub</strong> article</span><span>Magazine research page</span><span>2026-05-08</span></div>
+  <header class="newspaper-masthead">
+    <div class="newspaper-kicker">MARKETS / POLICY LEDGER</div>
+    <h1>美联储金融稳定报告：油价、AI 和私募信贷正在进入同一张风险表</h1>
+    <p class="deck">美联储 <strong class="metric">2026 年</strong> <strong class="metric">5 月</strong>金融稳定报告把地缘冲突、油价冲击、AI、私募信贷和通胀并列为主要近端<strong class="signal">风险</strong>。值得注意的是，AI 不再只是科技股估值问题，私募信贷也不再只是非银增长问题，它们正在通过融资、估值、软件商业模式和银行风险管理连成一张表。</p>
+    <div class="newspaper-meta">
+      <span>Federal Reserve Board</span>
+      <span>2026-05-08</span>
+      <span>finance-macro / capital-markets / ai-business</span>
+    </div>
+  </header>
+  <section class="market-strip">
+    <div>
+      <b>新闻锚点</b>
+      <p><a href="https://www.federalreserve.gov/publications/financial-stability-report.htm?onlybody=showonlybody">Financial Stability Report, May 2026</a></p>
+    </div>
+    <div>
+      <b>研究问题</b>
+      <ol><li>为什么美联储把 AI、油价、私募信贷和通胀放在同一张金融稳定<strong class="signal">风险</strong>图里？</li><li>私募信贷赎回和估值不透明为什么暂时可控，但仍需要监测？</li><li>银行体系<strong class="signal">风险</strong>和非银风险之间的传导边界在哪里？</li><li>这份报告对利率、监管和<strong class="signal">风险</strong>管理的实际含义是什么？</li></ol>
+    </div>
+    <div>
+      <b>后续变量</b>
+      <ul><li>市场联系人下一轮最担心<strong class="signal">风险</strong>排序是否继续把 AI 和私募信贷列前</li><li>非交易 BDCs、interval funds 和私募信贷基金赎回与净流量</li><li>AI 相关公司债券和贷款发行、数据中心融资成本、信用利差</li><li>油价、通胀预期和美债期限溢价之间的同步程度</li><li>银行对非银金融和 AI 基础设施客户的授信披露</li></ul>
+    </div>
+  </section>
+  <main class="newspaper-shell">
+    <article class="magazine-article newspaper-article">
+      <p class="lede"><span class="dropcap">美</span>联储 <strong class="metric">2026 年</strong> <strong class="metric">5 月</strong>《Financial Stability Report》值得关注的地方，不在于它宣布美国金融系统已经进入危机，而在于它把一些原本分属不同叙事的<strong class="signal">风险</strong>放到了一张图里：地缘政治和油价、AI 投资与估值、私募信贷、持续通胀、银行信用质量和网络安全。金融稳定报告的语言通常很克制，它更关心韧性和传导，而不是制造警报。因此，当 AI、油价和私募信贷反复出现在市场联系人最担心的清单里时，<strong class="signal">真正</strong>的信号是这些变量已经从主题投资或行业新闻，进入了监管者的压力测试视野。</p><p class="magazine-emphasis">油价冲击是最直观的入口。中东冲突和霍尔木兹不确定性让能源价格重新成为通胀路径的<strong class="signal">关键</strong>变量，而通胀路径会直接影响利率预期、债券估值、企业融资成本和居民实际收入。美联储面对的不是单一油价上涨，而是油价可能把已经艰难的通胀回落过程拖长。只要市场相信降息空间被压缩，期限溢价、股票估值、信用利差和房地产融资都会重新定价。金融稳定问题往往不从一根曲线开始，而是从多根曲线同时变陡开始。</p><p>AI 的位置更微妙。它一方面支撑了大型科技公司资本开支、数据中心建设、云服务收入和股市集中度；另一方面也带来两个金融稳定问题。第一个是估值集中：如果少数 AI 相关公司支撑主要指数表现，盈利预期下修会通过指数基金、退休金组合和期权结构放大。第二个是融资结构：数据中心、电力、芯片、网络和企业软件改造都需要大量资本，部分资金会从企业现金流扩展到债券、贷款和私募信贷。AI 不是单纯“贵不贵”的问题，而是投资叙事是否开始绑定信用供给。</p><aside class="pullquote"><span>摘句</span><p>私募信贷的<strong class="signal">风险</strong>则慢一些。</p></aside><p>私募信贷的<strong class="signal">风险</strong>则慢一些。美联储和媒体摘要都指出，部分非交易 BDC 或半流动性产品的赎回压力目前看起来有限和可管理，监管者并没有把它写成即将失控的流动性事件。但“可管理”不是“无风险”。私募信贷的问题在于估值频率低、透明度低、与私募股权和财富管理渠道连接加深，压力可能先表现为赎回排队、估值争议、融资展期困难和投资者信心下降，而不是像公开债券那样每天给出清晰价格。</p><p>OCC 的 <strong class="metric">2026 年</strong>春季半年度<strong class="signal">风险</strong>展望提供了银行侧参照。OCC 说银行收益在 <strong class="metric">2025 年</strong>改善，资产负债表仍强，信用风险总体可管理，但同时列出信用、市场、操作和合规风险，并特别提醒先进 AI 工具进入网络安全功能时，银行需要理解收益和潜在风险。这一点很重要：银行体系本身可能稳健，但它正在和更多外部技术、非银融资、供应链和网络攻击面发生连接。金融稳定的脆弱性不一定来自传统银行资本不足，也可能来自银行客户、银行外包系统和银行对手方。</p><p>这类报告最容易被误读成市场观点。它不是说 AI 会崩、私募信贷会爆、油价会一直涨，也不是说银行系统马上有问题。它更像一份传导表：如果油价推高通胀，利率路径就会改变；如果利率路径改变，杠杆交易和估值敏感资产会重估；如果 AI 相关现金流不能兑现，公开股权和私募债务会一起承压；如果私募产品赎回和估值争议扩大，财富管理、保险、银行授信和企业再融资都会受到波及。单个变量不一定危险，多个变量同步才构成金融稳定问题。</p><p class="magazine-emphasis">监管含义也不是简单收紧。美联储要监测资产估值、借款人杠杆、金融部门杠杆和融资<strong class="signal">风险</strong>；OCC 要在降低不必要监管负担和维持风险敏感监管之间取平衡；银行需要把 AI 既当作防御工具，也当作操作风险来源。对非银领域来说，最<strong class="signal">关键</strong>的仍然是数据、估值、赎回条款、杠杆和对手方暴露。私募信贷在平稳时期看起来像银行外的长期资本，压力时期则可能把低频估值和半流动性承诺变成<strong class="signal">信任</strong>问题。</p><p>这份报告对投资者和研究者最有用的地方，是提醒不要把 <strong class="metric">2026 年</strong>金融稳定拆成彼此独立的故事。油价不是只影响能源股，AI 不是只影响科技股，私募信贷不是只影响另类资产管理人，银行网络安全也不是后台 IT 问题。它们都在同一套信用、利率、估值和信心机制里传导。当前结论可以是系统仍有韧性，但韧性的含义恰恰是：需要不断监测哪些通道还没有被市场价格充分反映。</p><p>从资产估值角度看，美联储报告里的几条线索会互相强化。股票估值偏高本身不是金融稳定问题，但如果估值集中在 AI 相关公司，同时这些公司又需要持续融资建设数据中心、电力基础设施和芯片供应链，市场就会把技术预期转化成信用预期。只要投资者相信未来现金流足够高，债务融资可以继续滚动；一旦增长叙事放缓，压力会同时落到股权估值、公司债、私募贷款和供应商应收账款上。</p><p class="magazine-emphasis">私募信贷和 AI 的连接尤其值得观察。传统软件公司如果被 AI 自动化冲击，收入和续费率可能下降；这些公司又常常是杠杆贷款和私募信贷的重要借款人。与此同时，AI 基础设施本身需要新债务。于是同一个技术变量可能同时压低一批旧软件资产的信用质量，又抬高一批新基础设施资产的融资需求。监管者要看的不是“AI 利好还是利空”，而是它如何在不同资产负债表之间重新分配现金流。</p><p>银行体系的角色也更复杂。银行可能没有直接持有最大比例的私募信贷<strong class="signal">风险</strong>，却可能通过仓储融资、基金信用额度、财富管理分销、企业客户授信和衍生品对手方暴露间接连接到非银部门。一个基金限制赎回本身未必造成系统风险，但如果投资者同时怀疑估值、银行收紧授信、企业再融资成本上升，局部压力就会通过信心和融资条件扩散。金融稳定报告的价值就在于提前识别这种“看起来不在银行表内”的连接。</p><p>操作<strong class="signal">风险</strong>也不能被低估。OCC 提醒银行理解先进 AI 工具进入网络安全功能后的收益和风险，说明监管者已经意识到 AI 防御不是纯利好。AI 可以帮助发现攻击、总结告警和自动响应，但也可能产生错误拦截、误报疲劳、过度自动化和模型被攻击者诱导的问题。银行如果在网络防御里引入 AI，却没有清晰的人类复核、日志和回滚机制，防御工具本身也会成为新的操作风险来源。</p><p>因此，<strong class="metric">2026 年</strong>金融稳定问题的<strong class="signal">关键</strong>词不是单点脆弱，而是相关性。油价、通胀、利率、AI 估值、私募信贷和网络<strong class="signal">风险</strong>看似不同，但都可能在压力时期指向同一个结果：融资条件收紧、风险偏好下降、资产估值重估。美联储报告没有宣布危机，恰恰因为系统目前仍能吸收冲击；但它也在提示，吸收能力不能只靠过去的压力经验来判断，因为这一次的风险组合已经换了形状。</p><p>还有一个应被单独拎出的变量是通胀预期。油价冲击如果只影响一个月 CPI，金融系统可以把它视作噪声；如果它改变工资谈判、企业定价和长期利率，<strong class="signal">风险</strong>就会进入资产负债表。美联储<strong class="signal">真正</strong>害怕的是通胀压力和增长压力同时出现：前者限制降息，后者削弱现金流。这个组合会让传统政策反应变得更窄，也会让市场更依赖流动性工具和监管沟通。</p>
+    </article>
+    <aside class="newspaper-rail">
+      <p><b>读法</b><br>写成一篇金融稳定读图笔记，像监管者把不同风险贴到同一面墙上：不预测市场方向，重点解释通道、放大器和暂时可控背后的监测含义。</p>
+      <p><b>主题</b><br>finance-macro / capital-markets / ai-business</p>
+      <p><b>返回</b><br><a href="../../">信息流首页</a></p>
+    </aside>
     
-
-        <section class="research-sources">
-          <h2>研究来源</h2>
-          <ul class="source-list"><li><span class="source-title"><a href="https://www.federalreserve.gov/publications/financial-stability-report.htm?onlybody=showonlybody">Financial Stability Report</a><span class="source-meta">Federal Reserve Board</span></span></li><li><span class="source-title"><a href="https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-35.html">OCC’s Semiannual Risk Perspective Highlights Key Risks in Federal Banking System</a><span class="source-meta">OCC</span></span></li><li><span class="source-title"><a href="https://bankingjournal.aba.com/2026/05/fed-report-rising-concerns-about-global-conflict-gas-prices/">Fed report: Rising concerns about global conflict, gas prices</a><span class="source-meta">ABA Banking Journal</span></span></li><li><span class="source-title"><a href="https://www.gulf-times.com/article/725252/business/fed-sees-private-credit-redemptions-as-manageable-risks">Fed sees private credit redemptions as manageable risks</a><span class="source-meta">Bloomberg via Gulf Times</span></span></li><li><span class="source-title"><a href="https://www.rba.gov.au/publications/fsr/2026/mar/the-global-macro-financial-environment.html">Financial Stability Review – March 2026</a><span class="source-meta">Reserve Bank of Australia</span></span></li></ul>
-        </section>
+    <section class="backmatter">
+      <div class="module">
+        <h2>不确定性</h2>
+        <ul><li>美联储金融稳定报告是<strong class="signal">风险</strong>框架，不是资产价格预测；不能据此判断具体交易方向。</li><li>私募信贷和半流动性产品透明度有限，实际压力可能滞后暴露，也可能被赎回条款和资本缓冲吸收。</li><li>AI 相关融资与真实生产率提升之间的关系仍难以量化。</li><li>能源和通胀路径高度依赖中东局势、航运恢复和政策响应。</li></ul>
+      </div>
+      <div class="module">
+        <h2>后续观察</h2>
+        <ul><li>市场联系人下一轮最担心<strong class="signal">风险</strong>排序是否继续把 AI 和私募信贷列前</li><li>非交易 BDCs、interval funds 和私募信贷基金赎回与净流量</li><li>AI 相关公司债券和贷款发行、数据中心融资成本、信用利差</li><li>油价、通胀预期和美债期限溢价之间的同步程度</li><li>银行对非银金融和 AI 基础设施客户的授信披露</li></ul>
+      </div>
+      <div class="module sources-module">
+        <h2>研究来源</h2>
+        <ul class="source-list"><li><a href="https://www.federalreserve.gov/publications/financial-stability-report.htm?onlybody=showonlybody">Financial Stability Report</a><span class="source-meta">Federal Reserve Board</span></li><li><a href="https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-35.html">OCC’s Semiannual Risk Perspective Highlights Key Risks in Federal Banking System</a><span class="source-meta">OCC</span></li><li><a href="https://bankingjournal.aba.com/2026/05/fed-report-rising-concerns-about-global-conflict-gas-prices/">Fed report: Rising concerns about global conflict, gas prices</a><span class="source-meta">ABA Banking Journal</span></li><li><a href="https://www.gulf-times.com/article/725252/business/fed-sees-private-credit-redemptions-as-manageable-risks">Fed sees private credit redemptions as manageable risks</a><span class="source-meta">Bloomberg via Gulf Times</span></li><li><a href="https://www.rba.gov.au/publications/fsr/2026/mar/the-global-macro-financial-environment.html">Financial Stability Review – March 2026</a><span class="source-meta">Reserve Bank of Australia</span></li></ul>
+      </div>
+    </section>
     
-
-        <section class="detailed-report">
-          <h2>研究报告</h2>
-          <div class="report-body"><p class="report-lede"><strong>美联储 <strong class="metric">2026 年</strong> 5 月《Financial Stability Report》值得关注的地方，不在于它宣布美国金融系统已经进入危机，而在于它把一些原本分属不同叙事的<mark class="signal-mark"><strong class="signal">风险</strong></mark>放到了一张图里：地缘政治和油价、AI 投资与估值、私募信贷、持续通胀、银行信用质量和网络安全。</strong>金融稳定报告的语言通常很克制，它更关心韧性和传导，而不是制造警报。因此，当 AI、油价和私募信贷反复出现在市场联系人最担心的清单里时，<mark class="signal-mark"><strong class="signal">真正</strong></mark>的信号是这些变量已经从主题投资或行业新闻，进入了监管者的压力测试视野。</p><p class="report-callout"><strong>油价冲击是最直观的入口。</strong>中东冲突和霍尔木兹<mark class="signal-mark"><strong class="signal">不确定性</strong></mark>让能源价格重新成为通胀路径的关键变量，而通胀路径会直接影响利率预期、债券估值、企业融资成本和居民实际收入。美联储面对的不是单一油价上涨，而是油价可能把已经艰难的通胀回落过程拖长。只要市场相信降息空间被压缩，期限溢价、股票估值、信用利差和房地产融资都会重新定价。金融稳定问题往往不从一根曲线开始，而是从多根曲线同时变陡开始。</p><p class="report-paragraph">AI 的位置更微妙。它一方面支撑了大型科技公司资本开支、数据中心建设、云服务收入和股市集中度；另一方面也带来两个金融稳定问题。第一个是估值集中：如果少数 AI 相关公司支撑主要指数表现，盈利预期下修会通过指数基金、退休金组合和期权结构放大。第二个是融资结构：数据中心、电力、芯片、网络和企业软件改造都需要大量资本，部分资金会从企业现金流扩展到债券、贷款和私募信贷。AI 不是单纯“贵不贵”的问题，而是投资叙事是否开始绑定信用供给。</p><p class="report-callout"><strong>私募信贷的<mark class="signal-mark"><strong class="signal">风险</strong></mark>则慢一些。</strong>美联储和媒体摘要都指出，部分非交易 BDC 或半流动性产品的赎回压力目前看起来有限和可管理，监管者并没有把它写成即将失控的流动性事件。但“可管理”不是“无<mark class="signal-mark"><strong class="signal">风险</strong></mark>”。私募信贷的问题在于估值频率低、透明度低、与私募股权和财富管理渠道连接加深，压力可能先表现为赎回排队、估值争议、融资展期困难和投资者信心下降，而不是像公开债券那样每天给出清晰价格。</p><p class="report-paragraph">OCC 的 <strong class="metric">2026 年</strong>春季半年度<mark class="signal-mark"><strong class="signal">风险</strong></mark>展望提供了银行侧参照。OCC 说银行收益在 <strong class="metric">2025 年</strong>改善，资产负债表仍强，信用风险总体可管理，但同时列出信用、市场、操作和合规风险，并特别提醒先进 AI 工具进入网络安全功能时，银行需要理解收益和潜在风险。这一点很重要：银行体系本身可能稳健，但它正在和更多外部技术、非银融资、供应链和网络攻击面发生连接。金融稳定的脆弱性不一定来自传统银行资本不足，也可能来自银行客户、银行外包系统和银行对手方。</p><p class="report-paragraph">这类报告最容易被误读成市场观点。它不是说 AI 会崩、私募信贷会爆、油价会一直涨，也不是说银行系统马上有问题。它更像一份传导表：如果油价推高通胀，利率路径就会改变；如果利率路径改变，杠杆交易和估值敏感资产会重估；如果 AI 相关现金流不能兑现，公开股权和私募债务会一起承压；如果私募产品赎回和估值争议扩大，财富管理、保险、银行授信和企业再融资都会受到波及。单个变量不一定危险，多个变量同步才构成金融稳定问题。</p><p class="report-paragraph">监管含义也不是简单收紧。美联储要监测资产估值、借款人杠杆、金融部门杠杆和融资风险；OCC 要在降低不必要监管负担和维持风险敏感监管之间取平衡；银行需要把 AI 既当作防御工具，也当作操作风险来源。对非银领域来说，最<mark class="signal-mark"><strong class="signal">关键</strong></mark>的仍然是数据、估值、赎回条款、杠杆和对手方暴露。私募信贷在平稳时期看起来像银行外的长期资本，压力时期则可能把低频估值和半流动性承诺变成信任问题。</p><p class="report-paragraph">这份报告对投资者和研究者最有用的地方，是提醒不要把 <strong class="metric">2026 年</strong>金融稳定拆成彼此独立的故事。油价不是只影响能源股，AI 不是只影响科技股，私募信贷不是只影响另类资产管理人，银行网络安全也不是后台 IT 问题。它们都在同一套信用、利率、估值和信心机制里传导。当前结论可以是系统仍有韧性，但韧性的含义恰恰是：需要不断监测哪些通道还没有被市场价格充分反映。</p><p class="report-paragraph">从资产估值角度看，美联储报告里的几条线索会互相强化。股票估值偏高本身不是金融稳定问题，但如果估值集中在 AI 相关公司，同时这些公司又需要持续融资建设数据中心、电力基础设施和芯片供应链，市场就会把技术预期转化成信用预期。只要投资者相信未来现金流足够高，债务融资可以继续滚动；一旦增长叙事放缓，压力会同时落到股权估值、公司债、私募贷款和供应商应收账款上。</p><p class="report-paragraph">私募信贷和 AI 的连接尤其值得观察。传统软件公司如果被 AI 自动化冲击，收入和续费率可能下降；这些公司又常常是杠杆贷款和私募信贷的重要借款人。与此同时，AI 基础设施本身需要新债务。于是同一个技术变量可能同时压低一批旧软件资产的信用质量，又抬高一批新基础设施资产的融资需求。监管者要看的不是“AI 利好还是利空”，而是它如何在不同资产负债表之间重新分配现金流。</p><p class="report-paragraph">银行体系的角色也更复杂。银行可能没有直接持有最大比例的私募信贷<mark class="signal-mark"><strong class="signal">风险</strong></mark>，却可能通过仓储融资、基金信用额度、财富管理分销、企业客户授信和衍生品对手方暴露间接连接到非银部门。一个基金限制赎回本身未必造成系统风险，但如果投资者同时怀疑估值、银行收紧授信、企业再融资成本上升，局部压力就会通过信心和融资条件扩散。金融稳定报告的价值就在于提前识别这种“看起来不在银行表内”的连接。</p><p class="report-paragraph">操作<mark class="signal-mark"><strong class="signal">风险</strong></mark>也不能被低估。OCC 提醒银行理解先进 AI 工具进入网络安全功能后的收益和风险，说明监管者已经意识到 AI 防御不是纯利好。AI 可以帮助发现攻击、总结告警和自动响应，但也可能产生错误拦截、误报疲劳、过度自动化和模型被攻击者诱导的问题。银行如果在网络防御里引入 AI，却没有清晰的人类复核、日志和回滚机制，防御工具本身也会成为新的操作风险来源。</p><p class="report-paragraph">因此，<strong class="metric">2026 年</strong>金融稳定问题的<mark class="signal-mark"><strong class="signal">关键</strong></mark>词不是单点脆弱，而是相关性。油价、通胀、利率、AI 估值、私募信贷和网络风险看似不同，但都可能在压力时期指向同一个结果：融资条件收紧、风险偏好下降、资产估值重估。美联储报告没有宣布危机，恰恰因为系统目前仍能吸收冲击；但它也在提示，吸收能力不能只靠过去的压力经验来判断，因为这一次的风险组合已经换了形状。</p><p class="report-paragraph">还有一个应被单独拎出的变量是通胀预期。油价冲击如果只影响一个月 CPI，金融系统可以把它视作噪声；如果它改变工资谈判、企业定价和长期利率，风险就会进入资产负债表。美联储<mark class="signal-mark"><strong class="signal">真正</strong></mark>害怕的是通胀压力和增长压力同时出现：前者限制降息，后者削弱现金流。这个组合会让传统政策反应变得更窄，也会让市场更依赖流动性工具和监管沟通。</p></div>
-        </section>
-    
-
-        <section class="uncertainties">
-          <h2>不确定性</h2>
-          <ul class="note-list"><li><span>美联储金融稳定报告是<mark class="signal-mark"><strong class="signal">风险</strong></mark>框架，不是资产价格预测；不能据此判断具体交易方向。</span></li><li><span>私募信贷和半流动性产品透明度有限，实际压力可能滞后暴露，也可能被赎回条款和资本缓冲吸收。</span></li><li><span>AI 相关融资与真实生产率提升之间的关系仍难以量化。</span></li><li><span>能源和通胀路径高度依赖中东局势、航运恢复和政策响应。</span></li></ul>
-        </section>
-    
-
-        <section class="follow-up">
-          <h2>后续跟踪变量</h2>
-          <ul class="note-list"><li><span>市场联系人下一轮最担心<mark class="signal-mark"><strong class="signal">风险</strong></mark>排序是否继续把 AI 和私募信贷列前</span></li><li><span>非交易 BDCs、interval funds 和私募信贷基金赎回与净流量</span></li><li><span>AI 相关公司债券和贷款发行、数据中心融资成本、信用利差</span></li><li><span>油价、通胀预期和美债期限溢价之间的同步程度</span></li><li><span>银行对非银金融和 AI 基础设施客户的授信披露</span></li></ul>
-        </section>
-    
-      </article>
-    
-            
-    <footer>公开资料研究索引，包含来源链接、摘要、研究报告和不确定性提示。</footer>
   </main>
+  <footer>公开资料研究索引，包含来源链接、研究报告和不确定性提示。</footer>
+
 </body>
 </html>

@@ -1,235 +1,564 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="lab" data-layout="lab">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Project Glasswing 把 AI 安全问题倒过来：先让防御者用最危险的能力</title>
   <style>
     :root {
-      --bg: #f6f5ef;
-      --paper: #ffffff;
-      --text: #1f2520;
-      --muted: #66716a;
-      --line: #d9ded7;
-      --accent: #0b6b5f;
-      --accent-two: #9b6a24;
-      --soft: #edf5f1;
-      --warm: #fff4dc;
-      --ink-soft: #2f3933;
+      --paper: #f0f7fb;
+      --ink: #171717;
+      --muted: #64615b;
+      --line: #1c1c1c;
+      --accent: #2b4c7e;
+      --accent-two: #7b2d26;
+      --accent-three: #b8d8d8;
+      --sand: #efe5cf;
+      --measure: 52rem;
+      --background-signature: lab-blueprint;
+      --page-background: linear-gradient(90deg, rgba(43,76,126,.08) 1px, transparent 1px) 0 0 / 32px 32px, linear-gradient(0deg, rgba(43,76,126,.08) 1px, transparent 1px) 0 0 / 32px 32px, linear-gradient(180deg, rgba(184,216,216,.24), transparent 34rem), var(--paper);
     }
     * { box-sizing: border-box; }
+    html { background: #151515; }
     body {
       margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Avenir Next", "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
-      line-height: 1.72;
+      color: var(--ink);
+      background: var(--page-background);
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      line-height: 1.86;
       letter-spacing: 0;
     }
-    main {
-      width: min(1040px, calc(100% - 34px));
-      margin: 0 auto;
-      padding: 38px 0 72px;
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; overflow-wrap: anywhere; }
+    .issue-bar {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: .58rem clamp(1rem, 4vw, 3.2rem);
+      background: color-mix(in srgb, var(--paper) 92%, white);
+      border-bottom: 2px solid var(--line);
+      backdrop-filter: blur(12px);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
     }
-    header {
-      border-bottom: 2px solid var(--text);
-      margin-bottom: 24px;
-      padding-bottom: 24px;
+    .issue-bar strong { color: var(--accent); }
+    .issue-bar span:nth-child(2) { font-weight: 900; }
+    .issue-bar span:last-child { text-align: right; color: var(--muted); }
+    .magazine-cover {
+      min-height: clamp(420px, 62vh, 680px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(17rem, 25rem);
+      gap: clamp(2rem, 5vw, 4.2rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.5rem) clamp(1rem, 5vw, 5rem) clamp(2.2rem, 4vw, 3.2rem);
+      border-bottom: 2px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .magazine-cover::before {
+      content: "LAB";
+      position: absolute;
+      left: clamp(.7rem, 3vw, 2rem);
+      top: clamp(4rem, 9vw, 7rem);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(5rem, 17vw, 17rem);
+      line-height: .75;
+      letter-spacing: 0;
+      color: color-mix(in srgb, var(--accent-two) 13%, transparent);
+      pointer-events: none;
+    }
+    .kicker {
+      display: inline-flex;
+      gap: .6rem;
+      align-items: center;
+      font-weight: 900;
+      color: var(--accent);
+      border: 2px solid var(--line);
+      padding: .22rem .55rem;
+      background: var(--accent-three);
+      width: fit-content;
     }
     h1 {
-      font-size: clamp(2rem, 5vw, 4.6rem);
-      line-height: 1.05;
-      margin: 0 0 16px;
+      max-width: 12ch;
+      margin: 1.3rem 0 0;
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 7vw, 7.2rem);
+      line-height: .94;
+      letter-spacing: 0;
+      text-wrap: balance;
     }
-    h2 { margin: 8px 0 10px; line-height: 1.28; font-size: 1.35rem; }
-    a { color: var(--accent); text-underline-offset: 3px; overflow-wrap: anywhere; }
-    .subtitle { max-width: 760px; color: var(--muted); font-size: 1.05rem; }
-    .nav { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 18px; }
-    .info-list { display: grid; gap: 16px; }
-    .info-card {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 20px 22px;
-      box-shadow: 0 18px 50px rgba(31, 37, 32, .06);
+    .deck {
+      max-width: 56rem;
+      font-size: clamp(1.1rem, 1.65vw, 1.48rem);
+      line-height: 1.62;
+      margin: 2rem 0 0;
+      color: #24211d;
+      border-left: .65rem solid var(--accent);
+      padding-left: 1.2rem;
     }
-    .meta { color: var(--muted); font-size: .92rem; }
-    .summary { font-size: 1.02rem; }
-    .why {
-      background: var(--soft);
-      border-left: 4px solid var(--accent);
-      padding: 10px 12px;
-      color: #26322d;
+    .cover-meta { align-self: stretch; display: grid; align-content: end; gap: 1rem; }
+    .cover-card {
+      border: 2px solid var(--line);
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 9px 9px 0 var(--accent-two);
     }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-    .tags span {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 3px 9px;
-      color: var(--muted);
-      font-size: .86rem;
-      background: #fbfcfa;
-    }
-    .actions { margin-bottom: 0; }
-    .analysis, .detailed-summary, .news-anchor, .research-questions, .research-sources,
-    .detailed-report, .uncertainties, .follow-up {
-      border-top: 1px solid var(--line);
-      margin-top: 18px;
-      padding-top: 14px;
-    }
-    .anchor-report { border-left: 5px solid var(--accent-two); }
-    .analysis h2, .detailed-summary h2, .news-anchor h2, .research-questions h2,
-    .research-sources h2, .detailed-report h2, .uncertainties h2, .follow-up h2 { font-size: 1.05rem; margin-top: 0; }
-    .analysis p, .detailed-summary p, .news-anchor p, .detailed-report p { margin: 0 0 12px; }
-    .report-body {
-      max-width: 820px;
+    .cover-card h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.35; color: var(--accent); }
+    .cover-card ol, .cover-card ul { margin: 0; padding-left: 1.15rem; }
+    .cover-card li { margin: .48rem 0; line-height: 1.55; }
+    .article-shell {
       display: grid;
-      gap: 14px;
-    }
-    .report-body p {
-      color: var(--ink-soft);
-      margin: 0;
-      font-size: 1.03rem;
-    }
-    .report-lede {
-      padding: 16px 18px;
-      background: #fbf8ed;
-      border-left: 5px solid var(--accent-two);
-      font-size: 1.12rem !important;
-    }
-    .report-callout {
-      padding: 13px 16px;
-      background: #fbfcfa;
-      border: 1px solid #dbe7e1;
-      border-left: 4px solid var(--accent);
-      box-shadow: inset 0 0 0 9999px rgba(11, 107, 95, .025);
-    }
-    strong.signal, strong.metric {
-      color: #123f38;
-      font-weight: 800;
-    }
-    mark {
-      background: rgba(221, 166, 74, .22);
-      color: inherit;
-      padding: 0 .12em;
-      border-radius: 3px;
-    }
-    .signal-mark {
-      background: rgba(221, 166, 74, .24);
-      box-decoration-break: clone;
-      -webkit-box-decoration-break: clone;
-    }
-    .question-list {
-      counter-reset: question;
-      list-style: none;
-      padding-left: 0;
-      display: grid;
-      gap: 10px;
-    }
-    .question-list li {
-      counter-increment: question;
-      display: grid;
-      grid-template-columns: 2.1rem 1fr;
-      gap: 10px;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.6rem, 3vw, 3.2rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3rem);
       align-items: start;
-      background: #fbfcfa;
-      border: 1px solid var(--line);
-      padding: 10px 12px;
     }
-    .question-list li::before {
-      content: counter(question);
-      width: 1.7rem;
-      height: 1.7rem;
-      border-radius: 50%;
-      display: inline-grid;
-      place-items: center;
-      background: var(--accent);
-      color: white;
-      font-weight: 700;
-      font-size: .9rem;
-    }
-    .source-list, .note-list {
+    .editor-note {
+      grid-column: 1 / -1;
       display: grid;
-      gap: 9px;
-      padding-left: 20px;
+      grid-template-columns: minmax(10rem, 15rem) minmax(0, 1fr);
+      gap: 1.2rem;
+      border-top: 5px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: 1rem 0 1.1rem;
+      color: var(--muted);
+      font-size: .94rem;
+      line-height: 1.7;
     }
-    .source-title {
+    .editor-note b {
+      display: block;
+      color: var(--ink);
+      font-size: .82rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .25rem;
+    }
+    .editor-note p { margin: 0; }
+    .magazine-article { min-width: 0; font-size: clamp(1.04rem, 1.05vw, 1.18rem); }
+    .article-shell > .magazine-article { grid-column: 1; }
+    .magazine-article p { margin: 0 0 1.35rem; text-align: justify; text-wrap: pretty; }
+    .magazine-article .lede {
+      font-size: clamp(1.24rem, 2vw, 1.58rem);
+      line-height: 1.75;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+    .dropcap {
+      float: left;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 5.8rem;
+      line-height: .8;
+      padding: .18rem .55rem .1rem 0;
+      color: var(--accent);
+    }
+    .magazine-emphasis {
+      margin: 2rem 0 !important;
+      padding: 1.1rem 1.25rem;
+      border-left: .45rem solid var(--accent-two);
+      background: linear-gradient(90deg, color-mix(in srgb, var(--accent-two) 12%, transparent), transparent 78%);
+      font-weight: 600;
+    }
+    .pullquote {
+      margin: 2.4rem -4rem 2.4rem 0;
+      padding: 1.1rem 0 1.2rem 1.5rem;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      background: var(--paper);
+    }
+    .pullquote span { color: var(--accent); font-size: .78rem; font-weight: 900; letter-spacing: .13em; }
+    .pullquote p {
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-size: clamp(1.6rem, 3vw, 2.45rem);
+      line-height: 1.28;
+      margin: .35rem 0 0;
+      text-align: left;
+    }
+    .metric {
+      font-variant-numeric: tabular-nums;
+      color: var(--accent);
+      font-weight: 900;
+      background: linear-gradient(transparent 55%, color-mix(in srgb, var(--accent-three) 65%, transparent) 0);
+    }
+    .signal {
+      font-weight: 900;
+      text-decoration: underline;
+      text-decoration-color: var(--accent-two);
+      text-decoration-thickness: .18em;
+      text-underline-offset: .14em;
+    }
+    .companion-rail {
+      position: sticky;
+      top: 3.8rem;
+      grid-column: 2;
+      align-self: start;
+      border-top: 5px solid var(--line);
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+      padding-top: 1rem;
+    }
+    .companion-rail b { color: var(--ink); }
+    .backmatter {
+      grid-column: 1 / -1;
       display: grid;
-      gap: 2px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.2rem;
+      margin-top: 2.4rem;
+      border-top: 2px solid var(--line);
+      padding-top: 1.4rem;
     }
-    .source-meta {
+    .module { background: #fff; border: 2px solid var(--line); padding: 1rem 1.1rem; box-shadow: 6px 6px 0 var(--sand); }
+    .module h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.3; color: var(--accent); }
+    .module ul { margin: 0; padding-left: 1.1rem; }
+    .module li { margin: .5rem 0; line-height: 1.58; }
+    .source-list li { display: grid; gap: .12rem; margin-bottom: .8rem; }
+    .source-meta { color: var(--muted); font-size: .86rem; }
+    .source-meta::before { content: "来源 · "; }
+    .sources-module { grid-column: 1 / -1; }
+    .newspaper-masthead {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.8rem) clamp(1rem, 4vw, 3rem) 1.6rem;
+      border-bottom: 5px double var(--line);
+    }
+    .newspaper-kicker {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.4rem, 3vw, 3rem);
+      line-height: 1;
+      color: var(--accent);
+      text-transform: uppercase;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: .35rem 0;
+    }
+    .newspaper-masthead h1 {
+      max-width: 20ch;
+      font-size: clamp(2.6rem, 5.5vw, 6.2rem);
+      line-height: .98;
+    }
+    .newspaper-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem 1.1rem;
+      margin-top: 1rem;
+      padding-top: .8rem;
+      border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: .9rem;
     }
-    .source-meta::before { content: "来源 · "; }
-    .note-list li > .list-key {
-      display: block;
-      margin-bottom: 2px;
+    .market-strip {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr 1fr;
+      gap: 1rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      border-bottom: 2px solid var(--line);
+      background: color-mix(in srgb, var(--accent-three) 26%, var(--paper));
+      font-size: .94rem;
+      line-height: 1.55;
     }
-    .research-sources li, .research-questions li, .uncertainties li, .follow-up li { margin: 0 0 8px; }
-    .topic-index { columns: 2; padding-left: 20px; }
-    .topic-index li { break-inside: avoid; margin: 0 0 8px; }
-    footer { color: var(--muted); margin-top: 34px; font-size: .9rem; }
-    @media (max-width: 720px) {
-      .topic-index { columns: 1; }
+    .market-strip b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .08em; }
+    .market-strip p, .market-strip ol, .market-strip ul { margin: .35rem 0 0; }
+    .market-strip ol, .market-strip ul { padding-left: 1.1rem; }
+    .newspaper-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .newspaper-article .lede {
+      column-span: all;
+      border-top: 2px solid var(--line);
+      padding-top: 1rem;
+    }
+    .newspaper-article { grid-column: 1; }
+    .newspaper-rail {
+      position: sticky;
+      top: 3.8rem;
+      border-left: 2px solid var(--line);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .dossier-cover {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.6rem) clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
+      gap: clamp(1.5rem, 4vw, 3.8rem);
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+    }
+    .dossier-stamp {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      align-self: start;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      color: var(--accent);
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: color-mix(in srgb, var(--accent-three) 35%, white);
+    }
+    .dossier-cover h1 {
+      max-width: 18ch;
+      font-size: clamp(2.7rem, 6vw, 6.6rem);
+      line-height: .98;
+    }
+    .dossier-summary {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.5vw, 1.36rem);
+      border-left: .45rem solid var(--accent);
+      padding-left: 1rem;
+    }
+    .dossier-source { color: var(--muted); margin: 0; }
+    .dossier-shell {
+      display: grid;
+      grid-template-columns: minmax(12rem, 17rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .dossier-index {
+      position: sticky;
+      top: 3.8rem;
+      border-top: 5px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .dossier-index b { display: block; color: var(--ink); margin-bottom: .6rem; }
+    .dossier-index ol { margin: 0 0 1rem; padding-left: 1.1rem; }
+    .dossier-article { grid-column: 2; }
+    .field-cover {
+      min-height: clamp(460px, 64vh, 720px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr);
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      border-bottom: 2px solid var(--line);
+      background:
+        linear-gradient(135deg, transparent 0 48%, color-mix(in srgb, var(--accent-three) 24%, transparent) 48% 52%, transparent 52%),
+        var(--paper);
+    }
+    .field-topline {
+      grid-column: 1 / -1;
+      width: fit-content;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: .25rem .7rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .field-cover h1 {
+      max-width: 16ch;
+      font-size: clamp(2.8rem, 6.4vw, 7rem);
+    }
+    .field-deck {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.55vw, 1.38rem);
+      line-height: 1.62;
+      border-left: .5rem solid var(--accent-two);
+      padding-left: 1rem;
+    }
+    .field-map {
+      border: 2px solid var(--line);
+      background: rgba(255,255,255,.76);
+      padding: 1rem;
+      box-shadow: 10px 10px 0 color-mix(in srgb, var(--accent) 70%, black);
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+    .field-map b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .1em; }
+    .field-map ol { margin: .55rem 0 1rem; padding-left: 1.2rem; }
+    .field-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(13rem, 17rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .field-log {
+      position: sticky;
+      top: 3.8rem;
+      border-left: .35rem solid var(--accent-two);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .field-article { grid-column: 1; }
+    .lab-cover {
+      padding: clamp(2.6rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      min-height: clamp(420px, 58vh, 650px);
+      display: grid;
+      align-content: center;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+      background:
+        linear-gradient(90deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        linear-gradient(0deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        var(--paper);
+    }
+    .lab-label {
+      width: fit-content;
+      background: var(--ink);
+      color: #fff;
+      padding: .28rem .65rem;
+      font-size: .82rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .lab-cover h1 {
+      max-width: 22ch;
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 5.8rem);
+      line-height: 1.04;
+    }
+    .lab-deck {
+      max-width: 62rem;
+      font-size: clamp(1.06rem, 1.45vw, 1.32rem);
+      border-top: 2px solid var(--accent);
+      padding-top: 1rem;
+    }
+    .protocol-strip {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .75rem;
+      border-bottom: 2px solid var(--line);
+      font-size: .88rem;
+    }
+    .protocol-strip div {
+      border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
+      padding: .75rem;
+      background: rgba(255,255,255,.68);
+      min-width: 0;
+    }
+    .protocol-strip b {
+      display: block;
+      color: var(--accent-two);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .protocol-strip span { overflow-wrap: anywhere; }
+    .lab-shell {
+      display: grid;
+      grid-template-columns: minmax(14rem, 19rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .lab-notes {
+      position: sticky;
+      top: 3.8rem;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      background: #fff;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .lab-notes b { color: var(--ink); }
+    .lab-notes ol { padding-left: 1.1rem; }
+    .lab-article { grid-column: 2; }
+    footer { color: var(--muted); padding: 0 clamp(1rem, 4vw, 3rem) 3rem; max-width: 1220px; margin: 0 auto; font-size: .9rem; }
+    @media (max-width: 1100px) {
+      .magazine-cover { grid-template-columns: 1fr; min-height: auto; }
+      .cover-meta { max-width: 42rem; }
+      .article-shell { grid-template-columns: 1fr; }
+      .editor-note { grid-template-columns: 1fr; }
+      .companion-rail { position: static; grid-column: 1; }
+      .backmatter { grid-column: 1; grid-template-columns: 1fr; }
+      .pullquote { margin-right: 0; }
+      h1 { max-width: 11ch; }
+      .market-strip, .protocol-strip { grid-template-columns: 1fr; }
+      .newspaper-shell, .dossier-shell, .field-shell, .lab-shell { grid-template-columns: 1fr; }
+      .newspaper-rail, .dossier-index, .field-log, .lab-notes { position: static; }
+      .dossier-article, .lab-article { grid-column: 1; }
+      .dossier-cover, .field-cover { grid-template-columns: 1fr; min-height: auto; }
+      .dossier-stamp { grid-column: 1; grid-row: auto; }
+    }
+    @media (max-width: 640px) {
+      .issue-bar { grid-template-columns: 1fr; gap: .15rem; }
+      .issue-bar span:last-child { text-align: left; }
+      .magazine-cover { padding-top: 2.4rem; }
+      h1 { font-size: clamp(2.65rem, 16vw, 4.8rem); }
+      .deck { border-left-width: .45rem; padding-left: .8rem; }
+      .magazine-article p { text-align: left; }
+      .dropcap { font-size: 4.6rem; }
+      .module { box-shadow: 4px 4px 0 var(--sand); }
     }
   </style>
 </head>
 <body>
-  <main>
-    
-            <header>
-              <h1>Project Glasswing 把 AI 安全问题倒过来：先让防御者用最危险的能力</h1>
-              <p class="subtitle">新闻锚点驱动的主题研究报告 · 2026-04-07</p>
-              <div class="nav"><a href="../../">返回信息流</a><a href="https://www.anthropic.com/glasswing">打开锚点来源</a></div>
-            </header>
-            
-      <article class="info-card anchor-report">
-        <div class="meta">2026-04-07 · 主题研究报告</div>
-        <h2>Project Glasswing 把 AI 安全问题倒过来：先让防御者用最危险的能力</h2>
-        <p class="summary">Anthropic 发布 Project Glasswing，把未公开的 Claude Mythos Preview 先交给关键软件、云、硬件、金融、安全和开源基础设施伙伴，用于防御性漏洞发现和修补。它的意义不只是一个 AI 安全产品，而是前沿模型网络安全能力进入受控分发、协调披露、补丁自动化和开源供应链治理的新阶段。</p>
-        <p class="why"><strong>新闻锚点：</strong><a href="https://www.anthropic.com/glasswing">Project Glasswing: Securing critical software for the AI era</a> · Anthropic</p>
-        <div class="tags"><span>ai-security</span> <span>developer-tooling</span> <span>software-supply-chain</span></div>
-      
-        <section class="news-anchor">
-          <h2>新闻锚点</h2>
-          <p><a href="https://www.anthropic.com/glasswing">Project Glasswing: Securing critical software for the AI era</a> · Anthropic</p>
-        </section>
-            
 
-        <section class="research-questions">
-          <h2>研究问题</h2>
-          <ol class="question-list"><li><span>为什么 Anthropic 选择不公开 Mythos Preview，而是先给防御者使用？</span></li><li><span>AI 自动发现漏洞会怎样改变开源维护者和大厂安全团队的分工？</span></li><li><span>这种能力扩散前，行业应如何重做漏洞披露和补丁流程？</span></li></ol>
-        </section>
+  <div class="issue-bar"><span><strong>Infohub</strong> article</span><span>Magazine research page</span><span>2026-04-07</span></div>
+  <header class="lab-cover">
+    <div class="lab-label">SECURITY / TECHNICAL SYSTEMS</div>
+    <h1>Project Glasswing 把 AI 安全问题倒过来：先让防御者用最危险的能力</h1>
+    <p class="lab-deck">Anthropic 发布 Project Glasswing，把未公开的 Claude Mythos Preview 先交给<strong class="signal">关键</strong>软件、云、硬件、金融、安全和开源基础设施伙伴，用于防御性漏洞发现和修补。它的意义不只是一个 AI 安全产品，而是前沿模型网络安全能力进入受控分发、协调披露、补丁自动化和开源供应链治理的新阶段。</p>
+  </header>
+  <section class="protocol-strip">
+    <div><b>Anchor</b><span><a href="https://www.anthropic.com/glasswing">Project Glasswing: Securing critical software for the AI era</a></span></div>
+    <div><b>Source</b><span>Anthropic</span></div>
+    <div><b>Date</b><span>2026-04-07</span></div>
+    <div><b>Scope</b><span>ai-security / developer-tooling / software-supply-chain</span></div>
+  </section>
+  <main class="lab-shell">
+    <aside class="lab-notes">
+      <b>Research prompts</b>
+      <ol><li>为什么 Anthropic 选择不公开 Mythos Preview，而是先给防御者使用？</li><li>AI 自动发现漏洞会怎样改变开源维护者和大厂安全团队的分工？</li><li>这种能力扩散前，行业应如何重做漏洞披露和补丁流程？</li></ol>
+      <p>这篇报告采用克制但有判断的研究口吻，把 Project Glasswing 放在 AI 能力扩散、开源供应链安全和漏洞披露流程重构的交叉处。正文不追逐“最强模型”叙事，也不渲染攻击细节，而是围绕谁先获得能力、谁承担修补成本、披露制度如何承压来展开。</p>
+      <p><a href="../../">返回信息流首页</a></p>
+    </aside>
+    <article class="magazine-article lab-article">
+      <p class="lede"><span class="dropcap">A</span>nthropic 在 <strong class="metric">2026 年</strong> <strong class="metric">4 月</strong> <strong class="metric">7 日</strong>发布 Project Glasswing 时，<strong class="signal">真正</strong>抛出的不是一个普通产品问题，而是一个能力扩散问题：如果一个通用前沿模型已经能在主流操作系统、浏览器、开源基础设施和闭源软件中发现并验证严重漏洞，那么模型公司还应不应该按常规节奏把它变成人人可用的商品？Anthropic 给出的答案很明确：Claude Mythos Preview 不做一般公开发布，而是先给一组<strong class="signal">关键</strong>软件、云、硬件、金融和开源基础设施相关组织使用，让防御者先扫描、修补和重做流程。</p><p class="magazine-emphasis">这件事的要点不在“AI 又会找漏洞了”。过去几年，AI 辅助漏洞发现已经有多个公开信号：Google Project Zero 和 DeepMind 的 Big Sleep 已经在真实开源项目中发现过此前未知的可利用内存安全问题；Google <strong class="signal">后续</strong>又把 CodeMender 表述为自动修复<strong class="signal">关键</strong>代码漏洞的防御代理；DARPA AI Cyber Challenge 则把“发现漏洞并生成补丁”变成公开竞赛，并把补丁质量放在发现本身之前。Project Glasswing 的新意在于，Anthropic 把这种能力明确提升到前沿模型治理层面：漏洞发现不再只是安全工具能力，而成为模型发布权限、行业协调和国家安全讨论的一部分。</p><p>Anthropic 官方叙事里，Mythos Preview 的危险来自两点叠加。第一，它不是一个专门训练出来的“黑客工具”，而是通用编码、推理、代理式搜索和计算机使用能力上升后的副产品。第二，它不仅能指出可疑代码，还能在部分测试中完成验证、组合和利用链条的构造。Anthropic 的 Frontier Red Team 文章披露了一些已经修复的高层案例，并反复强调大部分发现尚不能公开。本文不复述利用方法，只保留治理含义：当模型能把“找 bug”“判断严重性”“写报告”“辅助修补”连成半自动流程时，传统漏洞披露体系的瓶颈会从发现端转向分诊、修补、验证、发布和下游部署。</p><aside class="pullquote"><span>摘句</span><p>这解释了 Anthropic 为什么不把 Mythos Preview 当作普通旗舰模型发布。</p></aside><p>这解释了 Anthropic 为什么不把 Mythos Preview 当作普通旗舰模型发布。一般模型发布面对的是产品竞争：更强的代码能力、更高的评测分数、更便宜的 token、更好的企业接入。但 Mythos 的网络安全能力改变了发布伦理。如果公开入口只需要账号、API key 或信用卡，能力就会同时进入安全团队、灰产组织、勒索团伙、情报机构和机会主义攻击者手里。Anthropic 的判断是，类似能力在 6 到 <strong class="metric">18 个月</strong>内可能由其他模型扩散，防御者需要一个提前窗口。这不是“永久封存危险能力”，而是用受控访问买时间。</p><p>Project Glasswing 的伙伴名单也说明了 Anthropic 认为哪里最需要先补课。AWS、Apple、Broadcom、Cisco、CrowdStrike、Google、JPMorganChase、Linux Foundation、Microsoft、NVIDIA、Palo Alto Networks 等组织覆盖云、终端、网络设备、浏览器/操作系统生态、金融基础设施、开源治理和安全产品。另有约 <strong class="metric">40 个</strong><strong class="signal">关键</strong>软件维护组织获得访问。Anthropic 承诺最高 1 亿美元模型使用额度，并向 OpenSSF、Alpha-Omega 和 Apache Software Foundation 相关开源安全工作捐赠合计 400 万美元。这个组合不是慈善点缀，而是承认开源维护者长期承担了现代软件供应链的底层<strong class="signal">风险</strong>，却没有大厂安全团队同等的人力、工具和响应预算。</p><p>对开源维护者来说，AI 漏洞发现的到来会带来一种反直觉压力：发现能力变强不一定立刻让生态更安全，反而可能让维护者先被报告洪水淹没。一个项目原本一年处理几个高质量安全报告，突然变成几十个模型生成的疑似问题；每个问题都需要确认影响范围、判断可利用性、写补丁、避免破坏兼容性、通知下游发行版和厂商、申请 CVE、协调公开时间。OpenSSF 长期推动协调漏洞披露，把目标写成让披露成为常态化、易用、可被工具支持的流程。Mythos 类能力出现后，这不再是最佳实践建议，而是开源基础设施能否承受自动化发现浪潮的前置条件。</p><p class="magazine-emphasis">对大厂安全团队来说，分工也会变化。过去大厂拥有模糊测试、代码审计、红队、PSIRT、漏洞赏金和补丁发布渠道；开源维护者更多依赖志愿者判断、社区报告和下游厂商协助。AI 代理会把发现成本继续压低，但修复成本不会等比例下降，尤其是操作系统、浏览器、加密库、媒体库、云控制面和网络设备这类基础软件。大厂的角色会从“自己把自己的产品修好”扩展为“帮助上游项目把问题修到可发布、帮助下游客户把补丁部署到位、帮助行业把重复问题归类为漏洞类型治理”。这也是为什么 CISA 的 Secure by Design、NIST SSDF 和 KEV 目录都重要：它们把安全从事件响应推进到生命周期、责任归属和修补优先级。</p><p>最需要重做的是披露和补丁流程，而不是再写一份“AI 安全原则”。NIST SSDF 要求软件生产者把安全实践嵌入开发生命周期，并建立漏洞披露、PSIRT、响应剧本和根因治理；CISA 的 KEV 目录把“已被利用且有清晰修复动作”的漏洞变成优先级信号，BOD 22-01 还给美国联邦民用机构设定了加速修补义务；CISA Secure by Design Pledge 要求厂商发布漏洞披露政策、给善意研究者安全港，并公开补丁采用等指标。这些规则在 Mythos 时代会被进一步压缩：问题不是有没有报告邮箱，而是能不能处理机器级规模的发现，能不能把低质量报告挡在外面，能不能对高危问题快速完成补丁、回归测试、下游通知和部署追踪。</p><p>审慎看，Anthropic 的论证仍然有几个缺口。Mythos Preview 不公开，外部很难独立复现其整体能力边界；Anthropic 披露的案例大多来自自己和伙伴的测试，未修复漏洞又无法公开细节，这使得外界只能在有限透明度下判断“危险阈值”是否被跨过。Scientific American 引述英国 AI Security Institute 的早期评估，认为<strong class="signal">风险</strong>是真实的，但可能比公司叙事更有边界。TechCrunch 还报道过未经授权访问 Mythos 的指称，Anthropic 回应称正在调查第三方环境相关报告且未见影响自有系统证据。这些信息提醒我们：受控访问不是天然安全，它本身也需要供应商权限管理、审计、隔离和追责。</p><p class="magazine-emphasis">因此，Project Glasswing 最有价值的部分不是“Anthropic 做了一个更强模型”，而是把行业逼到一个新问题前：模型公司不能只说自己有危险能力，安全行业也不能只等厂商公开漏洞。合理的下一步应当包括四件事。第一，前沿模型公司为高<strong class="signal">风险</strong>网络安全能力建立分级访问、使用审计和外部评估。第二，开源基金会和<strong class="signal">关键</strong>项目建立可扩容的协调披露队列、分诊机制和补丁支持资金。第三，大厂把 AI 发现结果转化为上游修复、下游部署和补丁采用率，而不是只在自家安全产品里消化。第四，政府和行业组织把 KEV、SSDF、Secure by Design、CVD 和供应链安全要求接成同一套操作流程。Project Glasswing 接下来最值得看的不是宣传口号，而是 90 天报告：如果它能说明漏洞如何被分诊、哪些类型最常见、修补周期如何缩短、维护者获得了什么支持、补丁采用怎样被追踪，它才<strong class="signal">真正</strong>证明“先给防御者使用”是一种可复制的行业治理实验。</p><p>这里还要警惕另一个叙事陷阱：把模型发现漏洞的数量直接等同于安全提升。安全结果需要落在可验证的补丁、被维护者接受的修复、没有引入严重回归的发布、下游实际升级和长期漏洞类型下降上。DARPA AIxCC 把补丁质量放在发现之前，Google CodeMender 强调人类最终签核，CISA 关注已被利用漏洞的优先修补，指向的都是同一件事：AI 可以放大发现速度，但不能替代责任链条。Project Glasswing 如果能把这种责任链条做出来，它的意义才会超过一次模型发布。</p>
+    </article>
     
-
-        <section class="research-sources">
-          <h2>研究来源</h2>
-          <ul class="source-list"><li><span class="source-title"><a href="https://www.anthropic.com/glasswing">Project Glasswing: Securing critical software for the AI era</a><span class="source-meta">Anthropic</span></span></li><li><span class="source-title"><a href="https://red.anthropic.com/2026/mythos-preview/">Assessing Claude Mythos Preview’s cybersecurity capabilities</a><span class="source-meta">Anthropic Frontier Red Team</span></span></li><li><span class="source-title"><a href="https://www.anthropic.com/responsible-disclosure-policy">Responsible Disclosure Policy</a><span class="source-meta">Anthropic</span></span></li><li><span class="source-title"><a href="https://csrc.nist.gov/pubs/sp/800/218/final">SP 800-218: Secure Software Development Framework (SSDF) Version 1.1</a><span class="source-meta">NIST</span></span></li><li><span class="source-title"><a href="https://www.cisa.gov/news-events/directives/bod-22-01-reducing-significant-risk-known-exploited-vulnerabilities">BOD 22-01: Reducing the Significant Risk of Known Exploited Vulnerabilities</a><span class="source-meta">CISA</span></span></li><li><span class="source-title"><a href="https://www.cisa.gov/securebydesign/pledge">Secure by Design Pledge</a><span class="source-meta">CISA</span></span></li><li><span class="source-title"><a href="https://openssf.org/groups/vulnerability-disclosures/">Vulnerability Disclosures Working Group</a><span class="source-meta">OpenSSF</span></span></li><li><span class="source-title"><a href="https://www.darpa.mil/news/2025/aixcc-results">AI Cyber Challenge marks pivotal inflection point for cyber defense</a><span class="source-meta">DARPA</span></span></li><li><span class="source-title"><a href="https://projectzero.google/2024/10/from-naptime-to-big-sleep.html">From Naptime to Big Sleep: Using Large Language Models To Catch Vulnerabilities In Real-World Code</a><span class="source-meta">Google Project Zero</span></span></li><li><span class="source-title"><a href="https://blog.google/innovation-and-ai/technology/safety-security/ai-security-frontier-strategy-tools/">How we’re securing the AI frontier</a><span class="source-meta">Google</span></span></li><li><span class="source-title"><a href="https://www.scientificamerican.com/article/what-is-mythos-and-why-are-experts-worried-about-anthropics-ai-model/">What is Mythos and why are experts worried about Anthropic’s AI model</a><span class="source-meta">Scientific American</span></span></li><li><span class="source-title"><a href="https://cyberscoop.com/project-glasswing-anthropic-ai-open-source-software-vulnerabilities/">Tech giants launch AI-powered ‘Project Glasswing’ to identify critical software vulnerabilities</a><span class="source-meta">CyberScoop</span></span></li><li><span class="source-title"><a href="https://www.axios.com/2026/04/07/anthropic-mythos-preview-cybersecurity-risks">Anthropic withholds Mythos Preview model because its hacking is too powerful</a><span class="source-meta">Axios</span></span></li><li><span class="source-title"><a href="https://techcrunch.com/2026/04/21/unauthorized-group-has-gained-access-to-anthropics-exclusive-cyber-tool-mythos-report-claims/">Unauthorized group has gained access to Anthropic’s exclusive cyber tool Mythos, report claims</a><span class="source-meta">TechCrunch</span></span></li></ul>
-        </section>
+    <section class="backmatter">
+      <div class="module">
+        <h2>不确定性</h2>
+        <ul><li>Mythos Preview 未公开，外部只能基于 Anthropic、合作伙伴、个别评估机构和媒体报道判断能力边界。</li><li>大多数漏洞细节尚未修复或尚未披露，不能把 Anthropic 的数量级表述等同于全部独立验证事实。</li><li>受控访问是否能真的领先于攻击者获得类似能力，取决于其他模型公司的发布时间、访问控制质量和防御者实际修补速度。</li><li>未经授权访问的报道仍处在外部媒体与公司回应层面，不能扩大解释为 Anthropic 自有系统已被突破。</li></ul>
+      </div>
+      <div class="module">
+        <h2>后续观察</h2>
+        <ul><li>Anthropic 承诺的 90 天公开报告是否披露可验证的修复数量、漏洞类别、平均分诊与修补周期。</li><li>OpenSSF、Alpha-Omega、Apache Software Foundation 获得资金后，是否形成可复制的维护者支持流程。</li><li>Project Glasswing 伙伴是否公开补丁采用率、上游修复贡献、下游客户部署情况。</li><li>CISA、NIST、AI 安全评估机构和模型公司是否建立针对高<strong class="signal">风险</strong>网络安全能力的访问分级和外部评估机制。</li><li>其他前沿模型公司是否推出类似受控防御访问，或直接把同级能力产品化。</li></ul>
+      </div>
+      <div class="module sources-module">
+        <h2>研究来源</h2>
+        <ul class="source-list"><li><a href="https://www.anthropic.com/glasswing">Project Glasswing: Securing critical software for the AI era</a><span class="source-meta">Anthropic</span></li><li><a href="https://red.anthropic.com/2026/mythos-preview/">Assessing Claude Mythos Preview’s cybersecurity capabilities</a><span class="source-meta">Anthropic Frontier Red Team</span></li><li><a href="https://www.anthropic.com/responsible-disclosure-policy">Responsible Disclosure Policy</a><span class="source-meta">Anthropic</span></li><li><a href="https://csrc.nist.gov/pubs/sp/800/218/final">SP 800-218: Secure Software Development Framework (SSDF) Version 1.1</a><span class="source-meta">NIST</span></li><li><a href="https://www.cisa.gov/news-events/directives/bod-22-01-reducing-significant-risk-known-exploited-vulnerabilities">BOD 22-01: Reducing the Significant Risk of Known Exploited Vulnerabilities</a><span class="source-meta">CISA</span></li><li><a href="https://www.cisa.gov/securebydesign/pledge">Secure by Design Pledge</a><span class="source-meta">CISA</span></li><li><a href="https://openssf.org/groups/vulnerability-disclosures/">Vulnerability Disclosures Working Group</a><span class="source-meta">OpenSSF</span></li><li><a href="https://www.darpa.mil/news/2025/aixcc-results">AI Cyber Challenge marks pivotal inflection point for cyber defense</a><span class="source-meta">DARPA</span></li><li><a href="https://projectzero.google/2024/10/from-naptime-to-big-sleep.html">From Naptime to Big Sleep: Using Large Language Models To Catch Vulnerabilities In Real-World Code</a><span class="source-meta">Google Project Zero</span></li><li><a href="https://blog.google/innovation-and-ai/technology/safety-security/ai-security-frontier-strategy-tools/">How we’re securing the AI frontier</a><span class="source-meta">Google</span></li><li><a href="https://www.scientificamerican.com/article/what-is-mythos-and-why-are-experts-worried-about-anthropics-ai-model/">What is Mythos and why are experts worried about Anthropic’s AI model</a><span class="source-meta">Scientific American</span></li><li><a href="https://cyberscoop.com/project-glasswing-anthropic-ai-open-source-software-vulnerabilities/">Tech giants launch AI-powered ‘Project Glasswing’ to identify critical software vulnerabilities</a><span class="source-meta">CyberScoop</span></li><li><a href="https://www.axios.com/2026/04/07/anthropic-mythos-preview-cybersecurity-risks">Anthropic withholds Mythos Preview model because its hacking is too powerful</a><span class="source-meta">Axios</span></li><li><a href="https://techcrunch.com/2026/04/21/unauthorized-group-has-gained-access-to-anthropics-exclusive-cyber-tool-mythos-report-claims/">Unauthorized group has gained access to Anthropic’s exclusive cyber tool Mythos, report claims</a><span class="source-meta">TechCrunch</span></li></ul>
+      </div>
+    </section>
     
-
-        <section class="detailed-report">
-          <h2>研究报告</h2>
-          <div class="report-body"><p class="report-lede"><strong>Anthropic 在 <strong class="metric">2026 年</strong> 4 月 <strong class="metric">7 日</strong>发布 Project Glasswing 时，<mark class="signal-mark"><strong class="signal">真正</strong></mark>抛出的不是一个普通产品问题，而是一个能力扩散问题：如果一个通用前沿模型已经能在主流操作系统、浏览器、开源基础设施和闭源软件中发现并验证严重漏洞，那么模型公司还应不应该按常规节奏把它变成人人可用的商品？</strong>Anthropic 给出的答案很明确：Claude Mythos Preview 不做一般公开发布，而是先给一组<mark class="signal-mark"><strong class="signal">关键</strong></mark>软件、云、硬件、金融和开源基础设施相关组织使用，让防御者先扫描、修补和重做流程。</p><p class="report-callout"><strong>这件事的要点不在“AI 又会找漏洞了”。</strong>过去几年，AI 辅助漏洞发现已经有多个公开信号：Google Project Zero 和 DeepMind 的 Big Sleep 已经在真实开源项目中发现过此前未知的可利用内存安全问题；Google 后续又把 CodeMender 表述为自动修复<mark class="signal-mark"><strong class="signal">关键</strong></mark>代码漏洞的防御代理；DARPA AI Cyber Challenge 则把“发现漏洞并生成补丁”变成公开竞赛，并把补丁质量放在发现本身之前。Project Glasswing 的新意在于，Anthropic 把这种能力明确提升到前沿模型治理层面：漏洞发现不再只是安全工具能力，而成为模型发布权限、行业协调和国家安全讨论的一部分。</p><p class="report-paragraph">Anthropic 官方叙事里，Mythos Preview 的危险来自两点叠加。第一，它不是一个专门训练出来的“黑客工具”，而是通用编码、推理、代理式搜索和计算机使用能力上升后的副产品。第二，它不仅能指出可疑代码，还能在部分测试中完成验证、组合和利用链条的构造。Anthropic 的 Frontier Red Team 文章披露了一些已经修复的高层案例，并反复强调大部分发现尚不能公开。本文不复述利用方法，只保留治理含义：当模型能把“找 bug”“判断严重性”“写报告”“辅助修补”连成半自动流程时，传统漏洞披露体系的瓶颈会从发现端转向分诊、修补、验证、发布和下游部署。</p><p class="report-callout"><strong><mark class="signal-mark"><strong class="signal">这解释了</strong></mark> Anthropic 为什么不把 Mythos Preview 当作普通旗舰模型发布。</strong>一般模型发布面对的是产品竞争：更强的代码能力、更高的评测分数、更便宜的 token、更好的企业接入。但 Mythos 的网络安全能力改变了发布伦理。如果公开入口只需要账号、API key 或信用卡，能力就会同时进入安全团队、灰产组织、勒索团伙、情报机构和机会主义攻击者手里。Anthropic 的判断是，类似能力在 6 到 <strong class="metric">18 个月</strong>内可能由其他模型扩散，防御者需要一个提前窗口。这不是“永久封存危险能力”，而是用受控访问买时间。</p><p class="report-paragraph">Project Glasswing 的伙伴名单也说明了 Anthropic 认为哪里最需要先补课。AWS、Apple、Broadcom、Cisco、CrowdStrike、Google、JPMorganChase、Linux Foundation、Microsoft、NVIDIA、Palo Alto Networks 等组织覆盖云、终端、网络设备、浏览器/操作系统生态、金融基础设施、开源治理和安全产品。另有约 40 个<mark class="signal-mark"><strong class="signal">关键</strong></mark>软件维护组织获得访问。Anthropic 承诺最高 1 亿美元模型使用额度，并向 OpenSSF、Alpha-Omega 和 Apache Software Foundation 相关开源安全工作捐赠合计 400 万美元。这个组合不是慈善点缀，而是承认开源维护者长期承担了现代软件供应链的底层风险，却没有大厂安全团队同等的人力、工具和响应预算。</p><p class="report-paragraph">对开源维护者来说，AI 漏洞发现的到来会带来一种反直觉压力：发现能力变强不一定立刻让生态更安全，反而可能让维护者先被报告洪水淹没。一个项目原本一年处理几个高质量安全报告，突然变成几十个模型生成的疑似问题；每个问题都需要确认影响范围、判断可利用性、写补丁、避免破坏兼容性、通知下游发行版和厂商、申请 CVE、协调公开时间。OpenSSF 长期推动协调漏洞披露，把目标写成让披露成为常态化、易用、可被工具支持的流程。Mythos 类能力出现后，这不再是最佳实践建议，而是开源基础设施能否承受自动化发现浪潮的前置条件。</p><p class="report-paragraph">对大厂安全团队来说，分工也会变化。过去大厂拥有模糊测试、代码审计、红队、PSIRT、漏洞赏金和补丁发布渠道；开源维护者更多依赖志愿者判断、社区报告和下游厂商协助。AI 代理会把发现成本继续压低，但修复成本不会等比例下降，尤其是操作系统、浏览器、加密库、媒体库、云控制面和网络设备这类基础软件。大厂的角色会从“自己把自己的产品修好”扩展为“帮助上游项目把问题修到可发布、帮助下游客户把补丁部署到位、帮助行业把重复问题归类为漏洞类型治理”。这也是为什么 CISA 的 Secure by Design、NIST SSDF 和 KEV 目录都重要：它们把安全从事件响应推进到生命周期、责任归属和修补优先级。</p><p class="report-paragraph">最需要重做的是披露和补丁流程，而不是再写一份“AI 安全原则”。NIST SSDF 要求软件生产者把安全实践嵌入开发生命周期，并建立漏洞披露、PSIRT、响应剧本和根因治理；CISA 的 KEV 目录把“已被利用且有清晰修复动作”的漏洞变成优先级信号，BOD 22-01 还给美国联邦民用机构设定了加速修补义务；CISA Secure by Design Pledge 要求厂商发布漏洞披露政策、给善意研究者安全港，并公开补丁采用等指标。这些规则在 Mythos 时代会被进一步压缩：问题不是有没有报告邮箱，而是能不能处理机器级规模的发现，能不能把低质量报告挡在外面，能不能对高危问题快速完成补丁、回归测试、下游通知和部署追踪。</p><p class="report-paragraph">审慎看，Anthropic 的论证仍然有几个缺口。Mythos Preview 不公开，外部很难独立复现其整体能力边界；Anthropic 披露的案例大多来自自己和伙伴的测试，未修复漏洞又无法公开细节，这使得外界只能在有限透明度下判断“危险阈值”是否被跨过。Scientific American 引述英国 AI Security Institute 的早期评估，认为<mark class="signal-mark"><strong class="signal">风险</strong></mark>是真实的，但可能比公司叙事更有边界。TechCrunch 还报道过未经授权访问 Mythos 的指称，Anthropic 回应称正在调查第三方环境相关报告且未见影响自有系统证据。这些信息提醒我们：受控访问不是天然安全，它本身也需要供应商权限管理、审计、隔离和追责。</p><p class="report-paragraph">因此，Project Glasswing 最有价值的部分不是“Anthropic 做了一个更强模型”，而是把行业逼到一个新问题前：模型公司不能只说自己有危险能力，安全行业也不能只等厂商公开漏洞。合理的下一步应当包括四件事。第一，前沿模型公司为高风险网络安全能力建立分级访问、使用审计和外部评估。第二，开源基金会和关键项目建立可扩容的协调披露队列、分诊机制和补丁支持资金。第三，大厂把 AI 发现结果转化为上游修复、下游部署和补丁采用率，而不是只在自家安全产品里消化。第四，政府和行业组织把 KEV、SSDF、Secure by Design、CVD 和供应链安全要求接成同一套操作流程。Project Glasswing 接下来最值得看的不是宣传口号，而是 90 天报告：如果它能说明漏洞如何被分诊、哪些类型最常见、修补周期如何缩短、维护者获得了什么支持、补丁采用怎样被追踪，它才<mark class="signal-mark"><strong class="signal">真正</strong></mark>证明“先给防御者使用”是一种可复制的行业治理实验。</p><p class="report-paragraph">这里还要警惕另一个叙事陷阱：把模型发现漏洞的数量直接等同于安全提升。安全结果需要落在可验证的补丁、被维护者接受的修复、没有引入严重回归的发布、下游实际升级和长期漏洞类型下降上。DARPA AIxCC 把补丁质量放在发现之前，Google CodeMender 强调人类最终签核，CISA 关注已被利用漏洞的优先修补，指向的都是同一件事：AI 可以放大发现速度，但不能替代责任链条。Project Glasswing 如果能把这种责任链条做出来，它的意义才会超过一次模型发布。</p></div>
-        </section>
-    
-
-        <section class="uncertainties">
-          <h2>不确定性</h2>
-          <ul class="note-list"><li><span>Mythos Preview 未公开，外部只能基于 Anthropic、合作伙伴、个别评估机构和媒体报道判断能力边界。</span></li><li><span>大多数漏洞细节尚未修复或尚未披露，不能把 Anthropic 的数量级表述等同于全部独立验证事实。</span></li><li><span>受控访问是否能真的领先于攻击者获得类似能力，取决于其他模型公司的发布时间、访问控制质量和防御者实际修补速度。</span></li><li><span>未经授权访问的报道仍处在外部媒体与公司回应层面，不能扩大解释为 Anthropic 自有系统已被突破。</span></li></ul>
-        </section>
-    
-
-        <section class="follow-up">
-          <h2>后续跟踪变量</h2>
-          <ul class="note-list"><li><span>Anthropic 承诺的 90 天公开报告是否披露可验证的修复数量、漏洞类别、平均分诊与修补周期。</span></li><li><span>OpenSSF、Alpha-Omega、Apache Software Foundation 获得资金后，是否形成可复制的维护者支持流程。</span></li><li><span>Project Glasswing 伙伴是否公开补丁采用率、上游修复贡献、下游客户部署情况。</span></li><li><span>CISA、NIST、AI 安全评估机构和模型公司是否建立针对高<mark class="signal-mark"><strong class="signal">风险</strong></mark>网络安全能力的访问分级和外部评估机制。</span></li><li><span>其他前沿模型公司是否推出类似受控防御访问，或直接把同级能力产品化。</span></li></ul>
-        </section>
-    
-      </article>
-    
-            
-    <footer>公开资料研究索引，包含来源链接、摘要、研究报告和不确定性提示。</footer>
   </main>
+  <footer>公开资料研究索引，包含来源链接、研究报告和不确定性提示。</footer>
+
 </body>
 </html>

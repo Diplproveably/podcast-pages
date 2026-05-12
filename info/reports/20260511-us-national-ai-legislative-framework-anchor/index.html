@@ -1,235 +1,558 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="briefing" data-layout="dossier">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>美国 AI 立法框架：六项原则背后的联邦统一标准之争</title>
   <style>
     :root {
-      --bg: #f6f5ef;
-      --paper: #ffffff;
-      --text: #1f2520;
-      --muted: #66716a;
-      --line: #d9ded7;
-      --accent: #0b6b5f;
-      --accent-two: #9b6a24;
-      --soft: #edf5f1;
-      --warm: #fff4dc;
-      --ink-soft: #2f3933;
+      --paper: #fff3ea;
+      --ink: #171717;
+      --muted: #64615b;
+      --line: #1c1c1c;
+      --accent: #7f2f46;
+      --accent-two: #2364aa;
+      --accent-three: #e8d7a2;
+      --sand: #efe5cf;
+      --measure: 52rem;
+      --background-signature: dossier-folder;
+      --page-background: linear-gradient(90deg, rgba(127,47,70,.10) 0 10px, transparent 10px 100%), linear-gradient(180deg, rgba(232,215,162,.32), transparent 28rem), var(--paper);
     }
     * { box-sizing: border-box; }
+    html { background: #151515; }
     body {
       margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Avenir Next", "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
-      line-height: 1.72;
+      color: var(--ink);
+      background: var(--page-background);
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      line-height: 1.86;
       letter-spacing: 0;
     }
-    main {
-      width: min(1040px, calc(100% - 34px));
-      margin: 0 auto;
-      padding: 38px 0 72px;
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; overflow-wrap: anywhere; }
+    .issue-bar {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: .58rem clamp(1rem, 4vw, 3.2rem);
+      background: color-mix(in srgb, var(--paper) 92%, white);
+      border-bottom: 2px solid var(--line);
+      backdrop-filter: blur(12px);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
     }
-    header {
-      border-bottom: 2px solid var(--text);
-      margin-bottom: 24px;
-      padding-bottom: 24px;
+    .issue-bar strong { color: var(--accent); }
+    .issue-bar span:nth-child(2) { font-weight: 900; }
+    .issue-bar span:last-child { text-align: right; color: var(--muted); }
+    .magazine-cover {
+      min-height: clamp(420px, 62vh, 680px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(17rem, 25rem);
+      gap: clamp(2rem, 5vw, 4.2rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.5rem) clamp(1rem, 5vw, 5rem) clamp(2.2rem, 4vw, 3.2rem);
+      border-bottom: 2px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .magazine-cover::before {
+      content: "POLICY";
+      position: absolute;
+      left: clamp(.7rem, 3vw, 2rem);
+      top: clamp(4rem, 9vw, 7rem);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(5rem, 17vw, 17rem);
+      line-height: .75;
+      letter-spacing: 0;
+      color: color-mix(in srgb, var(--accent-two) 13%, transparent);
+      pointer-events: none;
+    }
+    .kicker {
+      display: inline-flex;
+      gap: .6rem;
+      align-items: center;
+      font-weight: 900;
+      color: var(--accent);
+      border: 2px solid var(--line);
+      padding: .22rem .55rem;
+      background: var(--accent-three);
+      width: fit-content;
     }
     h1 {
-      font-size: clamp(2rem, 5vw, 4.6rem);
-      line-height: 1.05;
-      margin: 0 0 16px;
+      max-width: 12ch;
+      margin: 1.3rem 0 0;
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 7vw, 7.2rem);
+      line-height: .94;
+      letter-spacing: 0;
+      text-wrap: balance;
     }
-    h2 { margin: 8px 0 10px; line-height: 1.28; font-size: 1.35rem; }
-    a { color: var(--accent); text-underline-offset: 3px; overflow-wrap: anywhere; }
-    .subtitle { max-width: 760px; color: var(--muted); font-size: 1.05rem; }
-    .nav { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 18px; }
-    .info-list { display: grid; gap: 16px; }
-    .info-card {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 20px 22px;
-      box-shadow: 0 18px 50px rgba(31, 37, 32, .06);
+    .deck {
+      max-width: 56rem;
+      font-size: clamp(1.1rem, 1.65vw, 1.48rem);
+      line-height: 1.62;
+      margin: 2rem 0 0;
+      color: #24211d;
+      border-left: .65rem solid var(--accent);
+      padding-left: 1.2rem;
     }
-    .meta { color: var(--muted); font-size: .92rem; }
-    .summary { font-size: 1.02rem; }
-    .why {
-      background: var(--soft);
-      border-left: 4px solid var(--accent);
-      padding: 10px 12px;
-      color: #26322d;
+    .cover-meta { align-self: stretch; display: grid; align-content: end; gap: 1rem; }
+    .cover-card {
+      border: 2px solid var(--line);
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 9px 9px 0 var(--accent-two);
     }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-    .tags span {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 3px 9px;
-      color: var(--muted);
-      font-size: .86rem;
-      background: #fbfcfa;
-    }
-    .actions { margin-bottom: 0; }
-    .analysis, .detailed-summary, .news-anchor, .research-questions, .research-sources,
-    .detailed-report, .uncertainties, .follow-up {
-      border-top: 1px solid var(--line);
-      margin-top: 18px;
-      padding-top: 14px;
-    }
-    .anchor-report { border-left: 5px solid var(--accent-two); }
-    .analysis h2, .detailed-summary h2, .news-anchor h2, .research-questions h2,
-    .research-sources h2, .detailed-report h2, .uncertainties h2, .follow-up h2 { font-size: 1.05rem; margin-top: 0; }
-    .analysis p, .detailed-summary p, .news-anchor p, .detailed-report p { margin: 0 0 12px; }
-    .report-body {
-      max-width: 820px;
+    .cover-card h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.35; color: var(--accent); }
+    .cover-card ol, .cover-card ul { margin: 0; padding-left: 1.15rem; }
+    .cover-card li { margin: .48rem 0; line-height: 1.55; }
+    .article-shell {
       display: grid;
-      gap: 14px;
-    }
-    .report-body p {
-      color: var(--ink-soft);
-      margin: 0;
-      font-size: 1.03rem;
-    }
-    .report-lede {
-      padding: 16px 18px;
-      background: #fbf8ed;
-      border-left: 5px solid var(--accent-two);
-      font-size: 1.12rem !important;
-    }
-    .report-callout {
-      padding: 13px 16px;
-      background: #fbfcfa;
-      border: 1px solid #dbe7e1;
-      border-left: 4px solid var(--accent);
-      box-shadow: inset 0 0 0 9999px rgba(11, 107, 95, .025);
-    }
-    strong.signal, strong.metric {
-      color: #123f38;
-      font-weight: 800;
-    }
-    mark {
-      background: rgba(221, 166, 74, .22);
-      color: inherit;
-      padding: 0 .12em;
-      border-radius: 3px;
-    }
-    .signal-mark {
-      background: rgba(221, 166, 74, .24);
-      box-decoration-break: clone;
-      -webkit-box-decoration-break: clone;
-    }
-    .question-list {
-      counter-reset: question;
-      list-style: none;
-      padding-left: 0;
-      display: grid;
-      gap: 10px;
-    }
-    .question-list li {
-      counter-increment: question;
-      display: grid;
-      grid-template-columns: 2.1rem 1fr;
-      gap: 10px;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.6rem, 3vw, 3.2rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3rem);
       align-items: start;
-      background: #fbfcfa;
-      border: 1px solid var(--line);
-      padding: 10px 12px;
     }
-    .question-list li::before {
-      content: counter(question);
-      width: 1.7rem;
-      height: 1.7rem;
-      border-radius: 50%;
-      display: inline-grid;
-      place-items: center;
-      background: var(--accent);
-      color: white;
-      font-weight: 700;
-      font-size: .9rem;
-    }
-    .source-list, .note-list {
+    .editor-note {
+      grid-column: 1 / -1;
       display: grid;
-      gap: 9px;
-      padding-left: 20px;
+      grid-template-columns: minmax(10rem, 15rem) minmax(0, 1fr);
+      gap: 1.2rem;
+      border-top: 5px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: 1rem 0 1.1rem;
+      color: var(--muted);
+      font-size: .94rem;
+      line-height: 1.7;
     }
-    .source-title {
+    .editor-note b {
+      display: block;
+      color: var(--ink);
+      font-size: .82rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .25rem;
+    }
+    .editor-note p { margin: 0; }
+    .magazine-article { min-width: 0; font-size: clamp(1.04rem, 1.05vw, 1.18rem); }
+    .article-shell > .magazine-article { grid-column: 1; }
+    .magazine-article p { margin: 0 0 1.35rem; text-align: justify; text-wrap: pretty; }
+    .magazine-article .lede {
+      font-size: clamp(1.24rem, 2vw, 1.58rem);
+      line-height: 1.75;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+    .dropcap {
+      float: left;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 5.8rem;
+      line-height: .8;
+      padding: .18rem .55rem .1rem 0;
+      color: var(--accent);
+    }
+    .magazine-emphasis {
+      margin: 2rem 0 !important;
+      padding: 1.1rem 1.25rem;
+      border-left: .45rem solid var(--accent-two);
+      background: linear-gradient(90deg, color-mix(in srgb, var(--accent-two) 12%, transparent), transparent 78%);
+      font-weight: 600;
+    }
+    .pullquote {
+      margin: 2.4rem -4rem 2.4rem 0;
+      padding: 1.1rem 0 1.2rem 1.5rem;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      background: var(--paper);
+    }
+    .pullquote span { color: var(--accent); font-size: .78rem; font-weight: 900; letter-spacing: .13em; }
+    .pullquote p {
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-size: clamp(1.6rem, 3vw, 2.45rem);
+      line-height: 1.28;
+      margin: .35rem 0 0;
+      text-align: left;
+    }
+    .metric {
+      font-variant-numeric: tabular-nums;
+      color: var(--accent);
+      font-weight: 900;
+      background: linear-gradient(transparent 55%, color-mix(in srgb, var(--accent-three) 65%, transparent) 0);
+    }
+    .signal {
+      font-weight: 900;
+      text-decoration: underline;
+      text-decoration-color: var(--accent-two);
+      text-decoration-thickness: .18em;
+      text-underline-offset: .14em;
+    }
+    .companion-rail {
+      position: sticky;
+      top: 3.8rem;
+      grid-column: 2;
+      align-self: start;
+      border-top: 5px solid var(--line);
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+      padding-top: 1rem;
+    }
+    .companion-rail b { color: var(--ink); }
+    .backmatter {
+      grid-column: 1 / -1;
       display: grid;
-      gap: 2px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.2rem;
+      margin-top: 2.4rem;
+      border-top: 2px solid var(--line);
+      padding-top: 1.4rem;
     }
-    .source-meta {
+    .module { background: #fff; border: 2px solid var(--line); padding: 1rem 1.1rem; box-shadow: 6px 6px 0 var(--sand); }
+    .module h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.3; color: var(--accent); }
+    .module ul { margin: 0; padding-left: 1.1rem; }
+    .module li { margin: .5rem 0; line-height: 1.58; }
+    .source-list li { display: grid; gap: .12rem; margin-bottom: .8rem; }
+    .source-meta { color: var(--muted); font-size: .86rem; }
+    .source-meta::before { content: "来源 · "; }
+    .sources-module { grid-column: 1 / -1; }
+    .newspaper-masthead {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.8rem) clamp(1rem, 4vw, 3rem) 1.6rem;
+      border-bottom: 5px double var(--line);
+    }
+    .newspaper-kicker {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.4rem, 3vw, 3rem);
+      line-height: 1;
+      color: var(--accent);
+      text-transform: uppercase;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: .35rem 0;
+    }
+    .newspaper-masthead h1 {
+      max-width: 20ch;
+      font-size: clamp(2.6rem, 5.5vw, 6.2rem);
+      line-height: .98;
+    }
+    .newspaper-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem 1.1rem;
+      margin-top: 1rem;
+      padding-top: .8rem;
+      border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: .9rem;
     }
-    .source-meta::before { content: "来源 · "; }
-    .note-list li > .list-key {
-      display: block;
-      margin-bottom: 2px;
+    .market-strip {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr 1fr;
+      gap: 1rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      border-bottom: 2px solid var(--line);
+      background: color-mix(in srgb, var(--accent-three) 26%, var(--paper));
+      font-size: .94rem;
+      line-height: 1.55;
     }
-    .research-sources li, .research-questions li, .uncertainties li, .follow-up li { margin: 0 0 8px; }
-    .topic-index { columns: 2; padding-left: 20px; }
-    .topic-index li { break-inside: avoid; margin: 0 0 8px; }
-    footer { color: var(--muted); margin-top: 34px; font-size: .9rem; }
-    @media (max-width: 720px) {
-      .topic-index { columns: 1; }
+    .market-strip b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .08em; }
+    .market-strip p, .market-strip ol, .market-strip ul { margin: .35rem 0 0; }
+    .market-strip ol, .market-strip ul { padding-left: 1.1rem; }
+    .newspaper-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .newspaper-article .lede {
+      column-span: all;
+      border-top: 2px solid var(--line);
+      padding-top: 1rem;
+    }
+    .newspaper-article { grid-column: 1; }
+    .newspaper-rail {
+      position: sticky;
+      top: 3.8rem;
+      border-left: 2px solid var(--line);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .dossier-cover {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.6rem) clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
+      gap: clamp(1.5rem, 4vw, 3.8rem);
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+    }
+    .dossier-stamp {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      align-self: start;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      color: var(--accent);
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: color-mix(in srgb, var(--accent-three) 35%, white);
+    }
+    .dossier-cover h1 {
+      max-width: 18ch;
+      font-size: clamp(2.7rem, 6vw, 6.6rem);
+      line-height: .98;
+    }
+    .dossier-summary {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.5vw, 1.36rem);
+      border-left: .45rem solid var(--accent);
+      padding-left: 1rem;
+    }
+    .dossier-source { color: var(--muted); margin: 0; }
+    .dossier-shell {
+      display: grid;
+      grid-template-columns: minmax(12rem, 17rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .dossier-index {
+      position: sticky;
+      top: 3.8rem;
+      border-top: 5px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .dossier-index b { display: block; color: var(--ink); margin-bottom: .6rem; }
+    .dossier-index ol { margin: 0 0 1rem; padding-left: 1.1rem; }
+    .dossier-article { grid-column: 2; }
+    .field-cover {
+      min-height: clamp(460px, 64vh, 720px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr);
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      border-bottom: 2px solid var(--line);
+      background:
+        linear-gradient(135deg, transparent 0 48%, color-mix(in srgb, var(--accent-three) 24%, transparent) 48% 52%, transparent 52%),
+        var(--paper);
+    }
+    .field-topline {
+      grid-column: 1 / -1;
+      width: fit-content;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: .25rem .7rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .field-cover h1 {
+      max-width: 16ch;
+      font-size: clamp(2.8rem, 6.4vw, 7rem);
+    }
+    .field-deck {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.55vw, 1.38rem);
+      line-height: 1.62;
+      border-left: .5rem solid var(--accent-two);
+      padding-left: 1rem;
+    }
+    .field-map {
+      border: 2px solid var(--line);
+      background: rgba(255,255,255,.76);
+      padding: 1rem;
+      box-shadow: 10px 10px 0 color-mix(in srgb, var(--accent) 70%, black);
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+    .field-map b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .1em; }
+    .field-map ol { margin: .55rem 0 1rem; padding-left: 1.2rem; }
+    .field-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(13rem, 17rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .field-log {
+      position: sticky;
+      top: 3.8rem;
+      border-left: .35rem solid var(--accent-two);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .field-article { grid-column: 1; }
+    .lab-cover {
+      padding: clamp(2.6rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      min-height: clamp(420px, 58vh, 650px);
+      display: grid;
+      align-content: center;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+      background:
+        linear-gradient(90deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        linear-gradient(0deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        var(--paper);
+    }
+    .lab-label {
+      width: fit-content;
+      background: var(--ink);
+      color: #fff;
+      padding: .28rem .65rem;
+      font-size: .82rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .lab-cover h1 {
+      max-width: 22ch;
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 5.8rem);
+      line-height: 1.04;
+    }
+    .lab-deck {
+      max-width: 62rem;
+      font-size: clamp(1.06rem, 1.45vw, 1.32rem);
+      border-top: 2px solid var(--accent);
+      padding-top: 1rem;
+    }
+    .protocol-strip {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .75rem;
+      border-bottom: 2px solid var(--line);
+      font-size: .88rem;
+    }
+    .protocol-strip div {
+      border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
+      padding: .75rem;
+      background: rgba(255,255,255,.68);
+      min-width: 0;
+    }
+    .protocol-strip b {
+      display: block;
+      color: var(--accent-two);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .protocol-strip span { overflow-wrap: anywhere; }
+    .lab-shell {
+      display: grid;
+      grid-template-columns: minmax(14rem, 19rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .lab-notes {
+      position: sticky;
+      top: 3.8rem;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      background: #fff;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .lab-notes b { color: var(--ink); }
+    .lab-notes ol { padding-left: 1.1rem; }
+    .lab-article { grid-column: 2; }
+    footer { color: var(--muted); padding: 0 clamp(1rem, 4vw, 3rem) 3rem; max-width: 1220px; margin: 0 auto; font-size: .9rem; }
+    @media (max-width: 1100px) {
+      .magazine-cover { grid-template-columns: 1fr; min-height: auto; }
+      .cover-meta { max-width: 42rem; }
+      .article-shell { grid-template-columns: 1fr; }
+      .editor-note { grid-template-columns: 1fr; }
+      .companion-rail { position: static; grid-column: 1; }
+      .backmatter { grid-column: 1; grid-template-columns: 1fr; }
+      .pullquote { margin-right: 0; }
+      h1 { max-width: 11ch; }
+      .market-strip, .protocol-strip { grid-template-columns: 1fr; }
+      .newspaper-shell, .dossier-shell, .field-shell, .lab-shell { grid-template-columns: 1fr; }
+      .newspaper-rail, .dossier-index, .field-log, .lab-notes { position: static; }
+      .dossier-article, .lab-article { grid-column: 1; }
+      .dossier-cover, .field-cover { grid-template-columns: 1fr; min-height: auto; }
+      .dossier-stamp { grid-column: 1; grid-row: auto; }
+    }
+    @media (max-width: 640px) {
+      .issue-bar { grid-template-columns: 1fr; gap: .15rem; }
+      .issue-bar span:last-child { text-align: left; }
+      .magazine-cover { padding-top: 2.4rem; }
+      h1 { font-size: clamp(2.65rem, 16vw, 4.8rem); }
+      .deck { border-left-width: .45rem; padding-left: .8rem; }
+      .magazine-article p { text-align: left; }
+      .dropcap { font-size: 4.6rem; }
+      .module { box-shadow: 4px 4px 0 var(--sand); }
     }
   </style>
 </head>
 <body>
-  <main>
-    
-            <header>
-              <h1>美国 AI 立法框架：六项原则背后的联邦统一标准之争</h1>
-              <p class="subtitle">新闻锚点驱动的主题研究报告 · 2026-03-20</p>
-              <div class="nav"><a href="../../">返回信息流</a><a href="https://www.whitehouse.gov/releases/2026/03/president-donald-j-trump-unveils-national-ai-legislative-framework/">打开锚点来源</a></div>
-            </header>
-            
-      <article class="info-card anchor-report">
-        <div class="meta">2026-03-20 · 主题研究报告</div>
-        <h2>美国 AI 立法框架：六项原则背后的联邦统一标准之争</h2>
-        <p class="summary">白宫 2026 年 3 月发布的国家 AI 立法框架，表面上围绕儿童、社区、版权、言论自由、创新和劳动力六项目标展开；真正的政策刀口却是建立全国统一 AI 标准并预占部分州级 AI 法律。它把版权训练、数字人格、儿童安全、数据中心电价、言论自由和劳动力培训放进同一套竞争力叙事，但仍只是立法建议，离真正通过的联邦 AI 法还有国会谈判、州权边界、法院判例和能源成本政治等多重不确定性。</p>
-        <p class="why"><strong>新闻锚点：</strong><a href="https://www.whitehouse.gov/releases/2026/03/president-donald-j-trump-unveils-national-ai-legislative-framework/">President Donald J. Trump Unveils National AI Legislative Framework</a> · The White House</p>
-        <div class="tags"><span>ai-policy</span> <span>us-policy</span> <span>politics-policy</span></div>
-      
-        <section class="news-anchor">
-          <h2>新闻锚点</h2>
-          <p><a href="https://www.whitehouse.gov/releases/2026/03/president-donald-j-trump-unveils-national-ai-legislative-framework/">President Donald J. Trump Unveils National AI Legislative Framework</a> · The White House</p>
-        </section>
-            
 
-        <section class="research-questions">
-          <h2>研究问题</h2>
-          <ol class="question-list"><li><span>白宫为什么把州级 AI 法律视为美国 AI 竞争力问题？</span></li><li><span>版权、儿童安全、数据中心电价和言论自由如何被放进同一套框架？</span></li><li><span>这份文件离<mark class="signal-mark"><strong class="signal">真正</strong></mark>的联邦 AI 法案还有多远？</span></li></ol>
-        </section>
+  <div class="issue-bar"><span><strong>Infohub</strong> article</span><span>Magazine research page</span><span>2026-03-20</span></div>
+  <header class="dossier-cover">
+    <div class="dossier-stamp">POLICY / GOVERNANCE</div>
+    <h1>美国 AI 立法框架：六项原则背后的联邦统一标准之争</h1>
+    <p class="dossier-summary">白宫 <strong class="metric">2026 年</strong> <strong class="metric">3 月</strong>发布的国家 AI 立法框架，表面上围绕儿童、社区、版权、言论自由、创新和劳动力六项目标展开；<strong class="signal">真正</strong>的政策刀口却是建立全国统一 AI 标准并预占部分州级 AI 法律。它把版权训练、数字人格、儿童安全、数据中心电价、言论自由和劳动力培训放进同一套竞争力叙事，但仍只是立法建议，离真正通过的联邦 AI 法还有国会谈判、州权边界、法院判例和能源成本政治等多重不确定性。</p>
+    <p class="dossier-source"><a href="https://www.whitehouse.gov/releases/2026/03/president-donald-j-trump-unveils-national-ai-legislative-framework/">President Donald J. Trump Unveils National AI Legislative Framework</a> · The White House · 2026-03-20</p>
+  </header>
+  <main class="dossier-shell">
+    <aside class="dossier-index">
+      <b>案卷索引</b>
+      <ol><li>白宫为什么把州级 AI 法律视为美国 AI 竞争力问题？</li><li>版权、儿童安全、数据中心电价和言论自由如何被放进同一套框架？</li><li>这份文件离<strong class="signal">真正</strong>的联邦 AI 法案还有多远？</li></ol>
+      <p><a href="../../">返回信息流首页</a></p>
+    </aside>
+    <article class="magazine-article dossier-article">
+      <p class="lede"><span class="dropcap">白</span>宫在 <strong class="metric">2026 年</strong> <strong class="metric">3 月</strong> <strong class="metric">20 日</strong>发布的 “National AI Legislative Framework”，表面上是一份六项目标清单：保护儿童、强化社区、尊重知识产权、保护言论自由、促进创新、培养 AI 劳动力。这样的摘要没有错，因为白宫新闻稿就是这样讲的。但如果只按这六项写，最<strong class="signal">关键</strong>的一层会被漏掉：正式 PDF 把“建立联邦政策框架、预占繁重州级 AI 法律”列为第七项，而且 <strong class="metric">2025 年</strong> <strong class="metric">12 月</strong>的行政令已经提前把司法部、商务部、FCC 和 FTC 都拉进了对州法的约束路径。换句话说，这不是一份普通的 AI 原则文件，而是白宫试图把美国 AI 治理从州级试验场重新收束到全国统一市场的一次政治动员。</p><p class="magazine-emphasis">这条锚点值得写，不是因为六项目标本身多新。儿童安全、版权、深伪、数据中心用电、算法歧视、劳动力再培训，这些议题过去几年都已经在国会、州议会、法院和监管机构之间反复出现。新意在于白宫把它们放进一个共同叙事：美国要赢得 AI 竞赛，就不能让 <strong class="metric">50 个</strong>州分别制定可能互相冲突的规则。这里的“竞争力”不是抽象口号，它被翻译成几个具体担忧：创业公司无法承担多州合规成本，大模型开发被州法管成全国性义务，州级披露或反歧视规则可能影响模型输出，数据中心建设和供电被地方规则拖慢，版权和数字人格争议无法在碎片化制度中稳定结算。</p><p>这个叙事的起点其实在 <strong class="metric">2025 年</strong> <strong class="metric">12 月</strong> <strong class="metric">11 日</strong>的行政令。那份行政令直接说，美国处在同对手竞争 AI 主导权的早期阶段，州州不同的监管会让合规更困难，尤其会伤害初创公司；它还点名科罗拉多的算法歧视法，认为这类规则可能迫使模型为了避免差别影响而产生“不真实”的输出。行政令要求司法部长建立 AI Litigation Task Force，用来挑战与联邦政策相冲突的州级 AI 法；要求商务部长评估哪些州法“繁重”；还把 BEAD 宽带资金、FCC 的 AI 模型报告披露标准、FTC 对“欺骗性输出”的解释都纳入同一个联邦预占工具箱。<strong class="metric">3 月</strong> <strong class="metric">20 日</strong>的立法框架更像是把这套行政路线翻译给国会，而不是从零提出一套新理念。</p><aside class="pullquote"><span>摘句</span><p>白宫并没有要求抹掉所有州权。</p></aside><p>白宫并没有要求抹掉所有州权。正式框架中特意留下了几类空间：州仍可执行一般适用的传统警察权，包括保护儿童、反欺诈、消费者保护；州仍可管 AI 基础设施选址的 zoning；州也可决定自己采购或在公共服务中使用 AI 的规则。问题在于边界很锋利：同一份文件又说，州不应监管 AI development，因为 AI 是跨州现象，并且牵涉外交和国家安全；州也不应过度限制美国人使用 AI 做本来合法的事，或因第三方使用模型违法而惩罚开发者。很多现实争议恰好卡在中间，例如高<strong class="signal">风险</strong> AI 的影响评估算不算消费者保护，训练数据披露算不算监管开发，招聘算法审计是地方劳动保护还是跨州 AI 合规负担。</p><p>州级 AI 法律确实已经形成实质压力。NCSL 的 AI legislation database 到 <strong class="metric">2026 年</strong> <strong class="metric">5 月</strong>仍在按月追踪各州、属地和华盛顿特区从 <strong class="metric">2025 年</strong>以来提出或通过的 AI 法案，主题覆盖政府使用、私营部门使用、医疗、住房、就业、深伪、能源、来源标记、算法影响评估和歧视等。科罗拉多 SB24-205 是白宫口中的典型靶子：它要求高<strong class="signal">风险</strong> AI 系统的开发者和部署者以合理注意防止已知或可预见的算法歧视风险，原定 <strong class="metric">2026 年</strong> <strong class="metric">2 月</strong>生效，并把违反行为纳入消费者保护法框架。纽约市 Local Law 144 的自动化就业决策工具偏见审计、加州 SB 942 的生成式 AI 内容标记，也都说明州和地方政府并不是在等一个联邦大法案，而是已经把 AI 放进就业、内容真实性和消费者知情权的具体场景。</p><p>反对预占的一方并不是简单反对联邦立法。消费者组织、<strong class="signal">隐私</strong>组织和州检察长更常见的说法是：可以有全国性底线，但不能在联邦规则尚未提供同等保护时冻结州法。Consumer Reports 在 <strong class="metric">2025 年</strong>反对预算协调案中的 AI 州法预占条款，理由是国会长期没有通过新兴消费者<strong class="signal">风险</strong>规则，却要禁止州保护居民。EPIC 把 <strong class="metric">10 年</strong>州法禁令称为给大型科技公司的礼物。36 名州检察长通过 NAAG 要求国会拒绝联邦 AI moratorium，理由是广泛预占会削弱州政府快速回应新风险的能力。这些来源的共同点是，它们承认碎片化有成本，但认为没有保护内容的统一标准，只会把“统一”变成监管真空。</p><p class="magazine-emphasis">版权部分最能看出白宫框架的政治折中。新闻稿说创作者和出版者的作品、身份应被尊重，同时又说 AI 要进步，就必须能够对它从世界中学习到的内容作 fair use。正式框架更具体：行政部门倾向于认为用版权材料训练 AI 不违反版权法，但建议国会不要干预法院对 fair use 问题的处理，并可探索自愿许可或集体权利框架。这个立场比很多创作者组织想要的弱，也比一些 AI 公司希望的“训练当然合法”更谨慎。美国版权局 <strong class="metric">2025 年</strong>发布的 Part 3 预出版报告没有给出一刀切答案，而是强调具体场景、市场替代、许可市场和获取来源都会影响 fair use 分析；同一时期 Thomson Reuters v. ROSS 的判决也提醒外界，至少在某些竞争性法律检索训练场景中，法院已经可能拒绝 fair use 抗辩。</p><p>数字人格权又把版权问题推向另一个方向。美国版权局 Part 1 报告建议国会建立新的联邦数字复制权，以处理未经授权复制个人声音、形象等问题；Blackburn 的 TRUMP AMERICA AI Act 讨论稿也把 NO FAKES Act、数字声音和视觉 likeness 保护、训练数据透明度放进“保护创作者”的篮子。白宫框架在这里的选择很微妙：它没有直接把所有 AI 训练判成侵权，也没有否认创作者和个人身份保护的政治动能，而是把训练 fair use 留给法院，把数字人格保护留给国会进一步建模。对研究报告来说，这一点不能写成“白宫已经解决版权问题”，它最多是把冲突重新排列。</p><p>儿童安全是另一条已经有联邦立法基础的线。<strong class="metric">2025 年</strong> <strong class="metric">5 月</strong> <strong class="metric">19 日</strong>，特朗普签署 S.146，也就是 TAKE IT DOWN Act，刑事化故意发布非自愿亲密图像，并要求覆盖平台移除相关内容。白宫 <strong class="metric">2026 年</strong>框架继续把未成年人可能接触的 AI 平台、AI 伴侣服务、自伤鼓励、性剥削<strong class="signal">风险</strong>、家长账户控制和年龄确认放进第一项。这里与预占州法之间存在一个政策张力：儿童保护往往是州法最容易获得公众支持的领域，白宫框架也表示不预占一般儿童保护法；但如果儿童安全规则具体落到推荐算法、聊天机器人设计、年龄验证、内容过滤和产品责任，又可能触碰模型开发和平台合规的全国性边界。</p><p class="magazine-emphasis">数据中心电价看似和 AI 治理相隔很远，实际上是这份框架把“AI 竞争力”落到地方政治的<strong class="signal">关键</strong>接口。白宫要求国会落实所谓 Ratepayer Protection Pledge，让居民电价不要为 AI 数据中心建设和运行买单，同时简化 AI 基础设施和发电项目的联邦许可，并鼓励数据中心现场发电以增强电网可靠性。能源部的 AI 页面称，到 <strong class="metric">2030 年</strong>数据中心可能消耗美国总电力需求的 <strong class="metric">9%</strong>，NCSL 的能源专题也把 AI、数据中心、州级能源立法和电网韧性放在一起讨论。也就是说，数据中心不是附带议题：如果居民账单上涨、地方电网改造成本外溢、选址引发社区反弹，那么“联邦统一标准”会直接面对州公用事业监管、地方 zoning 和消费者费率政治。</p><p>言论自由部分则把这套框架的党派色彩暴露得最明显。白宫要求防止联邦政府胁迫 AI 或技术平台按党派或意识形态议程封禁、强迫或改变内容，并给美国人提供针对政府影响 AI 平台表达的救济机制。这个目标可以被解释为第一修正案保护，也可以被理解为对所谓 “woke AI” 和算法歧视规则的反击。问题是，很多 AI 治理工具本身就会影响输出和披露：反歧视测试、错误信息标记、安全微调、内容来源标识、儿童安全过滤，都会在某种程度上改变系统行为。白宫把“真实输出”和“不得被意识形态扭曲”放在一起，但谁来定义真实、审计怎样进行、政府采购规则和一般平台规则如何区分，仍然没有被框架解决。</p><p>因此，这份文件离<strong class="signal">真正</strong>的联邦 AI 法案还有明显距离。它是行政部门给国会的立法建议，不是已经生效的综合 AI 法。较接近立法文本的是 Senator Marsha Blackburn 在 <strong class="metric">2026 年</strong> <strong class="metric">3 月</strong> <strong class="metric">18 日</strong>发布的 TRUMP AMERICA AI Act 讨论稿，它和白宫框架在“一本全国规则书”、儿童、创作者、保守派、社区和创新设施上高度重合，但也有差异：例如 Blackburn 草案明确说未经授权为训练、微调、开发或创建 AI 而复制、处理版权作品不构成 fair use，这比白宫“让法院处理”的口径更强；草案还包括 Section 230 sunset、AI 开发者产品责任、政治 affiliation 审计等更具争议的设计。国会<strong class="signal">后续</strong>会不会把这些内容合并、删减、拆分成儿童安全、版权、标准机构、数据中心和预占条款几个小法案，仍然未定。</p><p>最后应当把这份框架放在美国与欧盟路径差异中看。欧盟 AI Act 已经是成文法，接下来的问题是执行时间、指南、标准和成员国执法；美国现在仍更像在争夺谁来定义“全国框架”。白宫的<strong class="signal">核心</strong>赌注是：统一、低负担、以创新和国家竞争为中心的联邦标准，比州级试验更能保护美国 AI 优势。反方的核心担忧是：如果联邦标准迟迟没有可执行的权利、责任和透明度要求，预占州法会先发生，保护却未必跟上。研究这条锚点，不能把它写成“美国终于有 AI 法”，也不能写成“白宫只是在反监管”。更准确的判断是：美国 AI 立法的<strong class="signal">真正</strong>刀口，正在从“是否监管 AI”转向“谁有权监管 AI，以及统一市场和地方保护之间的边界如何画”。</p>
+    </article>
     
-
-        <section class="research-sources">
-          <h2>研究来源</h2>
-          <ul class="source-list"><li><span class="source-title"><a href="https://www.whitehouse.gov/releases/2026/03/president-donald-j-trump-unveils-national-ai-legislative-framework/">President Donald J. Trump Unveils National AI Legislative Framework</a><span class="source-meta">The White House</span></span></li><li><span class="source-title"><a href="https://www.whitehouse.gov/wp-content/uploads/2026/03/03.20.26-National-Policy-Framework-for-Artificial-Intelligence-Legislative-Recommendations.pdf">A National Policy Framework for Artificial Intelligence: Legislative Recommendations</a><span class="source-meta">The White House</span></span></li><li><span class="source-title"><a href="https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/">Ensuring a National Policy Framework for Artificial Intelligence</a><span class="source-meta">The White House</span></span></li><li><span class="source-title"><a href="https://www.whitehouse.gov/releases/2025/07/white-house-unveils-americas-ai-action-plan/">White House Unveils America’s AI Action Plan</a><span class="source-meta">The White House</span></span></li><li><span class="source-title"><a href="https://www.blackburn.senate.gov/index.php/2026/3/technology/blackburn-releases-discussion-draft-of-national-policy-framework-for-artificial-intelligence/3b3b6458-b6c7-478b-9859-374949586765">Blackburn Releases Discussion Draft of National Policy Framework for Artificial Intelligence</a><span class="source-meta">U.S. Senator Marsha Blackburn</span></span></li><li><span class="source-title"><a href="https://www.ncsl.org/financial-services/artificial-intelligence-legislation-database">Artificial Intelligence Legislation Database</a><span class="source-meta">National Conference of State Legislatures</span></span></li><li><span class="source-title"><a href="https://leg.colorado.gov/bills/SB24-205">SB24-205 Consumer Protections for Artificial Intelligence</a><span class="source-meta">Colorado General Assembly</span></span></li><li><span class="source-title"><a href="https://www.copyright.gov/ai/">Copyright and Artificial Intelligence</a><span class="source-meta">U.S. Copyright Office</span></span></li><li><span class="source-title"><a href="https://www.energy.gov/ai">Artificial Intelligence</a><span class="source-meta">Department of Energy</span></span></li><li><span class="source-title"><a href="https://advocacy.consumerreports.org/press_release/consumer-reports-opposes-ai-state-preemption-language-in-house-budget-reconciliation-bill/">Consumer Reports opposes AI state preemption language in House budget reconciliation bill</a><span class="source-meta">Consumer Reports</span></span></li><li><span class="source-title"><a href="https://www.naag.org/press-releases/bipartisan-coalition-of-36-state-attorneys-general-opposes-federal-ban-on-state-ai-laws/">Bipartisan Coalition of 36 State Attorneys General Opposes Federal Ban on State AI Laws</a><span class="source-meta">National Association of Attorneys General</span></span></li></ul>
-        </section>
+    <section class="backmatter">
+      <div class="module">
+        <h2>不确定性</h2>
+        <ul><li>这仍是白宫立法建议，不是已经通过的联邦 AI 法；国会是否采纳、如何拆分、是否保留强预占条款，都未确定。</li><li>白宫新闻稿强调六项目标，但正式 PDF 和行政令都把州法预占放在<strong class="signal">核心</strong>位置；引用时需要区分新闻稿、正式建议和行政令。</li><li>版权训练的 fair use 问题尚未被统一解决，白宫、版权局报告、Blackburn 草案和法院个案之间存在明显差异。</li><li>“保留州传统警察权”和“禁止州监管 AI development”之间的边界会成为<strong class="signal">后续</strong>争议焦点，尤其在儿童安全、消费者保护、招聘、住房、医疗和数据中心选址上。</li><li>数据中心电价和电网成本的政策归因复杂，不能把所有电价变化简单归因于 AI 数据中心。</li></ul>
+      </div>
+      <div class="module">
+        <h2>后续观察</h2>
+        <ul><li>国会是否正式提出综合 AI 框架法案，或把儿童安全、版权、数据中心、NIST 标准和州法预占拆成多个法案。</li><li>Blackburn TRUMP AMERICA AI Act 讨论稿是否进入委员会审议，以及其版权 fair use、Section 230、产品责任和预占条款如何变化。</li><li>司法部 AI Litigation Task Force、商务部州法评估、FCC 模型披露标准和 FTC 政策声明是否按行政令推进。</li><li>科罗拉多、加州、纽约、得州等州级 AI 法律是否被修订、推迟、挑战或作为联邦预占的测试对象。</li><li>AI 训练版权案件、数字 replica 立法、NO FAKES Act、TAKE IT DOWN Act 执行和版权局 Part 3 最终版的<strong class="signal">后续</strong>进展。</li><li>数据中心电价保护、现场发电、联邦许可、州公用事业监管和地方 zoning 的冲突是否成为 AI 法案谈判的独立阻力。</li></ul>
+      </div>
+      <div class="module sources-module">
+        <h2>研究来源</h2>
+        <ul class="source-list"><li><a href="https://www.whitehouse.gov/releases/2026/03/president-donald-j-trump-unveils-national-ai-legislative-framework/">President Donald J. Trump Unveils National AI Legislative Framework</a><span class="source-meta">The White House</span></li><li><a href="https://www.whitehouse.gov/wp-content/uploads/2026/03/03.20.26-National-Policy-Framework-for-Artificial-Intelligence-Legislative-Recommendations.pdf">A National Policy Framework for Artificial Intelligence: Legislative Recommendations</a><span class="source-meta">The White House</span></li><li><a href="https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/">Ensuring a National Policy Framework for Artificial Intelligence</a><span class="source-meta">The White House</span></li><li><a href="https://www.whitehouse.gov/releases/2025/07/white-house-unveils-americas-ai-action-plan/">White House Unveils America’s AI Action Plan</a><span class="source-meta">The White House</span></li><li><a href="https://www.blackburn.senate.gov/index.php/2026/3/technology/blackburn-releases-discussion-draft-of-national-policy-framework-for-artificial-intelligence/3b3b6458-b6c7-478b-9859-374949586765">Blackburn Releases Discussion Draft of National Policy Framework for Artificial Intelligence</a><span class="source-meta">U.S. Senator Marsha Blackburn</span></li><li><a href="https://www.ncsl.org/financial-services/artificial-intelligence-legislation-database">Artificial Intelligence Legislation Database</a><span class="source-meta">National Conference of State Legislatures</span></li><li><a href="https://leg.colorado.gov/bills/SB24-205">SB24-205 Consumer Protections for Artificial Intelligence</a><span class="source-meta">Colorado General Assembly</span></li><li><a href="https://www.copyright.gov/ai/">Copyright and Artificial Intelligence</a><span class="source-meta">U.S. Copyright Office</span></li><li><a href="https://www.energy.gov/ai">Artificial Intelligence</a><span class="source-meta">Department of Energy</span></li><li><a href="https://advocacy.consumerreports.org/press_release/consumer-reports-opposes-ai-state-preemption-language-in-house-budget-reconciliation-bill/">Consumer Reports opposes AI state preemption language in House budget reconciliation bill</a><span class="source-meta">Consumer Reports</span></li><li><a href="https://www.naag.org/press-releases/bipartisan-coalition-of-36-state-attorneys-general-opposes-federal-ban-on-state-ai-laws/">Bipartisan Coalition of 36 State Attorneys General Opposes Federal Ban on State AI Laws</a><span class="source-meta">National Association of Attorneys General</span></li></ul>
+      </div>
+    </section>
     
-
-        <section class="detailed-report">
-          <h2>研究报告</h2>
-          <div class="report-body"><p class="report-lede"><strong>白宫在 <strong class="metric">2026 年</strong> 3 月 <strong class="metric">20 日</strong>发布的 “National AI Legislative Framework”，表面上是一份六项目标清单：保护儿童、强化社区、尊重知识产权、保护言论自由、促进创新、培养 AI 劳动力。</strong>这样的摘要没有错，因为白宫新闻稿就是这样讲的。但如果只按这六项写，最<mark class="signal-mark"><strong class="signal">关键</strong></mark>的一层会被漏掉：正式 PDF 把“建立联邦政策框架、预占繁重州级 AI 法律”列为第七项，而且 <strong class="metric">2025 年</strong> 12 月的行政令已经提前把司法部、商务部、FCC 和 FTC 都拉进了对州法的约束路径。换句话说，这不是一份普通的 AI 原则文件，而是白宫试图把美国 AI 治理从州级试验场重新收束到全国统一市场的一次政治动员。</p><p class="report-paragraph">这条锚点值得写，不是因为六项目标本身多新。儿童安全、版权、深伪、数据中心用电、算法歧视、劳动力再培训，这些议题过去几年都已经在国会、州议会、法院和监管机构之间反复出现。新意在于白宫把它们放进一个共同叙事：美国要赢得 AI 竞赛，就不能让 50 个州分别制定可能互相冲突的规则。这里的“竞争力”不是抽象口号，它被翻译成几个具体担忧：创业公司无法承担多州合规成本，大模型开发被州法管成全国性义务，州级披露或反歧视规则可能影响模型输出，数据中心建设和供电被地方规则拖慢，版权和数字人格争议无法在碎片化制度中稳定结算。</p><p class="report-paragraph">这个叙事的起点其实在 <strong class="metric">2025 年</strong> 12 月 <strong class="metric">11 日</strong>的行政令。那份行政令直接说，美国处在同对手竞争 AI 主导权的早期阶段，州州不同的监管会让合规更困难，尤其会伤害初创公司；它还点名科罗拉多的算法歧视法，认为这类规则可能迫使模型为了避免差别影响而产生“不真实”的输出。行政令要求司法部长建立 AI Litigation Task Force，用来挑战与联邦政策相冲突的州级 AI 法；要求商务部长评估哪些州法“繁重”；还把 BEAD 宽带资金、FCC 的 AI 模型报告披露标准、FTC 对“欺骗性输出”的解释都纳入同一个联邦预占工具箱。3 月 <strong class="metric">20 日</strong>的立法框架更像是把这套行政路线翻译给国会，而不是从零提出一套新理念。</p><p class="report-callout"><strong>白宫并没有要求抹掉所有州权。</strong>正式框架中特意留下了几类空间：州仍可执行一般适用的传统警察权，包括保护儿童、反欺诈、消费者保护；州仍可管 AI 基础设施选址的 zoning；州也可决定自己采购或在公共服务中使用 AI 的规则。问题在于边界很锋利：同一份文件又说，州不应监管 AI development，因为 AI 是跨州现象，并且牵涉外交和国家安全；州也不应过度限制美国人使用 AI 做本来合法的事，或因第三方使用模型违法而惩罚开发者。很多现实争议恰好卡在中间，例如高<mark class="signal-mark"><strong class="signal">风险</strong></mark> AI 的影响评估算不算消费者保护，训练数据披露算不算监管开发，招聘算法审计是地方劳动保护还是跨州 AI 合规负担。</p><p class="report-paragraph">州级 AI 法律确实已经形成实质压力。NCSL 的 AI legislation database 到 <strong class="metric">2026 年</strong> 5 月仍在按月追踪各州、属地和华盛顿特区从 <strong class="metric">2025 年</strong>以来提出或通过的 AI 法案，主题覆盖政府使用、私营部门使用、医疗、住房、就业、深伪、能源、来源标记、算法影响评估和歧视等。科罗拉多 SB24-205 是白宫口中的典型靶子：它要求高<mark class="signal-mark"><strong class="signal">风险</strong></mark> AI 系统的开发者和部署者以合理注意防止已知或可预见的算法歧视风险，原定 <strong class="metric">2026 年</strong> 2 月生效，并把违反行为纳入消费者保护法框架。纽约市 Local Law 144 的自动化就业决策工具偏见审计、加州 SB 942 的生成式 AI 内容标记，也都说明州和地方政府并不是在等一个联邦大法案，而是已经把 AI 放进就业、内容真实性和消费者知情权的具体场景。</p><p class="report-callout"><strong>反对预占的一方并不是简单反对联邦立法。</strong>消费者组织、隐私组织和州检察长更常见的说法是：可以有全国性底线，但不能在联邦规则尚未提供同等保护时冻结州法。Consumer Reports 在 <strong class="metric">2025 年</strong>反对预算协调案中的 AI 州法预占条款，理由是国会长期没有通过新兴消费者<mark class="signal-mark"><strong class="signal">风险</strong></mark>规则，却要禁止州保护居民。EPIC 把 <strong class="metric">10 年</strong>州法禁令称为给大型科技公司的礼物。36 名州检察长通过 NAAG 要求国会拒绝联邦 AI moratorium，理由是广泛预占会削弱州政府快速回应新风险的能力。这些来源的共同点是，它们承认碎片化有成本，但认为没有保护内容的统一标准，只会把“统一”变成监管真空。</p><p class="report-paragraph">版权部分最能看出白宫框架的政治折中。新闻稿说创作者和出版者的作品、身份应被尊重，同时又说 AI 要进步，就必须能够对它从世界中学习到的内容作 fair use。正式框架更具体：行政部门倾向于认为用版权材料训练 AI 不违反版权法，但建议国会不要干预法院对 fair use 问题的处理，并可探索自愿许可或集体权利框架。这个立场比很多创作者组织想要的弱，也比一些 AI 公司希望的“训练当然合法”更谨慎。美国版权局 <strong class="metric">2025 年</strong>发布的 Part 3 预出版报告没有给出一刀切答案，而是强调具体场景、市场替代、许可市场和获取来源都会影响 fair use 分析；同一时期 Thomson Reuters v. ROSS 的判决也提醒外界，至少在某些竞争性法律检索训练场景中，法院已经可能拒绝 fair use 抗辩。</p><p class="report-paragraph">数字人格权又把版权问题推向另一个方向。美国版权局 Part 1 报告建议国会建立新的联邦数字复制权，以处理未经授权复制个人声音、形象等问题；Blackburn 的 TRUMP AMERICA AI Act 讨论稿也把 NO FAKES Act、数字声音和视觉 likeness 保护、训练数据透明度放进“保护创作者”的篮子。白宫框架在这里的选择很微妙：它没有直接把所有 AI 训练判成侵权，也没有否认创作者和个人身份保护的政治动能，而是把训练 fair use 留给法院，把数字人格保护留给国会进一步建模。对研究报告来说，这一点不能写成“白宫已经解决版权问题”，它最多是把冲突重新排列。</p><p class="report-paragraph">儿童安全是另一条已经有联邦立法基础的线。<strong class="metric">2025 年</strong> 5 月 <strong class="metric">19 日</strong>，特朗普签署 S.146，也就是 TAKE IT DOWN Act，刑事化故意发布非自愿亲密图像，并要求覆盖平台移除相关内容。白宫 <strong class="metric">2026 年</strong>框架继续把未成年人可能接触的 AI 平台、AI 伴侣服务、自伤鼓励、性剥削<mark class="signal-mark"><strong class="signal">风险</strong></mark>、家长账户控制和年龄确认放进第一项。这里与预占州法之间存在一个政策张力：儿童保护往往是州法最容易获得公众支持的领域，白宫框架也表示不预占一般儿童保护法；但如果儿童安全规则具体落到推荐算法、聊天机器人设计、年龄验证、内容过滤和产品责任，又可能触碰模型开发和平台合规的全国性边界。</p><p class="report-paragraph">数据中心电价看似和 AI 治理相隔很远，实际上是这份框架把“AI 竞争力”落到地方政治的<mark class="signal-mark"><strong class="signal">关键</strong></mark>接口。白宫要求国会落实所谓 Ratepayer Protection Pledge，让居民电价不要为 AI 数据中心建设和运行买单，同时简化 AI 基础设施和发电项目的联邦许可，并鼓励数据中心现场发电以增强电网可靠性。能源部的 AI 页面称，到 <strong class="metric">2030 年</strong>数据中心可能消耗美国总电力需求的 <strong class="metric">9%</strong>，NCSL 的能源专题也把 AI、数据中心、州级能源立法和电网韧性放在一起讨论。也就是说，数据中心不是附带议题：如果居民账单上涨、地方电网改造成本外溢、选址引发社区反弹，那么“联邦统一标准”会直接面对州公用事业监管、地方 zoning 和消费者费率政治。</p><p class="report-paragraph">言论自由部分则把这套框架的党派色彩暴露得最明显。白宫要求防止联邦政府胁迫 AI 或技术平台按党派或意识形态议程封禁、强迫或改变内容，并给美国人提供针对政府影响 AI 平台表达的救济机制。这个目标可以被解释为第一修正案保护，也可以被理解为对所谓 “woke AI” 和算法歧视规则的反击。问题是，很多 AI 治理工具本身就会影响输出和披露：反歧视测试、错误信息标记、安全微调、内容来源标识、儿童安全过滤，都会在某种程度上改变系统行为。白宫把“真实输出”和“不得被意识形态扭曲”放在一起，但谁来定义真实、审计怎样进行、政府采购规则和一般平台规则如何区分，仍然没有被框架解决。</p><p class="report-paragraph">因此，这份文件离<mark class="signal-mark"><strong class="signal">真正</strong></mark>的联邦 AI 法案还有明显距离。它是行政部门给国会的立法建议，不是已经生效的综合 AI 法。较接近立法文本的是 Senator Marsha Blackburn 在 <strong class="metric">2026 年</strong> 3 月 <strong class="metric">18 日</strong>发布的 TRUMP AMERICA AI Act 讨论稿，它和白宫框架在“一本全国规则书”、儿童、创作者、保守派、社区和创新设施上高度重合，但也有差异：例如 Blackburn 草案明确说未经授权为训练、微调、开发或创建 AI 而复制、处理版权作品不构成 fair use，这比白宫“让法院处理”的口径更强；草案还包括 Section 230 sunset、AI 开发者产品责任、政治 affiliation 审计等更具争议的设计。国会后续会不会把这些内容合并、删减、拆分成儿童安全、版权、标准机构、数据中心和预占条款几个小法案，仍然未定。</p><p class="report-paragraph">最后应当把这份框架放在美国与欧盟路径差异中看。欧盟 AI Act 已经是成文法，接下来的问题是执行时间、指南、标准和成员国执法；美国现在仍更像在争夺谁来定义“全国框架”。白宫的核心赌注是：统一、低负担、以创新和国家竞争为中心的联邦标准，比州级试验更能保护美国 AI 优势。反方的核心担忧是：如果联邦标准迟迟没有可执行的权利、责任和透明度要求，预占州法会先发生，保护却未必跟上。研究这条锚点，不能把它写成“美国终于有 AI 法”，也不能写成“白宫只是在反监管”。更准确的判断是：美国 AI 立法的<mark class="signal-mark"><strong class="signal">真正</strong></mark>刀口，正在从“是否监管 AI”转向“谁有权监管 AI，以及统一市场和地方保护之间的边界如何画”。</p></div>
-        </section>
-    
-
-        <section class="uncertainties">
-          <h2>不确定性</h2>
-          <ul class="note-list"><li><span>这仍是白宫立法建议，不是已经通过的联邦 AI 法；国会是否采纳、如何拆分、是否保留强预占条款，都未确定。</span></li><li><span>白宫新闻稿强调六项目标，但正式 PDF 和行政令都把州法预占放在<mark class="signal-mark"><strong class="signal">核心</strong></mark>位置；引用时需要区分新闻稿、正式建议和行政令。</span></li><li><span>版权训练的 fair use 问题尚未被统一解决，白宫、版权局报告、Blackburn 草案和法院个案之间存在明显差异。</span></li><li><span>“保留州传统警察权”和“禁止州监管 AI development”之间的边界会成为<mark class="signal-mark"><strong class="signal">后续</strong></mark>争议焦点，尤其在儿童安全、消费者保护、招聘、住房、医疗和数据中心选址上。</span></li><li><span>数据中心电价和电网成本的政策归因复杂，不能把所有电价变化简单归因于 AI 数据中心。</span></li></ul>
-        </section>
-    
-
-        <section class="follow-up">
-          <h2>后续跟踪变量</h2>
-          <ul class="note-list"><li><span>国会是否正式提出综合 AI 框架法案，或把儿童安全、版权、数据中心、NIST 标准和州法预占拆成多个法案。</span></li><li><span>Blackburn TRUMP AMERICA AI Act 讨论稿是否进入委员会审议，以及其版权 fair use、Section 230、产品责任和预占条款如何变化。</span></li><li><span>司法部 AI Litigation Task Force、商务部州法评估、FCC 模型披露标准和 FTC 政策声明是否按行政令推进。</span></li><li><span>科罗拉多、加州、纽约、得州等州级 AI 法律是否被修订、推迟、挑战或作为联邦预占的测试对象。</span></li><li><span>AI 训练版权案件、数字 replica 立法、NO FAKES Act、TAKE IT DOWN Act 执行和版权局 Part 3 最终版的<mark class="signal-mark"><strong class="signal">后续</strong></mark>进展。</span></li><li><span>数据中心电价保护、现场发电、联邦许可、州公用事业监管和地方 zoning 的冲突是否成为 AI 法案谈判的独立阻力。</span></li></ul>
-        </section>
-    
-      </article>
-    
-            
-    <footer>公开资料研究索引，包含来源链接、摘要、研究报告和不确定性提示。</footer>
   </main>
+  <footer>公开资料研究索引，包含来源链接、研究报告和不确定性提示。</footer>
+
 </body>
 </html>

@@ -1,235 +1,576 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="ledger" data-layout="newspaper">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>IMF Fiscal Monitor：高债务时代，财政风险开始由市场再定价触发</title>
   <style>
     :root {
-      --bg: #f6f5ef;
-      --paper: #ffffff;
-      --text: #1f2520;
-      --muted: #66716a;
-      --line: #d9ded7;
-      --accent: #0b6b5f;
-      --accent-two: #9b6a24;
-      --soft: #edf5f1;
-      --warm: #fff4dc;
-      --ink-soft: #2f3933;
+      --paper: #f5f1e3;
+      --ink: #171717;
+      --muted: #64615b;
+      --line: #1c1c1c;
+      --accent: #0d5c63;
+      --accent-two: #b54d1f;
+      --accent-three: #f0c84b;
+      --sand: #efe5cf;
+      --measure: 52rem;
+      --background-signature: ledger-newsprint;
+      --page-background: repeating-linear-gradient(0deg, rgba(13,92,99,.045) 0 1px, transparent 1px 13px), repeating-linear-gradient(90deg, rgba(181,77,31,.035) 0 1px, transparent 1px 86px), var(--paper);
     }
     * { box-sizing: border-box; }
+    html { background: #151515; }
     body {
       margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Avenir Next", "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
-      line-height: 1.72;
+      color: var(--ink);
+      background: var(--page-background);
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      line-height: 1.86;
       letter-spacing: 0;
     }
-    main {
-      width: min(1040px, calc(100% - 34px));
-      margin: 0 auto;
-      padding: 38px 0 72px;
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; overflow-wrap: anywhere; }
+    .issue-bar {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: .58rem clamp(1rem, 4vw, 3.2rem);
+      background: color-mix(in srgb, var(--paper) 92%, white);
+      border-bottom: 2px solid var(--line);
+      backdrop-filter: blur(12px);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
     }
-    header {
-      border-bottom: 2px solid var(--text);
-      margin-bottom: 24px;
-      padding-bottom: 24px;
+    .issue-bar strong { color: var(--accent); }
+    .issue-bar span:nth-child(2) { font-weight: 900; }
+    .issue-bar span:last-child { text-align: right; color: var(--muted); }
+    .magazine-cover {
+      min-height: clamp(420px, 62vh, 680px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(17rem, 25rem);
+      gap: clamp(2rem, 5vw, 4.2rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.5rem) clamp(1rem, 5vw, 5rem) clamp(2.2rem, 4vw, 3.2rem);
+      border-bottom: 2px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .magazine-cover::before {
+      content: "RISK";
+      position: absolute;
+      left: clamp(.7rem, 3vw, 2rem);
+      top: clamp(4rem, 9vw, 7rem);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(5rem, 17vw, 17rem);
+      line-height: .75;
+      letter-spacing: 0;
+      color: color-mix(in srgb, var(--accent-two) 13%, transparent);
+      pointer-events: none;
+    }
+    .kicker {
+      display: inline-flex;
+      gap: .6rem;
+      align-items: center;
+      font-weight: 900;
+      color: var(--accent);
+      border: 2px solid var(--line);
+      padding: .22rem .55rem;
+      background: var(--accent-three);
+      width: fit-content;
     }
     h1 {
-      font-size: clamp(2rem, 5vw, 4.6rem);
-      line-height: 1.05;
-      margin: 0 0 16px;
+      max-width: 12ch;
+      margin: 1.3rem 0 0;
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 7vw, 7.2rem);
+      line-height: .94;
+      letter-spacing: 0;
+      text-wrap: balance;
     }
-    h2 { margin: 8px 0 10px; line-height: 1.28; font-size: 1.35rem; }
-    a { color: var(--accent); text-underline-offset: 3px; overflow-wrap: anywhere; }
-    .subtitle { max-width: 760px; color: var(--muted); font-size: 1.05rem; }
-    .nav { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 18px; }
-    .info-list { display: grid; gap: 16px; }
-    .info-card {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 20px 22px;
-      box-shadow: 0 18px 50px rgba(31, 37, 32, .06);
+    .deck {
+      max-width: 56rem;
+      font-size: clamp(1.1rem, 1.65vw, 1.48rem);
+      line-height: 1.62;
+      margin: 2rem 0 0;
+      color: #24211d;
+      border-left: .65rem solid var(--accent);
+      padding-left: 1.2rem;
     }
-    .meta { color: var(--muted); font-size: .92rem; }
-    .summary { font-size: 1.02rem; }
-    .why {
-      background: var(--soft);
-      border-left: 4px solid var(--accent);
-      padding: 10px 12px;
-      color: #26322d;
+    .cover-meta { align-self: stretch; display: grid; align-content: end; gap: 1rem; }
+    .cover-card {
+      border: 2px solid var(--line);
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 9px 9px 0 var(--accent-two);
     }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-    .tags span {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 3px 9px;
-      color: var(--muted);
-      font-size: .86rem;
-      background: #fbfcfa;
-    }
-    .actions { margin-bottom: 0; }
-    .analysis, .detailed-summary, .news-anchor, .research-questions, .research-sources,
-    .detailed-report, .uncertainties, .follow-up {
-      border-top: 1px solid var(--line);
-      margin-top: 18px;
-      padding-top: 14px;
-    }
-    .anchor-report { border-left: 5px solid var(--accent-two); }
-    .analysis h2, .detailed-summary h2, .news-anchor h2, .research-questions h2,
-    .research-sources h2, .detailed-report h2, .uncertainties h2, .follow-up h2 { font-size: 1.05rem; margin-top: 0; }
-    .analysis p, .detailed-summary p, .news-anchor p, .detailed-report p { margin: 0 0 12px; }
-    .report-body {
-      max-width: 820px;
+    .cover-card h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.35; color: var(--accent); }
+    .cover-card ol, .cover-card ul { margin: 0; padding-left: 1.15rem; }
+    .cover-card li { margin: .48rem 0; line-height: 1.55; }
+    .article-shell {
       display: grid;
-      gap: 14px;
-    }
-    .report-body p {
-      color: var(--ink-soft);
-      margin: 0;
-      font-size: 1.03rem;
-    }
-    .report-lede {
-      padding: 16px 18px;
-      background: #fbf8ed;
-      border-left: 5px solid var(--accent-two);
-      font-size: 1.12rem !important;
-    }
-    .report-callout {
-      padding: 13px 16px;
-      background: #fbfcfa;
-      border: 1px solid #dbe7e1;
-      border-left: 4px solid var(--accent);
-      box-shadow: inset 0 0 0 9999px rgba(11, 107, 95, .025);
-    }
-    strong.signal, strong.metric {
-      color: #123f38;
-      font-weight: 800;
-    }
-    mark {
-      background: rgba(221, 166, 74, .22);
-      color: inherit;
-      padding: 0 .12em;
-      border-radius: 3px;
-    }
-    .signal-mark {
-      background: rgba(221, 166, 74, .24);
-      box-decoration-break: clone;
-      -webkit-box-decoration-break: clone;
-    }
-    .question-list {
-      counter-reset: question;
-      list-style: none;
-      padding-left: 0;
-      display: grid;
-      gap: 10px;
-    }
-    .question-list li {
-      counter-increment: question;
-      display: grid;
-      grid-template-columns: 2.1rem 1fr;
-      gap: 10px;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.6rem, 3vw, 3.2rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3rem);
       align-items: start;
-      background: #fbfcfa;
-      border: 1px solid var(--line);
-      padding: 10px 12px;
     }
-    .question-list li::before {
-      content: counter(question);
-      width: 1.7rem;
-      height: 1.7rem;
-      border-radius: 50%;
-      display: inline-grid;
-      place-items: center;
-      background: var(--accent);
-      color: white;
-      font-weight: 700;
-      font-size: .9rem;
-    }
-    .source-list, .note-list {
+    .editor-note {
+      grid-column: 1 / -1;
       display: grid;
-      gap: 9px;
-      padding-left: 20px;
+      grid-template-columns: minmax(10rem, 15rem) minmax(0, 1fr);
+      gap: 1.2rem;
+      border-top: 5px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: 1rem 0 1.1rem;
+      color: var(--muted);
+      font-size: .94rem;
+      line-height: 1.7;
     }
-    .source-title {
+    .editor-note b {
+      display: block;
+      color: var(--ink);
+      font-size: .82rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .25rem;
+    }
+    .editor-note p { margin: 0; }
+    .magazine-article { min-width: 0; font-size: clamp(1.04rem, 1.05vw, 1.18rem); }
+    .article-shell > .magazine-article { grid-column: 1; }
+    .magazine-article p { margin: 0 0 1.35rem; text-align: justify; text-wrap: pretty; }
+    .magazine-article .lede {
+      font-size: clamp(1.24rem, 2vw, 1.58rem);
+      line-height: 1.75;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+    .dropcap {
+      float: left;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 5.8rem;
+      line-height: .8;
+      padding: .18rem .55rem .1rem 0;
+      color: var(--accent);
+    }
+    .magazine-emphasis {
+      margin: 2rem 0 !important;
+      padding: 1.1rem 1.25rem;
+      border-left: .45rem solid var(--accent-two);
+      background: linear-gradient(90deg, color-mix(in srgb, var(--accent-two) 12%, transparent), transparent 78%);
+      font-weight: 600;
+    }
+    .pullquote {
+      margin: 2.4rem -4rem 2.4rem 0;
+      padding: 1.1rem 0 1.2rem 1.5rem;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      background: var(--paper);
+    }
+    .pullquote span { color: var(--accent); font-size: .78rem; font-weight: 900; letter-spacing: .13em; }
+    .pullquote p {
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-size: clamp(1.6rem, 3vw, 2.45rem);
+      line-height: 1.28;
+      margin: .35rem 0 0;
+      text-align: left;
+    }
+    .metric {
+      font-variant-numeric: tabular-nums;
+      color: var(--accent);
+      font-weight: 900;
+      background: linear-gradient(transparent 55%, color-mix(in srgb, var(--accent-three) 65%, transparent) 0);
+    }
+    .signal {
+      font-weight: 900;
+      text-decoration: underline;
+      text-decoration-color: var(--accent-two);
+      text-decoration-thickness: .18em;
+      text-underline-offset: .14em;
+    }
+    .companion-rail {
+      position: sticky;
+      top: 3.8rem;
+      grid-column: 2;
+      align-self: start;
+      border-top: 5px solid var(--line);
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+      padding-top: 1rem;
+    }
+    .companion-rail b { color: var(--ink); }
+    .backmatter {
+      grid-column: 1 / -1;
       display: grid;
-      gap: 2px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.2rem;
+      margin-top: 2.4rem;
+      border-top: 2px solid var(--line);
+      padding-top: 1.4rem;
     }
-    .source-meta {
+    .module { background: #fff; border: 2px solid var(--line); padding: 1rem 1.1rem; box-shadow: 6px 6px 0 var(--sand); }
+    .module h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.3; color: var(--accent); }
+    .module ul { margin: 0; padding-left: 1.1rem; }
+    .module li { margin: .5rem 0; line-height: 1.58; }
+    .source-list li { display: grid; gap: .12rem; margin-bottom: .8rem; }
+    .source-meta { color: var(--muted); font-size: .86rem; }
+    .source-meta::before { content: "来源 · "; }
+    .sources-module { grid-column: 1 / -1; }
+    .newspaper-masthead {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.8rem) clamp(1rem, 4vw, 3rem) 1.6rem;
+      border-bottom: 5px double var(--line);
+    }
+    .newspaper-kicker {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.4rem, 3vw, 3rem);
+      line-height: 1;
+      color: var(--accent);
+      text-transform: uppercase;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: .35rem 0;
+    }
+    .newspaper-masthead h1 {
+      max-width: 20ch;
+      font-size: clamp(2.6rem, 5.5vw, 6.2rem);
+      line-height: .98;
+    }
+    .newspaper-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem 1.1rem;
+      margin-top: 1rem;
+      padding-top: .8rem;
+      border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: .9rem;
     }
-    .source-meta::before { content: "来源 · "; }
-    .note-list li > .list-key {
-      display: block;
-      margin-bottom: 2px;
+    .market-strip {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr 1fr;
+      gap: 1rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      border-bottom: 2px solid var(--line);
+      background: color-mix(in srgb, var(--accent-three) 26%, var(--paper));
+      font-size: .94rem;
+      line-height: 1.55;
     }
-    .research-sources li, .research-questions li, .uncertainties li, .follow-up li { margin: 0 0 8px; }
-    .topic-index { columns: 2; padding-left: 20px; }
-    .topic-index li { break-inside: avoid; margin: 0 0 8px; }
-    footer { color: var(--muted); margin-top: 34px; font-size: .9rem; }
-    @media (max-width: 720px) {
-      .topic-index { columns: 1; }
+    .market-strip b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .08em; }
+    .market-strip p, .market-strip ol, .market-strip ul { margin: .35rem 0 0; }
+    .market-strip ol, .market-strip ul { padding-left: 1.1rem; }
+    .newspaper-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .newspaper-article .lede {
+      column-span: all;
+      border-top: 2px solid var(--line);
+      padding-top: 1rem;
+    }
+    .newspaper-article { grid-column: 1; }
+    .newspaper-rail {
+      position: sticky;
+      top: 3.8rem;
+      border-left: 2px solid var(--line);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .dossier-cover {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.6rem) clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
+      gap: clamp(1.5rem, 4vw, 3.8rem);
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+    }
+    .dossier-stamp {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      align-self: start;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      color: var(--accent);
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: color-mix(in srgb, var(--accent-three) 35%, white);
+    }
+    .dossier-cover h1 {
+      max-width: 18ch;
+      font-size: clamp(2.7rem, 6vw, 6.6rem);
+      line-height: .98;
+    }
+    .dossier-summary {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.5vw, 1.36rem);
+      border-left: .45rem solid var(--accent);
+      padding-left: 1rem;
+    }
+    .dossier-source { color: var(--muted); margin: 0; }
+    .dossier-shell {
+      display: grid;
+      grid-template-columns: minmax(12rem, 17rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .dossier-index {
+      position: sticky;
+      top: 3.8rem;
+      border-top: 5px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .dossier-index b { display: block; color: var(--ink); margin-bottom: .6rem; }
+    .dossier-index ol { margin: 0 0 1rem; padding-left: 1.1rem; }
+    .dossier-article { grid-column: 2; }
+    .field-cover {
+      min-height: clamp(460px, 64vh, 720px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr);
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      border-bottom: 2px solid var(--line);
+      background:
+        linear-gradient(135deg, transparent 0 48%, color-mix(in srgb, var(--accent-three) 24%, transparent) 48% 52%, transparent 52%),
+        var(--paper);
+    }
+    .field-topline {
+      grid-column: 1 / -1;
+      width: fit-content;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: .25rem .7rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .field-cover h1 {
+      max-width: 16ch;
+      font-size: clamp(2.8rem, 6.4vw, 7rem);
+    }
+    .field-deck {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.55vw, 1.38rem);
+      line-height: 1.62;
+      border-left: .5rem solid var(--accent-two);
+      padding-left: 1rem;
+    }
+    .field-map {
+      border: 2px solid var(--line);
+      background: rgba(255,255,255,.76);
+      padding: 1rem;
+      box-shadow: 10px 10px 0 color-mix(in srgb, var(--accent) 70%, black);
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+    .field-map b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .1em; }
+    .field-map ol { margin: .55rem 0 1rem; padding-left: 1.2rem; }
+    .field-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(13rem, 17rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .field-log {
+      position: sticky;
+      top: 3.8rem;
+      border-left: .35rem solid var(--accent-two);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .field-article { grid-column: 1; }
+    .lab-cover {
+      padding: clamp(2.6rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      min-height: clamp(420px, 58vh, 650px);
+      display: grid;
+      align-content: center;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+      background:
+        linear-gradient(90deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        linear-gradient(0deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        var(--paper);
+    }
+    .lab-label {
+      width: fit-content;
+      background: var(--ink);
+      color: #fff;
+      padding: .28rem .65rem;
+      font-size: .82rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .lab-cover h1 {
+      max-width: 22ch;
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 5.8rem);
+      line-height: 1.04;
+    }
+    .lab-deck {
+      max-width: 62rem;
+      font-size: clamp(1.06rem, 1.45vw, 1.32rem);
+      border-top: 2px solid var(--accent);
+      padding-top: 1rem;
+    }
+    .protocol-strip {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .75rem;
+      border-bottom: 2px solid var(--line);
+      font-size: .88rem;
+    }
+    .protocol-strip div {
+      border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
+      padding: .75rem;
+      background: rgba(255,255,255,.68);
+      min-width: 0;
+    }
+    .protocol-strip b {
+      display: block;
+      color: var(--accent-two);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .protocol-strip span { overflow-wrap: anywhere; }
+    .lab-shell {
+      display: grid;
+      grid-template-columns: minmax(14rem, 19rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .lab-notes {
+      position: sticky;
+      top: 3.8rem;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      background: #fff;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .lab-notes b { color: var(--ink); }
+    .lab-notes ol { padding-left: 1.1rem; }
+    .lab-article { grid-column: 2; }
+    footer { color: var(--muted); padding: 0 clamp(1rem, 4vw, 3rem) 3rem; max-width: 1220px; margin: 0 auto; font-size: .9rem; }
+    @media (max-width: 1100px) {
+      .magazine-cover { grid-template-columns: 1fr; min-height: auto; }
+      .cover-meta { max-width: 42rem; }
+      .article-shell { grid-template-columns: 1fr; }
+      .editor-note { grid-template-columns: 1fr; }
+      .companion-rail { position: static; grid-column: 1; }
+      .backmatter { grid-column: 1; grid-template-columns: 1fr; }
+      .pullquote { margin-right: 0; }
+      h1 { max-width: 11ch; }
+      .market-strip, .protocol-strip { grid-template-columns: 1fr; }
+      .newspaper-shell, .dossier-shell, .field-shell, .lab-shell { grid-template-columns: 1fr; }
+      .newspaper-rail, .dossier-index, .field-log, .lab-notes { position: static; }
+      .dossier-article, .lab-article { grid-column: 1; }
+      .dossier-cover, .field-cover { grid-template-columns: 1fr; min-height: auto; }
+      .dossier-stamp { grid-column: 1; grid-row: auto; }
+    }
+    @media (max-width: 640px) {
+      .issue-bar { grid-template-columns: 1fr; gap: .15rem; }
+      .issue-bar span:last-child { text-align: left; }
+      .magazine-cover { padding-top: 2.4rem; }
+      h1 { font-size: clamp(2.65rem, 16vw, 4.8rem); }
+      .deck { border-left-width: .45rem; padding-left: .8rem; }
+      .magazine-article p { text-align: left; }
+      .dropcap { font-size: 4.6rem; }
+      .module { box-shadow: 4px 4px 0 var(--sand); }
     }
   </style>
 </head>
 <body>
-  <main>
-    
-            <header>
-              <h1>IMF Fiscal Monitor：高债务时代，财政风险开始由市场再定价触发</h1>
-              <p class="subtitle">新闻锚点驱动的主题研究报告 · 2026-04-15</p>
-              <div class="nav"><a href="../../">返回信息流</a><a href="https://www.imf.org/en/publications/fm/issues/2026/04/15/fiscal-monitor-april-2026">打开锚点来源</a></div>
-            </header>
-            
-      <article class="info-card anchor-report">
-        <div class="meta">2026-04-15 · 主题研究报告</div>
-        <h2>IMF Fiscal Monitor：高债务时代，财政风险开始由市场再定价触发</h2>
-        <p class="summary">IMF 2026 年 4 月《Fiscal Monitor》把全球公共债务、战争冲击、利息负担、非银机构和美债安全溢价放在同一套再定价机制里。它提醒的重点不是单个赤字数字，而是财政缓冲变薄后，市场情绪、能源价格和融资结构会更快把压力传导到主权债。</p>
-        <p class="why"><strong>新闻锚点：</strong><a href="https://www.imf.org/en/publications/fm/issues/2026/04/15/fiscal-monitor-april-2026">Fiscal Policy under Pressure: High Debt, Rising Risks</a> · International Monetary Fund</p>
-        <div class="tags"><span>finance-macro</span> <span>fiscal-policy</span> <span>geopolitics</span></div>
-      
-        <section class="news-anchor">
-          <h2>新闻锚点</h2>
-          <p><a href="https://www.imf.org/en/publications/fm/issues/2026/04/15/fiscal-monitor-april-2026">Fiscal Policy under Pressure: High Debt, Rising Risks</a> · International Monetary Fund</p>
-        </section>
-            
 
-        <section class="research-questions">
-          <h2>研究问题</h2>
-          <ol class="question-list"><li><span>为什么 IMF 把全球公共债务达到 GDP <strong class="metric">100%</strong> 的时间提前到 <strong class="metric">2029 年</strong>？</span></li><li><span>战争冲击为什么会放大财政<mark class="signal-mark"><strong class="signal">风险</strong></mark>，而不是只形成一次能源补贴问题？</span></li><li><span>非银金融、中短期债务发行和美债安全溢价变化如何改变主权债再定价机制？</span></li><li><span>财政支持在保护脆弱群体和维持市场价格信号之间应该如何保留边界？</span></li></ol>
-        </section>
+  <div class="issue-bar"><span><strong>Infohub</strong> article</span><span>Magazine research page</span><span>2026-04-15</span></div>
+  <header class="newspaper-masthead">
+    <div class="newspaper-kicker">MARKETS / POLICY LEDGER</div>
+    <h1>IMF Fiscal Monitor：高债务时代，财政风险开始由市场再定价触发</h1>
+    <p class="deck">IMF <strong class="metric">2026 年</strong> <strong class="metric">4 月</strong>《Fiscal Monitor》把全球公共债务、战争冲击、利息负担、非银机构和美债安全溢价放在同一套再定价机制里。它提醒的重点不是单个赤字数字，而是财政缓冲变薄后，市场情绪、能源价格和融资结构会更快把压力传导到主权债。</p>
+    <div class="newspaper-meta">
+      <span>International Monetary Fund</span>
+      <span>2026-04-15</span>
+      <span>finance-macro / fiscal-policy / geopolitics</span>
+    </div>
+  </header>
+  <section class="market-strip">
+    <div>
+      <b>新闻锚点</b>
+      <p><a href="https://www.imf.org/en/publications/fm/issues/2026/04/15/fiscal-monitor-april-2026">Fiscal Policy under Pressure: High Debt, Rising Risks</a></p>
+    </div>
+    <div>
+      <b>研究问题</b>
+      <ol><li>为什么 IMF 把全球公共债务达到 GDP <strong class="metric">100%</strong> 的时间提前到 <strong class="metric">2029 年</strong>？</li><li>战争冲击为什么会放大财政<strong class="signal">风险</strong>，而不是只形成一次能源补贴问题？</li><li>非银金融、中短期债务发行和美债安全溢价变化如何改变主权债再定价机制？</li><li>财政支持在保护脆弱群体和维持市场价格信号之间应该如何保留边界？</li></ol>
+    </div>
+    <div>
+      <b>后续变量</b>
+      <ul><li>全球公共债务/GDP 和债务-at-risk 是否继续上修</li><li>主要经济体利息支出占财政收入比例</li><li>短期国债发行占比、期限溢价和主权债拍卖需求</li><li>能源和食品补贴是否从临时措施固化为长期财政负担</li><li>非银机构持有主权债、杠杆和流动性压力指标</li><li>中东冲突和油价路径是否偏离 IMF 基准假设</li></ul>
+    </div>
+  </section>
+  <main class="newspaper-shell">
+    <article class="magazine-article newspaper-article">
+      <p class="lede"><span class="dropcap">I</span>MF 这期 Fiscal Monitor 值得看的地方，不是它又一次提醒全球债务很高。这样的判断已经说了很多年，容易被读者自动过滤。<strong class="signal">真正</strong>发生变化的是债务<strong class="signal">风险</strong>的触发方式：过去的讨论常把财政问题理解成政府赤字、债务率和预算纪律之间的关系；这份报告把债务、战争冲击、利息负担、非银机构和美债安全溢价放进了同一个再定价框架。换句话说，财政风险不再只是账本上的慢变量，它开始越来越依赖市场愿意以什么价格、什么期限、通过什么中介来吸收政府债务。</p><p class="magazine-emphasis">报告给出的第一组数字很直接。IMF 估计，全球公共债务在 <strong class="metric">2025 年</strong>已经升至接近 GDP 的 <strong class="metric">94%</strong>，并将在 <strong class="metric">2029 年</strong>达到 <strong class="metric">100%</strong>，比一年前的预测提前一年。这个变化不是由一两个小经济体制造出来的，IMF 明确说主要经济体是债务累积的主要推动者。这里面有一个容易被忽略的含义：当债务上升集中在系统性国家，全球债券市场并不会把它当成局部事件处理。主要经济体的发行节奏、期限结构和财政可信度，会改变全球无<strong class="signal">风险</strong>利率、期限溢价、汇率压力和新兴市场融资成本。</p><p>第二个层次是支出压力的性质变了。疫情、能源和食品冲击、贸易扰动之后，很多国家的财政缓冲并没有<strong class="signal">真正</strong>修复。<strong class="metric">2025 年</strong>全球经济增长并不算差，但预算并没有因此自动恢复。IMF Blog 提到，全球财政赤字在 <strong class="metric">2025 年</strong>仍保持在 GDP 的 <strong class="metric">5%</strong> 左右，利息支出从 GDP 的 <strong class="metric">2%</strong> 上升到接近 <strong class="metric">3%</strong>，只用了四年。与此同时，社会保障、国防、气候和能源转型、产业安全和战略自主，都在把财政需求从周期性救急推向结构性常态。周期性赤字可以等复苏来修复，结构性支出则会反复出现在每年的预算谈判里。</p><aside class="pullquote"><span>摘句</span><p>中东战争冲击让这套财政问题更难处理，因为它同时打在价格、增长和政治压力上。</p></aside><p>中东战争冲击让这套财政问题更难处理，因为它同时打在价格、增长和政治压力上。能源和食品价格上涨会伤害低收入家庭和成本敏感企业，政府自然会面对补贴、减税、价格干预或现金转移的压力。但如果公共财政已经没有空间，广泛补贴会把价格信号压平，把能源稀缺转化为更高消费，并把本来应当短期应对的冲击写进债务曲线。IMF 的建议因此非常具体：如果要支持家庭和企业，应当临时、定向，优先保护最脆弱群体，并尽量在既有预算内重新排序，而不是直接增加借款。</p><p>这类建议听起来像常识，执行上却很难。广泛燃油补贴政治上最容易解释，因为它给所有人一个看得见的价格保护；定向补贴需要识别受损群体、使用既有社保系统、承受没有被覆盖群体的不满，还要在危机之后撤回。IMF 担心的是后一件事：临时措施一旦变成永久权利，财政将同时失去空间和可信度。政策沟通的难点不在于告诉公众财政纪律重要，而在于解释为什么不是每一次价格冲击都可以由政府全部吸收。</p><p>Fiscal Monitor 里更有新意的一点，是它把主权债市场结构也写进<strong class="signal">风险</strong>。过去讨论公共债务时，常把债务率看成<strong class="signal">核心</strong>指标，但同样的债务率，在不同持有人结构、期限结构和市场流动性下，风险完全不同。随着央行缩表，政府必须更多依赖私人投资者吸收发行；随着短期债务占比上升，滚续压力变得更频繁；随着杠杆化非银机构参与主权债市场，价格调整可能通过保证金、赎回和去杠杆放大。财政问题因此会从预算表跳到金融市场微观结构里。</p><p class="magazine-emphasis">美债安全溢价的讨论尤其重要。美国国债长期被视为全球安全资产，部分原因是市场深度、美元体系和危机时期的避险需求。当这种安全溢价出现侵蚀迹象，影响不是美国一个国家融资成本上升这么简单。很多资产的定价、很多国家的外汇储备配置、很多金融机构的抵押品链条，都建立在美国国债高度流动和高度可信的假设上。IMF 用谨慎措辞指出这种变化会放大再定价脆弱性，<strong class="signal">真正</strong>提醒的是全球金融系统的基准资产本身也会受到财政可信度和市场结构变化的影响。</p><p>这也解释了为什么 IMF 会把债务<strong class="signal">风险</strong>和 AI 股票估值、非银杠杆、能源冲击联系起来。表面上看，AI 估值调整属于股票市场，能源冲击属于商品市场，财政赤字属于政府预算。但当能源冲击推高通胀预期，央行维持更紧金融条件，股票和债券同时承压，非银机构通过赎回或杠杆约束卖出资产，主权债收益率可能被迫上行。债务率越高、滚续越频繁、利息支出越重，政府越难用财政空间逆周期应对。这个链条才是 Fiscal Monitor 的<strong class="signal">核心</strong>。</p><p>还有一个容易被忽略的细节，是财政调整的时间感已经变了。高债务国家如果等到市场明显要求更高<strong class="signal">风险</strong>溢价才行动，调整会被迫同时面对更高利息、更弱增长和更差政治环境；如果过早、过猛地收缩，又可能伤害仍然脆弱的家庭和企业。IMF 反复使用“credible”和“well-sequenced”这类词，意思并不是把所有国家推向同一个紧缩模板，而是要求财政路径让市场和公众都看得懂：哪些支出会被保留，哪些临时支持会退出，收入端如何补足，债务稳定依赖哪些具体措施。这种可信度本身会影响融资成本，也会决定危机来临时政府还能不能获得时间。</p><p class="magazine-emphasis">把这份报告读成“各国应当立刻紧缩”也会误读。IMF 并没有否认政府在冲击中保护脆弱群体的责任，也没有把财政调整简化成削减开支。它强调的是可信、排序清楚的中期整顿：支出端要面对低效率和竞争性需求，收入端要扩大税基、减少豁免、改善征管，财政框架要能让市场相信目标不是每年后移。对财政空间窄的国家来说，危机支出必须和重新排序绑定；对财政空间较大的国家来说，支持也要避免和货币政策抗通胀目标相冲突。</p><p>最值得继续跟踪的，不是 IMF 下一次是否把全球债务率再上修几个百分点，而是融资机制有没有继续恶化。短端国债发行占比、利息支出占财政收入比例、非银机构持有和杠杆、能源补贴是否撤回、主要经济体中期财政框架是否可信，这些变量比单一赤字率更能解释<strong class="signal">风险</strong>会不会突然被市场定价。财政问题正在从年度预算争论变成一套跨市场传导机制：债务越高，政策越需要精确；市场越敏感，财政叙事越不能只靠远期承诺。</p><p>所以，这期 Fiscal Monitor 的价值在于把高债务时代的财政<strong class="signal">风险</strong>讲成了动态系统。战争冲击会推高能源和食品价格，价格压力会改变货币政策和融资条件，融资条件会改变债务可持续性，债务可持续性又会影响市场愿意给政府多少时间。它不是一个悲观预测表，而是一份提醒：当财政缓冲已经变薄，政府每一次看似临时的救助、每一次延期的整顿、每一次期限结构选择，都会更快进入市场价格。<strong class="signal">真正</strong>的<strong class="signal">后续</strong>问题，是这些国家能否在下一次冲击前把财政叙事重新变成可信承诺。</p>
+    </article>
+    <aside class="newspaper-rail">
+      <p><b>读法</b><br>写成一份克制的财政风险备忘录，像给长期观察者准备的判断底稿：少用宏大口号，多解释压力传导链条，语气保持审慎，不提供投资或政策处方。</p>
+      <p><b>主题</b><br>finance-macro / fiscal-policy / geopolitics</p>
+      <p><b>返回</b><br><a href="../../">信息流首页</a></p>
+    </aside>
     
-
-        <section class="research-sources">
-          <h2>研究来源</h2>
-          <ul class="source-list"><li><span class="source-title"><a href="https://www.imf.org/en/publications/fm/issues/2026/04/15/fiscal-monitor-april-2026">Fiscal Monitor: Fiscal Policy under Pressure: High Debt, Rising Risks</a><span class="source-meta">IMF</span></span></li><li><span class="source-title"><a href="https://www.imf.org/en/blogs/articles/2026/04/15/war-shock-requires-disciplined-fiscal-reaction">War Shock Requires Disciplined Fiscal Reaction</a><span class="source-meta">IMF Blog</span></span></li><li><span class="source-title"><a href="https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026">World Economic Outlook, April 2026: Global Economy in the Shadow of War</a><span class="source-meta">IMF</span></span></li><li><span class="source-title"><a href="https://www.imf.org/en/publications/gfsr/issues/2026/04/14/global-financial-stability-report-april-2026">Global Financial Stability Report, April 2026</a><span class="source-meta">IMF</span></span></li></ul>
-        </section>
+    <section class="backmatter">
+      <div class="module">
+        <h2>不确定性</h2>
+        <ul><li>IMF 预测基于 <strong class="metric">2026 年</strong> <strong class="metric">4 月</strong> <strong class="metric">1 日</strong>前可得数据，中东冲突、能源价格和金融条件可能快速改变。</li><li>全球公共债务指标掩盖国家差异，不能把主要经济体、新兴市场和低收入国家的财政空间等同处理。</li><li>美债安全溢价、非银杠杆和市场再定价压力难以用单一实时指标衡量，<strong class="signal">风险</strong>可能滞后暴露。</li><li>本文是宏观研究总结，不构成投资建议或具体财政政策建议。</li></ul>
+      </div>
+      <div class="module">
+        <h2>后续观察</h2>
+        <ul><li>全球公共债务/GDP 和债务-at-risk 是否继续上修</li><li>主要经济体利息支出占财政收入比例</li><li>短期国债发行占比、期限溢价和主权债拍卖需求</li><li>能源和食品补贴是否从临时措施固化为长期财政负担</li><li>非银机构持有主权债、杠杆和流动性压力指标</li><li>中东冲突和油价路径是否偏离 IMF 基准假设</li></ul>
+      </div>
+      <div class="module sources-module">
+        <h2>研究来源</h2>
+        <ul class="source-list"><li><a href="https://www.imf.org/en/publications/fm/issues/2026/04/15/fiscal-monitor-april-2026">Fiscal Monitor: Fiscal Policy under Pressure: High Debt, Rising Risks</a><span class="source-meta">IMF</span></li><li><a href="https://www.imf.org/en/blogs/articles/2026/04/15/war-shock-requires-disciplined-fiscal-reaction">War Shock Requires Disciplined Fiscal Reaction</a><span class="source-meta">IMF Blog</span></li><li><a href="https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026">World Economic Outlook, April 2026: Global Economy in the Shadow of War</a><span class="source-meta">IMF</span></li><li><a href="https://www.imf.org/en/publications/gfsr/issues/2026/04/14/global-financial-stability-report-april-2026">Global Financial Stability Report, April 2026</a><span class="source-meta">IMF</span></li></ul>
+      </div>
+    </section>
     
-
-        <section class="detailed-report">
-          <h2>研究报告</h2>
-          <div class="report-body"><p class="report-lede"><strong>IMF 这期 Fiscal Monitor 值得看的地方，不是它又一次提醒全球债务很高。</strong>这样的判断已经说了很多年，容易被读者自动过滤。<mark class="signal-mark"><strong class="signal">真正</strong></mark>发生变化的是债务风险的触发方式：过去的讨论常把财政问题理解成政府赤字、债务率和预算纪律之间的关系；这份报告把债务、战争冲击、利息负担、非银机构和美债安全溢价放进了同一个再定价框架。换句话说，财政风险不再只是账本上的慢变量，它开始越来越依赖市场愿意以什么价格、什么期限、通过什么中介来吸收政府债务。</p><p class="report-callout"><strong>报告给出的第一组数字很直接。</strong>IMF 估计，全球公共债务在 <strong class="metric">2025 年</strong>已经升至接近 GDP 的 <strong class="metric">94%</strong>，并将在 <strong class="metric">2029 年</strong>达到 <strong class="metric">100%</strong>，比一年前的预测提前一年。这个变化不是由一两个小经济体制造出来的，IMF 明确说主要经济体是债务累积的主要推动者。这里面有一个容易被忽略的含义：当债务上升集中在系统性国家，全球债券市场并不会把它当成局部事件处理。主要经济体的发行节奏、期限结构和财政可信度，会改变全球无<mark class="signal-mark"><strong class="signal">风险</strong></mark>利率、期限溢价、汇率压力和新兴市场融资成本。</p><p class="report-paragraph">第二个层次是支出压力的性质变了。疫情、能源和食品冲击、贸易扰动之后，很多国家的财政缓冲并没有<mark class="signal-mark"><strong class="signal">真正</strong></mark>修复。<strong class="metric">2025 年</strong>全球经济增长并不算差，但预算并没有因此自动恢复。IMF Blog 提到，全球财政赤字在 <strong class="metric">2025 年</strong>仍保持在 GDP 的 <strong class="metric">5%</strong> 左右，利息支出从 GDP 的 <strong class="metric">2%</strong> 上升到接近 <strong class="metric">3%</strong>，只用了四年。与此同时，社会保障、国防、气候和能源转型、产业安全和战略自主，都在把财政需求从周期性救急推向结构性常态。周期性赤字可以等复苏来修复，结构性支出则会反复出现在每年的预算谈判里。</p><p class="report-callout"><strong>中东战争冲击让这套财政问题更难处理，因为它同时打在价格、增长和政治压力上。</strong>能源和食品价格上涨会伤害低收入家庭和成本敏感企业，政府自然会面对补贴、减税、价格干预或现金转移的压力。但如果公共财政已经没有空间，广泛补贴会把价格信号压平，把能源稀缺转化为更高消费，并把本来应当短期应对的冲击写进债务曲线。IMF 的建议<mark class="signal-mark"><strong class="signal">因此</strong></mark>非常具体：如果要支持家庭和企业，应当临时、定向，优先保护最脆弱群体，并尽量在既有预算内重新排序，而不是直接增加借款。</p><p class="report-paragraph">这类建议听起来像常识，执行上却很难。广泛燃油补贴政治上最容易解释，因为它给所有人一个看得见的价格保护；定向补贴需要识别受损群体、使用既有社保系统、承受没有被覆盖群体的不满，还要在危机之后撤回。IMF 担心的是后一件事：临时措施一旦变成永久权利，财政将同时失去空间和可信度。政策沟通的难点不在于告诉公众财政纪律重要，而在于解释为什么不是每一次价格冲击都可以由政府全部吸收。</p><p class="report-paragraph">Fiscal Monitor 里更有新意的一点，是它把主权债市场结构也写进风险。过去讨论公共债务时，常把债务率看成<mark class="signal-mark"><strong class="signal">核心</strong></mark>指标，但同样的债务率，在不同持有人结构、期限结构和市场流动性下，风险完全不同。随着央行缩表，政府必须更多依赖私人投资者吸收发行；随着短期债务占比上升，滚续压力变得更频繁；随着杠杆化非银机构参与主权债市场，价格调整可能通过保证金、赎回和去杠杆放大。财政问题因此会从预算表跳到金融市场微观结构里。</p><p class="report-paragraph">美债安全溢价的讨论尤其重要。美国国债长期被视为全球安全资产，部分原因是市场深度、美元体系和危机时期的避险需求。当这种安全溢价出现侵蚀迹象，影响不是美国一个国家融资成本上升这么简单。很多资产的定价、很多国家的外汇储备配置、很多金融机构的抵押品链条，都建立在美国国债高度流动和高度可信的假设上。IMF 用谨慎措辞指出这种变化会放大再定价脆弱性，<mark class="signal-mark"><strong class="signal">真正</strong></mark>提醒的是全球金融系统的基准资产本身也会受到财政可信度和市场结构变化的影响。</p><p class="report-paragraph">这也解释了为什么 IMF 会把债务风险和 AI 股票估值、非银杠杆、能源冲击联系起来。表面上看，AI 估值调整属于股票市场，能源冲击属于商品市场，财政赤字属于政府预算。但当能源冲击推高通胀预期，央行维持更紧金融条件，股票和债券同时承压，非银机构通过赎回或杠杆约束卖出资产，主权债收益率可能被迫上行。债务率越高、滚续越频繁、利息支出越重，政府越难用财政空间逆周期应对。这个链条才是 Fiscal Monitor 的<mark class="signal-mark"><strong class="signal">核心</strong></mark>。</p><p class="report-paragraph">还有一个容易被忽略的细节，是财政调整的时间感已经变了。高债务国家如果等到市场明显要求更高<mark class="signal-mark"><strong class="signal">风险</strong></mark>溢价才行动，调整会被迫同时面对更高利息、更弱增长和更差政治环境；如果过早、过猛地收缩，又可能伤害仍然脆弱的家庭和企业。IMF 反复使用“credible”和“well-sequenced”这类词，意思并不是把所有国家推向同一个紧缩模板，而是要求财政路径让市场和公众都看得懂：哪些支出会被保留，哪些临时支持会退出，收入端如何补足，债务稳定依赖哪些具体措施。这种可信度本身会影响融资成本，也会决定危机来临时政府还能不能获得时间。</p><p class="report-paragraph">把这份报告读成“各国应当立刻紧缩”也会误读。IMF 并没有否认政府在冲击中保护脆弱群体的责任，也没有把财政调整简化成削减开支。它强调的是可信、排序清楚的中期整顿：支出端要面对低效率和竞争性需求，收入端要扩大税基、减少豁免、改善征管，财政框架要能让市场相信目标不是每年后移。对财政空间窄的国家来说，危机支出必须和重新排序绑定；对财政空间较大的国家来说，支持也要避免和货币政策抗通胀目标相冲突。</p><p class="report-paragraph">最值得继续跟踪的，不是 IMF 下一次是否把全球债务率再上修几个百分点，而是融资机制有没有继续恶化。短端国债发行占比、利息支出占财政收入比例、非银机构持有和杠杆、能源补贴是否撤回、主要经济体中期财政框架是否可信，这些变量比单一赤字率更能解释<mark class="signal-mark"><strong class="signal">风险</strong></mark>会不会突然被市场定价。财政问题正在从年度预算争论变成一套跨市场传导机制：债务越高，政策越需要精确；市场越敏感，财政叙事越不能只靠远期承诺。</p><p class="report-paragraph">所以，这期 Fiscal Monitor 的价值在于把高债务时代的财政风险讲成了动态系统。战争冲击会推高能源和食品价格，价格压力会改变货币政策和融资条件，融资条件会改变债务可持续性，债务可持续性又会影响市场愿意给政府多少时间。它不是一个悲观预测表，而是一份提醒：当财政缓冲已经变薄，政府每一次看似临时的救助、每一次延期的整顿、每一次期限结构选择，都会更快进入市场价格。<mark class="signal-mark"><strong class="signal">真正</strong></mark>的后续问题，是这些国家能否在下一次冲击前把财政叙事重新变成可信承诺。</p></div>
-        </section>
-    
-
-        <section class="uncertainties">
-          <h2>不确定性</h2>
-          <ul class="note-list"><li><span>IMF 预测基于 <strong class="metric">2026 年</strong> 4 月 <strong class="metric">1 日</strong>前可得数据，中东冲突、能源价格和金融条件可能快速改变。</span></li><li><span>全球公共债务指标掩盖国家差异，不能把主要经济体、新兴市场和低收入国家的财政空间等同处理。</span></li><li><span>美债安全溢价、非银杠杆和市场再定价压力难以用单一实时指标衡量，<mark class="signal-mark"><strong class="signal">风险</strong></mark>可能滞后暴露。</span></li><li><span>本文是宏观研究总结，不构成投资建议或具体财政政策建议。</span></li></ul>
-        </section>
-    
-
-        <section class="follow-up">
-          <h2>后续跟踪变量</h2>
-          <ul class="note-list"><li><span>全球公共债务/GDP 和债务-at-risk 是否继续上修</span></li><li><span>主要经济体利息支出占财政收入比例</span></li><li><span>短期国债发行占比、期限溢价和主权债拍卖需求</span></li><li><span>能源和食品补贴是否从临时措施固化为长期财政负担</span></li><li><span>非银机构持有主权债、杠杆和流动性压力指标</span></li><li><span>中东冲突和油价路径是否偏离 IMF 基准假设</span></li></ul>
-        </section>
-    
-      </article>
-    
-            
-    <footer>公开资料研究索引，包含来源链接、摘要、研究报告和不确定性提示。</footer>
   </main>
+  <footer>公开资料研究索引，包含来源链接、研究报告和不确定性提示。</footer>
+
 </body>
 </html>

@@ -1,235 +1,558 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="briefing" data-layout="dossier">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>北京 AI 产业两年冲万亿，真正的抓手是算力、数据、场景和资本</title>
   <style>
     :root {
-      --bg: #f6f5ef;
-      --paper: #ffffff;
-      --text: #1f2520;
-      --muted: #66716a;
-      --line: #d9ded7;
-      --accent: #0b6b5f;
-      --accent-two: #9b6a24;
-      --soft: #edf5f1;
-      --warm: #fff4dc;
-      --ink-soft: #2f3933;
+      --paper: #fff3ea;
+      --ink: #171717;
+      --muted: #64615b;
+      --line: #1c1c1c;
+      --accent: #7f2f46;
+      --accent-two: #2364aa;
+      --accent-three: #e8d7a2;
+      --sand: #efe5cf;
+      --measure: 52rem;
+      --background-signature: dossier-folder;
+      --page-background: linear-gradient(90deg, rgba(127,47,70,.10) 0 10px, transparent 10px 100%), linear-gradient(180deg, rgba(232,215,162,.32), transparent 28rem), var(--paper);
     }
     * { box-sizing: border-box; }
+    html { background: #151515; }
     body {
       margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Avenir Next", "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
-      line-height: 1.72;
+      color: var(--ink);
+      background: var(--page-background);
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      line-height: 1.86;
       letter-spacing: 0;
     }
-    main {
-      width: min(1040px, calc(100% - 34px));
-      margin: 0 auto;
-      padding: 38px 0 72px;
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; overflow-wrap: anywhere; }
+    .issue-bar {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: .58rem clamp(1rem, 4vw, 3.2rem);
+      background: color-mix(in srgb, var(--paper) 92%, white);
+      border-bottom: 2px solid var(--line);
+      backdrop-filter: blur(12px);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
     }
-    header {
-      border-bottom: 2px solid var(--text);
-      margin-bottom: 24px;
-      padding-bottom: 24px;
+    .issue-bar strong { color: var(--accent); }
+    .issue-bar span:nth-child(2) { font-weight: 900; }
+    .issue-bar span:last-child { text-align: right; color: var(--muted); }
+    .magazine-cover {
+      min-height: clamp(420px, 62vh, 680px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(17rem, 25rem);
+      gap: clamp(2rem, 5vw, 4.2rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.5rem) clamp(1rem, 5vw, 5rem) clamp(2.2rem, 4vw, 3.2rem);
+      border-bottom: 2px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .magazine-cover::before {
+      content: "POLICY";
+      position: absolute;
+      left: clamp(.7rem, 3vw, 2rem);
+      top: clamp(4rem, 9vw, 7rem);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(5rem, 17vw, 17rem);
+      line-height: .75;
+      letter-spacing: 0;
+      color: color-mix(in srgb, var(--accent-two) 13%, transparent);
+      pointer-events: none;
+    }
+    .kicker {
+      display: inline-flex;
+      gap: .6rem;
+      align-items: center;
+      font-weight: 900;
+      color: var(--accent);
+      border: 2px solid var(--line);
+      padding: .22rem .55rem;
+      background: var(--accent-three);
+      width: fit-content;
     }
     h1 {
-      font-size: clamp(2rem, 5vw, 4.6rem);
-      line-height: 1.05;
-      margin: 0 0 16px;
+      max-width: 12ch;
+      margin: 1.3rem 0 0;
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 7vw, 7.2rem);
+      line-height: .94;
+      letter-spacing: 0;
+      text-wrap: balance;
     }
-    h2 { margin: 8px 0 10px; line-height: 1.28; font-size: 1.35rem; }
-    a { color: var(--accent); text-underline-offset: 3px; overflow-wrap: anywhere; }
-    .subtitle { max-width: 760px; color: var(--muted); font-size: 1.05rem; }
-    .nav { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 18px; }
-    .info-list { display: grid; gap: 16px; }
-    .info-card {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 20px 22px;
-      box-shadow: 0 18px 50px rgba(31, 37, 32, .06);
+    .deck {
+      max-width: 56rem;
+      font-size: clamp(1.1rem, 1.65vw, 1.48rem);
+      line-height: 1.62;
+      margin: 2rem 0 0;
+      color: #24211d;
+      border-left: .65rem solid var(--accent);
+      padding-left: 1.2rem;
     }
-    .meta { color: var(--muted); font-size: .92rem; }
-    .summary { font-size: 1.02rem; }
-    .why {
-      background: var(--soft);
-      border-left: 4px solid var(--accent);
-      padding: 10px 12px;
-      color: #26322d;
+    .cover-meta { align-self: stretch; display: grid; align-content: end; gap: 1rem; }
+    .cover-card {
+      border: 2px solid var(--line);
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 9px 9px 0 var(--accent-two);
     }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-    .tags span {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 3px 9px;
-      color: var(--muted);
-      font-size: .86rem;
-      background: #fbfcfa;
-    }
-    .actions { margin-bottom: 0; }
-    .analysis, .detailed-summary, .news-anchor, .research-questions, .research-sources,
-    .detailed-report, .uncertainties, .follow-up {
-      border-top: 1px solid var(--line);
-      margin-top: 18px;
-      padding-top: 14px;
-    }
-    .anchor-report { border-left: 5px solid var(--accent-two); }
-    .analysis h2, .detailed-summary h2, .news-anchor h2, .research-questions h2,
-    .research-sources h2, .detailed-report h2, .uncertainties h2, .follow-up h2 { font-size: 1.05rem; margin-top: 0; }
-    .analysis p, .detailed-summary p, .news-anchor p, .detailed-report p { margin: 0 0 12px; }
-    .report-body {
-      max-width: 820px;
+    .cover-card h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.35; color: var(--accent); }
+    .cover-card ol, .cover-card ul { margin: 0; padding-left: 1.15rem; }
+    .cover-card li { margin: .48rem 0; line-height: 1.55; }
+    .article-shell {
       display: grid;
-      gap: 14px;
-    }
-    .report-body p {
-      color: var(--ink-soft);
-      margin: 0;
-      font-size: 1.03rem;
-    }
-    .report-lede {
-      padding: 16px 18px;
-      background: #fbf8ed;
-      border-left: 5px solid var(--accent-two);
-      font-size: 1.12rem !important;
-    }
-    .report-callout {
-      padding: 13px 16px;
-      background: #fbfcfa;
-      border: 1px solid #dbe7e1;
-      border-left: 4px solid var(--accent);
-      box-shadow: inset 0 0 0 9999px rgba(11, 107, 95, .025);
-    }
-    strong.signal, strong.metric {
-      color: #123f38;
-      font-weight: 800;
-    }
-    mark {
-      background: rgba(221, 166, 74, .22);
-      color: inherit;
-      padding: 0 .12em;
-      border-radius: 3px;
-    }
-    .signal-mark {
-      background: rgba(221, 166, 74, .24);
-      box-decoration-break: clone;
-      -webkit-box-decoration-break: clone;
-    }
-    .question-list {
-      counter-reset: question;
-      list-style: none;
-      padding-left: 0;
-      display: grid;
-      gap: 10px;
-    }
-    .question-list li {
-      counter-increment: question;
-      display: grid;
-      grid-template-columns: 2.1rem 1fr;
-      gap: 10px;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.6rem, 3vw, 3.2rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3rem);
       align-items: start;
-      background: #fbfcfa;
-      border: 1px solid var(--line);
-      padding: 10px 12px;
     }
-    .question-list li::before {
-      content: counter(question);
-      width: 1.7rem;
-      height: 1.7rem;
-      border-radius: 50%;
-      display: inline-grid;
-      place-items: center;
-      background: var(--accent);
-      color: white;
-      font-weight: 700;
-      font-size: .9rem;
-    }
-    .source-list, .note-list {
+    .editor-note {
+      grid-column: 1 / -1;
       display: grid;
-      gap: 9px;
-      padding-left: 20px;
+      grid-template-columns: minmax(10rem, 15rem) minmax(0, 1fr);
+      gap: 1.2rem;
+      border-top: 5px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: 1rem 0 1.1rem;
+      color: var(--muted);
+      font-size: .94rem;
+      line-height: 1.7;
     }
-    .source-title {
+    .editor-note b {
+      display: block;
+      color: var(--ink);
+      font-size: .82rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .25rem;
+    }
+    .editor-note p { margin: 0; }
+    .magazine-article { min-width: 0; font-size: clamp(1.04rem, 1.05vw, 1.18rem); }
+    .article-shell > .magazine-article { grid-column: 1; }
+    .magazine-article p { margin: 0 0 1.35rem; text-align: justify; text-wrap: pretty; }
+    .magazine-article .lede {
+      font-size: clamp(1.24rem, 2vw, 1.58rem);
+      line-height: 1.75;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+    .dropcap {
+      float: left;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 5.8rem;
+      line-height: .8;
+      padding: .18rem .55rem .1rem 0;
+      color: var(--accent);
+    }
+    .magazine-emphasis {
+      margin: 2rem 0 !important;
+      padding: 1.1rem 1.25rem;
+      border-left: .45rem solid var(--accent-two);
+      background: linear-gradient(90deg, color-mix(in srgb, var(--accent-two) 12%, transparent), transparent 78%);
+      font-weight: 600;
+    }
+    .pullquote {
+      margin: 2.4rem -4rem 2.4rem 0;
+      padding: 1.1rem 0 1.2rem 1.5rem;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      background: var(--paper);
+    }
+    .pullquote span { color: var(--accent); font-size: .78rem; font-weight: 900; letter-spacing: .13em; }
+    .pullquote p {
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-size: clamp(1.6rem, 3vw, 2.45rem);
+      line-height: 1.28;
+      margin: .35rem 0 0;
+      text-align: left;
+    }
+    .metric {
+      font-variant-numeric: tabular-nums;
+      color: var(--accent);
+      font-weight: 900;
+      background: linear-gradient(transparent 55%, color-mix(in srgb, var(--accent-three) 65%, transparent) 0);
+    }
+    .signal {
+      font-weight: 900;
+      text-decoration: underline;
+      text-decoration-color: var(--accent-two);
+      text-decoration-thickness: .18em;
+      text-underline-offset: .14em;
+    }
+    .companion-rail {
+      position: sticky;
+      top: 3.8rem;
+      grid-column: 2;
+      align-self: start;
+      border-top: 5px solid var(--line);
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+      padding-top: 1rem;
+    }
+    .companion-rail b { color: var(--ink); }
+    .backmatter {
+      grid-column: 1 / -1;
       display: grid;
-      gap: 2px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.2rem;
+      margin-top: 2.4rem;
+      border-top: 2px solid var(--line);
+      padding-top: 1.4rem;
     }
-    .source-meta {
+    .module { background: #fff; border: 2px solid var(--line); padding: 1rem 1.1rem; box-shadow: 6px 6px 0 var(--sand); }
+    .module h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.3; color: var(--accent); }
+    .module ul { margin: 0; padding-left: 1.1rem; }
+    .module li { margin: .5rem 0; line-height: 1.58; }
+    .source-list li { display: grid; gap: .12rem; margin-bottom: .8rem; }
+    .source-meta { color: var(--muted); font-size: .86rem; }
+    .source-meta::before { content: "来源 · "; }
+    .sources-module { grid-column: 1 / -1; }
+    .newspaper-masthead {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.8rem) clamp(1rem, 4vw, 3rem) 1.6rem;
+      border-bottom: 5px double var(--line);
+    }
+    .newspaper-kicker {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.4rem, 3vw, 3rem);
+      line-height: 1;
+      color: var(--accent);
+      text-transform: uppercase;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: .35rem 0;
+    }
+    .newspaper-masthead h1 {
+      max-width: 20ch;
+      font-size: clamp(2.6rem, 5.5vw, 6.2rem);
+      line-height: .98;
+    }
+    .newspaper-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem 1.1rem;
+      margin-top: 1rem;
+      padding-top: .8rem;
+      border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: .9rem;
     }
-    .source-meta::before { content: "来源 · "; }
-    .note-list li > .list-key {
-      display: block;
-      margin-bottom: 2px;
+    .market-strip {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr 1fr;
+      gap: 1rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      border-bottom: 2px solid var(--line);
+      background: color-mix(in srgb, var(--accent-three) 26%, var(--paper));
+      font-size: .94rem;
+      line-height: 1.55;
     }
-    .research-sources li, .research-questions li, .uncertainties li, .follow-up li { margin: 0 0 8px; }
-    .topic-index { columns: 2; padding-left: 20px; }
-    .topic-index li { break-inside: avoid; margin: 0 0 8px; }
-    footer { color: var(--muted); margin-top: 34px; font-size: .9rem; }
-    @media (max-width: 720px) {
-      .topic-index { columns: 1; }
+    .market-strip b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .08em; }
+    .market-strip p, .market-strip ol, .market-strip ul { margin: .35rem 0 0; }
+    .market-strip ol, .market-strip ul { padding-left: 1.1rem; }
+    .newspaper-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .newspaper-article .lede {
+      column-span: all;
+      border-top: 2px solid var(--line);
+      padding-top: 1rem;
+    }
+    .newspaper-article { grid-column: 1; }
+    .newspaper-rail {
+      position: sticky;
+      top: 3.8rem;
+      border-left: 2px solid var(--line);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .dossier-cover {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.6rem) clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
+      gap: clamp(1.5rem, 4vw, 3.8rem);
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+    }
+    .dossier-stamp {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      align-self: start;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      color: var(--accent);
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: color-mix(in srgb, var(--accent-three) 35%, white);
+    }
+    .dossier-cover h1 {
+      max-width: 18ch;
+      font-size: clamp(2.7rem, 6vw, 6.6rem);
+      line-height: .98;
+    }
+    .dossier-summary {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.5vw, 1.36rem);
+      border-left: .45rem solid var(--accent);
+      padding-left: 1rem;
+    }
+    .dossier-source { color: var(--muted); margin: 0; }
+    .dossier-shell {
+      display: grid;
+      grid-template-columns: minmax(12rem, 17rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .dossier-index {
+      position: sticky;
+      top: 3.8rem;
+      border-top: 5px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .dossier-index b { display: block; color: var(--ink); margin-bottom: .6rem; }
+    .dossier-index ol { margin: 0 0 1rem; padding-left: 1.1rem; }
+    .dossier-article { grid-column: 2; }
+    .field-cover {
+      min-height: clamp(460px, 64vh, 720px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr);
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      border-bottom: 2px solid var(--line);
+      background:
+        linear-gradient(135deg, transparent 0 48%, color-mix(in srgb, var(--accent-three) 24%, transparent) 48% 52%, transparent 52%),
+        var(--paper);
+    }
+    .field-topline {
+      grid-column: 1 / -1;
+      width: fit-content;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: .25rem .7rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .field-cover h1 {
+      max-width: 16ch;
+      font-size: clamp(2.8rem, 6.4vw, 7rem);
+    }
+    .field-deck {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.55vw, 1.38rem);
+      line-height: 1.62;
+      border-left: .5rem solid var(--accent-two);
+      padding-left: 1rem;
+    }
+    .field-map {
+      border: 2px solid var(--line);
+      background: rgba(255,255,255,.76);
+      padding: 1rem;
+      box-shadow: 10px 10px 0 color-mix(in srgb, var(--accent) 70%, black);
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+    .field-map b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .1em; }
+    .field-map ol { margin: .55rem 0 1rem; padding-left: 1.2rem; }
+    .field-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(13rem, 17rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .field-log {
+      position: sticky;
+      top: 3.8rem;
+      border-left: .35rem solid var(--accent-two);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .field-article { grid-column: 1; }
+    .lab-cover {
+      padding: clamp(2.6rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      min-height: clamp(420px, 58vh, 650px);
+      display: grid;
+      align-content: center;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+      background:
+        linear-gradient(90deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        linear-gradient(0deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        var(--paper);
+    }
+    .lab-label {
+      width: fit-content;
+      background: var(--ink);
+      color: #fff;
+      padding: .28rem .65rem;
+      font-size: .82rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .lab-cover h1 {
+      max-width: 22ch;
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 5.8rem);
+      line-height: 1.04;
+    }
+    .lab-deck {
+      max-width: 62rem;
+      font-size: clamp(1.06rem, 1.45vw, 1.32rem);
+      border-top: 2px solid var(--accent);
+      padding-top: 1rem;
+    }
+    .protocol-strip {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .75rem;
+      border-bottom: 2px solid var(--line);
+      font-size: .88rem;
+    }
+    .protocol-strip div {
+      border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
+      padding: .75rem;
+      background: rgba(255,255,255,.68);
+      min-width: 0;
+    }
+    .protocol-strip b {
+      display: block;
+      color: var(--accent-two);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .protocol-strip span { overflow-wrap: anywhere; }
+    .lab-shell {
+      display: grid;
+      grid-template-columns: minmax(14rem, 19rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .lab-notes {
+      position: sticky;
+      top: 3.8rem;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      background: #fff;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .lab-notes b { color: var(--ink); }
+    .lab-notes ol { padding-left: 1.1rem; }
+    .lab-article { grid-column: 2; }
+    footer { color: var(--muted); padding: 0 clamp(1rem, 4vw, 3rem) 3rem; max-width: 1220px; margin: 0 auto; font-size: .9rem; }
+    @media (max-width: 1100px) {
+      .magazine-cover { grid-template-columns: 1fr; min-height: auto; }
+      .cover-meta { max-width: 42rem; }
+      .article-shell { grid-template-columns: 1fr; }
+      .editor-note { grid-template-columns: 1fr; }
+      .companion-rail { position: static; grid-column: 1; }
+      .backmatter { grid-column: 1; grid-template-columns: 1fr; }
+      .pullquote { margin-right: 0; }
+      h1 { max-width: 11ch; }
+      .market-strip, .protocol-strip { grid-template-columns: 1fr; }
+      .newspaper-shell, .dossier-shell, .field-shell, .lab-shell { grid-template-columns: 1fr; }
+      .newspaper-rail, .dossier-index, .field-log, .lab-notes { position: static; }
+      .dossier-article, .lab-article { grid-column: 1; }
+      .dossier-cover, .field-cover { grid-template-columns: 1fr; min-height: auto; }
+      .dossier-stamp { grid-column: 1; grid-row: auto; }
+    }
+    @media (max-width: 640px) {
+      .issue-bar { grid-template-columns: 1fr; gap: .15rem; }
+      .issue-bar span:last-child { text-align: left; }
+      .magazine-cover { padding-top: 2.4rem; }
+      h1 { font-size: clamp(2.65rem, 16vw, 4.8rem); }
+      .deck { border-left-width: .45rem; padding-left: .8rem; }
+      .magazine-article p { text-align: left; }
+      .dropcap { font-size: 4.6rem; }
+      .module { box-shadow: 4px 4px 0 var(--sand); }
     }
   </style>
 </head>
 <body>
-  <main>
-    
-            <header>
-              <h1>北京 AI 产业两年冲万亿，真正的抓手是算力、数据、场景和资本</h1>
-              <p class="subtitle">新闻锚点驱动的主题研究报告 · 2026-03-16</p>
-              <div class="nav"><a href="../../">返回信息流</a><a href="https://jxj.beijing.gov.cn/ztzl/ywzt/hbjh/hbdt/zcwj/rgznzc/202603/t20260316_4557526.html">打开锚点来源</a></div>
-            </header>
-            
-      <article class="info-card anchor-report">
-        <div class="meta">2026-03-16 · 主题研究报告</div>
-        <h2>北京 AI 产业两年冲万亿，真正的抓手是算力、数据、场景和资本</h2>
-        <p class="summary">北京发布人工智能创新高地建设行动计划，提出两年左右推动 AI 核心产业规模突破万亿元、建成 10 万卡级国产智算集群、新增 100PB 以上高质量数据、实施 100 项以上标杆应用并集聚 2000 亿元以上产业基金。它的重点不是单纯扩大模型竞争，而是把算力、数据、场景中试、资本和安全治理组织成城市级 AI 产业基础设施。</p>
-        <p class="why"><strong>新闻锚点：</strong><a href="https://jxj.beijing.gov.cn/ztzl/ywzt/hbjh/hbdt/zcwj/rgznzc/202603/t20260316_4557526.html">北京发布人工智能创新高地建设行动计划</a> · 北京市经济和信息化局</p>
-        <div class="tags"><span>ai-policy</span> <span>china-policy</span> <span>industry</span></div>
-      
-        <section class="news-anchor">
-          <h2>新闻锚点</h2>
-          <p><a href="https://jxj.beijing.gov.cn/ztzl/ywzt/hbjh/hbdt/zcwj/rgznzc/202603/t20260316_4557526.html">北京发布人工智能创新高地建设行动计划</a> · 北京市经济和信息化局</p>
-        </section>
-            
 
-        <section class="research-questions">
-          <h2>研究问题</h2>
-          <ol class="question-list"><li><span>北京为什么把 AI 目标写成万亿产业和 10 万卡国产智算集群？</span></li><li><span>九大行动里哪些是<mark class="signal-mark"><strong class="signal">真正</strong></mark>的产业基础设施？</span></li><li><span>从模型竞争到场景中试，北京想解决的瓶颈是什么？</span></li><li><span>算力、数据、标杆应用和资本目标分别有哪些可验证变量？</span></li></ol>
-        </section>
+  <div class="issue-bar"><span><strong>Infohub</strong> article</span><span>Magazine research page</span><span>2026-03-16</span></div>
+  <header class="dossier-cover">
+    <div class="dossier-stamp">POLICY / GOVERNANCE</div>
+    <h1>北京 AI 产业两年冲万亿，真正的抓手是算力、数据、场景和资本</h1>
+    <p class="dossier-summary">北京发布人工智能创新高地建设行动计划，提出两年左右推动 AI <strong class="signal">核心</strong>产业规模突破万亿元、建成 10 万卡级国产智算集群、新增 <strong class="metric">100PB</strong> 以上高质量数据、实施 <strong class="metric">100 项</strong>以上标杆应用并集聚 <strong class="metric">2000 亿元</strong>以上产业基金。它的重点不是单纯扩大模型竞争，而是把算力、数据、场景中试、资本和安全治理组织成城市级 AI 产业基础设施。</p>
+    <p class="dossier-source"><a href="https://jxj.beijing.gov.cn/ztzl/ywzt/hbjh/hbdt/zcwj/rgznzc/202603/t20260316_4557526.html">北京发布人工智能创新高地建设行动计划</a> · 北京市经济和信息化局 · 2026-03-16</p>
+  </header>
+  <main class="dossier-shell">
+    <aside class="dossier-index">
+      <b>案卷索引</b>
+      <ol><li>北京为什么把 AI 目标写成万亿产业和 10 万卡国产智算集群？</li><li>九大行动里哪些是<strong class="signal">真正</strong>的产业基础设施？</li><li>从模型竞争到场景中试，北京想解决的瓶颈是什么？</li><li>算力、数据、标杆应用和资本目标分别有哪些可验证变量？</li></ol>
+      <p><a href="../../">返回信息流首页</a></p>
+    </aside>
+    <article class="magazine-article dossier-article">
+      <p class="lede"><span class="dropcap">北</span>京市经信局 <strong class="metric">2026 年</strong> <strong class="metric">3 月</strong> <strong class="metric">16 日</strong>转发的“北京发布人工智能创新高地建设行动计划”，表面上是一组很容易传播的宏大数字：两年左右推动北京人工智能<strong class="signal">核心</strong>产业规模突破万亿元，建成 10 万卡级国产智算集群，新增高质量数据 <strong class="metric">100PB</strong> 以上，实施 <strong class="metric">100 项</strong>以上人工智能标杆应用，集聚 <strong class="metric">2000 亿元</strong>以上产业投资基金，并推动新增上市企业、独角兽企业。<strong class="signal">真正</strong>值得研究的，不是这些数字有多大，而是它们被放在同一个行动计划里意味着什么。北京不是单纯宣布“大模型继续领先”，而是试图把人工智能拆成城市级产业系统：算力能不能可用，数据能不能合法流动，场景能不能中试，资本能不能接住硬科技长周期，安全治理能不能在规模化应用前补上。</p><p class="magazine-emphasis">这也是北京把目标写得很重的背景。按北京市科委、中关村管委会发布的《北京人工智能产业白皮书（2025）》口径，<strong class="metric">2025 年</strong>上半年北京人工智能<strong class="signal">核心</strong>产业规模为 <strong class="metric">2152.2 亿元</strong>，同比增长 <strong class="metric">25.3%</strong>，全年有望超过 <strong class="metric">4500 亿元</strong>；北京 AI 企业超过 2500 家，备案大模型 183 款，保持全国领先。到 <strong class="metric">2026 年</strong>初，官方口径又把 <strong class="metric">2025 年</strong>核心产业规模概括为 <strong class="metric">4500 亿元</strong>、相关企业超 2500 家，均约占全国四成或接近半数。也就是说，万亿元目标不是从零开始招商，而是要求一个已经很大的 AI 产业群在两年内继续跃迁。这个跃迁如果只靠模型发布会，很难成立；如果能把人才、高校院所、头部平台、国产芯片适配、行业数据和标杆应用组织起来，才有可能接近。</p><p>九大行动的<strong class="signal">关键</strong>，正在于它把“人工智能政策”从单点扶持改成了一组基础设施任务。技术创新策源行动对应基础理论、模型架构、世界模型和群体智能等前沿问题；智算自主生态强基行动对应国产芯片、超节点、光互联、系统软件栈和大规模集群运行；高质量数据聚能行动对应行业数据、公共数据、标注、治理和交易；全域应用赋能行动对应政务、医疗、制造、教育、城市治理等场景的可复制应用；科学智能和具身智能两条线则把北京已有的科研机构、医院、制造、机器人和自动驾驶资源嵌进新赛道。再往外，是创新生态、开源开放和安全治理。这套结构说明，北京<strong class="signal">真正</strong>想解决的是“技术点很多、产业闭环不足”的问题。</p><aside class="pullquote"><span>摘句</span><p>算力是最显眼的抓手，但它也最容易被误读。</p></aside><p>算力是最显眼的抓手，但它也最容易被误读。北京市科委、中关村管委会 <strong class="metric">2026 年</strong> <strong class="metric">3 月</strong>的公开报道提到，北京已率先建成 3 万卡级国产智算集群，智谱、面壁等国产大模型已经完成与国产芯片深度适配，并批量运行在国产算力平台底座上；同一口径还提到北京将上线公共算力 3.2 万 P，全市算力总规模达 6 万 P。行动计划把目标推到 10 万卡级国产智算集群，本质上是在把“有没有卡”推进到“国产芯片、框架、模型和系统软件能不能形成稳定生态”。从 <strong class="metric">2023 年</strong>《北京市促进通用人工智能创新发展的若干措施》看，北京早就把商业算力归集、公共算力中心、多云算力调度平台和环京算力一体化写入政策；<strong class="metric">2026 年</strong>推进会上发布面向多种 AI 芯片的众智 FlagOS 1.6，也延续了这种“模芯协同”的思路。</p><p>但算力目标需要保留审慎。全国智算中心建设已经出现过重复建设和利用率争议，财联社 <strong class="metric">2025 年</strong> <strong class="metric">4 月</strong>报道多地开展算力摸底，并引用业内判断称，部分智算中心盲目采购高性能算力后租不出去，<strong class="signal">真正</strong>价值取决于能否匹配真实需求和商业模式。该报道还提到，有信通院专家曾指出，全国已建不少智算中心，但许多规模偏小，对大模型训练作用有限，使用效率存疑。因此，北京的 10 万卡目标不能只看卡数，更要看芯片型号、精度口径、互联效率、软件栈成熟度、任务调度、开放价格、企业实际使用率和电力约束。一个可被企业持续调用的国产智算体系，和一个统计上很好看的集群，不是同一件事。</p><p>数据是第二个抓手，也是更难公开展示的抓手。行动计划提出新增高质量数据 <strong class="metric">100PB</strong> 以上，这个数字比一般新闻标题更有研究价值，因为大模型落地行业时最缺的往往不是通用互联网文本，而是医疗、制造、金融、交通、科研、城市治理等领域中合法、干净、可解释、可更新的数据。国家数据局 <strong class="metric">2025 年</strong>关于高质量数据集的解读明确说，高质量数据集是模型训练、推理和验证的<strong class="signal">关键</strong>基础，并提醒建设不能盲目跟风、重复建设，也不能只是简单开放公共数据，而应从应用最迫切、最容易产生效果、最影响行业质量的领域切入。北京 <strong class="metric">2023 年</strong>通用人工智能措施中已经安排中文预训练数据、多模态语料库、数据训练基地和精细化标注众包平台；<strong class="metric">2026 年</strong>的 <strong class="metric">100PB</strong>，更像是把此前“数据供给能力”量化为两年工程。</p><p class="magazine-emphasis">场景则是北京这轮政策从“模型竞争”转向“应用中试”的<strong class="signal">核心</strong>。首都之窗 <strong class="metric">2026 年</strong> <strong class="metric">1 月</strong>的报道显示，北京同步发布人工智能示范应用“揭榜挂帅”榜单，涵盖多语种实时交互智能翻译系统及终端、超级智能通用软件、AI 原生高通量智能自动化实验室、人形机器人多场景融合应用创新工程等重点任务。国家层面的“人工智能+”行动也把国家人工智能应用中试基地定位为汇聚行业资源、培养人才、推广成果、孵化主体和打造开放生态的共性平台，强调统一技术架构、数据规范和标准体系。北京要做 <strong class="metric">100 项</strong>标杆应用，<strong class="signal">真正</strong>的成败不在于做出 <strong class="metric">100 个</strong>展示项目，而在于这些项目能否沉淀为行业共性能力、验收口径和可复制方案。</p><p>四个首批人工智能创新街区，是这种中试逻辑的空间版本。海淀“原点社区”围绕五道口和高校院所，主打技术策源、人才集聚和创业服务；经开区“模数世界”围绕通明湖科技带，连接机器人产业园、数据采集中心、中试工厂和智能制造闭环；朝阳“光智空间”瞄准光子计算、量子计算等下一代算力形态；石景山“文化智境”把首钢园和文化场景作为 AI+文化试验场。这不是传统意义上的产业园换名，而是把人才、资本、算力券、数据支持、空间改造、首台套认定和重大项目倾斜集中到若干小范围试验区。它的优点是便于形成密度和反馈，<strong class="signal">风险</strong>是如果只形成空间品牌、没有高频真实需求，街区就会变成政策展示窗口。</p><p>科学智能和具身智能是北京选择押注的两个较硬方向。北京市科委、中关村管委会报道提到，北京将实施大原子模型计划，开源 2 至 3 款科学智能基础模型，升级“玻尔科研空间站”，面向化学、材料、生物等重点学科构建知识图谱。具身智能方面，北京 <strong class="metric">2025 年</strong>已经印发 2025-<strong class="metric">2027 年</strong>行动计划，目标包括突破不少于 <strong class="metric">100 项</strong><strong class="signal">关键</strong>技术、建设世界模型仿真、数据采集、中试验证和开放测试平台，培育不少于 50 家<strong class="signal">核心</strong>企业，形成不少于 50 款量产产品，并在科研教育、工业商业、<strong class="signal">个性化</strong>服务三大场景实现不少于 <strong class="metric">100 项</strong>规模化应用。把这两条线放进 <strong class="metric">2026 年</strong>九大行动，说明北京不想只做通用聊天模型，而是把 AI 拉回科研发现、机器人本体、核心零部件、制造测试和真实环境数据。</p><p class="magazine-emphasis">资本和生态是第三层约束。行动计划提出集聚 <strong class="metric">2000 亿元</strong>以上产业投资基金、新增上市企业 10 家以上、独角兽 20 家以上，容易被读成单纯“给钱”。更准确地看，AI 硬科技和行业应用都不是短平快项目：国产算力生态需要芯片、编译器、框架、集群调度和模型适配共同成熟；具身智能需要零部件、整机、仿真、数据采集、中试验证和场景客户持续迭代；科学智能需要科研机构、企业和实验平台重新组织研发流程。耐心资本的作用，是让这些链条有时间穿过从样机到工程化、从演示到采购、从单点部署到行业复用的阶段。不过，资本只能延长试错窗口，不能替代真实收入。<strong class="signal">后续</strong>应看的不是基金规模口径，而是资金流向早期硬科技、公共平台还是成熟项目，以及退出是否过度依赖政策叙事。</p><p>安全治理和开源开放也不能被当成附属章节。北京市发改委转载报道提到，安全治理护航行动将建设人工智能安全基础设施、安全测试靶场和安全攻防工具箱，为模型主体提供深度安全压力测试等服务。北京 <strong class="metric">2023 年</strong>通用人工智能措施也已把算法备案、安全评估、个人数据保护、科技伦理治理和常态化服务指导放在创新政策内部。这里的现实含义是：如果 AI 要进入政务、医疗、教育、城市治理、交通和公共服务，模型能力只是门槛，数据来源、输出可靠性、责任边界、内容安全和个人信息保护会决定应用能否放大。北京把安全测试和开源生态一起写入行动计划，说明它意识到大规模应用需要可信工具链，而不是只靠企业自证安全。</p><p>因此，这份行动计划最稳妥的读法，是北京在把 AI 产业政策从“谁的大模型最强”推进到“谁能组织城市级 AI 生产条件”。万亿产业规模、10 万卡国产智算、<strong class="metric">100PB</strong> 高质量数据、<strong class="metric">100 项</strong>标杆应用、<strong class="metric">2000 亿元</strong>基金和四大创新街区，并不是彼此孤立的 KPI，而是同一个产业操作系统的不同端口。它有现实基础：北京有高校院所、人才、平台企业、大模型企业、金融和政务场景，也有 <strong class="metric">2023 年</strong>以来围绕算力、数据、场景、监管持续铺设的政策层。但它也有清晰不确定性：<strong class="signal">核心</strong>产业规模口径是否稳定，10 万卡能否转化为可用算力，<strong class="metric">100PB</strong> 数据是否合规可用，标杆应用是否能跨部门和跨行业复用，科学智能和具身智能能否形成收入而不只是示范。北京 AI 政策的<strong class="signal">真正</strong>结果，不会由发布会数字决定，而会由这些基础设施变量逐步验收。</p>
+    </article>
     
-
-        <section class="research-sources">
-          <h2>研究来源</h2>
-          <ul class="source-list"><li><span class="source-title"><a href="https://jxj.beijing.gov.cn/ztzl/ywzt/hbjh/hbdt/zcwj/rgznzc/202603/t20260316_4557526.html">北京发布人工智能创新高地建设行动计划</a><span class="source-meta">北京市经济和信息化局</span></span></li><li><span class="source-title"><a href="https://fgw.beijing.gov.cn/gzdt/fgzs/tpxw/202601/t20260106_4404914.htm">北京市成功举办人工智能创新高地建设推进会</a><span class="source-meta">北京市发展和改革委员会</span></span></li><li><span class="source-title"><a href="https://www.beijing.gov.cn/ywdt/gzdt/202601/t20260106_4403157.html">本市力争用两年时间实现AI核心产业规模破万亿——北京打造“全球人工智能第一城”</a><span class="source-meta">北京市人民政府门户网站</span></span></li><li><span class="source-title"><a href="https://kw.beijing.gov.cn/xwdt/kcyx/xwdtcyfz/202603/t20260302_4546431.html">北京加快打造人工智能万亿级产业集群</a><span class="source-meta">北京市科学技术委员会、中关村科技园区管理委员会</span></span></li><li><span class="source-title"><a href="https://www.beijing.gov.cn/zhengce/zhengcefagui/202305/t20230530_3116869.html">北京市促进通用人工智能创新发展的若干措施</a><span class="source-meta">北京市人民政府门户网站</span></span></li><li><span class="source-title"><a href="https://www.beijing.gov.cn/zhengce/zhengcefagui/202503/t20250304_4024579.html">北京具身智能科技创新与产业培育行动计划（2025-2027年）</a><span class="source-meta">北京市人民政府门户网站</span></span></li><li><span class="source-title"><a href="https://www.gov.cn/zhengce/202508/content_7037920.htm">国家发展改革委有关负责同志就《关于深入实施“人工智能+”行动的意见》答记者问</a><span class="source-meta">中国政府网</span></span></li><li><span class="source-title"><a href="https://www.nda.gov.cn/sjj/zwgk/zjjd/0303/20250303165949956429831_pc.html">加快建设高质量数据集 推动人工智能赋能行业发展</a><span class="source-meta">国家数据局</span></span></li><li><span class="source-title"><a href="https://finance.sina.com.cn/jjxw/2025-04-16/doc-inetkans6817336.shtml">地方发改委本周已开展算力摸底 业内称统筹规划可避免盲目重复建设</a><span class="source-meta">财联社/新浪财经</span></span></li></ul>
-        </section>
+    <section class="backmatter">
+      <div class="module">
+        <h2>不确定性</h2>
+        <ul><li>公开来源多为发布会报道、部门转载和政策文件，完整行动计划逐条正式文本的可检索性仍有限。</li><li>人工智能<strong class="signal">核心</strong>产业规模统计口径需要持续核对，不能把全部数字经济或泛科技收入直接并入 AI。</li><li>10 万卡级国产智算集群的芯片类型、算力精度口径、互联能力、开放价格和实际利用率尚需<strong class="signal">后续</strong>公开材料验证。</li><li>新增 <strong class="metric">100PB</strong> 高质量数据的来源、权属、合规处理、标注质量、更新机制和行业可用性，比体量本身更<strong class="signal">关键</strong>。</li><li><strong class="metric">100 项</strong>标杆应用是否能跨部门和跨行业复用，仍需看验收标准、采购转化和用户侧成效。</li></ul>
+      </div>
+      <div class="module">
+        <h2>后续观察</h2>
+        <ul><li>国产智算集群从 3 万卡到 10 万卡的建设进度、芯片型号、算力折算口径和开放机制</li><li>公共算力 3.2 万 P 与全市 6 万 P 算力规模的实际利用率、调度平台和价格机制</li><li>新增 <strong class="metric">100PB</strong> 高质量数据的行业分布、合规处理、标注质量和交易或共享路径</li><li><strong class="metric">100 项</strong>标杆应用的清单、验收标准、真实采购、跨部门复用和商业化收入</li><li>四个创新街区的企业集聚、空间改造、算力券、人才落户和中试平台实际落地</li><li>具身智能和科学智能项目的量产产品、客户、收入、开放数据和跨场景迁移能力</li><li><strong class="metric">2000 亿元</strong>产业基金的资金来源、投向结构、早期硬科技占比和退出路径</li><li>安全测试靶场、模型压力测试、算法备案和个人信息保护机制的可执行程度</li></ul>
+      </div>
+      <div class="module sources-module">
+        <h2>研究来源</h2>
+        <ul class="source-list"><li><a href="https://jxj.beijing.gov.cn/ztzl/ywzt/hbjh/hbdt/zcwj/rgznzc/202603/t20260316_4557526.html">北京发布人工智能创新高地建设行动计划</a><span class="source-meta">北京市经济和信息化局</span></li><li><a href="https://fgw.beijing.gov.cn/gzdt/fgzs/tpxw/202601/t20260106_4404914.htm">北京市成功举办人工智能创新高地建设推进会</a><span class="source-meta">北京市发展和改革委员会</span></li><li><a href="https://www.beijing.gov.cn/ywdt/gzdt/202601/t20260106_4403157.html">本市力争用两年时间实现AI核心产业规模破万亿——北京打造“全球人工智能第一城”</a><span class="source-meta">北京市人民政府门户网站</span></li><li><a href="https://kw.beijing.gov.cn/xwdt/kcyx/xwdtcyfz/202603/t20260302_4546431.html">北京加快打造人工智能万亿级产业集群</a><span class="source-meta">北京市科学技术委员会、中关村科技园区管理委员会</span></li><li><a href="https://www.beijing.gov.cn/zhengce/zhengcefagui/202305/t20230530_3116869.html">北京市促进通用人工智能创新发展的若干措施</a><span class="source-meta">北京市人民政府门户网站</span></li><li><a href="https://www.beijing.gov.cn/zhengce/zhengcefagui/202503/t20250304_4024579.html">北京具身智能科技创新与产业培育行动计划（2025-2027年）</a><span class="source-meta">北京市人民政府门户网站</span></li><li><a href="https://www.gov.cn/zhengce/202508/content_7037920.htm">国家发展改革委有关负责同志就《关于深入实施“人工智能+”行动的意见》答记者问</a><span class="source-meta">中国政府网</span></li><li><a href="https://www.nda.gov.cn/sjj/zwgk/zjjd/0303/20250303165949956429831_pc.html">加快建设高质量数据集 推动人工智能赋能行业发展</a><span class="source-meta">国家数据局</span></li><li><a href="https://finance.sina.com.cn/jjxw/2025-04-16/doc-inetkans6817336.shtml">地方发改委本周已开展算力摸底 业内称统筹规划可避免盲目重复建设</a><span class="source-meta">财联社/新浪财经</span></li></ul>
+      </div>
+    </section>
     
-
-        <section class="detailed-report">
-          <h2>研究报告</h2>
-          <div class="report-body"><p class="report-lede"><strong>北京市经信局 <strong class="metric">2026 年</strong> 3 月 <strong class="metric">16 日</strong>转发的“北京发布人工智能创新高地建设行动计划”，表面上是一组很容易传播的宏大数字：两年左右推动北京人工智能<mark class="signal-mark"><strong class="signal">核心</strong></mark>产业规模突破万亿元，建成 10 万卡级国产智算集群，新增高质量数据 <strong class="metric">100PB</strong> 以上，实施 100 项以上人工智能标杆应用，集聚 <strong class="metric">2000 亿元</strong>以上产业投资基金，并推动新增上市企业、独角兽企业。</strong><mark class="signal-mark"><strong class="signal">真正</strong></mark>值得研究的，不是这些数字有多大，而是它们被放在同一个行动计划里意味着什么。北京不是单纯宣布“大模型继续领先”，而是试图把人工智能拆成城市级产业系统：算力能不能可用，数据能不能合法流动，场景能不能中试，资本能不能接住硬科技长周期，安全治理能不能在规模化应用前补上。</p><p class="report-paragraph">这也是北京把目标写得很重的背景。按北京市科委、中关村管委会发布的《北京人工智能产业白皮书（2025）》口径，<strong class="metric">2025 年</strong>上半年北京人工智能<mark class="signal-mark"><strong class="signal">核心</strong></mark>产业规模为 <strong class="metric">2152.2 亿元</strong>，同比增长 <strong class="metric">25.3%</strong>，全年有望超过 <strong class="metric">4500 亿元</strong>；北京 AI 企业超过 2500 家，备案大模型 183 款，保持全国领先。到 <strong class="metric">2026 年</strong>初，官方口径又把 <strong class="metric">2025 年</strong>核心产业规模概括为 <strong class="metric">4500 亿元</strong>、相关企业超 2500 家，均约占全国四成或接近半数。也就是说，万亿元目标不是从零开始招商，而是要求一个已经很大的 AI 产业群在两年内继续跃迁。这个跃迁如果只靠模型发布会，很难成立；如果能把人才、高校院所、头部平台、国产芯片适配、行业数据和标杆应用组织起来，才有可能接近。</p><p class="report-callout"><strong>九大行动的<mark class="signal-mark"><strong class="signal">关键</strong></mark>，正在于它把“人工智能政策”从单点扶持改成了一组基础设施任务。</strong>技术创新策源行动对应基础理论、模型架构、世界模型和群体智能等前沿问题；智算自主生态强基行动对应国产芯片、超节点、光互联、系统软件栈和大规模集群运行；高质量数据聚能行动对应行业数据、公共数据、标注、治理和交易；全域应用赋能行动对应政务、医疗、制造、教育、城市治理等场景的可复制应用；科学智能和具身智能两条线则把北京已有的科研机构、医院、制造、机器人和自动驾驶资源嵌进新赛道。再往外，是创新生态、开源开放和安全治理。这套结构说明，北京<mark class="signal-mark"><strong class="signal">真正</strong></mark>想解决的是“技术点很多、产业闭环不足”的问题。</p><p class="report-paragraph">算力是最显眼的抓手，但它也最容易被误读。北京市科委、中关村管委会 <strong class="metric">2026 年</strong> 3 月的公开报道提到，北京已率先建成 3 万卡级国产智算集群，智谱、面壁等国产大模型已经完成与国产芯片深度适配，并批量运行在国产算力平台底座上；同一口径还提到北京将上线公共算力 3.2 万 P，全市算力总规模达 6 万 P。行动计划把目标推到 10 万卡级国产智算集群，本质上是在把“有没有卡”推进到“国产芯片、框架、模型和系统软件能不能形成稳定生态”。从 <strong class="metric">2023 年</strong>《北京市促进通用人工智能创新发展的若干措施》看，北京早就把商业算力归集、公共算力中心、多云算力调度平台和环京算力一体化写入政策；<strong class="metric">2026 年</strong>推进会上发布面向多种 AI 芯片的众智 FlagOS 1.6，也延续了这种“模芯协同”的思路。</p><p class="report-callout"><strong>但算力目标需要保留审慎。</strong>全国智算中心建设已经出现过重复建设和利用率争议，财联社 <strong class="metric">2025 年</strong> 4 月报道多地开展算力摸底，并引用业内判断称，部分智算中心盲目采购高性能算力后租不出去，<mark class="signal-mark"><strong class="signal">真正</strong></mark>价值取决于能否匹配真实需求和商业模式。该报道还提到，有信通院专家曾指出，全国已建不少智算中心，但许多规模偏小，对大模型训练作用有限，使用效率存疑。因此，北京的 10 万卡目标不能只看卡数，更要看芯片型号、精度口径、互联效率、软件栈成熟度、任务调度、开放价格、企业实际使用率和电力约束。一个可被企业持续调用的国产智算体系，和一个统计上很好看的集群，不是同一件事。</p><p class="report-paragraph">数据是第二个抓手，也是更难公开展示的抓手。行动计划提出新增高质量数据 <strong class="metric">100PB</strong> 以上，这个数字比一般新闻标题更有研究价值，因为大模型落地行业时最缺的往往不是通用互联网文本，而是医疗、制造、金融、交通、科研、城市治理等领域中合法、干净、可解释、可更新的数据。国家数据局 <strong class="metric">2025 年</strong>关于高质量数据集的解读明确说，高质量数据集是模型训练、推理和验证的<mark class="signal-mark"><strong class="signal">关键</strong></mark>基础，并提醒建设不能盲目跟风、重复建设，也不能只是简单开放公共数据，而应从应用最迫切、最容易产生效果、最影响行业质量的领域切入。北京 <strong class="metric">2023 年</strong>通用人工智能措施中已经安排中文预训练数据、多模态语料库、数据训练基地和精细化标注众包平台；<strong class="metric">2026 年</strong>的 <strong class="metric">100PB</strong>，更像是把此前“数据供给能力”量化为两年工程。</p><p class="report-paragraph">场景则是北京这轮政策从“模型竞争”转向“应用中试”的核心。首都之窗 <strong class="metric">2026 年</strong> 1 月的报道显示，北京同步发布人工智能示范应用“揭榜挂帅”榜单，涵盖多语种实时交互智能翻译系统及终端、超级智能通用软件、AI 原生高通量智能自动化实验室、人形机器人多场景融合应用创新工程等重点任务。国家层面的“人工智能+”行动也把国家人工智能应用中试基地定位为汇聚行业资源、培养人才、推广成果、孵化主体和打造开放生态的共性平台，强调统一技术架构、数据规范和标准体系。北京要做 100 项标杆应用，<mark class="signal-mark"><strong class="signal">真正</strong></mark>的成败不在于做出 100 个展示项目，而在于这些项目能否沉淀为行业共性能力、验收口径和可复制方案。</p><p class="report-paragraph">四个首批人工智能创新街区，是这种中试逻辑的空间版本。海淀“原点社区”围绕五道口和高校院所，主打技术策源、人才集聚和创业服务；经开区“模数世界”围绕通明湖科技带，连接机器人产业园、数据采集中心、中试工厂和智能制造闭环；朝阳“光智空间”瞄准光子计算、量子计算等下一代算力形态；石景山“文化智境”把首钢园和文化场景作为 AI+文化试验场。这不是传统意义上的产业园换名，而是把人才、资本、算力券、数据支持、空间改造、首台套认定和重大项目倾斜集中到若干小范围试验区。它的优点是便于形成密度和反馈，<mark class="signal-mark"><strong class="signal">风险</strong></mark>是如果只形成空间品牌、没有高频真实需求，街区就会变成政策展示窗口。</p><p class="report-paragraph">科学智能和具身智能是北京选择押注的两个较硬方向。北京市科委、中关村管委会报道提到，北京将实施大原子模型计划，开源 2 至 3 款科学智能基础模型，升级“玻尔科研空间站”，面向化学、材料、生物等重点学科构建知识图谱。具身智能方面，北京 <strong class="metric">2025 年</strong>已经印发 2025-<strong class="metric">2027 年</strong>行动计划，目标包括突破不少于 100 项<mark class="signal-mark"><strong class="signal">关键</strong></mark>技术、建设世界模型仿真、数据采集、中试验证和开放测试平台，培育不少于 50 家核心企业，形成不少于 50 款量产产品，并在科研教育、工业商业、个性化服务三大场景实现不少于 100 项规模化应用。把这两条线放进 <strong class="metric">2026 年</strong>九大行动，说明北京不想只做通用聊天模型，而是把 AI 拉回科研发现、机器人本体、核心零部件、制造测试和真实环境数据。</p><p class="report-paragraph">资本和生态是第三层约束。行动计划提出集聚 <strong class="metric">2000 亿元</strong>以上产业投资基金、新增上市企业 10 家以上、独角兽 20 家以上，容易被读成单纯“给钱”。更准确地看，AI 硬科技和行业应用都不是短平快项目：国产算力生态需要芯片、编译器、框架、集群调度和模型适配共同成熟；具身智能需要零部件、整机、仿真、数据采集、中试验证和场景客户持续迭代；科学智能需要科研机构、企业和实验平台重新组织研发流程。耐心资本的作用，是让这些链条有时间穿过从样机到工程化、从演示到采购、从单点部署到行业复用的阶段。不过，资本只能延长试错窗口，不能替代真实收入。<mark class="signal-mark"><strong class="signal">后续</strong></mark>应看的不是基金规模口径，而是资金流向早期硬科技、公共平台还是成熟项目，以及退出是否过度依赖政策叙事。</p><p class="report-paragraph">安全治理和开源开放也不能被当成附属章节。北京市发改委转载报道提到，安全治理护航行动将建设人工智能安全基础设施、安全测试靶场和安全攻防工具箱，为模型主体提供深度安全压力测试等服务。北京 <strong class="metric">2023 年</strong>通用人工智能措施也已把算法备案、安全评估、个人数据保护、科技伦理治理和常态化服务指导放在创新政策内部。这里的现实含义是：如果 AI 要进入政务、医疗、教育、城市治理、交通和公共服务，模型能力只是门槛，数据来源、输出可靠性、责任边界、内容安全和个人信息保护会决定应用能否放大。北京把安全测试和开源生态一起写入行动计划，说明它意识到大规模应用需要可信工具链，而不是只靠企业自证安全。</p><p class="report-paragraph">因此，这份行动计划最稳妥的读法，是北京在把 AI 产业政策从“谁的大模型最强”推进到“谁能组织城市级 AI 生产条件”。万亿产业规模、10 万卡国产智算、<strong class="metric">100PB</strong> 高质量数据、100 项标杆应用、<strong class="metric">2000 亿元</strong>基金和四大创新街区，并不是彼此孤立的 KPI，而是同一个产业操作系统的不同端口。它有现实基础：北京有高校院所、人才、平台企业、大模型企业、金融和政务场景，也有 <strong class="metric">2023 年</strong>以来围绕算力、数据、场景、监管持续铺设的政策层。但它也有清晰<mark class="signal-mark"><strong class="signal">不确定性</strong></mark>：核心产业规模口径是否稳定，10 万卡能否转化为可用算力，<strong class="metric">100PB</strong> 数据是否合规可用，标杆应用是否能跨部门和跨行业复用，科学智能和具身智能能否形成收入而不只是示范。北京 AI 政策的真正结果，不会由发布会数字决定，而会由这些基础设施变量逐步验收。</p></div>
-        </section>
-    
-
-        <section class="uncertainties">
-          <h2>不确定性</h2>
-          <ul class="note-list"><li><span>公开来源多为发布会报道、部门转载和政策文件，完整行动计划逐条正式文本的可检索性仍有限。</span></li><li><span>人工智能<mark class="signal-mark"><strong class="signal">核心</strong></mark>产业规模统计口径需要持续核对，不能把全部数字经济或泛科技收入直接并入 AI。</span></li><li><span>10 万卡级国产智算集群的芯片类型、算力精度口径、互联能力、开放价格和实际利用率尚需<mark class="signal-mark"><strong class="signal">后续</strong></mark>公开材料验证。</span></li><li><span>新增 <strong class="metric">100PB</strong> 高质量数据的来源、权属、合规处理、标注质量、更新机制和行业可用性，比体量本身<mark class="signal-mark"><strong class="signal">更关键</strong></mark>。</span></li><li><span>100 项标杆应用是否能跨部门和跨行业复用，仍需看验收标准、采购转化和用户侧成效。</span></li></ul>
-        </section>
-    
-
-        <section class="follow-up">
-          <h2>后续跟踪变量</h2>
-          <ul class="note-list"><li><span>国产智算集群从 3 万卡到 10 万卡的建设进度、芯片型号、算力折算口径和开放机制</span></li><li><span>公共算力 3.2 万 P 与全市 6 万 P 算力规模的实际利用率、调度平台和价格机制</span></li><li><span>新增 <strong class="metric">100PB</strong> 高质量数据的行业分布、合规处理、标注质量和交易或共享路径</span></li><li><span>100 项标杆应用的清单、验收标准、真实采购、跨部门复用和商业化收入</span></li><li><span>四个创新街区的企业集聚、空间改造、算力券、人才落户和中试平台实际落地</span></li><li><span>具身智能和科学智能项目的量产产品、客户、收入、开放数据和跨场景迁移能力</span></li><li><span><strong class="metric">2000 亿元</strong>产业基金的资金来源、投向结构、早期硬科技占比和退出路径</span></li><li><span>安全测试靶场、模型压力测试、算法备案和个人信息保护机制的可执行程度</span></li></ul>
-        </section>
-    
-      </article>
-    
-            
-    <footer>公开资料研究索引，包含来源链接、摘要、研究报告和不确定性提示。</footer>
   </main>
+  <footer>公开资料研究索引，包含来源链接、研究报告和不确定性提示。</footer>
+
 </body>
 </html>

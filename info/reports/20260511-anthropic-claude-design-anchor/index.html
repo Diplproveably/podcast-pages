@@ -1,235 +1,573 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="signal" data-layout="editorial">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Claude Design：从生成图片走向可交接设计工作流</title>
   <style>
     :root {
-      --bg: #f6f5ef;
-      --paper: #ffffff;
-      --text: #1f2520;
-      --muted: #66716a;
-      --line: #d9ded7;
-      --accent: #0b6b5f;
-      --accent-two: #9b6a24;
-      --soft: #edf5f1;
-      --warm: #fff4dc;
-      --ink-soft: #2f3933;
+      --paper: #fff8ec;
+      --ink: #171717;
+      --muted: #64615b;
+      --line: #1c1c1c;
+      --accent: #d63f2f;
+      --accent-two: #0b8fa3;
+      --accent-three: #b7d73a;
+      --sand: #efe5cf;
+      --measure: 52rem;
+      --background-signature: editorial-columns;
+      --page-background: linear-gradient(90deg, rgba(214,63,47,.065) 1px, transparent 1px) 0 0 / 34px 34px, linear-gradient(180deg, rgba(11,143,163,.055), transparent 34rem), var(--paper);
     }
     * { box-sizing: border-box; }
+    html { background: #151515; }
     body {
       margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Avenir Next", "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
-      line-height: 1.72;
+      color: var(--ink);
+      background: var(--page-background);
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      line-height: 1.86;
       letter-spacing: 0;
     }
-    main {
-      width: min(1040px, calc(100% - 34px));
-      margin: 0 auto;
-      padding: 38px 0 72px;
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; overflow-wrap: anywhere; }
+    .issue-bar {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: .58rem clamp(1rem, 4vw, 3.2rem);
+      background: color-mix(in srgb, var(--paper) 92%, white);
+      border-bottom: 2px solid var(--line);
+      backdrop-filter: blur(12px);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
     }
-    header {
-      border-bottom: 2px solid var(--text);
-      margin-bottom: 24px;
-      padding-bottom: 24px;
+    .issue-bar strong { color: var(--accent); }
+    .issue-bar span:nth-child(2) { font-weight: 900; }
+    .issue-bar span:last-child { text-align: right; color: var(--muted); }
+    .magazine-cover {
+      min-height: clamp(420px, 62vh, 680px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(17rem, 25rem);
+      gap: clamp(2rem, 5vw, 4.2rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.5rem) clamp(1rem, 5vw, 5rem) clamp(2.2rem, 4vw, 3.2rem);
+      border-bottom: 2px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .magazine-cover::before {
+      content: "DEFAULT";
+      position: absolute;
+      left: clamp(.7rem, 3vw, 2rem);
+      top: clamp(4rem, 9vw, 7rem);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(5rem, 17vw, 17rem);
+      line-height: .75;
+      letter-spacing: 0;
+      color: color-mix(in srgb, var(--accent-two) 13%, transparent);
+      pointer-events: none;
+    }
+    .kicker {
+      display: inline-flex;
+      gap: .6rem;
+      align-items: center;
+      font-weight: 900;
+      color: var(--accent);
+      border: 2px solid var(--line);
+      padding: .22rem .55rem;
+      background: var(--accent-three);
+      width: fit-content;
     }
     h1 {
-      font-size: clamp(2rem, 5vw, 4.6rem);
-      line-height: 1.05;
-      margin: 0 0 16px;
+      max-width: 12ch;
+      margin: 1.3rem 0 0;
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 7vw, 7.2rem);
+      line-height: .94;
+      letter-spacing: 0;
+      text-wrap: balance;
     }
-    h2 { margin: 8px 0 10px; line-height: 1.28; font-size: 1.35rem; }
-    a { color: var(--accent); text-underline-offset: 3px; overflow-wrap: anywhere; }
-    .subtitle { max-width: 760px; color: var(--muted); font-size: 1.05rem; }
-    .nav { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 18px; }
-    .info-list { display: grid; gap: 16px; }
-    .info-card {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 20px 22px;
-      box-shadow: 0 18px 50px rgba(31, 37, 32, .06);
+    .deck {
+      max-width: 56rem;
+      font-size: clamp(1.1rem, 1.65vw, 1.48rem);
+      line-height: 1.62;
+      margin: 2rem 0 0;
+      color: #24211d;
+      border-left: .65rem solid var(--accent);
+      padding-left: 1.2rem;
     }
-    .meta { color: var(--muted); font-size: .92rem; }
-    .summary { font-size: 1.02rem; }
-    .why {
-      background: var(--soft);
-      border-left: 4px solid var(--accent);
-      padding: 10px 12px;
-      color: #26322d;
+    .cover-meta { align-self: stretch; display: grid; align-content: end; gap: 1rem; }
+    .cover-card {
+      border: 2px solid var(--line);
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 9px 9px 0 var(--accent-two);
     }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-    .tags span {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 3px 9px;
-      color: var(--muted);
-      font-size: .86rem;
-      background: #fbfcfa;
-    }
-    .actions { margin-bottom: 0; }
-    .analysis, .detailed-summary, .news-anchor, .research-questions, .research-sources,
-    .detailed-report, .uncertainties, .follow-up {
-      border-top: 1px solid var(--line);
-      margin-top: 18px;
-      padding-top: 14px;
-    }
-    .anchor-report { border-left: 5px solid var(--accent-two); }
-    .analysis h2, .detailed-summary h2, .news-anchor h2, .research-questions h2,
-    .research-sources h2, .detailed-report h2, .uncertainties h2, .follow-up h2 { font-size: 1.05rem; margin-top: 0; }
-    .analysis p, .detailed-summary p, .news-anchor p, .detailed-report p { margin: 0 0 12px; }
-    .report-body {
-      max-width: 820px;
+    .cover-card h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.35; color: var(--accent); }
+    .cover-card ol, .cover-card ul { margin: 0; padding-left: 1.15rem; }
+    .cover-card li { margin: .48rem 0; line-height: 1.55; }
+    .article-shell {
       display: grid;
-      gap: 14px;
-    }
-    .report-body p {
-      color: var(--ink-soft);
-      margin: 0;
-      font-size: 1.03rem;
-    }
-    .report-lede {
-      padding: 16px 18px;
-      background: #fbf8ed;
-      border-left: 5px solid var(--accent-two);
-      font-size: 1.12rem !important;
-    }
-    .report-callout {
-      padding: 13px 16px;
-      background: #fbfcfa;
-      border: 1px solid #dbe7e1;
-      border-left: 4px solid var(--accent);
-      box-shadow: inset 0 0 0 9999px rgba(11, 107, 95, .025);
-    }
-    strong.signal, strong.metric {
-      color: #123f38;
-      font-weight: 800;
-    }
-    mark {
-      background: rgba(221, 166, 74, .22);
-      color: inherit;
-      padding: 0 .12em;
-      border-radius: 3px;
-    }
-    .signal-mark {
-      background: rgba(221, 166, 74, .24);
-      box-decoration-break: clone;
-      -webkit-box-decoration-break: clone;
-    }
-    .question-list {
-      counter-reset: question;
-      list-style: none;
-      padding-left: 0;
-      display: grid;
-      gap: 10px;
-    }
-    .question-list li {
-      counter-increment: question;
-      display: grid;
-      grid-template-columns: 2.1rem 1fr;
-      gap: 10px;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.6rem, 3vw, 3.2rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3rem);
       align-items: start;
-      background: #fbfcfa;
-      border: 1px solid var(--line);
-      padding: 10px 12px;
     }
-    .question-list li::before {
-      content: counter(question);
-      width: 1.7rem;
-      height: 1.7rem;
-      border-radius: 50%;
-      display: inline-grid;
-      place-items: center;
-      background: var(--accent);
-      color: white;
-      font-weight: 700;
-      font-size: .9rem;
-    }
-    .source-list, .note-list {
+    .editor-note {
+      grid-column: 1 / -1;
       display: grid;
-      gap: 9px;
-      padding-left: 20px;
+      grid-template-columns: minmax(10rem, 15rem) minmax(0, 1fr);
+      gap: 1.2rem;
+      border-top: 5px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: 1rem 0 1.1rem;
+      color: var(--muted);
+      font-size: .94rem;
+      line-height: 1.7;
     }
-    .source-title {
+    .editor-note b {
+      display: block;
+      color: var(--ink);
+      font-size: .82rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .25rem;
+    }
+    .editor-note p { margin: 0; }
+    .magazine-article { min-width: 0; font-size: clamp(1.04rem, 1.05vw, 1.18rem); }
+    .article-shell > .magazine-article { grid-column: 1; }
+    .magazine-article p { margin: 0 0 1.35rem; text-align: justify; text-wrap: pretty; }
+    .magazine-article .lede {
+      font-size: clamp(1.24rem, 2vw, 1.58rem);
+      line-height: 1.75;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+    .dropcap {
+      float: left;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 5.8rem;
+      line-height: .8;
+      padding: .18rem .55rem .1rem 0;
+      color: var(--accent);
+    }
+    .magazine-emphasis {
+      margin: 2rem 0 !important;
+      padding: 1.1rem 1.25rem;
+      border-left: .45rem solid var(--accent-two);
+      background: linear-gradient(90deg, color-mix(in srgb, var(--accent-two) 12%, transparent), transparent 78%);
+      font-weight: 600;
+    }
+    .pullquote {
+      margin: 2.4rem -4rem 2.4rem 0;
+      padding: 1.1rem 0 1.2rem 1.5rem;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      background: var(--paper);
+    }
+    .pullquote span { color: var(--accent); font-size: .78rem; font-weight: 900; letter-spacing: .13em; }
+    .pullquote p {
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-size: clamp(1.6rem, 3vw, 2.45rem);
+      line-height: 1.28;
+      margin: .35rem 0 0;
+      text-align: left;
+    }
+    .metric {
+      font-variant-numeric: tabular-nums;
+      color: var(--accent);
+      font-weight: 900;
+      background: linear-gradient(transparent 55%, color-mix(in srgb, var(--accent-three) 65%, transparent) 0);
+    }
+    .signal {
+      font-weight: 900;
+      text-decoration: underline;
+      text-decoration-color: var(--accent-two);
+      text-decoration-thickness: .18em;
+      text-underline-offset: .14em;
+    }
+    .companion-rail {
+      position: sticky;
+      top: 3.8rem;
+      grid-column: 2;
+      align-self: start;
+      border-top: 5px solid var(--line);
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+      padding-top: 1rem;
+    }
+    .companion-rail b { color: var(--ink); }
+    .backmatter {
+      grid-column: 1 / -1;
       display: grid;
-      gap: 2px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.2rem;
+      margin-top: 2.4rem;
+      border-top: 2px solid var(--line);
+      padding-top: 1.4rem;
     }
-    .source-meta {
+    .module { background: #fff; border: 2px solid var(--line); padding: 1rem 1.1rem; box-shadow: 6px 6px 0 var(--sand); }
+    .module h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.3; color: var(--accent); }
+    .module ul { margin: 0; padding-left: 1.1rem; }
+    .module li { margin: .5rem 0; line-height: 1.58; }
+    .source-list li { display: grid; gap: .12rem; margin-bottom: .8rem; }
+    .source-meta { color: var(--muted); font-size: .86rem; }
+    .source-meta::before { content: "来源 · "; }
+    .sources-module { grid-column: 1 / -1; }
+    .newspaper-masthead {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.8rem) clamp(1rem, 4vw, 3rem) 1.6rem;
+      border-bottom: 5px double var(--line);
+    }
+    .newspaper-kicker {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.4rem, 3vw, 3rem);
+      line-height: 1;
+      color: var(--accent);
+      text-transform: uppercase;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: .35rem 0;
+    }
+    .newspaper-masthead h1 {
+      max-width: 20ch;
+      font-size: clamp(2.6rem, 5.5vw, 6.2rem);
+      line-height: .98;
+    }
+    .newspaper-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem 1.1rem;
+      margin-top: 1rem;
+      padding-top: .8rem;
+      border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: .9rem;
     }
-    .source-meta::before { content: "来源 · "; }
-    .note-list li > .list-key {
-      display: block;
-      margin-bottom: 2px;
+    .market-strip {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr 1fr;
+      gap: 1rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      border-bottom: 2px solid var(--line);
+      background: color-mix(in srgb, var(--accent-three) 26%, var(--paper));
+      font-size: .94rem;
+      line-height: 1.55;
     }
-    .research-sources li, .research-questions li, .uncertainties li, .follow-up li { margin: 0 0 8px; }
-    .topic-index { columns: 2; padding-left: 20px; }
-    .topic-index li { break-inside: avoid; margin: 0 0 8px; }
-    footer { color: var(--muted); margin-top: 34px; font-size: .9rem; }
-    @media (max-width: 720px) {
-      .topic-index { columns: 1; }
+    .market-strip b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .08em; }
+    .market-strip p, .market-strip ol, .market-strip ul { margin: .35rem 0 0; }
+    .market-strip ol, .market-strip ul { padding-left: 1.1rem; }
+    .newspaper-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .newspaper-article .lede {
+      column-span: all;
+      border-top: 2px solid var(--line);
+      padding-top: 1rem;
+    }
+    .newspaper-article { grid-column: 1; }
+    .newspaper-rail {
+      position: sticky;
+      top: 3.8rem;
+      border-left: 2px solid var(--line);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .dossier-cover {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.6rem) clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
+      gap: clamp(1.5rem, 4vw, 3.8rem);
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+    }
+    .dossier-stamp {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      align-self: start;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      color: var(--accent);
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: color-mix(in srgb, var(--accent-three) 35%, white);
+    }
+    .dossier-cover h1 {
+      max-width: 18ch;
+      font-size: clamp(2.7rem, 6vw, 6.6rem);
+      line-height: .98;
+    }
+    .dossier-summary {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.5vw, 1.36rem);
+      border-left: .45rem solid var(--accent);
+      padding-left: 1rem;
+    }
+    .dossier-source { color: var(--muted); margin: 0; }
+    .dossier-shell {
+      display: grid;
+      grid-template-columns: minmax(12rem, 17rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .dossier-index {
+      position: sticky;
+      top: 3.8rem;
+      border-top: 5px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .dossier-index b { display: block; color: var(--ink); margin-bottom: .6rem; }
+    .dossier-index ol { margin: 0 0 1rem; padding-left: 1.1rem; }
+    .dossier-article { grid-column: 2; }
+    .field-cover {
+      min-height: clamp(460px, 64vh, 720px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr);
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      border-bottom: 2px solid var(--line);
+      background:
+        linear-gradient(135deg, transparent 0 48%, color-mix(in srgb, var(--accent-three) 24%, transparent) 48% 52%, transparent 52%),
+        var(--paper);
+    }
+    .field-topline {
+      grid-column: 1 / -1;
+      width: fit-content;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: .25rem .7rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .field-cover h1 {
+      max-width: 16ch;
+      font-size: clamp(2.8rem, 6.4vw, 7rem);
+    }
+    .field-deck {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.55vw, 1.38rem);
+      line-height: 1.62;
+      border-left: .5rem solid var(--accent-two);
+      padding-left: 1rem;
+    }
+    .field-map {
+      border: 2px solid var(--line);
+      background: rgba(255,255,255,.76);
+      padding: 1rem;
+      box-shadow: 10px 10px 0 color-mix(in srgb, var(--accent) 70%, black);
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+    .field-map b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .1em; }
+    .field-map ol { margin: .55rem 0 1rem; padding-left: 1.2rem; }
+    .field-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(13rem, 17rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .field-log {
+      position: sticky;
+      top: 3.8rem;
+      border-left: .35rem solid var(--accent-two);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .field-article { grid-column: 1; }
+    .lab-cover {
+      padding: clamp(2.6rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      min-height: clamp(420px, 58vh, 650px);
+      display: grid;
+      align-content: center;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+      background:
+        linear-gradient(90deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        linear-gradient(0deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        var(--paper);
+    }
+    .lab-label {
+      width: fit-content;
+      background: var(--ink);
+      color: #fff;
+      padding: .28rem .65rem;
+      font-size: .82rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .lab-cover h1 {
+      max-width: 22ch;
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 5.8rem);
+      line-height: 1.04;
+    }
+    .lab-deck {
+      max-width: 62rem;
+      font-size: clamp(1.06rem, 1.45vw, 1.32rem);
+      border-top: 2px solid var(--accent);
+      padding-top: 1rem;
+    }
+    .protocol-strip {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .75rem;
+      border-bottom: 2px solid var(--line);
+      font-size: .88rem;
+    }
+    .protocol-strip div {
+      border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
+      padding: .75rem;
+      background: rgba(255,255,255,.68);
+      min-width: 0;
+    }
+    .protocol-strip b {
+      display: block;
+      color: var(--accent-two);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .protocol-strip span { overflow-wrap: anywhere; }
+    .lab-shell {
+      display: grid;
+      grid-template-columns: minmax(14rem, 19rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .lab-notes {
+      position: sticky;
+      top: 3.8rem;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      background: #fff;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .lab-notes b { color: var(--ink); }
+    .lab-notes ol { padding-left: 1.1rem; }
+    .lab-article { grid-column: 2; }
+    footer { color: var(--muted); padding: 0 clamp(1rem, 4vw, 3rem) 3rem; max-width: 1220px; margin: 0 auto; font-size: .9rem; }
+    @media (max-width: 1100px) {
+      .magazine-cover { grid-template-columns: 1fr; min-height: auto; }
+      .cover-meta { max-width: 42rem; }
+      .article-shell { grid-template-columns: 1fr; }
+      .editor-note { grid-template-columns: 1fr; }
+      .companion-rail { position: static; grid-column: 1; }
+      .backmatter { grid-column: 1; grid-template-columns: 1fr; }
+      .pullquote { margin-right: 0; }
+      h1 { max-width: 11ch; }
+      .market-strip, .protocol-strip { grid-template-columns: 1fr; }
+      .newspaper-shell, .dossier-shell, .field-shell, .lab-shell { grid-template-columns: 1fr; }
+      .newspaper-rail, .dossier-index, .field-log, .lab-notes { position: static; }
+      .dossier-article, .lab-article { grid-column: 1; }
+      .dossier-cover, .field-cover { grid-template-columns: 1fr; min-height: auto; }
+      .dossier-stamp { grid-column: 1; grid-row: auto; }
+    }
+    @media (max-width: 640px) {
+      .issue-bar { grid-template-columns: 1fr; gap: .15rem; }
+      .issue-bar span:last-child { text-align: left; }
+      .magazine-cover { padding-top: 2.4rem; }
+      h1 { font-size: clamp(2.65rem, 16vw, 4.8rem); }
+      .deck { border-left-width: .45rem; padding-left: .8rem; }
+      .magazine-article p { text-align: left; }
+      .dropcap { font-size: 4.6rem; }
+      .module { box-shadow: 4px 4px 0 var(--sand); }
     }
   </style>
 </head>
 <body>
-  <main>
-    
-            <header>
-              <h1>Claude Design：从生成图片走向可交接设计工作流</h1>
-              <p class="subtitle">新闻锚点驱动的主题研究报告 · 2026-04-17</p>
-              <div class="nav"><a href="../../">返回信息流</a><a href="https://www.anthropic.com/news/claude-design-anthropic-labs">打开锚点来源</a></div>
-            </header>
-            
-      <article class="info-card anchor-report">
-        <div class="meta">2026-04-17 · 主题研究报告</div>
-        <h2>Claude Design：从生成图片走向可交接设计工作流</h2>
-        <p class="summary">Anthropic 发布 Claude Design，表面上是让用户通过对话生成设计、原型、幻灯片和 HTML，实质上是在把视觉初稿、品牌系统、组织协作、Canva 编辑层和 Claude Code 工程交接连成一条工作流。它的价值不应按单张图质量判断，而应看它能否让设计意图带着上下文进入团队协作和前端实现。</p>
-        <p class="why"><strong>新闻锚点：</strong><a href="https://www.anthropic.com/news/claude-design-anthropic-labs">Introducing Claude Design by Anthropic Labs</a> · Anthropic</p>
-        <div class="tags"><span>ai-tools</span> <span>content-strategy</span> <span>frontend-workflow</span></div>
-      
-        <section class="news-anchor">
-          <h2>新闻锚点</h2>
-          <p><a href="https://www.anthropic.com/news/claude-design-anthropic-labs">Introducing Claude Design by Anthropic Labs</a> · Anthropic</p>
-        </section>
-            
 
-        <section class="research-questions">
-          <h2>研究问题</h2>
-          <ol class="question-list"><li><span>Claude Design 和传统 AI 图片或设计工具的差异在哪里？</span></li><li><span>品牌系统、组织共享和代码交接为什么比单点生成能力更重要？</span></li><li><span>这类工具会怎样改变内容、产品、营销、设计和前端团队的分工？</span></li><li><span>研究预览阶段的企业治理、可访问性、可复现性和工程可维护性<mark class="signal-mark"><strong class="signal">风险</strong></mark>在哪里？</span></li></ol>
-        </section>
+  <div class="issue-bar"><span><strong>Infohub</strong> article</span><span>Magazine research page</span><span>2026-04-17</span></div>
+  <header class="magazine-cover">
+    <div>
+      <div class="kicker">AI TOOLS / PRODUCT ENTRANCE</div>
+      <h1>Claude Design：从生成图片走向可交接设计工作流</h1>
+      <p class="deck">Anthropic 发布 Claude Design，表面上是让用户通过对话生成设计、原型、幻灯片和 HTML，实质上是在把视觉初稿、品牌系统、组织协作、Canva 编辑层和 Claude Code 工程交接连成一条工作流。它的价值不应按单张图质量判断，而应看它能否让设计意图带着<strong class="signal">上下文</strong>进入团队协作和前端实现。</p>
+    </div>
+    <aside class="cover-meta">
+      <div class="cover-card">
+        <h2>研究问题</h2>
+        <ol><li>Claude Design 和传统 AI 图片或设计工具的差异在哪里？</li><li>品牌系统、组织共享和代码交接为什么比单点生成能力更重要？</li><li>这类工具会怎样改变内容、产品、营销、设计和前端团队的分工？</li><li>研究预览阶段的企业治理、可访问性、可复现性和工程可维护性<strong class="signal">风险</strong>在哪里？</li></ol>
+      </div>
+      <div class="cover-card">
+        <h2>新闻锚点</h2>
+        <p><a href="https://www.anthropic.com/news/claude-design-anthropic-labs">Introducing Claude Design by Anthropic Labs</a><br>Anthropic</p>
+      </div>
+    </aside>
+  </header>
+  <main class="article-shell">
+    <section class="editor-note">
+      <p><b>Reading mode</b>这是一篇以新闻锚点展开的杂志式研究长文。正文保持原始报告顺序，页面只做阅读组织和视觉强调。</p>
+      <p><b>Editorial voice</b>这篇报告应像一位长期观察产品工作流和 AI 工具演化的独立作者写成：承认 Claude Design 的新意，但不替官方做营销；把发布稿里的功能拆成组织协作、设计系统、工程交接和治理问题；用 Figma、Canva、企业 AI 失败研究和生成式 UI 综述压住过度乐观，语气冷静、判断清楚、少用口号。</p>
+    </section>
+    <article class="magazine-article">
+      <p class="lede"><span class="dropcap">A</span>nthropic 在 <strong class="metric">2026 年</strong> <strong class="metric">4 月</strong> <strong class="metric">17 日</strong>发布 Claude Design 时，最容易被看见的是那个表层能力：用户用自然语言描述需求，Claude 生成设计、原型、幻灯片、一页纸、营销素材或 standalone HTML。这个叙述很像过去两年所有 AI 视觉工具的发布口径，所以如果只问它能不能出图，这条新闻反而会被低估。Claude Design <strong class="signal">真正</strong>值得写的地方，是 Anthropic 把视觉生成放进了一个更长的协作链条：输入可以来自提示词、图片、文档、代码库和网页捕获；修改不只靠重新生成，而是可以通过对话、行内评论、直接编辑和 Claude 生成的细粒度滑杆完成；输出也不是单一图片，而是 Canva、PDF、PPTX、HTML 文件夹，以及给 Claude Code 的交接包。它不是把设计师的软件简单换成聊天框，而是在试图重排想法变成可讨论对象、再变成可实施对象的过程。</p><p class="magazine-emphasis">旧式 AI 图片工具的<strong class="signal">核心</strong>单位是资产。它生成一张海报、一张产品图、一张风格参考图，最重要的判断是像不像、好不好看、能不能用于当前传播场景。Claude Design 的核心单位更接近项目中的中间产物：可分享的原型、可评论的页面、可继续编辑的 deck、可转交给工程的设计意图。这个差异很<strong class="signal">关键</strong>，因为组织里的设计工作很少止于单张图。<strong class="signal">真正</strong>耗时的部分往往在对齐：产品经理想表达功能流程，设计师要把它放进品牌和组件体系，营销团队要改写成传播材料，前端工程师要判断哪些东西能落地、哪些只是视觉幻觉。Claude Design 的产品叙事正是把这些交接点串起来，而不是宣称自己能替代其中某一个角色。</p><p>Anthropic 的发布稿给出的几个细节，说明它的目标不是万能画布，而是<strong class="signal">上下文</strong>充足的工作流。它强调 Claude 可以在得到授权后读取团队的代码库和设计文件，建立设计系统，让<strong class="signal">后续</strong>项目自动使用颜色、字体和组件；设计可以设为私有，也可以在组织范围内通过链接查看或开放编辑；团队成员可以在同一个设计里和 Claude 对话。更值得注意的是，企业版默认关闭 Claude Design，需要管理员在组织设置里启用。Anthropic 的帮助文档还建议企业先让 2-4 名可信设计师和设计负责人建立并验证设计系统，再逐步开放给产品、用户研究和更广泛的组织成员。这个顺序本身就是一个判断：没有设计系统，AI 会给出可用但泛化的输出；有设计系统，AI 才可能把效率提升转化为品牌一致性和工程一致性。</p><aside class="pullquote"><span>摘句</span><p>Canva 的接入强化了这种定位。</p></aside><p>Canva 的接入强化了这种定位。Canva 官方称，Claude Design 生成的草稿可以进入 Canva Visual Suite，变成可编辑、结构化、可协作的设计；Canva 同时推出 HTML 导入和 artifact 编辑能力，让来自 Claude 的交互式代码作品可以在拖拽编辑器里调整颜色、移动元素、更新布局，而不是每次小改都重新生成代码。这里的意义不在于 Canva 给 Claude 增加了一个导出按钮，而在于 AI 生成的初稿正在寻找可治理的编辑层。对于营销和内容团队，AI 直接生成一份漂亮材料并不稀奇；更难的是让这份材料进入已有的品牌套件、审批流程、协作评论和发布渠道。Canva 接住的正是这段后半程。</p><p>Figma 的相关材料可以帮助校准 Claude Design 的边界。Figma Dev Mode、Code Connect 和 MCP 服务器的共同论点是：设计到代码不是截图转代码，而是把组件、变量、token、注释、布局和代码库映射带进开发环境。Figma 开发者文档明确提醒，MCP 服务器不是一键生成完美代码的工具，它只是把结构化设计输入和代码起点传给 IDE 里的 AI 助手；最终结果仍取决于<strong class="signal">上下文</strong>质量、模型行为和提示清晰度。把这个判断放回 Claude Design，可以看到它的机会和限制是同一件事：如果 Claude Design 真能读取代码库和设计文件、形成设计系统并把设计意图交给 Claude Code，它就会比单纯的视觉生成更靠近产品开发；但如果组织没有组件命名、变量、可访问性规则和代码约定，交接包也只会把模糊意图包装得更完整。</p><p>这也解释了为什么品牌系统不是发布稿里的装饰性词汇。生成式设计最容易造成的不是立刻出错，而是慢慢漂移：一个团队里每个人都能快速产出页面、deck 和广告图，短期看创意量上升，长期看字体、间距、语气、按钮层级、插图风格、无障碍规则和组件变体都可能分叉。Anthropic 的管理员指南直接说，设计系统应先于大范围启用，并由品牌设计和产品设计共同设置；它还承认 Claude Design 目前不支持审计日志或使用追踪，建议企业在 rollout 中通过定性反馈和抽样项目检查设计系统合规性。这个限制很重要。一个面向组织的 AI 设计工具，如果暂时没有审计日志，管理者就很难知道谁生成了什么、用了哪些素材、是否违反品牌或数据边界。</p><p class="magazine-emphasis">更审慎的研究也提醒我们，不要把看起来像成品误认为已经可生产。<strong class="metric">2026 年</strong>发表在 Computers 的一篇系统综述分析了 2021-<strong class="metric">2025 年</strong>关于生成式无代码 UI 工具的研究，结论不是这些工具无用，而是它们更像概率性的设计代理，而不是确定性的规格编译器。相同提示词可能在不同工具之间、甚至同一工具的多次运行中产生不同布局、样式和组件结构；生成界面通常能达到基本可读和可用，但在语义结构、键盘导航、跨页面一致性、可访问性和可复现性上仍需要人工审校。Claude Design 的价值正好要放在这个现实里衡量：它可以把探索和表达速度推得很快，但不能因此跳过设计评审、可访问性测试和工程验收。</p><p>Gartner 对企业生成式 AI 项目失败原因的总结也适用于这类工具。它把大量项目在概念验证后被放弃归因于业务价值不清、数据质量不足、<strong class="signal">风险</strong>控制薄弱、成本失控和变更管理失败。Claude Design 的产品风险不在于某次生成的按钮不够好看，而在于组织把它当成自动设计部门来部署，却没有定义成功指标、权限边界、品牌责任、成本归属和验收流程。尤其在 Team 和 Enterprise 场景里，它会接触品牌资产、代码库、演示文稿、网页和可能包含内部信息的设计参考。效率工具一旦进入真实组织，就不只是创作工具，也是一套权限和治理问题。</p><p>从团队分工看，Claude Design 更可能先改变的是非设计岗位的表达能力，而不是直接取消设计岗位。产品经理可以把抽象需求转成可点击原型，创始人和销售可以把粗糙提纲变成可讨论 deck，营销人员可以快速生成活动页面和社交素材，设计师则从替别人把想法画出来的部分劳动中抽身，转向设定系统、审核质量、判断体验和维护品牌。这个变化并不自动减轻设计师负担，因为 AI 会制造更多待审核对象。<strong class="signal">真正</strong>成熟的团队会把 Claude Design 当作探索和交接工具，而不是批准工具：可以让更多人产生初稿，但最终标准仍应由设计系统、用户研究、品牌策略、可访问性和工程约束共同决定。</p><p class="magazine-emphasis">对前端工作流来说，Claude Design 的<strong class="signal">关键</strong>不是 HTML 导出本身。单文件 HTML、React 片段和原型代码已经不新鲜，很多工具都能生成。关键在于交接包是否带有设计意图、组件映射、状态说明、响应式约束和品牌 token，而不是只给工程师一堆看似可运行的代码。Anthropic 说设计准备好后可以把所有内容打包交给 Claude Code，用一句指令继续实现；Figma 也在把设计<strong class="signal">上下文</strong>送进 Claude Code、Cursor、Copilot 等编码工具。两条路径共同指向一个趋势：设计交接正在从设计师交付静态稿、工程师解释并重写，变成设计上下文进入编码代理、工程师审查约束和集成。这会减少一部分沟通摩擦，也会把责任转移到上下文质量和代码审查上。</p><p>因此，Claude Design 更像 Anthropic 从通用聊天助手走向专业工作台的一块拼图。它连接了 Claude 的多模态理解、Claude Code 的工程执行、Canva 的视觉编辑层，以及企业里的组织权限和设计系统。它的市场叙事可以被写得很热闹，但研究判断应该冷一点：这不是 Figma、Canva、设计师或前端工程师被一夜替代的证据，而是 AI 工具正在从生成内容走向携带<strong class="signal">上下文</strong>的协作对象。当输出能被评论、编辑、共享、导出和交接，AI 生成物才开始<strong class="signal">真正</strong>进入组织流程。</p><p><strong class="signal">后续</strong>最值得跟踪的不是演示视频里的速度，而是真实团队里的返工率。Claude Design 能否稳定读取复杂代码库和设计文件？多品牌、多产品线、多地区组织能否维护多个设计系统而不漂移？HTML、PPTX 和 Canva 导出是否保持可编辑性和结构清晰？交给 Claude Code 之后，工程实现是否真的更贴近组件库和可访问性要求？企业是否获得足够的审计、权限、数据驻留和使用追踪能力？如果这些问题没有解决，它就会是一款很强的概念生成器；如果解决，它代表的就不是 AI 会画图，而是设计、内容和前端协作方式的一次结构性改写。</p>
+    </article>
+    <aside class="companion-rail">
+      <p><b>核心锚点</b><br>Anthropic<br>2026-04-17</p>
+      <p><b>主题</b><br>ai-tools / content-strategy / frontend-workflow</p>
+      <p><b>返回</b><br><a href="../../">信息流首页</a></p>
+    </aside>
     
-
-        <section class="research-sources">
-          <h2>研究来源</h2>
-          <ul class="source-list"><li><span class="source-title"><a href="https://www.anthropic.com/news/claude-design-anthropic-labs">Introducing Claude Design by Anthropic Labs</a><span class="source-meta">Anthropic</span></span></li><li><span class="source-title"><a href="https://support.claude.com/en/articles/14604406-claude-design-admin-guide-for-team-and-enterprise-plans">Claude Design admin guide for Team and Enterprise plans</a><span class="source-meta">Anthropic Help Center</span></span></li><li><span class="source-title"><a href="https://www.canva.com/newsroom/news/canva-claude-design/">Introducing Canva in Claude Design by Anthropic Labs</a><span class="source-meta">Canva Newsroom</span></span></li><li><span class="source-title"><a href="https://www.figma.com/dev-mode/">Dev Mode: Design-to-Development</a><span class="source-meta">Figma</span></span></li><li><span class="source-title"><a href="https://developers.figma.com/docs/figma-mcp-server/mcp-vs-agent/">What the MCP sends vs. what the agent does</a><span class="source-meta">Figma Developers</span></span></li><li><span class="source-title"><a href="https://www.figma.com/blog/design-systems-ai-mcp/">Design systems and AI: Why MCP servers are the unlock</a><span class="source-meta">Figma Blog</span></span></li><li><span class="source-title"><a href="https://techcrunch.com/2026/04/17/anthropic-launches-claude-design-a-new-product-for-creating-quick-visuals/">Anthropic launches Claude Design, a new product for creating quick visuals</a><span class="source-meta">TechCrunch</span></span></li><li><span class="source-title"><a href="https://www.mdpi.com/2073-431X/15/4/238">Design Behaviour and Interface Consistency in Generative No-Code Tools: A Systematic Literature Review</a><span class="source-meta">Computers</span></span></li><li><span class="source-title"><a href="https://www.gartner.com/en/articles/genai-project-failure">Why 50% of GenAI Projects Fail — And How to Beat the Odds</a><span class="source-meta">Gartner</span></span></li></ul>
-        </section>
+    <section class="backmatter">
+      <div class="module">
+        <h2>不确定性</h2>
+        <ul><li>Claude Design 仍是 research preview，官方案例和早期报道不足以证明它在大型组织中已经稳定减少返工。</li><li>Anthropic 帮助文档显示 Claude Design 暂不支持审计日志或使用追踪，也不支持数据驻留要求；这会影响企业部署边界。</li><li>设计到代码交接效果高度依赖设计系统质量、组件映射、代码库约定、提示清晰度和人工审查，不能从发布稿直接推断生产级质量。</li><li>Canva、Figma 和 Gartner 等材料能提供外部参照，但不等于对 Claude Design 的独立长期测评。</li></ul>
+      </div>
+      <div class="module">
+        <h2>后续观察</h2>
+        <ul><li>Claude Design 的企业启用率、默认权限、RBAC 控制、审计日志和数据治理能力</li><li>Canva、PDF、PPTX、HTML 导出的可编辑性、结构质量和品牌一致性</li><li>与 Claude Code 交接后的真实返工率、可访问性问题和组件复用率</li><li>多设计系统、多品牌和跨团队协作场景下是否出现设计系统漂移</li><li>Figma、Canva、Adobe、Google Stitch、v0、Lovable 等工具在设计<strong class="signal">上下文</strong>进入工程代理方向上的竞争和互补关系</li></ul>
+      </div>
+      <div class="module sources-module">
+        <h2>研究来源</h2>
+        <ul class="source-list"><li><a href="https://www.anthropic.com/news/claude-design-anthropic-labs">Introducing Claude Design by Anthropic Labs</a><span class="source-meta">Anthropic</span></li><li><a href="https://support.claude.com/en/articles/14604406-claude-design-admin-guide-for-team-and-enterprise-plans">Claude Design admin guide for Team and Enterprise plans</a><span class="source-meta">Anthropic Help Center</span></li><li><a href="https://www.canva.com/newsroom/news/canva-claude-design/">Introducing Canva in Claude Design by Anthropic Labs</a><span class="source-meta">Canva Newsroom</span></li><li><a href="https://www.figma.com/dev-mode/">Dev Mode: Design-to-Development</a><span class="source-meta">Figma</span></li><li><a href="https://developers.figma.com/docs/figma-mcp-server/mcp-vs-agent/">What the MCP sends vs. what the agent does</a><span class="source-meta">Figma Developers</span></li><li><a href="https://www.figma.com/blog/design-systems-ai-mcp/">Design systems and AI: Why MCP servers are the unlock</a><span class="source-meta">Figma Blog</span></li><li><a href="https://techcrunch.com/2026/04/17/anthropic-launches-claude-design-a-new-product-for-creating-quick-visuals/">Anthropic launches Claude Design, a new product for creating quick visuals</a><span class="source-meta">TechCrunch</span></li><li><a href="https://www.mdpi.com/2073-431X/15/4/238">Design Behaviour and Interface Consistency in Generative No-Code Tools: A Systematic Literature Review</a><span class="source-meta">Computers</span></li><li><a href="https://www.gartner.com/en/articles/genai-project-failure">Why 50% of GenAI Projects Fail — And How to Beat the Odds</a><span class="source-meta">Gartner</span></li></ul>
+      </div>
+    </section>
     
-
-        <section class="detailed-report">
-          <h2>研究报告</h2>
-          <div class="report-body"><p class="report-lede"><strong>Anthropic 在 <strong class="metric">2026 年</strong> 4 月 <strong class="metric">17 日</strong>发布 Claude Design 时，最容易被看见的是那个表层能力：用户用自然语言描述需求，Claude 生成设计、原型、幻灯片、一页纸、营销素材或 standalone HTML。</strong>这个叙述很像过去两年所有 AI 视觉工具的发布口径，所以如果只问它能不能出图，这条新闻反而会被低估。Claude Design <mark class="signal-mark"><strong class="signal">真正</strong></mark>值得写的地方，是 Anthropic 把视觉生成放进了一个更长的协作链条：输入可以来自提示词、图片、文档、代码库和网页捕获；修改不只靠重新生成，而是可以通过对话、行内评论、直接编辑和 Claude 生成的细粒度滑杆完成；输出也不是单一图片，而是 Canva、PDF、PPTX、HTML 文件夹，以及给 Claude Code 的交接包。它不是把设计师的软件简单换成聊天框，而是在试图重排想法变成可讨论对象、再变成可实施对象的过程。</p><p class="report-callout"><strong>旧式 AI 图片工具的<mark class="signal-mark"><strong class="signal">核心</strong></mark>单位是资产。</strong>它生成一张海报、一张产品图、一张风格参考图，最重要的判断是像不像、好不好看、能不能用于当前传播场景。Claude Design 的核心单位更接近项目中的中间产物：可分享的原型、可评论的页面、可继续编辑的 deck、可转交给工程的设计意图。这个差异很关键，因为组织里的设计工作很少止于单张图。<mark class="signal-mark"><strong class="signal">真正</strong></mark>耗时的部分往往在对齐：产品经理想表达功能流程，设计师要把它放进品牌和组件体系，营销团队要改写成传播材料，前端工程师要判断哪些东西能落地、哪些只是视觉幻觉。Claude Design 的产品叙事正是把这些交接点串起来，而不是宣称自己能替代其中某一个角色。</p><p class="report-paragraph">Anthropic 的发布稿给出的几个细节，说明它的目标不是万能画布，而是上下文充足的工作流。它强调 Claude 可以在得到授权后读取团队的代码库和设计文件，建立设计系统，让<mark class="signal-mark"><strong class="signal">后续</strong></mark>项目自动使用颜色、字体和组件；设计可以设为私有，也可以在组织范围内通过链接查看或开放编辑；团队成员可以在同一个设计里和 Claude 对话。更值得注意的是，企业版默认关闭 Claude Design，需要管理员在组织设置里启用。Anthropic 的帮助文档还建议企业先让 2-4 名可信设计师和设计负责人建立并验证设计系统，再逐步开放给产品、用户研究和更广泛的组织成员。这个顺序本身就是一个判断：没有设计系统，AI 会给出可用但泛化的输出；有设计系统，AI 才可能把效率提升转化为品牌一致性和工程一致性。</p><p class="report-paragraph">Canva 的接入强化了这种定位。Canva 官方称，Claude Design 生成的草稿可以进入 Canva Visual Suite，变成可编辑、结构化、可协作的设计；Canva 同时推出 HTML 导入和 artifact 编辑能力，让来自 Claude 的交互式代码作品可以在拖拽编辑器里调整颜色、移动元素、更新布局，而不是每次小改都重新生成代码。这里的意义不在于 Canva 给 Claude 增加了一个导出按钮，而在于 AI 生成的初稿正在寻找可治理的编辑层。对于营销和内容团队，AI 直接生成一份漂亮材料并不稀奇；更难的是让这份材料进入已有的品牌套件、审批流程、协作评论和发布渠道。Canva 接住的正是这段后半程。</p><p class="report-paragraph">Figma 的相关材料可以帮助校准 Claude Design 的边界。Figma Dev Mode、Code Connect 和 MCP 服务器的共同论点是：设计到代码不是截图转代码，而是把组件、变量、token、注释、布局和代码库映射带进开发环境。Figma 开发者文档明确提醒，MCP 服务器不是一键生成完美代码的工具，它只是把结构化设计输入和代码起点传给 IDE 里的 AI 助手；最终结果仍取决于上下文质量、模型行为和提示清晰度。把这个判断放回 Claude Design，可以看到它的机会和限制是同一件事：如果 Claude Design 真能读取代码库和设计文件、形成设计系统并把设计意图交给 Claude Code，它就会比单纯的视觉生成更靠近产品开发；但如果组织没有组件命名、变量、可访问性规则和代码约定，交接包也只会把模糊意图包装得更完整。</p><p class="report-paragraph">这也解释了为什么品牌系统不是发布稿里的装饰性词汇。生成式设计最容易造成的不是立刻出错，而是慢慢漂移：一个团队里每个人都能快速产出页面、deck 和广告图，短期看创意量上升，长期看字体、间距、语气、按钮层级、插图风格、无障碍规则和组件变体都可能分叉。Anthropic 的管理员指南直接说，设计系统应先于大范围启用，并由品牌设计和产品设计共同设置；它还承认 Claude Design 目前不支持审计日志或使用追踪，建议企业在 rollout 中通过定性反馈和抽样项目检查设计系统合规性。这个限制很重要。一个面向组织的 AI 设计工具，如果暂时没有审计日志，管理者就很难知道谁生成了什么、用了哪些素材、是否违反品牌或数据边界。</p><p class="report-callout"><strong>更审慎的研究也提醒我们，不要把看起来像成品误认为已经可生产。</strong><strong class="metric">2026 年</strong>发表在 Computers 的一篇系统综述分析了 2021-<strong class="metric">2025 年</strong>关于生成式无代码 UI 工具的研究，结论不是这些工具无用，而是它们更像概率性的设计代理，而不是确定性的规格编译器。相同提示词可能在不同工具之间、甚至同一工具的多次运行中产生不同布局、样式和组件结构；生成界面通常能达到基本可读和可用，但在语义结构、键盘导航、跨页面一致性、可访问性和可复现性上仍需要人工审校。Claude Design 的价值正好要放在这个现实里衡量：它可以把探索和表达速度推得很快，但不能<mark class="signal-mark"><strong class="signal">因此</strong></mark>跳过设计评审、可访问性测试和工程验收。</p><p class="report-paragraph">Gartner 对企业生成式 AI 项目失败原因的总结也适用于这类工具。它把大量项目在概念验证后被放弃归因于业务价值不清、数据质量不足、<mark class="signal-mark"><strong class="signal">风险</strong></mark>控制薄弱、成本失控和变更管理失败。Claude Design 的产品风险不在于某次生成的按钮不够好看，而在于组织把它当成自动设计部门来部署，却没有定义成功指标、权限边界、品牌责任、成本归属和验收流程。尤其在 Team 和 Enterprise 场景里，它会接触品牌资产、代码库、演示文稿、网页和可能包含内部信息的设计参考。效率工具一旦进入真实组织，就不只是创作工具，也是一套权限和治理问题。</p><p class="report-paragraph">从团队分工看，Claude Design 更可能先改变的是非设计岗位的表达能力，而不是直接取消设计岗位。产品经理可以把抽象需求转成可点击原型，创始人和销售可以把粗糙提纲变成可讨论 deck，营销人员可以快速生成活动页面和社交素材，设计师则从替别人把想法画出来的部分劳动中抽身，转向设定系统、审核质量、判断体验和维护品牌。这个变化并不自动减轻设计师负担，因为 AI 会制造更多待审核对象。<mark class="signal-mark"><strong class="signal">真正</strong></mark>成熟的团队会把 Claude Design 当作探索和交接工具，而不是批准工具：可以让更多人产生初稿，但最终标准仍应由设计系统、用户研究、品牌策略、可访问性和工程约束共同决定。</p><p class="report-paragraph">对前端工作流来说，Claude Design 的<mark class="signal-mark"><strong class="signal">关键</strong></mark>不是 HTML 导出本身。单文件 HTML、React 片段和原型代码已经不新鲜，很多工具都能生成。关键在于交接包是否带有设计意图、组件映射、状态说明、响应式约束和品牌 token，而不是只给工程师一堆看似可运行的代码。Anthropic 说设计准备好后可以把所有内容打包交给 Claude Code，用一句指令继续实现；Figma 也在把设计上下文送进 Claude Code、Cursor、Copilot 等编码工具。两条路径共同指向一个趋势：设计交接正在从设计师交付静态稿、工程师解释并重写，变成设计上下文进入编码代理、工程师审查约束和集成。这会减少一部分沟通摩擦，也会把责任转移到上下文质量和代码审查上。</p><p class="report-paragraph">因此，Claude Design 更像 Anthropic 从通用聊天助手走向专业工作台的一块拼图。它连接了 Claude 的多模态理解、Claude Code 的工程执行、Canva 的视觉编辑层，以及企业里的组织权限和设计系统。它的市场叙事可以被写得很热闹，但研究判断应该冷一点：这不是 Figma、Canva、设计师或前端工程师被一夜替代的证据，而是 AI 工具正在从生成内容走向携带上下文的协作对象。当输出能被评论、编辑、共享、导出和交接，AI 生成物才开始<mark class="signal-mark"><strong class="signal">真正</strong></mark>进入组织流程。</p><p class="report-paragraph"><mark class="signal-mark"><strong class="signal">后续</strong></mark>最值得跟踪的不是演示视频里的速度，而是真实团队里的返工率。Claude Design 能否稳定读取复杂代码库和设计文件？多品牌、多产品线、多地区组织能否维护多个设计系统而不漂移？HTML、PPTX 和 Canva 导出是否保持可编辑性和结构清晰？交给 Claude Code 之后，工程实现是否真的更贴近组件库和可访问性要求？企业是否获得足够的审计、权限、数据驻留和使用追踪能力？如果这些问题没有解决，它就会是一款很强的概念生成器；如果解决，它代表的就不是 AI 会画图，而是设计、内容和前端协作方式的一次结构性改写。</p></div>
-        </section>
-    
-
-        <section class="uncertainties">
-          <h2>不确定性</h2>
-          <ul class="note-list"><li><span>Claude Design 仍是 research preview，官方案例和早期报道不足以证明它在大型组织中已经稳定减少返工。</span></li><li><span>Anthropic 帮助文档显示 Claude Design 暂不支持审计日志或使用追踪，也不支持数据驻留要求；这会影响企业部署边界。</span></li><li><span>设计到代码交接效果高度依赖设计系统质量、组件映射、代码库约定、提示清晰度和人工审查，不能从发布稿直接推断生产级质量。</span></li><li><span>Canva、Figma 和 Gartner 等材料能提供外部参照，但不等于对 Claude Design 的独立长期测评。</span></li></ul>
-        </section>
-    
-
-        <section class="follow-up">
-          <h2>后续跟踪变量</h2>
-          <ul class="note-list"><li><span>Claude Design 的企业启用率、默认权限、RBAC 控制、审计日志和数据治理能力</span></li><li><span>Canva、PDF、PPTX、HTML 导出的可编辑性、结构质量和品牌一致性</span></li><li><span>与 Claude Code 交接后的真实返工率、可访问性问题和组件复用率</span></li><li><span>多设计系统、多品牌和跨团队协作场景下是否出现设计系统漂移</span></li><li><span>Figma、Canva、Adobe、Google Stitch、v0、Lovable 等工具在设计上下文进入工程代理方向上的竞争和互补关系</span></li></ul>
-        </section>
-    
-      </article>
-    
-            
-    <footer>公开资料研究索引，包含来源链接、摘要、研究报告和不确定性提示。</footer>
   </main>
+  <footer>公开资料研究索引，包含来源链接、研究报告和不确定性提示。</footer>
+
 </body>
 </html>

@@ -1,235 +1,576 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="ledger" data-layout="newspaper">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>中国一季度 5.0%：结构缓冲、价格修复和外部冲击的拉扯</title>
   <style>
     :root {
-      --bg: #f6f5ef;
-      --paper: #ffffff;
-      --text: #1f2520;
-      --muted: #66716a;
-      --line: #d9ded7;
-      --accent: #0b6b5f;
-      --accent-two: #9b6a24;
-      --soft: #edf5f1;
-      --warm: #fff4dc;
-      --ink-soft: #2f3933;
+      --paper: #f5f1e3;
+      --ink: #171717;
+      --muted: #64615b;
+      --line: #1c1c1c;
+      --accent: #0d5c63;
+      --accent-two: #b54d1f;
+      --accent-three: #f0c84b;
+      --sand: #efe5cf;
+      --measure: 52rem;
+      --background-signature: ledger-newsprint;
+      --page-background: repeating-linear-gradient(0deg, rgba(13,92,99,.045) 0 1px, transparent 1px 13px), repeating-linear-gradient(90deg, rgba(181,77,31,.035) 0 1px, transparent 1px 86px), var(--paper);
     }
     * { box-sizing: border-box; }
+    html { background: #151515; }
     body {
       margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Avenir Next", "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
-      line-height: 1.72;
+      color: var(--ink);
+      background: var(--page-background);
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      line-height: 1.86;
       letter-spacing: 0;
     }
-    main {
-      width: min(1040px, calc(100% - 34px));
-      margin: 0 auto;
-      padding: 38px 0 72px;
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; overflow-wrap: anywhere; }
+    .issue-bar {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: .58rem clamp(1rem, 4vw, 3.2rem);
+      background: color-mix(in srgb, var(--paper) 92%, white);
+      border-bottom: 2px solid var(--line);
+      backdrop-filter: blur(12px);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
     }
-    header {
-      border-bottom: 2px solid var(--text);
-      margin-bottom: 24px;
-      padding-bottom: 24px;
+    .issue-bar strong { color: var(--accent); }
+    .issue-bar span:nth-child(2) { font-weight: 900; }
+    .issue-bar span:last-child { text-align: right; color: var(--muted); }
+    .magazine-cover {
+      min-height: clamp(420px, 62vh, 680px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(17rem, 25rem);
+      gap: clamp(2rem, 5vw, 4.2rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.5rem) clamp(1rem, 5vw, 5rem) clamp(2.2rem, 4vw, 3.2rem);
+      border-bottom: 2px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .magazine-cover::before {
+      content: "RISK";
+      position: absolute;
+      left: clamp(.7rem, 3vw, 2rem);
+      top: clamp(4rem, 9vw, 7rem);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(5rem, 17vw, 17rem);
+      line-height: .75;
+      letter-spacing: 0;
+      color: color-mix(in srgb, var(--accent-two) 13%, transparent);
+      pointer-events: none;
+    }
+    .kicker {
+      display: inline-flex;
+      gap: .6rem;
+      align-items: center;
+      font-weight: 900;
+      color: var(--accent);
+      border: 2px solid var(--line);
+      padding: .22rem .55rem;
+      background: var(--accent-three);
+      width: fit-content;
     }
     h1 {
-      font-size: clamp(2rem, 5vw, 4.6rem);
-      line-height: 1.05;
-      margin: 0 0 16px;
+      max-width: 12ch;
+      margin: 1.3rem 0 0;
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 7vw, 7.2rem);
+      line-height: .94;
+      letter-spacing: 0;
+      text-wrap: balance;
     }
-    h2 { margin: 8px 0 10px; line-height: 1.28; font-size: 1.35rem; }
-    a { color: var(--accent); text-underline-offset: 3px; overflow-wrap: anywhere; }
-    .subtitle { max-width: 760px; color: var(--muted); font-size: 1.05rem; }
-    .nav { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 18px; }
-    .info-list { display: grid; gap: 16px; }
-    .info-card {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 20px 22px;
-      box-shadow: 0 18px 50px rgba(31, 37, 32, .06);
+    .deck {
+      max-width: 56rem;
+      font-size: clamp(1.1rem, 1.65vw, 1.48rem);
+      line-height: 1.62;
+      margin: 2rem 0 0;
+      color: #24211d;
+      border-left: .65rem solid var(--accent);
+      padding-left: 1.2rem;
     }
-    .meta { color: var(--muted); font-size: .92rem; }
-    .summary { font-size: 1.02rem; }
-    .why {
-      background: var(--soft);
-      border-left: 4px solid var(--accent);
-      padding: 10px 12px;
-      color: #26322d;
+    .cover-meta { align-self: stretch; display: grid; align-content: end; gap: 1rem; }
+    .cover-card {
+      border: 2px solid var(--line);
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 9px 9px 0 var(--accent-two);
     }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-    .tags span {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 3px 9px;
-      color: var(--muted);
-      font-size: .86rem;
-      background: #fbfcfa;
-    }
-    .actions { margin-bottom: 0; }
-    .analysis, .detailed-summary, .news-anchor, .research-questions, .research-sources,
-    .detailed-report, .uncertainties, .follow-up {
-      border-top: 1px solid var(--line);
-      margin-top: 18px;
-      padding-top: 14px;
-    }
-    .anchor-report { border-left: 5px solid var(--accent-two); }
-    .analysis h2, .detailed-summary h2, .news-anchor h2, .research-questions h2,
-    .research-sources h2, .detailed-report h2, .uncertainties h2, .follow-up h2 { font-size: 1.05rem; margin-top: 0; }
-    .analysis p, .detailed-summary p, .news-anchor p, .detailed-report p { margin: 0 0 12px; }
-    .report-body {
-      max-width: 820px;
+    .cover-card h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.35; color: var(--accent); }
+    .cover-card ol, .cover-card ul { margin: 0; padding-left: 1.15rem; }
+    .cover-card li { margin: .48rem 0; line-height: 1.55; }
+    .article-shell {
       display: grid;
-      gap: 14px;
-    }
-    .report-body p {
-      color: var(--ink-soft);
-      margin: 0;
-      font-size: 1.03rem;
-    }
-    .report-lede {
-      padding: 16px 18px;
-      background: #fbf8ed;
-      border-left: 5px solid var(--accent-two);
-      font-size: 1.12rem !important;
-    }
-    .report-callout {
-      padding: 13px 16px;
-      background: #fbfcfa;
-      border: 1px solid #dbe7e1;
-      border-left: 4px solid var(--accent);
-      box-shadow: inset 0 0 0 9999px rgba(11, 107, 95, .025);
-    }
-    strong.signal, strong.metric {
-      color: #123f38;
-      font-weight: 800;
-    }
-    mark {
-      background: rgba(221, 166, 74, .22);
-      color: inherit;
-      padding: 0 .12em;
-      border-radius: 3px;
-    }
-    .signal-mark {
-      background: rgba(221, 166, 74, .24);
-      box-decoration-break: clone;
-      -webkit-box-decoration-break: clone;
-    }
-    .question-list {
-      counter-reset: question;
-      list-style: none;
-      padding-left: 0;
-      display: grid;
-      gap: 10px;
-    }
-    .question-list li {
-      counter-increment: question;
-      display: grid;
-      grid-template-columns: 2.1rem 1fr;
-      gap: 10px;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.6rem, 3vw, 3.2rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3rem);
       align-items: start;
-      background: #fbfcfa;
-      border: 1px solid var(--line);
-      padding: 10px 12px;
     }
-    .question-list li::before {
-      content: counter(question);
-      width: 1.7rem;
-      height: 1.7rem;
-      border-radius: 50%;
-      display: inline-grid;
-      place-items: center;
-      background: var(--accent);
-      color: white;
-      font-weight: 700;
-      font-size: .9rem;
-    }
-    .source-list, .note-list {
+    .editor-note {
+      grid-column: 1 / -1;
       display: grid;
-      gap: 9px;
-      padding-left: 20px;
+      grid-template-columns: minmax(10rem, 15rem) minmax(0, 1fr);
+      gap: 1.2rem;
+      border-top: 5px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: 1rem 0 1.1rem;
+      color: var(--muted);
+      font-size: .94rem;
+      line-height: 1.7;
     }
-    .source-title {
+    .editor-note b {
+      display: block;
+      color: var(--ink);
+      font-size: .82rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .25rem;
+    }
+    .editor-note p { margin: 0; }
+    .magazine-article { min-width: 0; font-size: clamp(1.04rem, 1.05vw, 1.18rem); }
+    .article-shell > .magazine-article { grid-column: 1; }
+    .magazine-article p { margin: 0 0 1.35rem; text-align: justify; text-wrap: pretty; }
+    .magazine-article .lede {
+      font-size: clamp(1.24rem, 2vw, 1.58rem);
+      line-height: 1.75;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+    .dropcap {
+      float: left;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 5.8rem;
+      line-height: .8;
+      padding: .18rem .55rem .1rem 0;
+      color: var(--accent);
+    }
+    .magazine-emphasis {
+      margin: 2rem 0 !important;
+      padding: 1.1rem 1.25rem;
+      border-left: .45rem solid var(--accent-two);
+      background: linear-gradient(90deg, color-mix(in srgb, var(--accent-two) 12%, transparent), transparent 78%);
+      font-weight: 600;
+    }
+    .pullquote {
+      margin: 2.4rem -4rem 2.4rem 0;
+      padding: 1.1rem 0 1.2rem 1.5rem;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      background: var(--paper);
+    }
+    .pullquote span { color: var(--accent); font-size: .78rem; font-weight: 900; letter-spacing: .13em; }
+    .pullquote p {
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-size: clamp(1.6rem, 3vw, 2.45rem);
+      line-height: 1.28;
+      margin: .35rem 0 0;
+      text-align: left;
+    }
+    .metric {
+      font-variant-numeric: tabular-nums;
+      color: var(--accent);
+      font-weight: 900;
+      background: linear-gradient(transparent 55%, color-mix(in srgb, var(--accent-three) 65%, transparent) 0);
+    }
+    .signal {
+      font-weight: 900;
+      text-decoration: underline;
+      text-decoration-color: var(--accent-two);
+      text-decoration-thickness: .18em;
+      text-underline-offset: .14em;
+    }
+    .companion-rail {
+      position: sticky;
+      top: 3.8rem;
+      grid-column: 2;
+      align-self: start;
+      border-top: 5px solid var(--line);
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+      padding-top: 1rem;
+    }
+    .companion-rail b { color: var(--ink); }
+    .backmatter {
+      grid-column: 1 / -1;
       display: grid;
-      gap: 2px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.2rem;
+      margin-top: 2.4rem;
+      border-top: 2px solid var(--line);
+      padding-top: 1.4rem;
     }
-    .source-meta {
+    .module { background: #fff; border: 2px solid var(--line); padding: 1rem 1.1rem; box-shadow: 6px 6px 0 var(--sand); }
+    .module h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.3; color: var(--accent); }
+    .module ul { margin: 0; padding-left: 1.1rem; }
+    .module li { margin: .5rem 0; line-height: 1.58; }
+    .source-list li { display: grid; gap: .12rem; margin-bottom: .8rem; }
+    .source-meta { color: var(--muted); font-size: .86rem; }
+    .source-meta::before { content: "来源 · "; }
+    .sources-module { grid-column: 1 / -1; }
+    .newspaper-masthead {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.8rem) clamp(1rem, 4vw, 3rem) 1.6rem;
+      border-bottom: 5px double var(--line);
+    }
+    .newspaper-kicker {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.4rem, 3vw, 3rem);
+      line-height: 1;
+      color: var(--accent);
+      text-transform: uppercase;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: .35rem 0;
+    }
+    .newspaper-masthead h1 {
+      max-width: 20ch;
+      font-size: clamp(2.6rem, 5.5vw, 6.2rem);
+      line-height: .98;
+    }
+    .newspaper-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem 1.1rem;
+      margin-top: 1rem;
+      padding-top: .8rem;
+      border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: .9rem;
     }
-    .source-meta::before { content: "来源 · "; }
-    .note-list li > .list-key {
-      display: block;
-      margin-bottom: 2px;
+    .market-strip {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr 1fr;
+      gap: 1rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      border-bottom: 2px solid var(--line);
+      background: color-mix(in srgb, var(--accent-three) 26%, var(--paper));
+      font-size: .94rem;
+      line-height: 1.55;
     }
-    .research-sources li, .research-questions li, .uncertainties li, .follow-up li { margin: 0 0 8px; }
-    .topic-index { columns: 2; padding-left: 20px; }
-    .topic-index li { break-inside: avoid; margin: 0 0 8px; }
-    footer { color: var(--muted); margin-top: 34px; font-size: .9rem; }
-    @media (max-width: 720px) {
-      .topic-index { columns: 1; }
+    .market-strip b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .08em; }
+    .market-strip p, .market-strip ol, .market-strip ul { margin: .35rem 0 0; }
+    .market-strip ol, .market-strip ul { padding-left: 1.1rem; }
+    .newspaper-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .newspaper-article .lede {
+      column-span: all;
+      border-top: 2px solid var(--line);
+      padding-top: 1rem;
+    }
+    .newspaper-article { grid-column: 1; }
+    .newspaper-rail {
+      position: sticky;
+      top: 3.8rem;
+      border-left: 2px solid var(--line);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .dossier-cover {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.6rem) clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
+      gap: clamp(1.5rem, 4vw, 3.8rem);
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+    }
+    .dossier-stamp {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      align-self: start;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      color: var(--accent);
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: color-mix(in srgb, var(--accent-three) 35%, white);
+    }
+    .dossier-cover h1 {
+      max-width: 18ch;
+      font-size: clamp(2.7rem, 6vw, 6.6rem);
+      line-height: .98;
+    }
+    .dossier-summary {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.5vw, 1.36rem);
+      border-left: .45rem solid var(--accent);
+      padding-left: 1rem;
+    }
+    .dossier-source { color: var(--muted); margin: 0; }
+    .dossier-shell {
+      display: grid;
+      grid-template-columns: minmax(12rem, 17rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .dossier-index {
+      position: sticky;
+      top: 3.8rem;
+      border-top: 5px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .dossier-index b { display: block; color: var(--ink); margin-bottom: .6rem; }
+    .dossier-index ol { margin: 0 0 1rem; padding-left: 1.1rem; }
+    .dossier-article { grid-column: 2; }
+    .field-cover {
+      min-height: clamp(460px, 64vh, 720px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr);
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      border-bottom: 2px solid var(--line);
+      background:
+        linear-gradient(135deg, transparent 0 48%, color-mix(in srgb, var(--accent-three) 24%, transparent) 48% 52%, transparent 52%),
+        var(--paper);
+    }
+    .field-topline {
+      grid-column: 1 / -1;
+      width: fit-content;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: .25rem .7rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .field-cover h1 {
+      max-width: 16ch;
+      font-size: clamp(2.8rem, 6.4vw, 7rem);
+    }
+    .field-deck {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.55vw, 1.38rem);
+      line-height: 1.62;
+      border-left: .5rem solid var(--accent-two);
+      padding-left: 1rem;
+    }
+    .field-map {
+      border: 2px solid var(--line);
+      background: rgba(255,255,255,.76);
+      padding: 1rem;
+      box-shadow: 10px 10px 0 color-mix(in srgb, var(--accent) 70%, black);
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+    .field-map b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .1em; }
+    .field-map ol { margin: .55rem 0 1rem; padding-left: 1.2rem; }
+    .field-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(13rem, 17rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .field-log {
+      position: sticky;
+      top: 3.8rem;
+      border-left: .35rem solid var(--accent-two);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .field-article { grid-column: 1; }
+    .lab-cover {
+      padding: clamp(2.6rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      min-height: clamp(420px, 58vh, 650px);
+      display: grid;
+      align-content: center;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+      background:
+        linear-gradient(90deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        linear-gradient(0deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        var(--paper);
+    }
+    .lab-label {
+      width: fit-content;
+      background: var(--ink);
+      color: #fff;
+      padding: .28rem .65rem;
+      font-size: .82rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .lab-cover h1 {
+      max-width: 22ch;
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 5.8rem);
+      line-height: 1.04;
+    }
+    .lab-deck {
+      max-width: 62rem;
+      font-size: clamp(1.06rem, 1.45vw, 1.32rem);
+      border-top: 2px solid var(--accent);
+      padding-top: 1rem;
+    }
+    .protocol-strip {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .75rem;
+      border-bottom: 2px solid var(--line);
+      font-size: .88rem;
+    }
+    .protocol-strip div {
+      border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
+      padding: .75rem;
+      background: rgba(255,255,255,.68);
+      min-width: 0;
+    }
+    .protocol-strip b {
+      display: block;
+      color: var(--accent-two);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .protocol-strip span { overflow-wrap: anywhere; }
+    .lab-shell {
+      display: grid;
+      grid-template-columns: minmax(14rem, 19rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .lab-notes {
+      position: sticky;
+      top: 3.8rem;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      background: #fff;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .lab-notes b { color: var(--ink); }
+    .lab-notes ol { padding-left: 1.1rem; }
+    .lab-article { grid-column: 2; }
+    footer { color: var(--muted); padding: 0 clamp(1rem, 4vw, 3rem) 3rem; max-width: 1220px; margin: 0 auto; font-size: .9rem; }
+    @media (max-width: 1100px) {
+      .magazine-cover { grid-template-columns: 1fr; min-height: auto; }
+      .cover-meta { max-width: 42rem; }
+      .article-shell { grid-template-columns: 1fr; }
+      .editor-note { grid-template-columns: 1fr; }
+      .companion-rail { position: static; grid-column: 1; }
+      .backmatter { grid-column: 1; grid-template-columns: 1fr; }
+      .pullquote { margin-right: 0; }
+      h1 { max-width: 11ch; }
+      .market-strip, .protocol-strip { grid-template-columns: 1fr; }
+      .newspaper-shell, .dossier-shell, .field-shell, .lab-shell { grid-template-columns: 1fr; }
+      .newspaper-rail, .dossier-index, .field-log, .lab-notes { position: static; }
+      .dossier-article, .lab-article { grid-column: 1; }
+      .dossier-cover, .field-cover { grid-template-columns: 1fr; min-height: auto; }
+      .dossier-stamp { grid-column: 1; grid-row: auto; }
+    }
+    @media (max-width: 640px) {
+      .issue-bar { grid-template-columns: 1fr; gap: .15rem; }
+      .issue-bar span:last-child { text-align: left; }
+      .magazine-cover { padding-top: 2.4rem; }
+      h1 { font-size: clamp(2.65rem, 16vw, 4.8rem); }
+      .deck { border-left-width: .45rem; padding-left: .8rem; }
+      .magazine-article p { text-align: left; }
+      .dropcap { font-size: 4.6rem; }
+      .module { box-shadow: 4px 4px 0 var(--sand); }
     }
   </style>
 </head>
 <body>
-  <main>
-    
-            <header>
-              <h1>中国一季度 5.0%：结构缓冲、价格修复和外部冲击的拉扯</h1>
-              <p class="subtitle">新闻锚点驱动的主题研究报告 · 2026-04-16</p>
-              <div class="nav"><a href="../../">返回信息流</a><a href="https://www.stats.gov.cn/sj/sjjd/202604/t20260416_1963332.html">打开锚点来源</a></div>
-            </header>
-            
-      <article class="info-card anchor-report">
-        <div class="meta">2026-04-16 · 主题研究报告</div>
-        <h2>中国一季度 5.0%：结构缓冲、价格修复和外部冲击的拉扯</h2>
-        <p class="summary">中国 2026 年一季度 GDP 同比增长 5.0%，表面上是一个开局增速，深层看点在结构缓冲：高技术制造、信息服务、消费修复、PPI 转正和财政支出共同托住了叙事；外部能源和地缘冲击则继续测试这种缓冲能否延续。</p>
-        <p class="why"><strong>新闻锚点：</strong><a href="https://www.stats.gov.cn/sj/sjjd/202604/t20260416_1963332.html">国家统计局副局长就2026年一季度国民经济运行情况答记者问</a> · 国家统计局</p>
-        <div class="tags"><span>china-economy</span> <span>finance-macro</span> <span>politics-policy</span></div>
-      
-        <section class="news-anchor">
-          <h2>新闻锚点</h2>
-          <p><a href="https://www.stats.gov.cn/sj/sjjd/202604/t20260416_1963332.html">国家统计局副局长就2026年一季度国民经济运行情况答记者问</a> · 国家统计局</p>
-        </section>
-            
 
-        <section class="research-questions">
-          <h2>研究问题</h2>
-          <ol class="question-list"><li><span>一季度 <strong class="metric">5.0%</strong> 增长背后的结构性支撑是什么？</span></li><li><span>PPI 转正更多来自国内供需和竞争秩序修复，还是外部能源价格冲击？</span></li><li><span>新质生产力、高技术制造和服务消费能否抵消房地产、外需和成本压力？</span></li><li><span>财政收支结构如何影响<mark class="signal-mark"><strong class="signal">后续</strong></mark>内需和政策空间？</span></li></ol>
-        </section>
+  <div class="issue-bar"><span><strong>Infohub</strong> article</span><span>Magazine research page</span><span>2026-04-16</span></div>
+  <header class="newspaper-masthead">
+    <div class="newspaper-kicker">MARKETS / POLICY LEDGER</div>
+    <h1>中国一季度 5.0%：结构缓冲、价格修复和外部冲击的拉扯</h1>
+    <p class="deck">中国 <strong class="metric">2026 年</strong>一季度 GDP 同比增长 <strong class="metric">5.0%</strong>，表面上是一个开局增速，深层看点在结构缓冲：高技术制造、信息服务、消费修复、PPI 转正和财政支出共同托住了叙事；外部能源和地缘冲击则继续测试这种缓冲能否延续。</p>
+    <div class="newspaper-meta">
+      <span>国家统计局</span>
+      <span>2026-04-16</span>
+      <span>china-economy / finance-macro / politics-policy</span>
+    </div>
+  </header>
+  <section class="market-strip">
+    <div>
+      <b>新闻锚点</b>
+      <p><a href="https://www.stats.gov.cn/sj/sjjd/202604/t20260416_1963332.html">国家统计局副局长就2026年一季度国民经济运行情况答记者问</a></p>
+    </div>
+    <div>
+      <b>研究问题</b>
+      <ol><li>一季度 <strong class="metric">5.0%</strong> 增长背后的结构性支撑是什么？</li><li>PPI 转正更多来自国内供需和竞争秩序修复，还是外部能源价格冲击？</li><li>新质生产力、高技术制造和服务消费能否抵消房地产、外需和成本压力？</li><li>财政收支结构如何影响<strong class="signal">后续</strong>内需和政策空间？</li></ol>
+    </div>
+    <div>
+      <b>后续变量</b>
+      <ul><li>二季度 GDP、工业增加值、服务业和社零增速</li><li>PPI 是否连续转正及涨价行业分布</li><li>民间投资、制造业投资、设备投资和房地产开发投资差异</li><li>出口增速、能源价格和外部需求变化</li><li>居民收入、就业、服务消费和消费品以旧换新持续性</li><li>一般公共预算收入、土地相关收入和债务付息支出变化</li></ul>
+    </div>
+  </section>
+  <main class="newspaper-shell">
+    <article class="magazine-article newspaper-article">
+      <p class="lede"><span class="dropcap">中</span>国 <strong class="metric">2026 年</strong>一季度 <strong class="metric">5.0%</strong> 的意义，不能只当作一个年度目标完成度的开场数字。国家统计局的答记者问里，<strong class="signal">真正</strong>值得拆的是这个增速由哪些结构托住，又有哪些压力被暂时压在表面之下。GDP 初步核算显示，一季度总量为 <strong class="metric">334193 亿元</strong>，同比增长 <strong class="metric">5.0%</strong>，环比增长 <strong class="metric">1.3%</strong>；第一产业增长 <strong class="metric">3.8%</strong>，第二产业 <strong class="metric">4.9%</strong>，第三产业 <strong class="metric">5.2%</strong>。这组数给出的第一印象是相对均衡，但往下看，支撑力量明显集中在工业提速、服务业保持扩张、新动能放量和价格修复几个方向。</p><p class="magazine-emphasis">生产端的信号比需求端更清楚。统计局问答提到，一季度工业增加值同比增速比上年四季度加快 <strong class="metric">1.1 个</strong>百分点，服务业增加值增长 <strong class="metric">5.2%</strong>。GDP 核算表进一步显示，工业增加值同比增长 <strong class="metric">6.1%</strong>，制造业增长 <strong class="metric">6.3%</strong>，信息传输、软件和信息技术服务业增长 <strong class="metric">10.6%</strong>，租赁和商务服务业增长 <strong class="metric">12.2%</strong>。这说明一季度的增长并不主要靠传统地产链条拉动，房地产行业增加值仍为小幅负增长，建筑业也承压。经济的支撑更偏向制造、数字服务、金融和部分现代服务。</p><p>工业内部的结构更能解释为什么官方反复强调新动能。问答中给出了一组密集数据：规模以上装备制造业增加值增长 <strong class="metric">8.9%</strong>，占规上工业比重 <strong class="metric">35.1%</strong>；高技术制造业增加值增长 <strong class="metric">12.5%</strong>，对全部规上工业增速贡献率达到 <strong class="metric">32.6%</strong>；集成电路制造、生物药品制造等行业增速明显较高。另一段关于新质生产力的回答把高端化、智能化、绿色化和传统产业改造并列为四条线索，其中 AI 日均词元调用量到 <strong class="metric">3 月</strong>突破 <strong class="metric">140 万亿</strong>，比上年末增长超 <strong class="metric">40%</strong>。这些数字展示的不是单个产业热点，而是制造业内部的增长权重正在迁移。</p><aside class="pullquote"><span>摘句</span><p>价格端的变化同样重要。</p></aside><p>价格端的变化同样重要。<strong class="metric">3 月</strong> PPI 同比上涨 <strong class="metric">0.5%</strong>，结束连续 <strong class="metric">41 个月</strong>同比下降；环比上涨 <strong class="metric">1%</strong>，连续 <strong class="metric">6 个月</strong>上涨。市场容易把 PPI 转正归因于国际油价和有色价格，但统计局给出了三层解释：国内工业品供求关系改善、市场竞争秩序优化、国际因素影响显现。它列举了光纤制造、外存储设备及部件、电子专用材料制造价格上涨，也提到光伏设备及元器件、锂离子电池制造价格回升，说明部分价格修复确实和算力、绿色转型、产能治理有关。能源和有色是外部推力，但官方口径里国内供需修复被放在更主要位置。</p><p>PPI 转正的含义需要谨慎处理。它对企业利润有正面作用，问答提到 1-<strong class="metric">2 月</strong>规上工业企业利润同比增长 <strong class="metric">15.2%</strong>，价格回升有助于畅通经济循环和改善企业效益。但如果 PPI 过多来自外部能源和原材料价格上涨，利润改善就会分化：上游受益，中下游承压；如果更多来自国内需求和竞争秩序修复，它对企业现金流和预期的改善会更扎实。一季度数据还不足以判断两者权重稳定，<strong class="signal">后续</strong>要看 PPI 是否连续转正，以及涨价行业是否从上游资源品扩散到更广泛的中游制造。</p><p>消费端的复苏更像“温和修复”，不是强劲反转。统计局称一季度社会消费品零售总额接近 <strong class="metric">13 万亿元</strong>，同比增长 <strong class="metric">2.4%</strong>，比上年四季度加快 <strong class="metric">0.7 个</strong>百分点；服务零售额增长 <strong class="metric">5.5%</strong>，明显快于商品零售；网上商品和服务零售额增长 <strong class="metric">8%</strong>，网上商品零售额占社零比重 <strong class="metric">24.8%</strong>。消费品以旧换新销售额超过 <strong class="metric">4300 亿元</strong>，惠及 6000 多万人次，新能源车国内零售渗透率达到 <strong class="metric">51.5%</strong>。这些数据说明政策补贴、服务场景恢复和线上消费共同托住了消费，但答记者问也承认居民消费能力和消费意愿仍需增强，优质供给还不能完全满足需求。</p><p class="magazine-emphasis">外部冲击是这份数据解读里最容易被低估的一条暗线。记者多次问到油价、中东局势和出口压力，统计局回应时强调中国能源结构和产业链韧性，称原油价格变化对 CPI 影响较小，对 PPI 有一定影响但不是主要因素；对出口的影响则被描述为有限和可控。这个判断背后的逻辑是：中国能源消费中石油占比不到两成，煤炭兜底占比超过五成，新能源比重上升，产业链完整和供应能力较强。但“有限可控”不是没有影响，它意味着外部冲击目前被能源结构、产业链和政策调控吸收了，吸收能力能否延续还要看冲击时间长度。</p><p>财政数据给这套结构提供了另一面。财政部数据显示，一季度全国一般公共预算收入 <strong class="metric">61613 亿元</strong>，同比增长 <strong class="metric">2.4%</strong>，税收收入增长 <strong class="metric">2.2%</strong>；一般公共预算支出 <strong class="metric">74706 亿元</strong>，同比增长 <strong class="metric">2.6%</strong>。支出里社会保障和就业增长 <strong class="metric">9%</strong>，卫生健康增长 <strong class="metric">12.1%</strong>，债务付息支出增长 <strong class="metric">12.9%</strong>；税收里个人所得税增长 <strong class="metric">10.5%</strong>，进口环节税和关税增长较快，企业所得税下降 <strong class="metric">5.6%</strong>，契税和土地增值税仍明显下降。财政并没有呈现出非常宽松的收入环境，支出压力则更多来自民生、健康和付息。</p><p>这使得一季度经济的政策含义更像结构平衡，而非简单加速。固定资产投资由负转正，统计局提到一季度增长 <strong class="metric">1.7%</strong>，背后有“两重”建设、超长期特别国债、地方专项债等资金支持；设备工器具购置投资增长 <strong class="metric">13.9%</strong>，与传统产业改造和新质生产力叙事相连。但财政收入增速温和、付息支出较快上升、房地产相关税收偏弱，意味着<strong class="signal">后续</strong>政策需要在稳增长、控债务、促消费和推动产业升级之间继续排序。政策空间存在，但不是没有约束。</p><p class="magazine-emphasis">把这些线索合在一起，一季度 <strong class="metric">5.0%</strong> 的质量取决于三件事。第一，新动能能否继续从“局部高增”变成更广泛的收入和就业改善，尤其是高技术制造、数字服务和绿色产业能否带动中小企业与居民收入。第二，价格修复能否从 PPI 转正延伸到企业利润和投资意愿改善，而不是停留在外部输入型成本上升。第三，外部冲击能否被能源结构、产业链和政策工具持续吸收，而不通过出口、原材料和预期渠道反复扰动。</p><p>这篇报告最该避免的，是把一季度数据写成单向乐观或单向悲观。官方数据确实显示开局好于前一季度，生产端和新动能尤其强；但答记者问中反复出现的保留项也很清楚：外部不确定性较多，部分企业仍有盈利难，居民消费能力和意愿仍需增强，供强需弱矛盾仍待化解。更合理的读法是，中国经济一季度展示了相当强的结构缓冲能力，但这种缓冲并不是自动延续的，它需要价格、消费、财政和外需在<strong class="signal">后续</strong>季度继续接力。</p><p><strong class="signal">后续</strong>观察不应只盯 GDP 增速。更重要的是 PPI 是否连续转正及行业分布，服务消费和商品消费的差距是否收敛，民间投资和制造业投资能否改善，房地产相关指标是否继续拖累财政和居民资产负债表，出口是否能在中东和全球需求波动中保持韧性，以及财政收入能否支撑既有支出强度。<strong class="metric">5.0%</strong> 是结果，<strong class="signal">真正</strong>的研究对象是这个结果背后的缓冲结构还有多厚。</p>
+    </article>
+    <aside class="newspaper-rail">
+      <p><b>读法</b><br>写成一篇结构性宏观观察，语气像冷静拆账的经济随笔：不围绕单个增速做情绪判断，而是把生产、价格、消费、财政和外部冲击放在一张平衡表里看。</p>
+      <p><b>主题</b><br>china-economy / finance-macro / politics-policy</p>
+      <p><b>返回</b><br><a href="../../">信息流首页</a></p>
+    </aside>
     
-
-        <section class="research-sources">
-          <h2>研究来源</h2>
-          <ul class="source-list"><li><span class="source-title"><a href="https://www.stats.gov.cn/sj/sjjd/202604/t20260416_1963332.html">国家统计局副局长就2026年一季度国民经济运行情况答记者问</a><span class="source-meta">国家统计局</span></span></li><li><span class="source-title"><a href="https://www.stats.gov.cn/sj/zxfb/202604/t20260417_1963336.html">2026年一季度国内生产总值初步核算结果</a><span class="source-meta">国家统计局</span></span></li><li><span class="source-title"><a href="https://gks.mof.gov.cn/tongjishuju/202604/t20260424_3988324.htm">2026年一季度财政收支情况</a><span class="source-meta">财政部</span></span></li></ul>
-        </section>
+    <section class="backmatter">
+      <div class="module">
+        <h2>不确定性</h2>
+        <ul><li>一季度 GDP 为初步核算结果，<strong class="signal">后续</strong>可能依据更完整资料进行修订。</li><li>PPI 转正中，国内供需修复、竞争秩序优化和国际能源价格的权重仍需用<strong class="signal">后续</strong>月份验证。</li><li>外部能源和地缘冲击路径不确定，对出口、成本和预期的影响可能滞后显现。</li><li>本文为宏观数据解读，不构成投资建议或具体政策建议。</li></ul>
+      </div>
+      <div class="module">
+        <h2>后续观察</h2>
+        <ul><li>二季度 GDP、工业增加值、服务业和社零增速</li><li>PPI 是否连续转正及涨价行业分布</li><li>民间投资、制造业投资、设备投资和房地产开发投资差异</li><li>出口增速、能源价格和外部需求变化</li><li>居民收入、就业、服务消费和消费品以旧换新持续性</li><li>一般公共预算收入、土地相关收入和债务付息支出变化</li></ul>
+      </div>
+      <div class="module sources-module">
+        <h2>研究来源</h2>
+        <ul class="source-list"><li><a href="https://www.stats.gov.cn/sj/sjjd/202604/t20260416_1963332.html">国家统计局副局长就2026年一季度国民经济运行情况答记者问</a><span class="source-meta">国家统计局</span></li><li><a href="https://www.stats.gov.cn/sj/zxfb/202604/t20260417_1963336.html">2026年一季度国内生产总值初步核算结果</a><span class="source-meta">国家统计局</span></li><li><a href="https://gks.mof.gov.cn/tongjishuju/202604/t20260424_3988324.htm">2026年一季度财政收支情况</a><span class="source-meta">财政部</span></li></ul>
+      </div>
+    </section>
     
-
-        <section class="detailed-report">
-          <h2>研究报告</h2>
-          <div class="report-body"><p class="report-lede"><strong>中国 <strong class="metric">2026 年</strong>一季度 <strong class="metric">5.0%</strong> 的意义，不能只当作一个年度目标完成度的开场数字。</strong>国家统计局的答记者问里，<mark class="signal-mark"><strong class="signal">真正</strong></mark>值得拆的是这个增速由哪些结构托住，又有哪些压力被暂时压在表面之下。GDP 初步核算显示，一季度总量为 <strong class="metric">334193 亿元</strong>，同比增长 <strong class="metric">5.0%</strong>，环比增长 <strong class="metric">1.3%</strong>；第一产业增长 <strong class="metric">3.8%</strong>，第二产业 <strong class="metric">4.9%</strong>，第三产业 <strong class="metric">5.2%</strong>。这组数给出的第一印象是相对均衡，但往下看，支撑力量明显集中在工业提速、服务业保持扩张、新动能放量和价格修复几个方向。</p><p class="report-paragraph">生产端的信号比需求端更清楚。统计局问答提到，一季度工业增加值同比增速比上年四季度加快 1.1 个百分点，服务业增加值增长 <strong class="metric">5.2%</strong>。GDP 核算表进一步显示，工业增加值同比增长 <strong class="metric">6.1%</strong>，制造业增长 <strong class="metric">6.3%</strong>，信息传输、软件和信息技术服务业增长 <strong class="metric">10.6%</strong>，租赁和商务服务业增长 <strong class="metric">12.2%</strong>。这说明一季度的增长并不主要靠传统地产链条拉动，房地产行业增加值仍为小幅负增长，建筑业也承压。经济的支撑更偏向制造、数字服务、金融和部分现代服务。</p><p class="report-paragraph">工业内部的结构更能解释为什么官方反复强调新动能。问答中给出了一组密集数据：规模以上装备制造业增加值增长 <strong class="metric">8.9%</strong>，占规上工业比重 <strong class="metric">35.1%</strong>；高技术制造业增加值增长 <strong class="metric">12.5%</strong>，对全部规上工业增速贡献率达到 <strong class="metric">32.6%</strong>；集成电路制造、生物药品制造等行业增速明显较高。另一段关于新质生产力的回答把高端化、智能化、绿色化和传统产业改造并列为四条线索，其中 AI 日均词元调用量到 3 月突破 <strong class="metric">140 万亿</strong>，比上年末增长超 <strong class="metric">40%</strong>。这些数字展示的不是单个产业热点，而是制造业内部的增长权重正在迁移。</p><p class="report-paragraph">价格端的变化同样重要。3 月 PPI 同比上涨 <strong class="metric">0.5%</strong>，结束连续 <strong class="metric">41 个月</strong>同比下降；环比上涨 <strong class="metric">1%</strong>，连续 <strong class="metric">6 个月</strong>上涨。市场容易把 PPI 转正归因于国际油价和有色价格，但统计局给出了三层解释：国内工业品供求关系改善、市场竞争秩序优化、国际因素影响显现。它列举了光纤制造、外存储设备及部件、电子专用材料制造价格上涨，也提到光伏设备及元器件、锂离子电池制造价格回升，说明部分价格修复确实和算力、绿色转型、产能治理有关。能源和有色是外部推力，但官方口径里国内供需修复被放在更主要位置。</p><p class="report-callout"><strong>PPI 转正的含义需要谨慎处理。</strong>它对企业利润有正面作用，问答提到 1-2 月规上工业企业利润同比增长 <strong class="metric">15.2%</strong>，价格回升有助于畅通经济循环和改善企业效益。但如果 PPI 过多来自外部能源和原材料价格上涨，利润改善就会分化：上游受益，中下游承压；如果更多来自国内需求和竞争秩序修复，它对企业现金流和预期的改善会更扎实。一季度数据还不足以判断两者权重稳定，<mark class="signal-mark"><strong class="signal">后续</strong></mark>要看 PPI 是否连续转正，以及涨价行业是否从上游资源品扩散到更广泛的中游制造。</p><p class="report-paragraph">消费端的复苏更像“温和修复”，不是强劲反转。统计局称一季度社会消费品零售总额接近 <strong class="metric">13 万亿元</strong>，同比增长 <strong class="metric">2.4%</strong>，比上年四季度加快 0.7 个百分点；服务零售额增长 <strong class="metric">5.5%</strong>，明显快于商品零售；网上商品和服务零售额增长 <strong class="metric">8%</strong>，网上商品零售额占社零比重 <strong class="metric">24.8%</strong>。消费品以旧换新销售额超过 <strong class="metric">4300 亿元</strong>，惠及 6000 多万人次，新能源车国内零售渗透率达到 <strong class="metric">51.5%</strong>。这些数据说明政策补贴、服务场景恢复和线上消费共同托住了消费，但答记者问也承认居民消费能力和消费意愿仍需增强，优质供给还不能完全满足需求。</p><p class="report-paragraph">外部冲击是这份数据解读里最容易被低估的一条暗线。记者多次问到油价、中东局势和出口压力，统计局回应时强调中国能源结构和产业链韧性，称原油价格变化对 CPI 影响较小，对 PPI 有一定影响但不是主要因素；对出口的影响则被描述为有限和可控。这个判断背后的逻辑是：中国能源消费中石油占比不到两成，煤炭兜底占比超过五成，新能源比重上升，产业链完整和供应能力较强。但“有限可控”不是没有影响，它意味着外部冲击目前被能源结构、产业链和政策调控吸收了，吸收能力能否延续还要看冲击时间长度。</p><p class="report-paragraph">财政数据给这套结构提供了另一面。财政部数据显示，一季度全国一般公共预算收入 <strong class="metric">61613 亿元</strong>，同比增长 <strong class="metric">2.4%</strong>，税收收入增长 <strong class="metric">2.2%</strong>；一般公共预算支出 <strong class="metric">74706 亿元</strong>，同比增长 <strong class="metric">2.6%</strong>。支出里社会保障和就业增长 <strong class="metric">9%</strong>，卫生健康增长 <strong class="metric">12.1%</strong>，债务付息支出增长 <strong class="metric">12.9%</strong>；税收里个人所得税增长 <strong class="metric">10.5%</strong>，进口环节税和关税增长较快，企业所得税下降 <strong class="metric">5.6%</strong>，契税和土地增值税仍明显下降。财政并没有呈现出非常宽松的收入环境，支出压力则更多来自民生、健康和付息。</p><p class="report-callout"><strong>这使得一季度经济的政策含义更像结构平衡，而非简单加速。</strong>固定资产投资由负转正，统计局提到一季度增长 <strong class="metric">1.7%</strong>，背后有“两重”建设、超长期特别国债、地方专项债等资金支持；设备工器具购置投资增长 <strong class="metric">13.9%</strong>，与传统产业改造和新质生产力叙事相连。但财政收入增速温和、付息支出较快上升、房地产相关税收偏弱，意味着<mark class="signal-mark"><strong class="signal">后续</strong></mark>政策需要在稳增长、控债务、促消费和推动产业升级之间继续排序。政策空间存在，但不是没有约束。</p><p class="report-paragraph">把这些线索合在一起，一季度 <strong class="metric">5.0%</strong> 的质量取决于三件事。第一，新动能能否继续从“局部高增”变成更广泛的收入和就业改善，尤其是高技术制造、数字服务和绿色产业能否带动中小企业与居民收入。第二，价格修复能否从 PPI 转正延伸到企业利润和投资意愿改善，而不是停留在外部输入型成本上升。第三，外部冲击能否被能源结构、产业链和政策工具持续吸收，而不通过出口、原材料和预期渠道反复扰动。</p><p class="report-paragraph">这篇报告最该避免的，是把一季度数据写成单向乐观或单向悲观。官方数据确实显示开局好于前一季度，生产端和新动能尤其强；但答记者问中反复出现的保留项也很清楚：外部<mark class="signal-mark"><strong class="signal">不确定性</strong></mark>较多，部分企业仍有盈利难，居民消费能力和意愿仍需增强，供强需弱矛盾仍待化解。更合理的读法是，中国经济一季度展示了相当强的结构缓冲能力，但这种缓冲并不是自动延续的，它需要价格、消费、财政和外需在后续季度继续接力。</p><p class="report-paragraph">后续观察不应只盯 GDP 增速。更重要的是 PPI 是否连续转正及行业分布，服务消费和商品消费的差距是否收敛，民间投资和制造业投资能否改善，房地产相关指标是否继续拖累财政和居民资产负债表，出口是否能在中东和全球需求波动中保持韧性，以及财政收入能否支撑既有支出强度。<strong class="metric">5.0%</strong> 是结果，<mark class="signal-mark"><strong class="signal">真正</strong></mark>的研究对象是这个结果背后的缓冲结构还有多厚。</p></div>
-        </section>
-    
-
-        <section class="uncertainties">
-          <h2>不确定性</h2>
-          <ul class="note-list"><li><span>一季度 GDP 为初步核算结果，<mark class="signal-mark"><strong class="signal">后续</strong></mark>可能依据更完整资料进行修订。</span></li><li><span>PPI 转正中，国内供需修复、竞争秩序优化和国际能源价格的权重仍需用<mark class="signal-mark"><strong class="signal">后续</strong></mark>月份验证。</span></li><li><span>外部能源和地缘冲击路径不确定，对出口、成本和预期的影响可能滞后显现。</span></li><li><span>本文为宏观数据解读，不构成投资建议或具体政策建议。</span></li></ul>
-        </section>
-    
-
-        <section class="follow-up">
-          <h2>后续跟踪变量</h2>
-          <ul class="note-list"><li><span>二季度 GDP、工业增加值、服务业和社零增速</span></li><li><span>PPI 是否连续转正及涨价行业分布</span></li><li><span>民间投资、制造业投资、设备投资和房地产开发投资差异</span></li><li><span>出口增速、能源价格和外部需求变化</span></li><li><span>居民收入、就业、服务消费和消费品以旧换新持续性</span></li><li><span>一般公共预算收入、土地相关收入和债务付息支出变化</span></li></ul>
-        </section>
-    
-      </article>
-    
-            
-    <footer>公开资料研究索引，包含来源链接、摘要、研究报告和不确定性提示。</footer>
   </main>
+  <footer>公开资料研究索引，包含来源链接、研究报告和不确定性提示。</footer>
+
 </body>
 </html>

@@ -1,235 +1,558 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="briefing" data-layout="dossier">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>欧盟 AI Act 延期：监管执行条件的补课窗口</title>
   <style>
     :root {
-      --bg: #f6f5ef;
-      --paper: #ffffff;
-      --text: #1f2520;
-      --muted: #66716a;
-      --line: #d9ded7;
-      --accent: #0b6b5f;
-      --accent-two: #9b6a24;
-      --soft: #edf5f1;
-      --warm: #fff4dc;
-      --ink-soft: #2f3933;
+      --paper: #fff3ea;
+      --ink: #171717;
+      --muted: #64615b;
+      --line: #1c1c1c;
+      --accent: #7f2f46;
+      --accent-two: #2364aa;
+      --accent-three: #e8d7a2;
+      --sand: #efe5cf;
+      --measure: 52rem;
+      --background-signature: dossier-folder;
+      --page-background: linear-gradient(90deg, rgba(127,47,70,.10) 0 10px, transparent 10px 100%), linear-gradient(180deg, rgba(232,215,162,.32), transparent 28rem), var(--paper);
     }
     * { box-sizing: border-box; }
+    html { background: #151515; }
     body {
       margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Avenir Next", "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
-      line-height: 1.72;
+      color: var(--ink);
+      background: var(--page-background);
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      line-height: 1.86;
       letter-spacing: 0;
     }
-    main {
-      width: min(1040px, calc(100% - 34px));
-      margin: 0 auto;
-      padding: 38px 0 72px;
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; overflow-wrap: anywhere; }
+    .issue-bar {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: .58rem clamp(1rem, 4vw, 3.2rem);
+      background: color-mix(in srgb, var(--paper) 92%, white);
+      border-bottom: 2px solid var(--line);
+      backdrop-filter: blur(12px);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
     }
-    header {
-      border-bottom: 2px solid var(--text);
-      margin-bottom: 24px;
-      padding-bottom: 24px;
+    .issue-bar strong { color: var(--accent); }
+    .issue-bar span:nth-child(2) { font-weight: 900; }
+    .issue-bar span:last-child { text-align: right; color: var(--muted); }
+    .magazine-cover {
+      min-height: clamp(420px, 62vh, 680px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(17rem, 25rem);
+      gap: clamp(2rem, 5vw, 4.2rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.5rem) clamp(1rem, 5vw, 5rem) clamp(2.2rem, 4vw, 3.2rem);
+      border-bottom: 2px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .magazine-cover::before {
+      content: "POLICY";
+      position: absolute;
+      left: clamp(.7rem, 3vw, 2rem);
+      top: clamp(4rem, 9vw, 7rem);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(5rem, 17vw, 17rem);
+      line-height: .75;
+      letter-spacing: 0;
+      color: color-mix(in srgb, var(--accent-two) 13%, transparent);
+      pointer-events: none;
+    }
+    .kicker {
+      display: inline-flex;
+      gap: .6rem;
+      align-items: center;
+      font-weight: 900;
+      color: var(--accent);
+      border: 2px solid var(--line);
+      padding: .22rem .55rem;
+      background: var(--accent-three);
+      width: fit-content;
     }
     h1 {
-      font-size: clamp(2rem, 5vw, 4.6rem);
-      line-height: 1.05;
-      margin: 0 0 16px;
+      max-width: 12ch;
+      margin: 1.3rem 0 0;
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 7vw, 7.2rem);
+      line-height: .94;
+      letter-spacing: 0;
+      text-wrap: balance;
     }
-    h2 { margin: 8px 0 10px; line-height: 1.28; font-size: 1.35rem; }
-    a { color: var(--accent); text-underline-offset: 3px; overflow-wrap: anywhere; }
-    .subtitle { max-width: 760px; color: var(--muted); font-size: 1.05rem; }
-    .nav { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 18px; }
-    .info-list { display: grid; gap: 16px; }
-    .info-card {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 20px 22px;
-      box-shadow: 0 18px 50px rgba(31, 37, 32, .06);
+    .deck {
+      max-width: 56rem;
+      font-size: clamp(1.1rem, 1.65vw, 1.48rem);
+      line-height: 1.62;
+      margin: 2rem 0 0;
+      color: #24211d;
+      border-left: .65rem solid var(--accent);
+      padding-left: 1.2rem;
     }
-    .meta { color: var(--muted); font-size: .92rem; }
-    .summary { font-size: 1.02rem; }
-    .why {
-      background: var(--soft);
-      border-left: 4px solid var(--accent);
-      padding: 10px 12px;
-      color: #26322d;
+    .cover-meta { align-self: stretch; display: grid; align-content: end; gap: 1rem; }
+    .cover-card {
+      border: 2px solid var(--line);
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 9px 9px 0 var(--accent-two);
     }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-    .tags span {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 3px 9px;
-      color: var(--muted);
-      font-size: .86rem;
-      background: #fbfcfa;
-    }
-    .actions { margin-bottom: 0; }
-    .analysis, .detailed-summary, .news-anchor, .research-questions, .research-sources,
-    .detailed-report, .uncertainties, .follow-up {
-      border-top: 1px solid var(--line);
-      margin-top: 18px;
-      padding-top: 14px;
-    }
-    .anchor-report { border-left: 5px solid var(--accent-two); }
-    .analysis h2, .detailed-summary h2, .news-anchor h2, .research-questions h2,
-    .research-sources h2, .detailed-report h2, .uncertainties h2, .follow-up h2 { font-size: 1.05rem; margin-top: 0; }
-    .analysis p, .detailed-summary p, .news-anchor p, .detailed-report p { margin: 0 0 12px; }
-    .report-body {
-      max-width: 820px;
+    .cover-card h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.35; color: var(--accent); }
+    .cover-card ol, .cover-card ul { margin: 0; padding-left: 1.15rem; }
+    .cover-card li { margin: .48rem 0; line-height: 1.55; }
+    .article-shell {
       display: grid;
-      gap: 14px;
-    }
-    .report-body p {
-      color: var(--ink-soft);
-      margin: 0;
-      font-size: 1.03rem;
-    }
-    .report-lede {
-      padding: 16px 18px;
-      background: #fbf8ed;
-      border-left: 5px solid var(--accent-two);
-      font-size: 1.12rem !important;
-    }
-    .report-callout {
-      padding: 13px 16px;
-      background: #fbfcfa;
-      border: 1px solid #dbe7e1;
-      border-left: 4px solid var(--accent);
-      box-shadow: inset 0 0 0 9999px rgba(11, 107, 95, .025);
-    }
-    strong.signal, strong.metric {
-      color: #123f38;
-      font-weight: 800;
-    }
-    mark {
-      background: rgba(221, 166, 74, .22);
-      color: inherit;
-      padding: 0 .12em;
-      border-radius: 3px;
-    }
-    .signal-mark {
-      background: rgba(221, 166, 74, .24);
-      box-decoration-break: clone;
-      -webkit-box-decoration-break: clone;
-    }
-    .question-list {
-      counter-reset: question;
-      list-style: none;
-      padding-left: 0;
-      display: grid;
-      gap: 10px;
-    }
-    .question-list li {
-      counter-increment: question;
-      display: grid;
-      grid-template-columns: 2.1rem 1fr;
-      gap: 10px;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.6rem, 3vw, 3.2rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3rem);
       align-items: start;
-      background: #fbfcfa;
-      border: 1px solid var(--line);
-      padding: 10px 12px;
     }
-    .question-list li::before {
-      content: counter(question);
-      width: 1.7rem;
-      height: 1.7rem;
-      border-radius: 50%;
-      display: inline-grid;
-      place-items: center;
-      background: var(--accent);
-      color: white;
-      font-weight: 700;
-      font-size: .9rem;
-    }
-    .source-list, .note-list {
+    .editor-note {
+      grid-column: 1 / -1;
       display: grid;
-      gap: 9px;
-      padding-left: 20px;
+      grid-template-columns: minmax(10rem, 15rem) minmax(0, 1fr);
+      gap: 1.2rem;
+      border-top: 5px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: 1rem 0 1.1rem;
+      color: var(--muted);
+      font-size: .94rem;
+      line-height: 1.7;
     }
-    .source-title {
+    .editor-note b {
+      display: block;
+      color: var(--ink);
+      font-size: .82rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .25rem;
+    }
+    .editor-note p { margin: 0; }
+    .magazine-article { min-width: 0; font-size: clamp(1.04rem, 1.05vw, 1.18rem); }
+    .article-shell > .magazine-article { grid-column: 1; }
+    .magazine-article p { margin: 0 0 1.35rem; text-align: justify; text-wrap: pretty; }
+    .magazine-article .lede {
+      font-size: clamp(1.24rem, 2vw, 1.58rem);
+      line-height: 1.75;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+    .dropcap {
+      float: left;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 5.8rem;
+      line-height: .8;
+      padding: .18rem .55rem .1rem 0;
+      color: var(--accent);
+    }
+    .magazine-emphasis {
+      margin: 2rem 0 !important;
+      padding: 1.1rem 1.25rem;
+      border-left: .45rem solid var(--accent-two);
+      background: linear-gradient(90deg, color-mix(in srgb, var(--accent-two) 12%, transparent), transparent 78%);
+      font-weight: 600;
+    }
+    .pullquote {
+      margin: 2.4rem -4rem 2.4rem 0;
+      padding: 1.1rem 0 1.2rem 1.5rem;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      background: var(--paper);
+    }
+    .pullquote span { color: var(--accent); font-size: .78rem; font-weight: 900; letter-spacing: .13em; }
+    .pullquote p {
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-size: clamp(1.6rem, 3vw, 2.45rem);
+      line-height: 1.28;
+      margin: .35rem 0 0;
+      text-align: left;
+    }
+    .metric {
+      font-variant-numeric: tabular-nums;
+      color: var(--accent);
+      font-weight: 900;
+      background: linear-gradient(transparent 55%, color-mix(in srgb, var(--accent-three) 65%, transparent) 0);
+    }
+    .signal {
+      font-weight: 900;
+      text-decoration: underline;
+      text-decoration-color: var(--accent-two);
+      text-decoration-thickness: .18em;
+      text-underline-offset: .14em;
+    }
+    .companion-rail {
+      position: sticky;
+      top: 3.8rem;
+      grid-column: 2;
+      align-self: start;
+      border-top: 5px solid var(--line);
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+      padding-top: 1rem;
+    }
+    .companion-rail b { color: var(--ink); }
+    .backmatter {
+      grid-column: 1 / -1;
       display: grid;
-      gap: 2px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.2rem;
+      margin-top: 2.4rem;
+      border-top: 2px solid var(--line);
+      padding-top: 1.4rem;
     }
-    .source-meta {
+    .module { background: #fff; border: 2px solid var(--line); padding: 1rem 1.1rem; box-shadow: 6px 6px 0 var(--sand); }
+    .module h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.3; color: var(--accent); }
+    .module ul { margin: 0; padding-left: 1.1rem; }
+    .module li { margin: .5rem 0; line-height: 1.58; }
+    .source-list li { display: grid; gap: .12rem; margin-bottom: .8rem; }
+    .source-meta { color: var(--muted); font-size: .86rem; }
+    .source-meta::before { content: "来源 · "; }
+    .sources-module { grid-column: 1 / -1; }
+    .newspaper-masthead {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.8rem) clamp(1rem, 4vw, 3rem) 1.6rem;
+      border-bottom: 5px double var(--line);
+    }
+    .newspaper-kicker {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.4rem, 3vw, 3rem);
+      line-height: 1;
+      color: var(--accent);
+      text-transform: uppercase;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: .35rem 0;
+    }
+    .newspaper-masthead h1 {
+      max-width: 20ch;
+      font-size: clamp(2.6rem, 5.5vw, 6.2rem);
+      line-height: .98;
+    }
+    .newspaper-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem 1.1rem;
+      margin-top: 1rem;
+      padding-top: .8rem;
+      border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: .9rem;
     }
-    .source-meta::before { content: "来源 · "; }
-    .note-list li > .list-key {
-      display: block;
-      margin-bottom: 2px;
+    .market-strip {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr 1fr;
+      gap: 1rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      border-bottom: 2px solid var(--line);
+      background: color-mix(in srgb, var(--accent-three) 26%, var(--paper));
+      font-size: .94rem;
+      line-height: 1.55;
     }
-    .research-sources li, .research-questions li, .uncertainties li, .follow-up li { margin: 0 0 8px; }
-    .topic-index { columns: 2; padding-left: 20px; }
-    .topic-index li { break-inside: avoid; margin: 0 0 8px; }
-    footer { color: var(--muted); margin-top: 34px; font-size: .9rem; }
-    @media (max-width: 720px) {
-      .topic-index { columns: 1; }
+    .market-strip b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .08em; }
+    .market-strip p, .market-strip ol, .market-strip ul { margin: .35rem 0 0; }
+    .market-strip ol, .market-strip ul { padding-left: 1.1rem; }
+    .newspaper-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .newspaper-article .lede {
+      column-span: all;
+      border-top: 2px solid var(--line);
+      padding-top: 1rem;
+    }
+    .newspaper-article { grid-column: 1; }
+    .newspaper-rail {
+      position: sticky;
+      top: 3.8rem;
+      border-left: 2px solid var(--line);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .dossier-cover {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.6rem) clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
+      gap: clamp(1.5rem, 4vw, 3.8rem);
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+    }
+    .dossier-stamp {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      align-self: start;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      color: var(--accent);
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: color-mix(in srgb, var(--accent-three) 35%, white);
+    }
+    .dossier-cover h1 {
+      max-width: 18ch;
+      font-size: clamp(2.7rem, 6vw, 6.6rem);
+      line-height: .98;
+    }
+    .dossier-summary {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.5vw, 1.36rem);
+      border-left: .45rem solid var(--accent);
+      padding-left: 1rem;
+    }
+    .dossier-source { color: var(--muted); margin: 0; }
+    .dossier-shell {
+      display: grid;
+      grid-template-columns: minmax(12rem, 17rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .dossier-index {
+      position: sticky;
+      top: 3.8rem;
+      border-top: 5px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .dossier-index b { display: block; color: var(--ink); margin-bottom: .6rem; }
+    .dossier-index ol { margin: 0 0 1rem; padding-left: 1.1rem; }
+    .dossier-article { grid-column: 2; }
+    .field-cover {
+      min-height: clamp(460px, 64vh, 720px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr);
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      border-bottom: 2px solid var(--line);
+      background:
+        linear-gradient(135deg, transparent 0 48%, color-mix(in srgb, var(--accent-three) 24%, transparent) 48% 52%, transparent 52%),
+        var(--paper);
+    }
+    .field-topline {
+      grid-column: 1 / -1;
+      width: fit-content;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: .25rem .7rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .field-cover h1 {
+      max-width: 16ch;
+      font-size: clamp(2.8rem, 6.4vw, 7rem);
+    }
+    .field-deck {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.55vw, 1.38rem);
+      line-height: 1.62;
+      border-left: .5rem solid var(--accent-two);
+      padding-left: 1rem;
+    }
+    .field-map {
+      border: 2px solid var(--line);
+      background: rgba(255,255,255,.76);
+      padding: 1rem;
+      box-shadow: 10px 10px 0 color-mix(in srgb, var(--accent) 70%, black);
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+    .field-map b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .1em; }
+    .field-map ol { margin: .55rem 0 1rem; padding-left: 1.2rem; }
+    .field-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(13rem, 17rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .field-log {
+      position: sticky;
+      top: 3.8rem;
+      border-left: .35rem solid var(--accent-two);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .field-article { grid-column: 1; }
+    .lab-cover {
+      padding: clamp(2.6rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      min-height: clamp(420px, 58vh, 650px);
+      display: grid;
+      align-content: center;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+      background:
+        linear-gradient(90deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        linear-gradient(0deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        var(--paper);
+    }
+    .lab-label {
+      width: fit-content;
+      background: var(--ink);
+      color: #fff;
+      padding: .28rem .65rem;
+      font-size: .82rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .lab-cover h1 {
+      max-width: 22ch;
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 5.8rem);
+      line-height: 1.04;
+    }
+    .lab-deck {
+      max-width: 62rem;
+      font-size: clamp(1.06rem, 1.45vw, 1.32rem);
+      border-top: 2px solid var(--accent);
+      padding-top: 1rem;
+    }
+    .protocol-strip {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .75rem;
+      border-bottom: 2px solid var(--line);
+      font-size: .88rem;
+    }
+    .protocol-strip div {
+      border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
+      padding: .75rem;
+      background: rgba(255,255,255,.68);
+      min-width: 0;
+    }
+    .protocol-strip b {
+      display: block;
+      color: var(--accent-two);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .protocol-strip span { overflow-wrap: anywhere; }
+    .lab-shell {
+      display: grid;
+      grid-template-columns: minmax(14rem, 19rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .lab-notes {
+      position: sticky;
+      top: 3.8rem;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      background: #fff;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .lab-notes b { color: var(--ink); }
+    .lab-notes ol { padding-left: 1.1rem; }
+    .lab-article { grid-column: 2; }
+    footer { color: var(--muted); padding: 0 clamp(1rem, 4vw, 3rem) 3rem; max-width: 1220px; margin: 0 auto; font-size: .9rem; }
+    @media (max-width: 1100px) {
+      .magazine-cover { grid-template-columns: 1fr; min-height: auto; }
+      .cover-meta { max-width: 42rem; }
+      .article-shell { grid-template-columns: 1fr; }
+      .editor-note { grid-template-columns: 1fr; }
+      .companion-rail { position: static; grid-column: 1; }
+      .backmatter { grid-column: 1; grid-template-columns: 1fr; }
+      .pullquote { margin-right: 0; }
+      h1 { max-width: 11ch; }
+      .market-strip, .protocol-strip { grid-template-columns: 1fr; }
+      .newspaper-shell, .dossier-shell, .field-shell, .lab-shell { grid-template-columns: 1fr; }
+      .newspaper-rail, .dossier-index, .field-log, .lab-notes { position: static; }
+      .dossier-article, .lab-article { grid-column: 1; }
+      .dossier-cover, .field-cover { grid-template-columns: 1fr; min-height: auto; }
+      .dossier-stamp { grid-column: 1; grid-row: auto; }
+    }
+    @media (max-width: 640px) {
+      .issue-bar { grid-template-columns: 1fr; gap: .15rem; }
+      .issue-bar span:last-child { text-align: left; }
+      .magazine-cover { padding-top: 2.4rem; }
+      h1 { font-size: clamp(2.65rem, 16vw, 4.8rem); }
+      .deck { border-left-width: .45rem; padding-left: .8rem; }
+      .magazine-article p { text-align: left; }
+      .dropcap { font-size: 4.6rem; }
+      .module { box-shadow: 4px 4px 0 var(--sand); }
     }
   </style>
 </head>
 <body>
-  <main>
-    
-            <header>
-              <h1>欧盟 AI Act 延期：监管执行条件的补课窗口</h1>
-              <p class="subtitle">新闻锚点驱动的主题研究报告 · 2026-05-07</p>
-              <div class="nav"><a href="../../">返回信息流</a><a href="https://digital-strategy.ec.europa.eu/en/news/eu-agrees-simplify-ai-rules-boost-innovation-and-ban-nudification-apps-protect-citizens">打开锚点来源</a></div>
-            </header>
-            
-      <article class="info-card anchor-report">
-        <div class="meta">2026-05-07 · 主题研究报告</div>
-        <h2>欧盟 AI Act 延期：监管执行条件的补课窗口</h2>
-        <p class="summary">欧盟共同立法者就 AI Act 简化修订达成临时政治协议，把部分高风险 AI 义务后移至 2027 年 12 月和 2028 年 8 月，同时新增对非自愿裸化应用和 AI 辅助生成儿童性虐待材料的禁止。更准确的理解不是监管撤退，而是欧盟承认标准、指南、监管沙盒、行业法衔接和主管机关能力尚未完全准备好，试图用延期换取更可执行的制度落地。</p>
-        <p class="why"><strong>新闻锚点：</strong><a href="https://digital-strategy.ec.europa.eu/en/news/eu-agrees-simplify-ai-rules-boost-innovation-and-ban-nudification-apps-protect-citizens">EU agrees to simplify AI rules to boost innovation and ban nudification apps</a> · European Commission</p>
-        <div class="tags"><span>ai-policy</span> <span>eu-regulation</span> <span>politics-policy</span></div>
-      
-        <section class="news-anchor">
-          <h2>新闻锚点</h2>
-          <p><a href="https://digital-strategy.ec.europa.eu/en/news/eu-agrees-simplify-ai-rules-boost-innovation-and-ban-nudification-apps-protect-citizens">EU agrees to simplify AI rules to boost innovation and ban nudification apps</a> · European Commission</p>
-        </section>
-            
 
-        <section class="research-questions">
-          <h2>研究问题</h2>
-          <ol class="question-list"><li><span>为什么欧盟要在 AI Act 落地前调整高<mark class="signal-mark"><strong class="signal">风险</strong></mark> AI 时间表？</span></li><li><span>企业减负和新增深伪色情禁令为什么会出现在同一个协议里？</span></li><li><span>后续<mark class="signal-mark"><strong class="signal">真正</strong></mark>难点会不会转向行业法规和 AI Act 的衔接？</span></li></ol>
-        </section>
+  <div class="issue-bar"><span><strong>Infohub</strong> article</span><span>Magazine research page</span><span>2026-05-07</span></div>
+  <header class="dossier-cover">
+    <div class="dossier-stamp">POLICY / GOVERNANCE</div>
+    <h1>欧盟 AI Act 延期：监管执行条件的补课窗口</h1>
+    <p class="dossier-summary">欧盟共同立法者就 AI Act 简化修订达成临时政治协议，把部分高<strong class="signal">风险</strong> AI 义务后移至 <strong class="metric">2027 年</strong> <strong class="metric">12 月</strong>和 <strong class="metric">2028 年</strong> <strong class="metric">8 月</strong>，同时新增对非自愿裸化应用和 AI 辅助生成儿童性虐待材料的禁止。更准确的理解不是监管撤退，而是欧盟承认标准、指南、监管沙盒、行业法衔接和主管机关能力尚未完全准备好，试图用延期换取更可执行的制度落地。</p>
+    <p class="dossier-source"><a href="https://digital-strategy.ec.europa.eu/en/news/eu-agrees-simplify-ai-rules-boost-innovation-and-ban-nudification-apps-protect-citizens">EU agrees to simplify AI rules to boost innovation and ban nudification apps</a> · European Commission · 2026-05-07</p>
+  </header>
+  <main class="dossier-shell">
+    <aside class="dossier-index">
+      <b>案卷索引</b>
+      <ol><li>为什么欧盟要在 AI Act 落地前调整高<strong class="signal">风险</strong> AI 时间表？</li><li>企业减负和新增深伪色情禁令为什么会出现在同一个协议里？</li><li><strong class="signal">后续</strong><strong class="signal">真正</strong>难点会不会转向行业法规和 AI Act 的衔接？</li></ol>
+      <p><a href="../../">返回信息流首页</a></p>
+    </aside>
+    <article class="magazine-article dossier-article">
+      <p class="lede"><span class="dropcap">2</span><strong class="metric">026 年</strong> <strong class="metric">5 月</strong> <strong class="metric">7 日</strong>，欧盟委员会把一项临时政治协议包装成“简化 AI 规则、促进创新、禁止 nudification apps（非自愿裸化应用）”。这个标题很容易被读成欧盟在 AI Act（人工智能法案）落地前后退了一步。更准确的判断是：欧盟共同立法者没有取消 AI Act 的<strong class="signal">风险</strong>分级架构，也没有把高风险 AI 系统从监管中拿掉；他们是在承认一个执行现实：法律文本已经生效，禁止性条款和通用目的 AI 模型义务已经按阶段进入适用，但高风险系统所依赖的协调标准、指南、数据库、监管沙盒、行业法衔接和主管机关能力，并没有同样成熟。</p><p class="magazine-emphasis">这次协议最硬的变化是时间表。按照欧盟委员会、欧盟理事会和欧洲议会发布的材料，某些高<strong class="signal">风险</strong>用途的独立 AI 系统，包括生物识别、<strong class="signal">关键</strong>基础设施、教育、就业、迁移、庇护和边境管理等场景，义务适用日改为 <strong class="metric">2027 年</strong> <strong class="metric">12 月</strong> <strong class="metric">2 日</strong>；嵌入产品的高风险 AI 系统，例如升降机、玩具以及其他受欧盟产品安全和市场监管规则覆盖的安全部件，适用日改为 <strong class="metric">2028 年</strong> <strong class="metric">8 月</strong> <strong class="metric">2 日</strong>。旧法案第 113 条本来把多数规则的总适用日放在 <strong class="metric">2026 年</strong> <strong class="metric">8 月</strong> <strong class="metric">2 日</strong>，并把 Article 6(1)（第 6 条第 1 款）及相应义务放在 <strong class="metric">2027 年</strong> <strong class="metric">8 月</strong> <strong class="metric">2 日</strong>。新的政治协议把“何时开始执行”从一个统一倒计时，改成按系统类型和执行工具成熟度重排。</p><p>欧盟委员会给出的理由并不神秘。<strong class="metric">2025 年</strong> <strong class="metric">11 月</strong> Digital Omnibus on AI（AI 数字一揽子简化方案）提案已经把问题说得很直接：成员国主管机关和合格评定机构指定进度、协调标准、指南和合规工具都存在延迟<strong class="signal">风险</strong>，这会显著推高企业和公共机关的合规成本，也可能拖慢创新。委员会还估算，简化措施可能带来约 2.972 亿至 4.332 亿欧元的行政负担节省。这个数字不应被当成政策成败的全部证据，但它说明欧盟内部已经把 AI Act 的执行摩擦视为竞争力问题，而不只是法务部门的抱怨。</p><aside class="pullquote"><span>摘句</span><p>标准问题是这次延期最有说服力的一环。</p></aside><p>标准问题是这次延期最有说服力的一环。AI Act 对高<strong class="signal">风险</strong>系统要求风险管理、数据治理、日志、透明度、人类监督、准确性、鲁棒性、网络安全和质量管理。对企业来说，这些词写在法规里不等于能立刻转化成工程检查表。欧盟委员会自己的标准化说明也承认，协调标准由 CEN-CENELEC（欧洲标准化委员会和欧洲电工标准化委员会）等组织制定，标准被欧盟官方公报引用后，才会给企业带来“符合性推定”。截至 <strong class="metric">2025 年</strong> <strong class="metric">10 月</strong>，首个面向 AI Act 监管用途的质量管理体系协调标准才进入公开征询；第一批标准预计在 <strong class="metric">2026 年</strong>发布，之后还要经过委员会审查。也就是说，若 <strong class="metric">2026 年</strong> <strong class="metric">8 月</strong>就全面启动高风险义务，很多企业会在标准未完全落地时承担形式上清楚、技术上不稳的合规责任。</p><p>但把延期解释成“欧盟变亲科技了”仍然太粗。协议同时新增了对非自愿性亲密内容和儿童性虐待材料相关 AI 系统的禁止。欧洲议会的说明更具体：禁止投放以生成这类内容为目的的 AI 系统；禁止在没有合理安全措施防止这类生成的情况下把相关系统投放市场；也禁止部署者以生成这类内容为目的使用系统。受影响内容可以是图像、视频或音频，企业需要在 <strong class="metric">2026 年</strong> <strong class="metric">12 月</strong> <strong class="metric">2 日</strong>前完成调整。这个安排把“减负”和“新增禁令”放在同一个政治包里，说明欧盟并不是简单撤退，而是在重新划线：对执行条件不成熟的高<strong class="signal">风险</strong>制度给出缓冲，对已经发生且社会可见度极高的 AI 性剥削风险则加快禁止。</p><p>这也解释了为什么 nudification apps（非自愿裸化应用）会出现在一个企业减负方案里。它不是一个边角议题，而是 AI 生成能力扩散后的最低共识<strong class="signal">风险</strong>。非自愿生成他人裸体、亲密部位或性行为内容，通常不需要复杂部署场景，也不需要企业级采购；它面向普通用户、传播成本低、受害者救济难，且对未成年人伤害尤其严重。欧盟如果只讨论高风险义务延期，会被批评为把基本权利保护向后推；把裸化应用和 AI 辅助生成儿童性虐待材料纳入禁令，则是在政治上表明：简化不是全面宽松，至少有些行为被认为不需要等标准成熟就可以禁止。</p><p class="magazine-emphasis"><strong class="signal">真正</strong>复杂的部分在行业法规衔接。AI Act 本来就是一部横向法规，但很多高<strong class="signal">风险</strong> AI 并不以独立软件形态出现，而是嵌在机械、医疗器械、玩具、升降机、水上交通工具等产品安全制度里。欧盟理事会材料显示，这次协议试图处理“同一 AI 要求被 AI Act 和行业法重复覆盖”的问题：如果行业法已经有类似的 AI 具体要求，可以通过实施法案限制 AI Act 在特定情形中的适用；机械法规还被排除出 AI Act 的直接适用路径，改由委员会在机械法规下通过授权法案加入与高风险 AI 相关的健康和安全要求。这个设计不是小修小补，它会决定企业未来到底面对一套合格评定，还是在两个规则体系之间反复证明同一件事。</p><p>支持延期的一方强调的正是这种可执行性。行业组织 DigitalEurope（数字欧洲）在 <strong class="metric">2026 年</strong> <strong class="metric">2 月</strong>的立场文件中主张，把高<strong class="signal">风险</strong>义务时间表单独快速处理，明确 <strong class="metric">2027 年</strong> <strong class="metric">12 月</strong>和 <strong class="metric">2028 年</strong> <strong class="metric">8 月</strong>两个默认日期，可以给企业和主管机关法律确定性；它还认为，即使标准被正式引用，企业也通常需要时间把标准整合进产品、流程和治理体系。这个观点有现实基础：大型合规体系不是发布日期当天就能上线，尤其在医疗、工业和基础设施场景，供应链、测试、文档和质量体系都需要同步改造。</p><p>反方或审慎来源提醒的是另一种<strong class="signal">风险</strong>：延期和简化可能变成实质削弱。EDPB-EDPS（欧洲数据保护委员会和欧洲数据保护监督员）在 <strong class="metric">2026 年</strong> <strong class="metric">1 月</strong>的联合意见中并未否认实施挑战，甚至支持在不降低基本权利保护的前提下减少行政负担；但他们明确担心<strong class="signal">核心</strong>高风险条款推迟适用会影响快速演变的 AI 环境中的基本权利保护，并建议尽可能缩短延迟，保留某些透明度义务的原时间表。EDRi（欧洲数字权利组织）和 Access Now（现在就访问组织）则更尖锐地批评 Omnibus（综合修法包）有放松保护、削弱透明度和问责的倾向，尤其反对删除或弱化高风险系统“自认为不属于高风险”时的公开登记保障。值得注意的是，这次临时协议据理事会说明恢复了相关登记义务，也恢复了处理特殊类别个人数据时的“严格必要”标准，这显示谈判确实吸收了部分反对意见。</p><p class="magazine-emphasis">因此，这条新闻的<strong class="signal">关键</strong>不是“延期是否等于放松”，而是“延期换来了什么”。如果延期期间标准、指南、成员国主管机关、欧盟数据库、AI Office（AI 办公室）能力和行业法实施法案都能补齐，AI Act 可能会从一部宏大的<strong class="signal">风险</strong>框架变成比较可执行的治理机器。相反，如果延期只让企业继续观望，或者让高风险系统在就业、教育、执法、边境、信贷和公共服务场景中继续缺少可见登记、风险管理和救济通道，那么“简化”就会被证明只是把监管成本从企业账面转移给受影响个人。</p><p><strong class="signal">后续</strong>观察应放在几个节点上。第一，临时政治协议仍需理事会和欧洲议会正式批准，并经过法律语言修订，最终条文可能和新闻稿有细节差异。第二，<strong class="metric">2026 年</strong> <strong class="metric">12 月</strong> <strong class="metric">2 日</strong>不只是裸化应用调整期限，也是 AI 生成内容透明度方案的一个新节点，水印和机器可读标识会牵动平台、生成式 AI 工具和媒体工作流。第三，<strong class="metric">2027 年</strong> <strong class="metric">8 月</strong> <strong class="metric">2 日</strong>的国家监管沙盒期限、<strong class="metric">2027 年</strong> <strong class="metric">12 月</strong> <strong class="metric">2 日</strong>的独立高<strong class="signal">风险</strong>系统义务、<strong class="metric">2028 年</strong> <strong class="metric">8 月</strong> <strong class="metric">2 日</strong>的产品嵌入系统义务，会逐步检验欧盟是否真能把“创新友好”和“基本权利保护”同时落到执行层。第四，医疗器械、机械、玩具等行业规则与 AI Act 的衔接实施法案，可能比抽象的 AI 政策口号更能决定企业真实合规负担。</p><p>我的判断是，欧盟不是放弃 AI Act，而是在给它补执行条件，同时也在承受政治代价。把高<strong class="signal">风险</strong>规则后移，会让企业获得更稳定的准备窗口，也会让权利保护承受更长的空窗期；把非自愿裸化和儿童性虐待材料生成纳入禁令，则是在同一个包里压住“监管退潮”的观感。这个组合并不优雅，却很能说明 <strong class="metric">2026 年</strong>的欧盟 AI 治理已经进入第二阶段：不再是写出世界第一部综合 AI 法案，而是证明它能在标准、行业法、执法机关、企业流程和受害者保护之间<strong class="signal">真正</strong>运转。</p>
+    </article>
     
-
-        <section class="research-sources">
-          <h2>研究来源</h2>
-          <ul class="source-list"><li><span class="source-title"><a href="https://digital-strategy.ec.europa.eu/en/news/eu-agrees-simplify-ai-rules-boost-innovation-and-ban-nudification-apps-protect-citizens">EU agrees to simplify AI rules to boost innovation and ban nudification apps to protect citizens</a><span class="source-meta">European Commission</span></span></li><li><span class="source-title"><a href="https://www.consilium.europa.eu/en/press/press-releases/2026/05/07/artificial-intelligence-council-and-parliament-agree-to-simplify-and-streamline-rules/">Artificial Intelligence: Council and Parliament agree to simplify and streamline rules</a><span class="source-meta">Council of the EU</span></span></li><li><span class="source-title"><a href="https://www.europarl.europa.eu/pdfs/news/expert/2026/5/press_release/20260427IPR42011/20260427IPR42011_en.pdf">AI Act: deal on simplification measures, ban on nudifier apps</a><span class="source-meta">European Parliament</span></span></li><li><span class="source-title"><a href="https://digital-strategy.ec.europa.eu/en/library/digital-omnibus-ai-regulation-proposal">Digital Omnibus on AI Regulation Proposal</a><span class="source-meta">European Commission</span></span></li><li><span class="source-title"><a href="https://data.consilium.europa.eu/doc/document/ST-15708-2025-INIT/en/pdf">COM(2025) 836 final, Digital Omnibus on AI proposal</a><span class="source-meta">Council of the EU document register</span></span></li><li><span class="source-title"><a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-113">Article 113: Entry into force and application</a><span class="source-meta">European Commission AI Act Service Desk</span></span></li><li><span class="source-title"><a href="https://digital-strategy.ec.europa.eu/en/policies/ai-act-standardisation">Standardisation of the AI Act</a><span class="source-meta">European Commission</span></span></li><li><span class="source-title"><a href="https://www.edpb.europa.eu/system/files/2026-01/edpb_edps_jointopinion_202601_proposal_ai-omnibus_en.pdf">Joint Opinion 1/2026 on the Digital Omnibus on AI</a><span class="source-meta">EDPB and EDPS</span></span></li><li><span class="source-title"><a href="https://edri.org/our-work/commissions-digital-omnibus-is-a-major-rollback-of-eu-digital-protections/">Commission&#x27;s Digital Omnibus is a major rollback of EU digital protections</a><span class="source-meta">EDRi</span></span></li><li><span class="source-title"><a href="https://www.accessnow.org/press-release/a-call-to-eu-legislators-protect-transparency-safeguard-in-ai-act/">A call to EU legislators: protect rights and reject the call to delete transparency safeguard in AI Act</a><span class="source-meta">Access Now</span></span></li><li><span class="source-title"><a href="https://cdn.digitaleurope.org/uploads/2026/02/AI-omnibus-a-necessary-pause-to-enable-real-simplification-1.pdf">AI omnibus: a necessary pause to enable real simplification</a><span class="source-meta">DigitalEurope</span></span></li><li><span class="source-title"><a href="https://www.delorscentre.eu/en/publications/detail/publication/the-eus-digital-and-ai-omnibus">The EU&#x27;s Digital and AI Omnibus is Heading in the Wrong Direction</a><span class="source-meta">Jacques Delors Centre</span></span></li></ul>
-        </section>
+    <section class="backmatter">
+      <div class="module">
+        <h2>不确定性</h2>
+        <ul><li>临时政治协议仍需正式批准和法律语言修订，最终条文可能改变具体义务、例外和适用范围。</li><li>非自愿裸化应用禁令中的“合理安全措施”、部署者责任、音频内容边界和平台责任仍需等待最终文本和执法实践。</li><li>行业法与 AI Act 的衔接会依赖<strong class="signal">后续</strong>实施法案和授权法案，特别是机械、医疗器械、玩具、升降机等产品类别。</li><li>协调标准、指南、国家监管沙盒和 AI Office 能力是否按期补齐，仍是判断延期是否合理的<strong class="signal">核心</strong>变量。</li><li>报告基于截至 <strong class="metric">2026 年</strong> <strong class="metric">5 月</strong> <strong class="metric">11 日</strong>可核对的公开来源；<strong class="signal">后续</strong>正式文本可能覆盖新闻稿口径。</li></ul>
+      </div>
+      <div class="module">
+        <h2>后续观察</h2>
+        <ul><li>欧洲议会和欧盟理事会正式批准时间及法律语言修订后的最终文本</li><li><strong class="metric">2026 年</strong> <strong class="metric">12 月</strong> <strong class="metric">2 日</strong>裸化应用禁令与 AI 生成内容透明度义务节点</li><li><strong class="metric">2027 年</strong> <strong class="metric">8 月</strong> <strong class="metric">2 日</strong>成员国监管沙盒建立情况</li><li><strong class="metric">2027 年</strong> <strong class="metric">12 月</strong> <strong class="metric">2 日</strong>独立高<strong class="signal">风险</strong> AI 系统义务适用准备度</li><li><strong class="metric">2028 年</strong> <strong class="metric">8 月</strong> <strong class="metric">2 日</strong>嵌入产品的高<strong class="signal">风险</strong> AI 系统义务适用准备度</li><li>CEN-CENELEC 协调标准是否按期发布并被欧盟官方公报引用</li><li>医疗器械、机械、玩具、升降机等行业法规与 AI Act 的衔接实施法案</li><li>首批成员国主管机关、AI Office 和数据保护机构的执法或解释案例</li></ul>
+      </div>
+      <div class="module sources-module">
+        <h2>研究来源</h2>
+        <ul class="source-list"><li><a href="https://digital-strategy.ec.europa.eu/en/news/eu-agrees-simplify-ai-rules-boost-innovation-and-ban-nudification-apps-protect-citizens">EU agrees to simplify AI rules to boost innovation and ban nudification apps to protect citizens</a><span class="source-meta">European Commission</span></li><li><a href="https://www.consilium.europa.eu/en/press/press-releases/2026/05/07/artificial-intelligence-council-and-parliament-agree-to-simplify-and-streamline-rules/">Artificial Intelligence: Council and Parliament agree to simplify and streamline rules</a><span class="source-meta">Council of the EU</span></li><li><a href="https://www.europarl.europa.eu/pdfs/news/expert/2026/5/press_release/20260427IPR42011/20260427IPR42011_en.pdf">AI Act: deal on simplification measures, ban on nudifier apps</a><span class="source-meta">European Parliament</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/library/digital-omnibus-ai-regulation-proposal">Digital Omnibus on AI Regulation Proposal</a><span class="source-meta">European Commission</span></li><li><a href="https://data.consilium.europa.eu/doc/document/ST-15708-2025-INIT/en/pdf">COM(2025) 836 final, Digital Omnibus on AI proposal</a><span class="source-meta">Council of the EU document register</span></li><li><a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-113">Article 113: Entry into force and application</a><span class="source-meta">European Commission AI Act Service Desk</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/policies/ai-act-standardisation">Standardisation of the AI Act</a><span class="source-meta">European Commission</span></li><li><a href="https://www.edpb.europa.eu/system/files/2026-01/edpb_edps_jointopinion_202601_proposal_ai-omnibus_en.pdf">Joint Opinion 1/2026 on the Digital Omnibus on AI</a><span class="source-meta">EDPB and EDPS</span></li><li><a href="https://edri.org/our-work/commissions-digital-omnibus-is-a-major-rollback-of-eu-digital-protections/">Commission&#x27;s Digital Omnibus is a major rollback of EU digital protections</a><span class="source-meta">EDRi</span></li><li><a href="https://www.accessnow.org/press-release/a-call-to-eu-legislators-protect-transparency-safeguard-in-ai-act/">A call to EU legislators: protect rights and reject the call to delete transparency safeguard in AI Act</a><span class="source-meta">Access Now</span></li><li><a href="https://cdn.digitaleurope.org/uploads/2026/02/AI-omnibus-a-necessary-pause-to-enable-real-simplification-1.pdf">AI omnibus: a necessary pause to enable real simplification</a><span class="source-meta">DigitalEurope</span></li><li><a href="https://www.delorscentre.eu/en/publications/detail/publication/the-eus-digital-and-ai-omnibus">The EU&#x27;s Digital and AI Omnibus is Heading in the Wrong Direction</a><span class="source-meta">Jacques Delors Centre</span></li></ul>
+      </div>
+    </section>
     
-
-        <section class="detailed-report">
-          <h2>研究报告</h2>
-          <div class="report-body"><p class="report-lede"><strong><strong class="metric">2026 年</strong> 5 月 <strong class="metric">7 日</strong>，欧盟委员会把一项临时政治协议包装成“简化 AI 规则、促进创新、禁止 nudification apps（非自愿裸化应用）”。</strong>这个标题很容易被读成欧盟在 AI Act（人工智能法案）落地前后退了一步。更准确的判断是：欧盟共同立法者没有取消 AI Act 的<mark class="signal-mark"><strong class="signal">风险</strong></mark>分级架构，也没有把高风险 AI 系统从监管中拿掉；他们是在承认一个执行现实：法律文本已经生效，禁止性条款和通用目的 AI 模型义务已经按阶段进入适用，但高风险系统所依赖的协调标准、指南、数据库、监管沙盒、行业法衔接和主管机关能力，并没有同样成熟。</p><p class="report-callout"><strong>这次协议最硬的变化是时间表。</strong>按照欧盟委员会、欧盟理事会和欧洲议会发布的材料，某些高风险用途的独立 AI 系统，包括生物识别、<mark class="signal-mark"><strong class="signal">关键</strong></mark>基础设施、教育、就业、迁移、庇护和边境管理等场景，义务适用日改为 <strong class="metric">2027 年</strong> 12 月 <strong class="metric">2 日</strong>；嵌入产品的高风险 AI 系统，例如升降机、玩具以及其他受欧盟产品安全和市场监管规则覆盖的安全部件，适用日改为 <strong class="metric">2028 年</strong> 8 月 <strong class="metric">2 日</strong>。旧法案第 113 条本来把多数规则的总适用日放在 <strong class="metric">2026 年</strong> 8 月 <strong class="metric">2 日</strong>，并把 Article 6(1)（第 6 条第 1 款）及相应义务放在 <strong class="metric">2027 年</strong> 8 月 <strong class="metric">2 日</strong>。新的政治协议把“何时开始执行”从一个统一倒计时，改成按系统类型和执行工具成熟度重排。</p><p class="report-paragraph">欧盟委员会给出的理由并不神秘。<strong class="metric">2025 年</strong> 11 月 Digital Omnibus on AI（AI 数字一揽子简化方案）提案已经把问题说得很直接：成员国主管机关和合格评定机构指定进度、协调标准、指南和合规工具都存在延迟<mark class="signal-mark"><strong class="signal">风险</strong></mark>，这会显著推高企业和公共机关的合规成本，也可能拖慢创新。委员会还估算，简化措施可能带来约 2.972 亿至 4.332 亿欧元的行政负担节省。这个数字不应被当成政策成败的全部证据，但它说明欧盟内部已经把 AI Act 的执行摩擦视为竞争力问题，而不只是法务部门的抱怨。</p><p class="report-callout"><strong>标准问题是这次延期最有说服力的一环。</strong>AI Act 对高<mark class="signal-mark"><strong class="signal">风险</strong></mark>系统要求风险管理、数据治理、日志、透明度、人类监督、准确性、鲁棒性、网络安全和质量管理。对企业来说，这些词写在法规里不等于能立刻转化成工程检查表。欧盟委员会自己的标准化说明也承认，协调标准由 CEN-CENELEC（欧洲标准化委员会和欧洲电工标准化委员会）等组织制定，标准被欧盟官方公报引用后，才会给企业带来“符合性推定”。截至 <strong class="metric">2025 年</strong> 10 月，首个面向 AI Act 监管用途的质量管理体系协调标准才进入公开征询；第一批标准预计在 <strong class="metric">2026 年</strong>发布，之后还要经过委员会审查。也就是说，若 <strong class="metric">2026 年</strong> 8 月就全面启动高风险义务，很多企业会在标准未完全落地时承担形式上清楚、技术上不稳的合规责任。</p><p class="report-paragraph">但把延期解释成“欧盟变亲科技了”仍然太粗。协议同时新增了对非自愿性亲密内容和儿童性虐待材料相关 AI 系统的禁止。欧洲议会的说明更具体：禁止投放以生成这类内容为目的的 AI 系统；禁止在没有合理安全措施防止这类生成的情况下把相关系统投放市场；也禁止部署者以生成这类内容为目的使用系统。受影响内容可以是图像、视频或音频，企业需要在 <strong class="metric">2026 年</strong> 12 月 <strong class="metric">2 日</strong>前完成调整。这个安排把“减负”和“新增禁令”放在同一个政治包里，说明欧盟并不是简单撤退，而是在重新划线：对执行条件不成熟的高<mark class="signal-mark"><strong class="signal">风险</strong></mark>制度给出缓冲，对已经发生且社会可见度极高的 AI 性剥削风险则加快禁止。</p><p class="report-paragraph">这也解释了为什么 nudification apps（非自愿裸化应用）会出现在一个企业减负方案里。它不是一个边角议题，而是 AI 生成能力扩散后的最低共识<mark class="signal-mark"><strong class="signal">风险</strong></mark>。非自愿生成他人裸体、亲密部位或性行为内容，通常不需要复杂部署场景，也不需要企业级采购；它面向普通用户、传播成本低、受害者救济难，且对未成年人伤害尤其严重。欧盟如果只讨论高风险义务延期，会被批评为把基本权利保护向后推；把裸化应用和 AI 辅助生成儿童性虐待材料纳入禁令，则是在政治上表明：简化不是全面宽松，至少有些行为被认为不需要等标准成熟就可以禁止。</p><p class="report-paragraph"><mark class="signal-mark"><strong class="signal">真正</strong></mark>复杂的部分在行业法规衔接。AI Act 本来就是一部横向法规，但很多高风险 AI 并不以独立软件形态出现，而是嵌在机械、医疗器械、玩具、升降机、水上交通工具等产品安全制度里。欧盟理事会材料显示，这次协议试图处理“同一 AI 要求被 AI Act 和行业法重复覆盖”的问题：如果行业法已经有类似的 AI 具体要求，可以通过实施法案限制 AI Act 在特定情形中的适用；机械法规还被排除出 AI Act 的直接适用路径，改由委员会在机械法规下通过授权法案加入与高风险 AI 相关的健康和安全要求。这个设计不是小修小补，它会决定企业未来到底面对一套合格评定，还是在两个规则体系之间反复证明同一件事。</p><p class="report-paragraph">支持延期的一方强调的正是这种可执行性。行业组织 DigitalEurope（数字欧洲）在 <strong class="metric">2026 年</strong> 2 月的立场文件中主张，把高<mark class="signal-mark"><strong class="signal">风险</strong></mark>义务时间表单独快速处理，明确 <strong class="metric">2027 年</strong> 12 月和 <strong class="metric">2028 年</strong> 8 月两个默认日期，可以给企业和主管机关法律确定性；它还认为，即使标准被正式引用，企业也通常需要时间把标准整合进产品、流程和治理体系。这个观点有现实基础：大型合规体系不是发布日期当天就能上线，尤其在医疗、工业和基础设施场景，供应链、测试、文档和质量体系都需要同步改造。</p><p class="report-paragraph">反方或审慎来源提醒的是另一种风险：延期和简化可能变成实质削弱。EDPB-EDPS（欧洲数据保护委员会和欧洲数据保护监督员）在 <strong class="metric">2026 年</strong> 1 月的联合意见中并未否认实施挑战，甚至支持在不降低基本权利保护的前提下减少行政负担；但他们明确担心<mark class="signal-mark"><strong class="signal">核心</strong></mark>高风险条款推迟适用会影响快速演变的 AI 环境中的基本权利保护，并建议尽可能缩短延迟，保留某些透明度义务的原时间表。EDRi（欧洲数字权利组织）和 Access Now（现在就访问组织）则更尖锐地批评 Omnibus（综合修法包）有放松保护、削弱透明度和问责的倾向，尤其反对删除或弱化高风险系统“自认为不属于高风险”时的公开登记保障。值得注意的是，这次临时协议据理事会说明恢复了相关登记义务，也恢复了处理特殊类别个人数据时的“严格必要”标准，这显示谈判确实吸收了部分反对意见。</p><p class="report-paragraph">因此，这条新闻的<mark class="signal-mark"><strong class="signal">关键</strong></mark>不是“延期是否等于放松”，而是“延期换来了什么”。如果延期期间标准、指南、成员国主管机关、欧盟数据库、AI Office（AI 办公室）能力和行业法实施法案都能补齐，AI Act 可能会从一部宏大的风险框架变成比较可执行的治理机器。相反，如果延期只让企业继续观望，或者让高风险系统在就业、教育、执法、边境、信贷和公共服务场景中继续缺少可见登记、风险管理和救济通道，那么“简化”就会被证明只是把监管成本从企业账面转移给受影响个人。</p><p class="report-paragraph"><mark class="signal-mark"><strong class="signal">后续</strong></mark>观察应放在几个节点上。第一，临时政治协议仍需理事会和欧洲议会正式批准，并经过法律语言修订，最终条文可能和新闻稿有细节差异。第二，<strong class="metric">2026 年</strong> 12 月 <strong class="metric">2 日</strong>不只是裸化应用调整期限，也是 AI 生成内容透明度方案的一个新节点，水印和机器可读标识会牵动平台、生成式 AI 工具和媒体工作流。第三，<strong class="metric">2027 年</strong> 8 月 <strong class="metric">2 日</strong>的国家监管沙盒期限、<strong class="metric">2027 年</strong> 12 月 <strong class="metric">2 日</strong>的独立高风险系统义务、<strong class="metric">2028 年</strong> 8 月 <strong class="metric">2 日</strong>的产品嵌入系统义务，会逐步检验欧盟是否真能把“创新友好”和“基本权利保护”同时落到执行层。第四，医疗器械、机械、玩具等行业规则与 AI Act 的衔接实施法案，可能比抽象的 AI 政策口号更能决定企业真实合规负担。</p><p class="report-paragraph">我的判断是，欧盟不是放弃 AI Act，而是在给它补执行条件，同时也在承受政治代价。把高风险规则后移，会让企业获得更稳定的准备窗口，也会让权利保护承受更长的空窗期；把非自愿裸化和儿童性虐待材料生成纳入禁令，则是在同一个包里压住“监管退潮”的观感。这个组合并不优雅，却很能说明 <strong class="metric">2026 年</strong>的欧盟 AI 治理已经进入第二阶段：不再是写出世界第一部综合 AI 法案，而是证明它能在标准、行业法、执法机关、企业流程和受害者保护之间<mark class="signal-mark"><strong class="signal">真正</strong></mark>运转。</p></div>
-        </section>
-    
-
-        <section class="uncertainties">
-          <h2>不确定性</h2>
-          <ul class="note-list"><li><span>临时政治协议仍需正式批准和法律语言修订，最终条文可能改变具体义务、例外和适用范围。</span></li><li><span>非自愿裸化应用禁令中的“合理安全措施”、部署者责任、音频内容边界和平台责任仍需等待最终文本和执法实践。</span></li><li><span>行业法与 AI Act 的衔接会依赖<mark class="signal-mark"><strong class="signal">后续</strong></mark>实施法案和授权法案，特别是机械、医疗器械、玩具、升降机等产品类别。</span></li><li><span>协调标准、指南、国家监管沙盒和 AI Office 能力是否按期补齐，仍是判断延期是否合理的<mark class="signal-mark"><strong class="signal">核心</strong></mark>变量。</span></li><li><span>报告基于截至 <strong class="metric">2026 年</strong> 5 月 <strong class="metric">11 日</strong>可核对的公开来源；<mark class="signal-mark"><strong class="signal">后续</strong></mark>正式文本可能覆盖新闻稿口径。</span></li></ul>
-        </section>
-    
-
-        <section class="follow-up">
-          <h2>后续跟踪变量</h2>
-          <ul class="note-list"><li><span>欧洲议会和欧盟理事会正式批准时间及法律语言修订后的最终文本</span></li><li><span><strong class="metric">2026 年</strong> 12 月 <strong class="metric">2 日</strong>裸化应用禁令与 AI 生成内容透明度义务节点</span></li><li><span><strong class="metric">2027 年</strong> 8 月 <strong class="metric">2 日</strong>成员国监管沙盒建立情况</span></li><li><span><strong class="metric">2027 年</strong> 12 月 <strong class="metric">2 日</strong>独立高<mark class="signal-mark"><strong class="signal">风险</strong></mark> AI 系统义务适用准备度</span></li><li><span><strong class="metric">2028 年</strong> 8 月 <strong class="metric">2 日</strong>嵌入产品的高<mark class="signal-mark"><strong class="signal">风险</strong></mark> AI 系统义务适用准备度</span></li><li><span>CEN-CENELEC 协调标准是否按期发布并被欧盟官方公报引用</span></li><li><span>医疗器械、机械、玩具、升降机等行业法规与 AI Act 的衔接实施法案</span></li><li><span>首批成员国主管机关、AI Office 和数据保护机构的执法或解释案例</span></li></ul>
-        </section>
-    
-      </article>
-    
-            
-    <footer>公开资料研究索引，包含来源链接、摘要、研究报告和不确定性提示。</footer>
   </main>
+  <footer>公开资料研究索引，包含来源链接、研究报告和不确定性提示。</footer>
+
 </body>
 </html>

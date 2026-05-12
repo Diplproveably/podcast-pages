@@ -1,235 +1,558 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="briefing" data-layout="dossier">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>特朗普访华前的 AI 议程：中美竞争开始需要危机热线</title>
   <style>
     :root {
-      --bg: #f6f5ef;
-      --paper: #ffffff;
-      --text: #1f2520;
-      --muted: #66716a;
-      --line: #d9ded7;
-      --accent: #0b6b5f;
-      --accent-two: #9b6a24;
-      --soft: #edf5f1;
-      --warm: #fff4dc;
-      --ink-soft: #2f3933;
+      --paper: #fff3ea;
+      --ink: #171717;
+      --muted: #64615b;
+      --line: #1c1c1c;
+      --accent: #7f2f46;
+      --accent-two: #2364aa;
+      --accent-three: #e8d7a2;
+      --sand: #efe5cf;
+      --measure: 52rem;
+      --background-signature: dossier-folder;
+      --page-background: linear-gradient(90deg, rgba(127,47,70,.10) 0 10px, transparent 10px 100%), linear-gradient(180deg, rgba(232,215,162,.32), transparent 28rem), var(--paper);
     }
     * { box-sizing: border-box; }
+    html { background: #151515; }
     body {
       margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Avenir Next", "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
-      line-height: 1.72;
+      color: var(--ink);
+      background: var(--page-background);
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      line-height: 1.86;
       letter-spacing: 0;
     }
-    main {
-      width: min(1040px, calc(100% - 34px));
-      margin: 0 auto;
-      padding: 38px 0 72px;
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; overflow-wrap: anywhere; }
+    .issue-bar {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: .58rem clamp(1rem, 4vw, 3.2rem);
+      background: color-mix(in srgb, var(--paper) 92%, white);
+      border-bottom: 2px solid var(--line);
+      backdrop-filter: blur(12px);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
     }
-    header {
-      border-bottom: 2px solid var(--text);
-      margin-bottom: 24px;
-      padding-bottom: 24px;
+    .issue-bar strong { color: var(--accent); }
+    .issue-bar span:nth-child(2) { font-weight: 900; }
+    .issue-bar span:last-child { text-align: right; color: var(--muted); }
+    .magazine-cover {
+      min-height: clamp(420px, 62vh, 680px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(17rem, 25rem);
+      gap: clamp(2rem, 5vw, 4.2rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.5rem) clamp(1rem, 5vw, 5rem) clamp(2.2rem, 4vw, 3.2rem);
+      border-bottom: 2px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .magazine-cover::before {
+      content: "POLICY";
+      position: absolute;
+      left: clamp(.7rem, 3vw, 2rem);
+      top: clamp(4rem, 9vw, 7rem);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(5rem, 17vw, 17rem);
+      line-height: .75;
+      letter-spacing: 0;
+      color: color-mix(in srgb, var(--accent-two) 13%, transparent);
+      pointer-events: none;
+    }
+    .kicker {
+      display: inline-flex;
+      gap: .6rem;
+      align-items: center;
+      font-weight: 900;
+      color: var(--accent);
+      border: 2px solid var(--line);
+      padding: .22rem .55rem;
+      background: var(--accent-three);
+      width: fit-content;
     }
     h1 {
-      font-size: clamp(2rem, 5vw, 4.6rem);
-      line-height: 1.05;
-      margin: 0 0 16px;
+      max-width: 12ch;
+      margin: 1.3rem 0 0;
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 7vw, 7.2rem);
+      line-height: .94;
+      letter-spacing: 0;
+      text-wrap: balance;
     }
-    h2 { margin: 8px 0 10px; line-height: 1.28; font-size: 1.35rem; }
-    a { color: var(--accent); text-underline-offset: 3px; overflow-wrap: anywhere; }
-    .subtitle { max-width: 760px; color: var(--muted); font-size: 1.05rem; }
-    .nav { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 18px; }
-    .info-list { display: grid; gap: 16px; }
-    .info-card {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 20px 22px;
-      box-shadow: 0 18px 50px rgba(31, 37, 32, .06);
+    .deck {
+      max-width: 56rem;
+      font-size: clamp(1.1rem, 1.65vw, 1.48rem);
+      line-height: 1.62;
+      margin: 2rem 0 0;
+      color: #24211d;
+      border-left: .65rem solid var(--accent);
+      padding-left: 1.2rem;
     }
-    .meta { color: var(--muted); font-size: .92rem; }
-    .summary { font-size: 1.02rem; }
-    .why {
-      background: var(--soft);
-      border-left: 4px solid var(--accent);
-      padding: 10px 12px;
-      color: #26322d;
+    .cover-meta { align-self: stretch; display: grid; align-content: end; gap: 1rem; }
+    .cover-card {
+      border: 2px solid var(--line);
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 9px 9px 0 var(--accent-two);
     }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-    .tags span {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 3px 9px;
-      color: var(--muted);
-      font-size: .86rem;
-      background: #fbfcfa;
-    }
-    .actions { margin-bottom: 0; }
-    .analysis, .detailed-summary, .news-anchor, .research-questions, .research-sources,
-    .detailed-report, .uncertainties, .follow-up {
-      border-top: 1px solid var(--line);
-      margin-top: 18px;
-      padding-top: 14px;
-    }
-    .anchor-report { border-left: 5px solid var(--accent-two); }
-    .analysis h2, .detailed-summary h2, .news-anchor h2, .research-questions h2,
-    .research-sources h2, .detailed-report h2, .uncertainties h2, .follow-up h2 { font-size: 1.05rem; margin-top: 0; }
-    .analysis p, .detailed-summary p, .news-anchor p, .detailed-report p { margin: 0 0 12px; }
-    .report-body {
-      max-width: 820px;
+    .cover-card h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.35; color: var(--accent); }
+    .cover-card ol, .cover-card ul { margin: 0; padding-left: 1.15rem; }
+    .cover-card li { margin: .48rem 0; line-height: 1.55; }
+    .article-shell {
       display: grid;
-      gap: 14px;
-    }
-    .report-body p {
-      color: var(--ink-soft);
-      margin: 0;
-      font-size: 1.03rem;
-    }
-    .report-lede {
-      padding: 16px 18px;
-      background: #fbf8ed;
-      border-left: 5px solid var(--accent-two);
-      font-size: 1.12rem !important;
-    }
-    .report-callout {
-      padding: 13px 16px;
-      background: #fbfcfa;
-      border: 1px solid #dbe7e1;
-      border-left: 4px solid var(--accent);
-      box-shadow: inset 0 0 0 9999px rgba(11, 107, 95, .025);
-    }
-    strong.signal, strong.metric {
-      color: #123f38;
-      font-weight: 800;
-    }
-    mark {
-      background: rgba(221, 166, 74, .22);
-      color: inherit;
-      padding: 0 .12em;
-      border-radius: 3px;
-    }
-    .signal-mark {
-      background: rgba(221, 166, 74, .24);
-      box-decoration-break: clone;
-      -webkit-box-decoration-break: clone;
-    }
-    .question-list {
-      counter-reset: question;
-      list-style: none;
-      padding-left: 0;
-      display: grid;
-      gap: 10px;
-    }
-    .question-list li {
-      counter-increment: question;
-      display: grid;
-      grid-template-columns: 2.1rem 1fr;
-      gap: 10px;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.6rem, 3vw, 3.2rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3rem);
       align-items: start;
-      background: #fbfcfa;
-      border: 1px solid var(--line);
-      padding: 10px 12px;
     }
-    .question-list li::before {
-      content: counter(question);
-      width: 1.7rem;
-      height: 1.7rem;
-      border-radius: 50%;
-      display: inline-grid;
-      place-items: center;
-      background: var(--accent);
-      color: white;
-      font-weight: 700;
-      font-size: .9rem;
-    }
-    .source-list, .note-list {
+    .editor-note {
+      grid-column: 1 / -1;
       display: grid;
-      gap: 9px;
-      padding-left: 20px;
+      grid-template-columns: minmax(10rem, 15rem) minmax(0, 1fr);
+      gap: 1.2rem;
+      border-top: 5px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: 1rem 0 1.1rem;
+      color: var(--muted);
+      font-size: .94rem;
+      line-height: 1.7;
     }
-    .source-title {
+    .editor-note b {
+      display: block;
+      color: var(--ink);
+      font-size: .82rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .25rem;
+    }
+    .editor-note p { margin: 0; }
+    .magazine-article { min-width: 0; font-size: clamp(1.04rem, 1.05vw, 1.18rem); }
+    .article-shell > .magazine-article { grid-column: 1; }
+    .magazine-article p { margin: 0 0 1.35rem; text-align: justify; text-wrap: pretty; }
+    .magazine-article .lede {
+      font-size: clamp(1.24rem, 2vw, 1.58rem);
+      line-height: 1.75;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+    .dropcap {
+      float: left;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 5.8rem;
+      line-height: .8;
+      padding: .18rem .55rem .1rem 0;
+      color: var(--accent);
+    }
+    .magazine-emphasis {
+      margin: 2rem 0 !important;
+      padding: 1.1rem 1.25rem;
+      border-left: .45rem solid var(--accent-two);
+      background: linear-gradient(90deg, color-mix(in srgb, var(--accent-two) 12%, transparent), transparent 78%);
+      font-weight: 600;
+    }
+    .pullquote {
+      margin: 2.4rem -4rem 2.4rem 0;
+      padding: 1.1rem 0 1.2rem 1.5rem;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      background: var(--paper);
+    }
+    .pullquote span { color: var(--accent); font-size: .78rem; font-weight: 900; letter-spacing: .13em; }
+    .pullquote p {
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-size: clamp(1.6rem, 3vw, 2.45rem);
+      line-height: 1.28;
+      margin: .35rem 0 0;
+      text-align: left;
+    }
+    .metric {
+      font-variant-numeric: tabular-nums;
+      color: var(--accent);
+      font-weight: 900;
+      background: linear-gradient(transparent 55%, color-mix(in srgb, var(--accent-three) 65%, transparent) 0);
+    }
+    .signal {
+      font-weight: 900;
+      text-decoration: underline;
+      text-decoration-color: var(--accent-two);
+      text-decoration-thickness: .18em;
+      text-underline-offset: .14em;
+    }
+    .companion-rail {
+      position: sticky;
+      top: 3.8rem;
+      grid-column: 2;
+      align-self: start;
+      border-top: 5px solid var(--line);
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+      padding-top: 1rem;
+    }
+    .companion-rail b { color: var(--ink); }
+    .backmatter {
+      grid-column: 1 / -1;
       display: grid;
-      gap: 2px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.2rem;
+      margin-top: 2.4rem;
+      border-top: 2px solid var(--line);
+      padding-top: 1.4rem;
     }
-    .source-meta {
+    .module { background: #fff; border: 2px solid var(--line); padding: 1rem 1.1rem; box-shadow: 6px 6px 0 var(--sand); }
+    .module h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.3; color: var(--accent); }
+    .module ul { margin: 0; padding-left: 1.1rem; }
+    .module li { margin: .5rem 0; line-height: 1.58; }
+    .source-list li { display: grid; gap: .12rem; margin-bottom: .8rem; }
+    .source-meta { color: var(--muted); font-size: .86rem; }
+    .source-meta::before { content: "来源 · "; }
+    .sources-module { grid-column: 1 / -1; }
+    .newspaper-masthead {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.8rem) clamp(1rem, 4vw, 3rem) 1.6rem;
+      border-bottom: 5px double var(--line);
+    }
+    .newspaper-kicker {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.4rem, 3vw, 3rem);
+      line-height: 1;
+      color: var(--accent);
+      text-transform: uppercase;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: .35rem 0;
+    }
+    .newspaper-masthead h1 {
+      max-width: 20ch;
+      font-size: clamp(2.6rem, 5.5vw, 6.2rem);
+      line-height: .98;
+    }
+    .newspaper-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem 1.1rem;
+      margin-top: 1rem;
+      padding-top: .8rem;
+      border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: .9rem;
     }
-    .source-meta::before { content: "来源 · "; }
-    .note-list li > .list-key {
-      display: block;
-      margin-bottom: 2px;
+    .market-strip {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr 1fr;
+      gap: 1rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      border-bottom: 2px solid var(--line);
+      background: color-mix(in srgb, var(--accent-three) 26%, var(--paper));
+      font-size: .94rem;
+      line-height: 1.55;
     }
-    .research-sources li, .research-questions li, .uncertainties li, .follow-up li { margin: 0 0 8px; }
-    .topic-index { columns: 2; padding-left: 20px; }
-    .topic-index li { break-inside: avoid; margin: 0 0 8px; }
-    footer { color: var(--muted); margin-top: 34px; font-size: .9rem; }
-    @media (max-width: 720px) {
-      .topic-index { columns: 1; }
+    .market-strip b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .08em; }
+    .market-strip p, .market-strip ol, .market-strip ul { margin: .35rem 0 0; }
+    .market-strip ol, .market-strip ul { padding-left: 1.1rem; }
+    .newspaper-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .newspaper-article .lede {
+      column-span: all;
+      border-top: 2px solid var(--line);
+      padding-top: 1rem;
+    }
+    .newspaper-article { grid-column: 1; }
+    .newspaper-rail {
+      position: sticky;
+      top: 3.8rem;
+      border-left: 2px solid var(--line);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .dossier-cover {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.6rem) clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
+      gap: clamp(1.5rem, 4vw, 3.8rem);
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+    }
+    .dossier-stamp {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      align-self: start;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      color: var(--accent);
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: color-mix(in srgb, var(--accent-three) 35%, white);
+    }
+    .dossier-cover h1 {
+      max-width: 18ch;
+      font-size: clamp(2.7rem, 6vw, 6.6rem);
+      line-height: .98;
+    }
+    .dossier-summary {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.5vw, 1.36rem);
+      border-left: .45rem solid var(--accent);
+      padding-left: 1rem;
+    }
+    .dossier-source { color: var(--muted); margin: 0; }
+    .dossier-shell {
+      display: grid;
+      grid-template-columns: minmax(12rem, 17rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .dossier-index {
+      position: sticky;
+      top: 3.8rem;
+      border-top: 5px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .dossier-index b { display: block; color: var(--ink); margin-bottom: .6rem; }
+    .dossier-index ol { margin: 0 0 1rem; padding-left: 1.1rem; }
+    .dossier-article { grid-column: 2; }
+    .field-cover {
+      min-height: clamp(460px, 64vh, 720px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr);
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      border-bottom: 2px solid var(--line);
+      background:
+        linear-gradient(135deg, transparent 0 48%, color-mix(in srgb, var(--accent-three) 24%, transparent) 48% 52%, transparent 52%),
+        var(--paper);
+    }
+    .field-topline {
+      grid-column: 1 / -1;
+      width: fit-content;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: .25rem .7rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .field-cover h1 {
+      max-width: 16ch;
+      font-size: clamp(2.8rem, 6.4vw, 7rem);
+    }
+    .field-deck {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.55vw, 1.38rem);
+      line-height: 1.62;
+      border-left: .5rem solid var(--accent-two);
+      padding-left: 1rem;
+    }
+    .field-map {
+      border: 2px solid var(--line);
+      background: rgba(255,255,255,.76);
+      padding: 1rem;
+      box-shadow: 10px 10px 0 color-mix(in srgb, var(--accent) 70%, black);
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+    .field-map b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .1em; }
+    .field-map ol { margin: .55rem 0 1rem; padding-left: 1.2rem; }
+    .field-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(13rem, 17rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .field-log {
+      position: sticky;
+      top: 3.8rem;
+      border-left: .35rem solid var(--accent-two);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .field-article { grid-column: 1; }
+    .lab-cover {
+      padding: clamp(2.6rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      min-height: clamp(420px, 58vh, 650px);
+      display: grid;
+      align-content: center;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+      background:
+        linear-gradient(90deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        linear-gradient(0deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        var(--paper);
+    }
+    .lab-label {
+      width: fit-content;
+      background: var(--ink);
+      color: #fff;
+      padding: .28rem .65rem;
+      font-size: .82rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .lab-cover h1 {
+      max-width: 22ch;
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 5.8rem);
+      line-height: 1.04;
+    }
+    .lab-deck {
+      max-width: 62rem;
+      font-size: clamp(1.06rem, 1.45vw, 1.32rem);
+      border-top: 2px solid var(--accent);
+      padding-top: 1rem;
+    }
+    .protocol-strip {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .75rem;
+      border-bottom: 2px solid var(--line);
+      font-size: .88rem;
+    }
+    .protocol-strip div {
+      border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
+      padding: .75rem;
+      background: rgba(255,255,255,.68);
+      min-width: 0;
+    }
+    .protocol-strip b {
+      display: block;
+      color: var(--accent-two);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .protocol-strip span { overflow-wrap: anywhere; }
+    .lab-shell {
+      display: grid;
+      grid-template-columns: minmax(14rem, 19rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .lab-notes {
+      position: sticky;
+      top: 3.8rem;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      background: #fff;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .lab-notes b { color: var(--ink); }
+    .lab-notes ol { padding-left: 1.1rem; }
+    .lab-article { grid-column: 2; }
+    footer { color: var(--muted); padding: 0 clamp(1rem, 4vw, 3rem) 3rem; max-width: 1220px; margin: 0 auto; font-size: .9rem; }
+    @media (max-width: 1100px) {
+      .magazine-cover { grid-template-columns: 1fr; min-height: auto; }
+      .cover-meta { max-width: 42rem; }
+      .article-shell { grid-template-columns: 1fr; }
+      .editor-note { grid-template-columns: 1fr; }
+      .companion-rail { position: static; grid-column: 1; }
+      .backmatter { grid-column: 1; grid-template-columns: 1fr; }
+      .pullquote { margin-right: 0; }
+      h1 { max-width: 11ch; }
+      .market-strip, .protocol-strip { grid-template-columns: 1fr; }
+      .newspaper-shell, .dossier-shell, .field-shell, .lab-shell { grid-template-columns: 1fr; }
+      .newspaper-rail, .dossier-index, .field-log, .lab-notes { position: static; }
+      .dossier-article, .lab-article { grid-column: 1; }
+      .dossier-cover, .field-cover { grid-template-columns: 1fr; min-height: auto; }
+      .dossier-stamp { grid-column: 1; grid-row: auto; }
+    }
+    @media (max-width: 640px) {
+      .issue-bar { grid-template-columns: 1fr; gap: .15rem; }
+      .issue-bar span:last-child { text-align: left; }
+      .magazine-cover { padding-top: 2.4rem; }
+      h1 { font-size: clamp(2.65rem, 16vw, 4.8rem); }
+      .deck { border-left-width: .45rem; padding-left: .8rem; }
+      .magazine-article p { text-align: left; }
+      .dropcap { font-size: 4.6rem; }
+      .module { box-shadow: 4px 4px 0 var(--sand); }
     }
   </style>
 </head>
 <body>
-  <main>
-    
-            <header>
-              <h1>特朗普访华前的 AI 议程：中美竞争开始需要危机热线</h1>
-              <p class="subtitle">新闻锚点驱动的主题研究报告 · 2026-05-08</p>
-              <div class="nav"><a href="../../">返回信息流</a><a href="https://www.csis.org/analysis/trump-xi-summit-beijing-managing-worlds-most-important-relationship">打开锚点来源</a></div>
-            </header>
-            
-      <article class="info-card anchor-report">
-        <div class="meta">2026-05-08 · 主题研究报告</div>
-        <h2>特朗普访华前的 AI 议程：中美竞争开始需要危机热线</h2>
-        <p class="summary">特朗普 5 月 14-15 日访华前，AI 被放进中美峰会议程的可能性上升。这个议题的重点不是双方要停止竞争，而是强竞争关系开始需要沟通机制：模型能力、算力出口、AI 安全、军事误判和技术窃取指控都在逼近危机管理层面。</p>
-        <p class="why"><strong>新闻锚点：</strong><a href="https://www.csis.org/analysis/trump-xi-summit-beijing-managing-worlds-most-important-relationship">Trump-Xi Summit in Beijing: Managing the World’s Most Important Relationship</a> · CSIS</p>
-        <div class="tags"><span>geopolitics</span> <span>ai-policy</span> <span>us-policy</span> <span>china-policy</span></div>
-      
-        <section class="news-anchor">
-          <h2>新闻锚点</h2>
-          <p><a href="https://www.csis.org/analysis/trump-xi-summit-beijing-managing-worlds-most-important-relationship">Trump-Xi Summit in Beijing: Managing the World’s Most Important Relationship</a> · CSIS</p>
-        </section>
-            
 
-        <section class="research-questions">
-          <h2>研究问题</h2>
-          <ol class="question-list"><li><span>为什么中美 AI 竞争在 <strong class="metric">2026 年</strong>开始需要正式沟通机制？</span></li><li><span>AI 安全对话和芯片、出口管制、知识产权冲突之间如何互相缠绕？</span></li><li><span>特朗普访华议程中的贸易、伊朗、台湾和 AI 为什么会相互影响？</span></li><li><span>Stanford AI Index 反映出的中美差距和优势如何改变谈判结构？</span></li></ol>
-        </section>
+  <div class="issue-bar"><span><strong>Infohub</strong> article</span><span>Magazine research page</span><span>2026-05-08</span></div>
+  <header class="dossier-cover">
+    <div class="dossier-stamp">POLICY / GOVERNANCE</div>
+    <h1>特朗普访华前的 AI 议程：中美竞争开始需要危机热线</h1>
+    <p class="dossier-summary">特朗普 <strong class="metric">5 月</strong> 14-<strong class="metric">15 日</strong>访华前，AI 被放进中美峰会议程的可能性上升。这个议题的重点不是双方要停止竞争，而是强竞争关系开始需要沟通机制：模型能力、算力出口、AI 安全、军事误判和技术窃取指控都在逼近危机管理层面。</p>
+    <p class="dossier-source"><a href="https://www.csis.org/analysis/trump-xi-summit-beijing-managing-worlds-most-important-relationship">Trump-Xi Summit in Beijing: Managing the World’s Most Important Relationship</a> · CSIS · 2026-05-08</p>
+  </header>
+  <main class="dossier-shell">
+    <aside class="dossier-index">
+      <b>案卷索引</b>
+      <ol><li>为什么中美 AI 竞争在 <strong class="metric">2026 年</strong>开始需要正式沟通机制？</li><li>AI 安全对话和芯片、出口管制、知识产权冲突之间如何互相缠绕？</li><li>特朗普访华议程中的贸易、伊朗、台湾和 AI 为什么会相互影响？</li><li>Stanford AI Index 反映出的中美差距和优势如何改变谈判结构？</li></ol>
+      <p><a href="../../">返回信息流首页</a></p>
+    </aside>
+    <article class="magazine-article dossier-article">
+      <p class="lede"><span class="dropcap">特</span>朗普计划于 <strong class="metric">2026 年</strong> <strong class="metric">5 月</strong> 14-<strong class="metric">15 日</strong>访华，与习近平会晤。贸易、台湾、伊朗和能源自然会占据新闻标题，但 AI 正在成为这场峰会里更有长期意味的议题。CSIS 的分析提到，双方可能讨论建立进一步双边 AI <strong class="signal">风险</strong>与安全对话框架；Axios 则把这种沟通比作冷战时期为了避免误判而建立的热线逻辑。这个比喻不应被夸张成 AI 已经等同核武器，但它抓住了一个现实：当技术竞争进入国家安全、产业政策和军事风险层面，完全没有沟通机制本身就是风险。</p><p class="magazine-emphasis">中美 AI 竞争有两条线。一条是产业线：模型、芯片、数据中心、电力、开源生态、应用场景和资本投入。另一条是安全线：模型被用于网络攻防、自动化情报、军事决策辅助、虚假信息、<strong class="signal">关键</strong>基础设施和生物安全等场景。前者推动双方继续竞赛，后者要求双方至少知道哪些行为可能触发危机。AI 安全对话的意义不是让竞争消失，而是给竞争设置最低限度的误判缓冲。</p><p>这也是为什么 AI 议题会和芯片出口管制、知识产权和模型蒸馏指控缠在一起。美国近期指责中国相关行为体以工业规模窃取或蒸馏美国前沿模型能力，这类指控会把技术竞争推向更高对抗性。中国则会把美国芯片限制、模型封锁和产业联盟视为遏制。双方都可能把对方的安全措施理解为竞争工具，把竞争措施包装成安全措施。没有沟通机制时，这种互不<strong class="signal">信任</strong>会让每一项技术政策都更难解释。</p><aside class="pullquote"><span>摘句</span><p>Stanford 2026 AI Index 提供了结构背景。</p></aside><p>Stanford 2026 AI Index 提供了结构背景。报告显示，美国私人 AI 投资仍远高于中国，但只看私人投资可能低估中国通过政府引导基金、产业政策和实体经济场景推进 AI 的能力。美国优势在资本、头部模型、云生态和基础研究企业化；中国优势在应用扩散、制造场景、政策动员和数据丰富的线下经济。两种优势不同，意味着谈判不是简单的“谁领先谁让步”。美国担心能力泄漏和安全<strong class="signal">风险</strong>，中国担心被排除在先进算力和标准之外。</p><p>AI 也会和本次峰会其他议题互相影响。伊朗和霍尔木兹让能源安全成为中美关系的即时变量，中国作为能源进口大国和伊朗重要伙伴，被美国期待发挥某种稳定作用；台湾议题牵涉军事误判；贸易议题牵涉关税、稀土和供应链。AI 在这些议题中并不孤立：高端芯片供应链涉及台湾和荷兰设备，数据中心用电牵涉能源价格，AI 军事化牵涉台海和印太<strong class="signal">风险</strong>，稀土和<strong class="signal">关键</strong>矿物又影响电力、芯片和制造。峰会的 AI 对话如果存在，也会被这些议题的交换空间影响。</p><p><strong class="signal">真正</strong>可行的 AI 沟通机制可能不会从宏大条约开始，而会从低层级、可操作的<strong class="signal">风险</strong>议题开始。例如，双方可以确认核武器使用决策必须有人类控制；建立 AI 事故和模型滥用的技术沟通渠道；交换<strong class="signal">关键</strong>基础设施 AI 安全测试原则；讨论前沿模型网络安全能力的披露边界；在国际论坛上推动合成内容标识和选举虚假信息治理。每一项都不容易，但比直接谈“停止 AI 竞争”更现实。</p><p class="magazine-emphasis">这里有一个张力：安全对话也可能被双方用于争取技术优势。美国可能担心中国借安全合作获取更多前沿系统信息；中国可能担心安全话语成为新的出口管制理由。任何 AI 对话都需要把透明和防扩散之间的边界说清楚。技术细节给得太多，会泄露能力；给得太少，对话又沦为空话。冷战军控经验能提供机制想象，但 AI 的商业扩散速度、开源模型生态和私营公司角色，都让它比传统军控更分散。</p><p>因此，特朗普访华前的 AI 议程最稳妥的判断是：如果双方真的开启 AI 安全沟通，它更像一个承认现实的起点，而不是缓和竞争的终点。中美都不会停止争夺模型、芯片、应用和标准；但如果双方承认某些 AI <strong class="signal">风险</strong>可能越过竞争收益，建立最低限度的沟通渠道就有价值。未来几年，判断中美 AI 关系是否更危险，不只看出口管制有多严，也要看有没有足够多的技术官员、监管者、实验室和企业能在危机前说上话。</p><p>这场峰会的复杂性在于，中美都需要稳定，但稳定的含义并不相同。美国希望在不放弃技术优势和出口管制的情况下，避免 AI 竞争演化为不可控危机；中国希望在不接受技术封锁的情况下，获得更可预测的外部环境。AI 对话如果启动，很可能会被双方各自包装成负责任大国沟通，但实际谈判会非常具体：哪些能力需要预警，哪些出口限制可以谈，哪些安全原则可以公开承诺，哪些技术细节绝不能交换。</p><p class="magazine-emphasis">AI 与军事误判的关系会越来越突出。自主无人系统、情报分析、网络攻防、卫星图像识别和指挥辅助都可能使用 AI。即使双方都宣称<strong class="signal">关键</strong>决策由人类控制，也仍然可能在低层级自动化系统中出现误识别、误拦截或错误升级。危机沟通机制的价值就在于，当某个 AI 相关事件发生时，双方至少知道应该由哪个部门、哪一级官员、哪条渠道进行解释，而不是让媒体和军方猜测填满空白。</p><p>企业角色让这类沟通更难。前沿模型、云平台、芯片、数据中心和网络安全工具大多由公司开发和运营，政府不一定掌握全部技术细节。美国政府想谈 AI 安全，离不开 OpenAI、Google、Anthropic、Microsoft、NVIDIA 等公司的能力边界；中国也离不开国内模型公司、云厂商、芯片企业和应用平台。传统外交面对的是国家行为体，AI 外交则必须处理国家与企业共同塑造能力扩散的现实。</p><p>同时，AI 安全对话也不能脱离产业利益。美国如果过度把安全话语用于限制中国获取算力，可能会刺激中国更快建设替代生态；中国如果把安全对话用于争取先进芯片和模型访问，美国安全圈会更抵触合作。双方需要找到一个窄门：在不开放<strong class="signal">核心</strong>能力的情况下，交流事故响应、模型滥用、合成内容、核与军事人类控制、<strong class="signal">关键</strong>基础设施防护等公共<strong class="signal">风险</strong>。这个窄门很小，但比完全没有门要好。</p><p>判断这次峰会的 AI 成果，不能只看是否发表漂亮措辞。更实在的指标是有没有<strong class="signal">后续</strong>机制：是否安排部长级或技术级工作组，是否定期会晤，是否指定联系人，是否把 AI 安全放进已有战略稳定对话，是否邀请实验室和企业参与闭门技术交流。没有机制的共识很容易在下一轮出口管制或网络指控中消失；有机制，至少能让竞争在某些底线问题上留下回旋余地。</p><p>还需要把公众舆论放进来。美国社会对 AI 的态度更复杂，一方面享受生产率工具和资本市场红利，另一方面担心就业、<strong class="signal">隐私</strong>、儿童安全和国家安全；中国则更强调 AI 进入制造、政务、教育和产业升级的实际应用。公众期待不同，会影响政府谈判空间。美国政府很难把 AI 合作讲成向中国让步，中国政府也不会接受把 AI 安全对话变成单方面约束自身发展的框架。</p>
+    </article>
     
-
-        <section class="research-sources">
-          <h2>研究来源</h2>
-          <ul class="source-list"><li><span class="source-title"><a href="https://www.csis.org/analysis/trump-xi-summit-beijing-managing-worlds-most-important-relationship">Trump-Xi Summit in Beijing: Managing the World’s Most Important Relationship</a><span class="source-meta">CSIS</span></span></li><li><span class="source-title"><a href="https://www.axios.com/2026/05/11/trump-china-summit-iran-ai-xi-jinping">Trump&#x27;s legacy week</a><span class="source-meta">Axios</span></span></li><li><span class="source-title"><a href="https://apnews.com/article/1a0b28a9a7b9078d736ba94bf3b4d6e2">What to know about Trump-Xi summit with trade, Taiwan and Iran on the agenda</a><span class="source-meta">Associated Press</span></span></li><li><span class="source-title"><a href="https://www.abc.net.au/news/2026-05-12/trump-xi-beijing-summit-must-confront-ai-cold-war/106666482">Trump and Xi&#x27;s Beijing summit must confront the AI cold war</a><span class="source-meta">ABC News</span></span></li><li><span class="source-title"><a href="https://hai.stanford.edu/ai-index/2026-ai-index-report">The 2026 AI Index Report</a><span class="source-meta">Stanford HAI</span></span></li><li><span class="source-title"><a href="https://www.nextgov.com/artificial-intelligence/2026/04/white-house-accuses-china-deliberate-industrial-scale-campaigns-steal-us-ai-models/413083/">White House accuses China of industrial-scale campaigns to steal US AI models</a><span class="source-meta">Nextgov/FCW</span></span></li></ul>
-        </section>
+    <section class="backmatter">
+      <div class="module">
+        <h2>不确定性</h2>
+        <ul><li>峰会尚未举行，AI 是否正式进入议程以及谈到何种程度仍待确认。</li><li>部分报道来自匿名官员或智库分析，不能视为双方已达成共识。</li><li>AI 安全对话可能被贸易、台湾、伊朗和出口管制议题挤压或重塑。</li><li>本文为地缘政策研究，不预测谈判结果，也不构成政策建议。</li></ul>
+      </div>
+      <div class="module">
+        <h2>后续观察</h2>
+        <ul><li><strong class="metric">5 月</strong> 14-<strong class="metric">15 日</strong>峰会公报是否明确提到 AI、安全、<strong class="signal">风险</strong>或沟通机制</li><li>双方是否建立专门 AI 工作组、热线或技术层磋商渠道</li><li>美国对 AI 芯片、模型权重、云访问和蒸馏指控的<strong class="signal">后续</strong>政策</li><li>中国对 AI 应用治理、算力国产化和国际 AI 安全合作的表述</li><li>台海、伊朗、稀土和能源议题是否影响 AI 对话空间</li></ul>
+      </div>
+      <div class="module sources-module">
+        <h2>研究来源</h2>
+        <ul class="source-list"><li><a href="https://www.csis.org/analysis/trump-xi-summit-beijing-managing-worlds-most-important-relationship">Trump-Xi Summit in Beijing: Managing the World’s Most Important Relationship</a><span class="source-meta">CSIS</span></li><li><a href="https://www.axios.com/2026/05/11/trump-china-summit-iran-ai-xi-jinping">Trump&#x27;s legacy week</a><span class="source-meta">Axios</span></li><li><a href="https://apnews.com/article/1a0b28a9a7b9078d736ba94bf3b4d6e2">What to know about Trump-Xi summit with trade, Taiwan and Iran on the agenda</a><span class="source-meta">Associated Press</span></li><li><a href="https://www.abc.net.au/news/2026-05-12/trump-xi-beijing-summit-must-confront-ai-cold-war/106666482">Trump and Xi&#x27;s Beijing summit must confront the AI cold war</a><span class="source-meta">ABC News</span></li><li><a href="https://hai.stanford.edu/ai-index/2026-ai-index-report">The 2026 AI Index Report</a><span class="source-meta">Stanford HAI</span></li><li><a href="https://www.nextgov.com/artificial-intelligence/2026/04/white-house-accuses-china-deliberate-industrial-scale-campaigns-steal-us-ai-models/413083/">White House accuses China of industrial-scale campaigns to steal US AI models</a><span class="source-meta">Nextgov/FCW</span></li></ul>
+      </div>
+    </section>
     
-
-        <section class="detailed-report">
-          <h2>研究报告</h2>
-          <div class="report-body"><p class="report-lede"><strong>特朗普计划于 <strong class="metric">2026 年</strong> 5 月 14-<strong class="metric">15 日</strong>访华，与习近平会晤。</strong>贸易、台湾、伊朗和能源自然会占据新闻标题，但 AI 正在成为这场峰会里更有长期意味的议题。CSIS 的分析提到，双方可能讨论建立进一步双边 AI <mark class="signal-mark"><strong class="signal">风险</strong></mark>与安全对话框架；Axios 则把这种沟通比作冷战时期为了避免误判而建立的热线逻辑。这个比喻不应被夸张成 AI 已经等同核武器，但它抓住了一个现实：当技术竞争进入国家安全、产业政策和军事风险层面，完全没有沟通机制本身就是风险。</p><p class="report-callout"><strong>中美 AI 竞争有两条线。</strong>一条是产业线：模型、芯片、数据中心、电力、开源生态、应用场景和资本投入。另一条是安全线：模型被用于网络攻防、自动化情报、军事决策辅助、虚假信息、<mark class="signal-mark"><strong class="signal">关键</strong></mark>基础设施和生物安全等场景。前者推动双方继续竞赛，后者要求双方至少知道哪些行为可能触发危机。AI 安全对话的意义不是让竞争消失，而是给竞争设置最低限度的误判缓冲。</p><p class="report-paragraph">这也是为什么 AI 议题会和芯片出口管制、知识产权和模型蒸馏指控缠在一起。美国近期指责中国相关行为体以工业规模窃取或蒸馏美国前沿模型能力，这类指控会把技术竞争推向更高对抗性。中国则会把美国芯片限制、模型封锁和产业联盟视为遏制。双方都可能把对方的安全措施理解为竞争工具，把竞争措施包装成安全措施。没有沟通机制时，这种互不信任会让每一项技术政策都更难解释。</p><p class="report-callout"><strong>Stanford 2026 AI Index 提供了结构背景。</strong>报告显示，美国私人 AI 投资仍远高于中国，但只看私人投资可能低估中国通过政府引导基金、产业政策和实体经济场景推进 AI 的能力。美国优势在资本、头部模型、云生态和基础研究企业化；中国优势在应用扩散、制造场景、政策动员和数据丰富的线下经济。两种优势不同，意味着谈判不是简单的“谁领先谁让步”。美国担心能力泄漏和安全<mark class="signal-mark"><strong class="signal">风险</strong></mark>，中国担心被排除在先进算力和标准之外。</p><p class="report-paragraph">AI 也会和本次峰会其他议题互相影响。伊朗和霍尔木兹让能源安全成为中美关系的即时变量，中国作为能源进口大国和伊朗重要伙伴，被美国期待发挥某种稳定作用；台湾议题牵涉军事误判；贸易议题牵涉关税、稀土和供应链。AI 在这些议题中并不孤立：高端芯片供应链涉及台湾和荷兰设备，数据中心用电牵涉能源价格，AI 军事化牵涉台海和印太风险，稀土和<mark class="signal-mark"><strong class="signal">关键</strong></mark>矿物又影响电力、芯片和制造。峰会的 AI 对话如果存在，也会被这些议题的交换空间影响。</p><p class="report-paragraph"><mark class="signal-mark"><strong class="signal">真正</strong></mark>可行的 AI 沟通机制可能不会从宏大条约开始，而会从低层级、可操作的风险议题开始。例如，双方可以确认核武器使用决策必须有人类控制；建立 AI 事故和模型滥用的技术沟通渠道；交换关键基础设施 AI 安全测试原则；讨论前沿模型网络安全能力的披露边界；在国际论坛上推动合成内容标识和选举虚假信息治理。每一项都不容易，但比直接谈“停止 AI 竞争”更现实。</p><p class="report-paragraph">这里有一个张力：安全对话也可能被双方用于争取技术优势。美国可能担心中国借安全合作获取更多前沿系统信息；中国可能担心安全话语成为新的出口管制理由。任何 AI 对话都需要把透明和防扩散之间的边界说清楚。技术细节给得太多，会泄露能力；给得太少，对话又沦为空话。冷战军控经验能提供机制想象，但 AI 的商业扩散速度、开源模型生态和私营公司角色，都让它比传统军控更分散。</p><p class="report-paragraph">因此，特朗普访华前的 AI 议程最稳妥的判断是：如果双方真的开启 AI 安全沟通，它更像一个承认现实的起点，而不是缓和竞争的终点。中美都不会停止争夺模型、芯片、应用和标准；但如果双方承认某些 AI <mark class="signal-mark"><strong class="signal">风险</strong></mark>可能越过竞争收益，建立最低限度的沟通渠道就有价值。未来几年，判断中美 AI 关系是否更危险，不只看出口管制有多严，也要看有没有足够多的技术官员、监管者、实验室和企业能在危机前说上话。</p><p class="report-paragraph">这场峰会的复杂性在于，中美都需要稳定，但稳定的含义并不相同。美国希望在不放弃技术优势和出口管制的情况下，避免 AI 竞争演化为不可控危机；中国希望在不接受技术封锁的情况下，获得更可预测的外部环境。AI 对话如果启动，很可能会被双方各自包装成负责任大国沟通，但实际谈判会非常具体：哪些能力需要预警，哪些出口限制可以谈，哪些安全原则可以公开承诺，哪些技术细节绝不能交换。</p><p class="report-paragraph">AI 与军事误判的关系会越来越突出。自主无人系统、情报分析、网络攻防、卫星图像识别和指挥辅助都可能使用 AI。即使双方都宣称<mark class="signal-mark"><strong class="signal">关键</strong></mark>决策由人类控制，也仍然可能在低层级自动化系统中出现误识别、误拦截或错误升级。危机沟通机制的价值就在于，当某个 AI 相关事件发生时，双方至少知道应该由哪个部门、哪一级官员、哪条渠道进行解释，而不是让媒体和军方猜测填满空白。</p><p class="report-paragraph">企业角色让这类沟通更难。前沿模型、云平台、芯片、数据中心和网络安全工具大多由公司开发和运营，政府不一定掌握全部技术细节。美国政府想谈 AI 安全，离不开 OpenAI、Google、Anthropic、Microsoft、NVIDIA 等公司的能力边界；中国也离不开国内模型公司、云厂商、芯片企业和应用平台。传统外交面对的是国家行为体，AI 外交则必须处理国家与企业共同塑造能力扩散的现实。</p><p class="report-paragraph">同时，AI 安全对话也不能脱离产业利益。美国如果过度把安全话语用于限制中国获取算力，可能会刺激中国更快建设替代生态；中国如果把安全对话用于争取先进芯片和模型访问，美国安全圈会更抵触合作。双方需要找到一个窄门：在不开放核心能力的情况下，交流事故响应、模型滥用、合成内容、核与军事人类控制、<mark class="signal-mark"><strong class="signal">关键</strong></mark>基础设施防护等公共风险。这个窄门很小，但比完全没有门要好。</p><p class="report-paragraph">判断这次峰会的 AI 成果，不能只看是否发表漂亮措辞。更实在的指标是有没有<mark class="signal-mark"><strong class="signal">后续</strong></mark>机制：是否安排部长级或技术级工作组，是否定期会晤，是否指定联系人，是否把 AI 安全放进已有战略稳定对话，是否邀请实验室和企业参与闭门技术交流。没有机制的共识很容易在下一轮出口管制或网络指控中消失；有机制，至少能让竞争在某些底线问题上留下回旋余地。</p><p class="report-paragraph">还需要把公众舆论放进来。美国社会对 AI 的态度更复杂，一方面享受生产率工具和资本市场红利，另一方面担心就业、隐私、儿童安全和国家安全；中国则更强调 AI 进入制造、政务、教育和产业升级的实际应用。公众期待不同，会影响政府谈判空间。美国政府很难把 AI 合作讲成向中国让步，中国政府也不会接受把 AI 安全对话变成单方面约束自身发展的框架。</p></div>
-        </section>
-    
-
-        <section class="uncertainties">
-          <h2>不确定性</h2>
-          <ul class="note-list"><li><span>峰会尚未举行，AI 是否正式进入议程以及谈到何种程度仍待确认。</span></li><li><span>部分报道来自匿名官员或智库分析，不能视为双方已达成共识。</span></li><li><span>AI 安全对话可能被贸易、台湾、伊朗和出口管制议题挤压或重塑。</span></li><li><span>本文为地缘政策研究，不预测谈判结果，也不构成政策建议。</span></li></ul>
-        </section>
-    
-
-        <section class="follow-up">
-          <h2>后续跟踪变量</h2>
-          <ul class="note-list"><li><span>5 月 14-<strong class="metric">15 日</strong>峰会公报是否明确提到 AI、安全、<mark class="signal-mark"><strong class="signal">风险</strong></mark>或沟通机制</span></li><li><span>双方是否建立专门 AI 工作组、热线或技术层磋商渠道</span></li><li><span>美国对 AI 芯片、模型权重、云访问和蒸馏指控的<mark class="signal-mark"><strong class="signal">后续</strong></mark>政策</span></li><li><span>中国对 AI 应用治理、算力国产化和国际 AI 安全合作的表述</span></li><li><span>台海、伊朗、稀土和能源议题是否影响 AI 对话空间</span></li></ul>
-        </section>
-    
-      </article>
-    
-            
-    <footer>公开资料研究索引，包含来源链接、摘要、研究报告和不确定性提示。</footer>
   </main>
+  <footer>公开资料研究索引，包含来源链接、研究报告和不确定性提示。</footer>
+
 </body>
 </html>
