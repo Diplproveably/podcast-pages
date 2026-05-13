@@ -141,6 +141,32 @@
       margin-bottom: .25rem;
     }
     .editor-note p { margin: 0; }
+    .reading-path {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(8rem, 12rem) minmax(0, 1fr);
+      gap: 1rem;
+      align-items: start;
+      margin: .2rem 0 1.4rem;
+      padding: 1rem 1.1rem;
+      border: 2px solid color-mix(in srgb, var(--accent) 55%, var(--line));
+      background: color-mix(in srgb, var(--accent-three) 22%, rgba(255,255,255,.72));
+      box-shadow: 7px 7px 0 color-mix(in srgb, var(--accent-two) 48%, transparent);
+    }
+    .reading-path b {
+      color: var(--accent);
+      font-size: .86rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .reading-path ol {
+      margin: 0;
+      padding-left: 1.1rem;
+      display: grid;
+      gap: .45rem;
+      color: #2b2b2b;
+      line-height: 1.62;
+    }
     .magazine-article { min-width: 0; font-size: clamp(1.04rem, 1.05vw, 1.18rem); }
     .article-shell > .magazine-article { grid-column: 1; }
     .magazine-article p { margin: 0 0 1.35rem; text-align: justify; text-wrap: pretty; }
@@ -532,6 +558,7 @@
       <ol><li>为什么中美 AI 竞争在 <strong class="metric">2026 年</strong>开始需要正式沟通机制？</li><li>AI 安全对话和芯片、出口管制、知识产权冲突之间如何互相缠绕？</li><li>特朗普访华议程中的贸易、伊朗、台湾和 AI 为什么会相互影响？</li><li>Stanford AI Index 反映出的中美差距和优势如何改变谈判结构？</li></ol>
       <p><a href="../../">返回信息流首页</a></p>
     </aside>
+    
     <article class="magazine-article dossier-article">
       <p class="lede"><span class="dropcap">特</span>朗普计划于 <strong class="metric">2026 年</strong> <strong class="metric">5 月</strong> 14-<strong class="metric">15 日</strong>访华，与习近平会晤。贸易、台湾、伊朗和能源自然会占据新闻标题，但 AI 正在成为这场峰会里更有长期意味的议题。CSIS 的分析提到，双方可能讨论建立进一步双边 AI <strong class="signal">风险</strong>与安全对话框架；Axios 则把这种沟通比作冷战时期为了避免误判而建立的热线逻辑。这个比喻不应被夸张成 AI 已经等同核武器，但它抓住了一个现实：当技术竞争进入国家安全、产业政策和军事风险层面，完全没有沟通机制本身就是风险。</p><p class="magazine-emphasis">中美 AI 竞争有两条线。一条是产业线：模型、芯片、数据中心、电力、开源生态、应用场景和资本投入。另一条是安全线：模型被用于网络攻防、自动化情报、军事决策辅助、虚假信息、<strong class="signal">关键</strong>基础设施和生物安全等场景。前者推动双方继续竞赛，后者要求双方至少知道哪些行为可能触发危机。AI 安全对话的意义不是让竞争消失，而是给竞争设置最低限度的误判缓冲。</p><p>这也是为什么 AI 议题会和芯片出口管制、知识产权和模型蒸馏指控缠在一起。美国近期指责中国相关行为体以工业规模窃取或蒸馏美国前沿模型能力，这类指控会把技术竞争推向更高对抗性。中国则会把美国芯片限制、模型封锁和产业联盟视为遏制。双方都可能把对方的安全措施理解为竞争工具，把竞争措施包装成安全措施。没有沟通机制时，这种互不<strong class="signal">信任</strong>会让每一项技术政策都更难解释。</p><aside class="pullquote"><span>摘句</span><p>Stanford 2026 AI Index 提供了结构背景。</p></aside><p>Stanford 2026 AI Index 提供了结构背景。报告显示，美国私人 AI 投资仍远高于中国，但只看私人投资可能低估中国通过政府引导基金、产业政策和实体经济场景推进 AI 的能力。美国优势在资本、头部模型、云生态和基础研究企业化；中国优势在应用扩散、制造场景、政策动员和数据丰富的线下经济。两种优势不同，意味着谈判不是简单的“谁领先谁让步”。美国担心能力泄漏和安全<strong class="signal">风险</strong>，中国担心被排除在先进算力和标准之外。</p><p>AI 也会和本次峰会其他议题互相影响。伊朗和霍尔木兹让能源安全成为中美关系的即时变量，中国作为能源进口大国和伊朗重要伙伴，被美国期待发挥某种稳定作用；台湾议题牵涉军事误判；贸易议题牵涉关税、稀土和供应链。AI 在这些议题中并不孤立：高端芯片供应链涉及台湾和荷兰设备，数据中心用电牵涉能源价格，AI 军事化牵涉台海和印太<strong class="signal">风险</strong>，稀土和<strong class="signal">关键</strong>矿物又影响电力、芯片和制造。峰会的 AI 对话如果存在，也会被这些议题的交换空间影响。</p><p><strong class="signal">真正</strong>可行的 AI 沟通机制可能不会从宏大条约开始，而会从低层级、可操作的<strong class="signal">风险</strong>议题开始。例如，双方可以确认核武器使用决策必须有人类控制；建立 AI 事故和模型滥用的技术沟通渠道；交换<strong class="signal">关键</strong>基础设施 AI 安全测试原则；讨论前沿模型网络安全能力的披露边界；在国际论坛上推动合成内容标识和选举虚假信息治理。每一项都不容易，但比直接谈“停止 AI 竞争”更现实。</p><p class="magazine-emphasis">这里有一个张力：安全对话也可能被双方用于争取技术优势。美国可能担心中国借安全合作获取更多前沿系统信息；中国可能担心安全话语成为新的出口管制理由。任何 AI 对话都需要把透明和防扩散之间的边界说清楚。技术细节给得太多，会泄露能力；给得太少，对话又沦为空话。冷战军控经验能提供机制想象，但 AI 的商业扩散速度、开源模型生态和私营公司角色，都让它比传统军控更分散。</p><p>因此，特朗普访华前的 AI 议程最稳妥的判断是：如果双方真的开启 AI 安全沟通，它更像一个承认现实的起点，而不是缓和竞争的终点。中美都不会停止争夺模型、芯片、应用和标准；但如果双方承认某些 AI <strong class="signal">风险</strong>可能越过竞争收益，建立最低限度的沟通渠道就有价值。未来几年，判断中美 AI 关系是否更危险，不只看出口管制有多严，也要看有没有足够多的技术官员、监管者、实验室和企业能在危机前说上话。</p><p>这场峰会的复杂性在于，中美都需要稳定，但稳定的含义并不相同。美国希望在不放弃技术优势和出口管制的情况下，避免 AI 竞争演化为不可控危机；中国希望在不接受技术封锁的情况下，获得更可预测的外部环境。AI 对话如果启动，很可能会被双方各自包装成负责任大国沟通，但实际谈判会非常具体：哪些能力需要预警，哪些出口限制可以谈，哪些安全原则可以公开承诺，哪些技术细节绝不能交换。</p><p class="magazine-emphasis">AI 与军事误判的关系会越来越突出。自主无人系统、情报分析、网络攻防、卫星图像识别和指挥辅助都可能使用 AI。即使双方都宣称<strong class="signal">关键</strong>决策由人类控制，也仍然可能在低层级自动化系统中出现误识别、误拦截或错误升级。危机沟通机制的价值就在于，当某个 AI 相关事件发生时，双方至少知道应该由哪个部门、哪一级官员、哪条渠道进行解释，而不是让媒体和军方猜测填满空白。</p><p>企业角色让这类沟通更难。前沿模型、云平台、芯片、数据中心和网络安全工具大多由公司开发和运营，政府不一定掌握全部技术细节。美国政府想谈 AI 安全，离不开 OpenAI、Google、Anthropic、Microsoft、NVIDIA 等公司的能力边界；中国也离不开国内模型公司、云厂商、芯片企业和应用平台。传统外交面对的是国家行为体，AI 外交则必须处理国家与企业共同塑造能力扩散的现实。</p><p>同时，AI 安全对话也不能脱离产业利益。美国如果过度把安全话语用于限制中国获取算力，可能会刺激中国更快建设替代生态；中国如果把安全对话用于争取先进芯片和模型访问，美国安全圈会更抵触合作。双方需要找到一个窄门：在不开放<strong class="signal">核心</strong>能力的情况下，交流事故响应、模型滥用、合成内容、核与军事人类控制、<strong class="signal">关键</strong>基础设施防护等公共<strong class="signal">风险</strong>。这个窄门很小，但比完全没有门要好。</p><p>判断这次峰会的 AI 成果，不能只看是否发表漂亮措辞。更实在的指标是有没有<strong class="signal">后续</strong>机制：是否安排部长级或技术级工作组，是否定期会晤，是否指定联系人，是否把 AI 安全放进已有战略稳定对话，是否邀请实验室和企业参与闭门技术交流。没有机制的共识很容易在下一轮出口管制或网络指控中消失；有机制，至少能让竞争在某些底线问题上留下回旋余地。</p><p>还需要把公众舆论放进来。美国社会对 AI 的态度更复杂，一方面享受生产率工具和资本市场红利，另一方面担心就业、<strong class="signal">隐私</strong>、儿童安全和国家安全；中国则更强调 AI 进入制造、政务、教育和产业升级的实际应用。公众期待不同，会影响政府谈判空间。美国政府很难把 AI 合作讲成向中国让步，中国政府也不会接受把 AI 安全对话变成单方面约束自身发展的框架。</p>
     </article>

@@ -1,22 +1,22 @@
 <!doctype html>
-<html lang="zh-CN" data-theme="briefing" data-layout="dossier">
+<html lang="zh-CN" data-theme="signal" data-layout="editorial">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>清朗整治 AI 应用乱象：中国 AI 治理从备案规则走向场景执法</title>
+  <title>OpenAI Realtime Voice API：语音正在变成软件的实时任务入口</title>
   <style>
     :root {
-      --paper: #fff3ea;
+      --paper: #fff8ec;
       --ink: #171717;
       --muted: #64615b;
       --line: #1c1c1c;
-      --accent: #7f2f46;
-      --accent-two: #2364aa;
-      --accent-three: #e8d7a2;
+      --accent: #d63f2f;
+      --accent-two: #0b8fa3;
+      --accent-three: #b7d73a;
       --sand: #efe5cf;
       --measure: 52rem;
-      --background-signature: dossier-folder;
-      --page-background: linear-gradient(90deg, rgba(127,47,70,.10) 0 10px, transparent 10px 100%), linear-gradient(180deg, rgba(232,215,162,.32), transparent 28rem), var(--paper);
+      --background-signature: editorial-columns;
+      --page-background: linear-gradient(90deg, rgba(214,63,47,.065) 1px, transparent 1px) 0 0 / 34px 34px, linear-gradient(180deg, rgba(11,143,163,.055), transparent 34rem), var(--paper);
     }
     * { box-sizing: border-box; }
     html { background: #151515; }
@@ -60,7 +60,7 @@
       overflow: hidden;
     }
     .magazine-cover::before {
-      content: "POLICY";
+      content: "DEFAULT";
       position: absolute;
       left: clamp(.7rem, 3vw, 2rem);
       top: clamp(4rem, 9vw, 7rem);
@@ -545,36 +545,56 @@
 </head>
 <body>
 
-  <div class="issue-bar"><span><strong>Infohub</strong> article</span><span>Magazine research page</span><span>2026-04-30</span></div>
-  <header class="dossier-cover">
-    <div class="dossier-stamp">POLICY / GOVERNANCE</div>
-    <h1>清朗整治 AI 应用乱象：中国 AI 治理从备案规则走向场景执法</h1>
-    <p class="dossier-summary">中央网信办启动为期四个月的“清朗·整治 AI 应用乱象”专项行动，焦点从抽象 AI 原则落到具体应用：未备案服务、数字泔水、虚假信息、仿冒他人、未成年人权益和网络水军。结合拟人化互动服务管理办法看，中国 AI 治理正在从规则发布进入场景执法期。</p>
-    <p class="dossier-source"><a href="https://www.cac.gov.cn/2026-04/30/c_1779289298718765.htm">中央网信办部署开展“清朗·整治AI应用乱象”专项行动</a> · 中央网信办 · 2026-04-30</p>
-  </header>
-  <main class="dossier-shell">
-    <aside class="dossier-index">
-      <b>案卷索引</b>
-      <ol><li>这次“整治 AI 应用乱象”专项行动具体针对哪些应用层问题？</li><li>它与生成式 AI 备案、深度合成标识和拟人化互动服务办法之间是什么关系？</li><li>为什么 AI 治理正在从模型层规则走向内容、身份、陪伴和商业营销场景？</li><li>对 AI 应用开发者、平台、MCN 和内容产业意味着什么？</li></ol>
-      <p><a href="../../">返回信息流首页</a></p>
+  <div class="issue-bar"><span><strong>Infohub</strong> article</span><span>Magazine research page</span><span>2026-05-07</span></div>
+  <header class="magazine-cover">
+    <div>
+      <div class="kicker">AI TOOLS / PRODUCT ENTRANCE</div>
+      <h1>OpenAI Realtime Voice API：语音正在变成软件的实时任务入口</h1>
+      <p class="deck">OpenAI 发布 GPT-Realtime-2、GPT-Realtime-Translate 和 GPT-Realtime-Whisper，把语音能力拆成办事代理、现场翻译和实时转写三条产品路径。它的意义不只在声音更自然，而在语音开始进入工具调用、状态管理和企业业务系统。</p>
+    </div>
+    <aside class="cover-meta">
+      <div class="cover-card">
+        <h2>研究问题</h2>
+        <ol><li>实时语音模型为什么开始从识别和朗读走向任务入口？</li><li>三类 Realtime 模型分别改变哪类产品架构？</li><li>企业把语音代理接入真实业务系统时，瓶颈会落在哪里？</li></ol>
+      </div>
+      <div class="cover-card">
+        <h2>新闻锚点</h2>
+        <p><a href="https://openai.com/index/advancing-voice-intelligence-with-new-models-in-the-api/">Advancing voice intelligence with new models in the API</a><br>OpenAI</p>
+      </div>
     </aside>
+  </header>
+  <main class="article-shell">
+    <section class="editor-note">
+      <p><b>Reading mode</b>这是一篇以新闻锚点展开的杂志式研究长文。正文保持原始报告顺序，页面只做阅读组织和视觉强调。</p>
+      <p><b>Editorial voice</b>一篇产品架构观察，语气清醒、偏工程化，从具体使用场景进入，再拆三条模型路径，最后落到权限、工具、确认、撤销和审计。视觉上适合技术实验室型，但正文不要写成发布会复述。</p>
+    </section>
     
-    <article class="magazine-article dossier-article">
-      <p class="lede"><span class="dropcap">中</span>央网信办 <strong class="metric">4 月</strong> <strong class="metric">30 日</strong>部署为期四个月的“清朗·整治 AI 应用乱象”专项行动，<strong class="signal">真正</strong>值得看的不是“整治”这个词，而是整治对象的变化。过去两年，中国 AI 治理更多被外界理解为算法备案、生成式 AI 服务管理、深度合成标识和模型安全评估；这次专项行动把镜头拉到应用层：未履行备案、利用 AI 生成数字泔水、制作虚假信息、仿冒他人、侵害未成年人权益、网络水军和平台治理漏洞。监管焦点从“模型能不能上线”推进到“应用怎样被滥用”。</p><p class="magazine-emphasis">这标志着 AI 治理进入场景执法期。模型层规则解决的是准入、责任主体和基础安全；场景执法解决的是具体损害如何出现。一个 AI 应用可以技术上合规，却在运营中引导用户生成低质垃圾内容；一个数字人服务可以声明自己是 AI，却通过肖像和声音相似性制造身份误认；一个内容工具可以只是提供模板，却被 MCN 和账号矩阵用来批量生产谣言、擦边营销或情绪操纵。监管如果只停留在模型备案，很难覆盖这些真实传播链条。</p><p>专项行动里“数字泔水”这个词很有解释力。它指向的不是单篇内容违法，而是低成本自动生成内容对平台生态的污染：标题、口播、评论、图文和短视频可以被批量生产，质量低、重复高、情绪重，却足以占据推荐流和搜索结果。AI 让内容供给成本下降，也让垃圾内容的规模化更容易。治理数字泔水，本质是在处理推荐系统、账号网络、生成工具和流量变现之间的组合问题。</p><aside class="pullquote"><span>摘句</span><p>拟人化互动服务管理办法提供了另一块拼图。</p></aside><p>拟人化互动服务管理办法提供了另一块拼图。该办法明确适用于利用 AI 技术向境内公众提供模拟自然人人格特征、思维模式和沟通风格的持续性情感互动服务，并把智能客服、知识问答、工作助手、学习教育、科学研究等不涉及持续情感互动的服务排除在外。这种边界划分说明监管并不是把所有聊天机器人一刀切，而是把“持续情感互动”视为特殊<strong class="signal">风险</strong>场景：用户依赖、沉迷、情感操纵、未成年人保护、肖像声音授权和身份告知都更敏感。</p><p>办法中的禁止性条款也能解释专项行动为什么强调仿冒和未成年人。拟人化互动服务不得生成诱导、套取国家秘密、商业秘密、个人<strong class="signal">隐私</strong>和个人信息的内容，不得向未成年人生成可能引发模仿不安全行为、极端情绪或不良嗜好的内容，不得过度迎合用户、诱导情感依赖或沉迷，也不得通过情感操纵诱导用户作出不合理决策。这里的治理对象不是抽象模型偏差，而是 AI 在亲密、陪伴和<strong class="signal">信任</strong>关系里可能形成的影响力。</p><p>对平台和开发者来说，这意味着合规工作会从备案材料扩展到运营监测。应用是否应备尽备，生成内容是否有标识，用户是否知道自己在和 AI 互动，是否有未成年人特殊保护，是否有投诉申诉和内容处置机制，是否能够识别批量生成、仿冒营销、虚假信息和水军活动，都会成为实际压力。过去一些团队把 AI 合规理解成上线前流程，未来更像持续风控：产品上线只是开始，<strong class="signal">真正</strong>麻烦的是每日内容、账号和用户行为。</p><p class="magazine-emphasis">这也会影响内容产业。AI 让短视频脚本、图文号、直播切片、虚拟人带货和评论运营都可以自动化，很多灰色商业模式正是靠“看起来像真实表达”的低成本内容获利。专项行动如果执行严格，MCN、营销机构、平台工具商和账号运营者都会被纳入责任链条。一个平台不能只说内容是用户生成，一个工具商也不能只说自己提供技术中立服务；当技术被稳定用于仿冒、虚假宣传或侵害未成年人权益，平台治理和产品设计都会被追问。</p><p>同时也要看到监管的双重目标。官方表述里既有规范治理，也有促进行业健康有序发展；拟人化互动办法还写到支持算法、框架、芯片等技术自主创新，鼓励拓展文化传播、适幼照护、适老陪伴、特殊人群支持等领域。也就是说，政策并不想简单压缩 AI 应用，而是试图把应用导向可控场景。问题在于，场景越具体，执行尺度越重要：什么算情感依赖，什么算过度迎合，什么算数字泔水，平台如何判断批量生成内容的质量和意图，都需要在执法和案例中逐渐清晰。</p><p>这次专项行动的<strong class="signal">后续</strong>观察点，不应只看处罚数量。更<strong class="signal">关键</strong>的是平台是否调整产品机制：是否加强生成内容标识，是否限制批量生成和批量发布，是否提高虚拟人身份展示强度，是否对未成年人和情感陪伴类服务设置时长与提醒，是否清理仿冒公众人物和营销账号，是否公开整改案例。AI 治理从规则走向现场后，<strong class="signal">真正</strong>的变化会体现在推荐流、直播间、评论区和应用商店，而不是只体现在政策标题里。</p><p class="magazine-emphasis">这一轮治理还有一个容易被忽略的对象：应用分发渠道。很多 AI 乱象并不发生在基础模型官网，而是在套壳 App、小程序、短视频插件、虚拟人服务、营销工具和灰色流量平台中。用户看到的是一个能写文案、做头像、生成情感陪伴或模拟名人的小工具，很难分辨背后是否接入合规模型、是否做了内容标识、是否保存个人信息、是否诱导充值。专项行动如果要有效，必然会从内容平台延伸到应用商店和流量入口。</p><p>备案制度也会在这时接受检验。生成式 AI 服务管理要求面向公众提供服务的主体履行备案等程序，但现实中大量应用以 API、插件、代理、海外接口或多模型路由形式存在。责任主体可能被拆得很散：基础模型提供商、应用开发者、内容发布者、账号运营者、平台推荐系统和支付渠道分别掌握一段链条。专项行动的难点正是把这些链条重新接起来，判断谁有审核义务，谁有处置能力，谁从违规流量中获利。</p><p>未成年人保护是另一个会持续扩大的领域。拟人化 AI 和内容生成工具都可能进入学习、陪伴、娱乐和情绪支持场景。对成年人来说，一个虚拟陪伴产品可能只是消遣；对未成年人来说，它可能影响身份认同、消费冲动、亲密关系和<strong class="signal">风险</strong>行为模仿。监管把时长提醒、身份告知、特殊保护和禁止诱导不良嗜好写入规则，说明未来 AI 应用不能只靠通用内容审核，还要按用户年龄和互动类型做差异化设计。</p><p>但政策执行也需要避免把所有 AI 创作都压成保守模板。AI 在文化传播、适老陪伴、特殊人群支持、教育辅助和公共服务中确实有正当应用。<strong class="signal">真正</strong>的问题不是 AI 生成内容本身，而是身份不透明、批量污染、虚假仿冒、情感操纵和违法获利。好的治理应该能把这些问题从正常创新中分离出来：打击低质和违规扩散，同时保留可解释、可申诉、可审计的创新空间。</p><p>从产业角度看，这会提高 AI 应用公司的运营门槛。未来一个合格应用不只是模型接入和前端体验，还要有内容安全、标识、未成年人模式、投诉处理、个人信息保护、日志留存、模型供应商管理和应急下架机制。小团队会感到成本上升，但这也会逼迫行业从快速套壳走向长期服务。专项行动若能推动平台和开发者建立这些机制，它的影响会超过四个月本身。</p>
+    <section class="reading-path">
+      <b>阅读路径</b>
+      <ol><li>先从开车改签、跨语言会议和客服通话这类无法舒服打字的场景进入，说明语音为何需要成为实时入口。</li><li>再解释旧式语音流水线的限制：识别、文本模型、朗读三段拼接会丢失状态、语气和打断处理。</li><li>随后拆开三类模型：Realtime-2 负责语音代理，Translate 负责现场跨语种沟通，Whisper 负责实时文本数据层。</li><li>最后把模型能力放回企业系统，讨论工具调用、服务端控制、权限、撤销和人工接管。</li></ol>
+    </section>
+    
+    <article class="magazine-article">
+      <p class="lede"><span class="dropcap">把</span>这次 OpenAI 的语音发布放进一个具体场景里会更容易理解：一个人在开车时要改签航班，另一边有人在跨语言会议里连续发言，客服坐席正在听用户描述一个断续出现的问题。过去的语音 AI 往往只能完成两件事，先把声音转成文字，再把文字回答读出来。这个流程能用，但它没有<strong class="signal">真正</strong>接住“正在发生的任务”。用户还在说话，系统已经需要判断意图、补全信息、查询订单、保留<strong class="signal">上下文</strong>、处理打断，并在<strong class="signal">关键</strong>动作前请求确认。</p><p class="magazine-emphasis">OpenAI 在 <strong class="metric">2026 年</strong> <strong class="metric">5 月</strong> <strong class="metric">7 日</strong>发布的三类 Realtime Voice API 模型，正好把这条链拆开了。`GPT-Realtime-2` 面向语音代理和工具调用，`GPT-Realtime-Translate` 面向持续口译，`GPT-Realtime-Whisper` 面向低延迟转写增量。它们共同指向一个产品判断：语音正在从输入输出格式，变成软件处理任务的一种入口。声音是否自然仍然重要，但更大的变化发生在会话状态、工具执行和业务系统连接上。</p><p>旧式语音产品通常是流水线架构。ASR 负责识别，文本模型负责推理，TTS 负责朗读。这个结构的好处是模块清楚，坏处也明显：每一段都会累积延迟；停顿、犹豫、语气、重读和打断信息容易丢失；用户修正前一句话时，系统常常不知道该撤销还是继续。很多语音助手给人的笨拙感，来源并非声音不好听，而是它像在处理一串孤立句子，缺少持续任务感。</p><aside class="pullquote"><span>摘句</span><p>`GPT-Realtime-2` 要解决的正是这个持续任务问题。</p></aside><p>`GPT-Realtime-2` 要解决的正是这个持续任务问题。官方材料强调它支持语音到语音、长<strong class="signal">上下文</strong>、可调推理强度、并行工具调用、执行前短提示和更可靠的指令遵循。若它被接入订票、日程、CRM、地图、库存、工单和支付系统，语音会话就不再只是问答。模型可以在对话中告诉用户“我正在查你的订单”，等待工具结果，继续询问缺失条件，再把最终动作交给用户确认。产品体验的重心从“回答一句话”转向“陪用户完成一段流程”。</p><p>`GPT-Realtime-Translate` 的意义也不只是句子翻译。它把语音翻译定义为实时会话，输入语言多，输出语言较少但面向持续译音和转写增量。传统翻译常以文件、字幕或单句请求为单位；现场口译要处理抢话、停顿、口音、背景噪声、专有名词和<strong class="signal">上下文</strong>延续。这个模型的价值会首先体现在跨语种客服、远程销售、国际会议、教育直播和旅行服务里。翻译质量当然要看长期实测，但产品单位已经从“翻译一句”变成“维持一条沟通通道”。</p><p>`GPT-Realtime-Whisper` 看上去最接近旧能力，因为它仍然是语音转文本。差异在实时性和数据层。若应用可以在完整话轮结束前拿到 transcript deltas，会议字幕、课堂字幕、直播字幕、客服质检、销售记录和医疗问询记录都可以边发生边触发<strong class="signal">后续</strong>动作。转写不再只服务事后整理，也可以成为实时系统的传感器：它把正在发生的口头互动变成可检索、可归档、可分析、可触发任务的数据流。</p><p class="magazine-emphasis">这三类模型组合在一起，说明 OpenAI 对语音产品的切分已经从能力维度转向业务维度。有人需要语音代理，有人需要实时翻译，有人需要流式转写；三者都叫语音 AI，但系统架构、延迟容忍、合规要求和用户预期完全不同。把它们混成一个“更强语音模型”，会错过这次发布最有用的部分。</p><p>企业落地时，模型只是入口。OpenAI 的 Realtime 文档强调 WebRTC、WebSocket、SIP 等连接方式，也强调服务端控制和旁路通道。原因很现实：<strong class="signal">真正</strong>的业务动作不能只在客户端完成。订单查询、支付授权、客服工单、医疗记录、金融账户、企业知识库和内部工具都需要放在服务端管理权限、日志、审计、错误回滚和人工接管。语音代理的安全边界，最终会落到企业后端。</p><p>语音入口最适合的场景也有边界。它适合用户双手受限、移动中、通话中、多人沟通或需要即时响应的场合；它不适合所有精密编辑、复杂表格比较、长篇文档校对和<strong class="signal">高影响</strong>决策确认。很多任务仍需要屏幕、文本、可视化和明确按钮。未来优秀的语音产品不会让所有软件都“语音化”，而是把语音放在它能降低摩擦的环节，并在<strong class="signal">关键</strong>动作处留下可见确认。</p><p class="magazine-emphasis">更谨慎地看，官方材料中的评测和案例仍主要来自 OpenAI 自身、文档和早期客户。真实生产环境里的端到端延迟、打断恢复、口音覆盖、领域词处理、成本和稳定性，还需要更多横向案例。实时翻译还受语种组合限制，实时转写也不能自动等同于理解准确。企业若直接把低置信度转写驱动自动操作，会把错误放大。</p><p>另一个需要提前写清的是交互设计。语音代理不能把屏幕软件的所有步骤原样读出来，它需要更短的状态提示、更明确的确认语、更好的沉默处理和更自然的失败恢复。用户说话时常常会改口、停顿、插入新条件，模型必须知道哪些信息已经确认，哪些只是临时想法。好的语音代理会像一个可靠的流程协作者，知道什么时候继续问，什么时候停下来让用户看屏幕，什么时候把复杂信息转成可点击的摘要。</p><p>成本和延迟也会塑造产品边界。实时语音把输入、推理、工具调用和输出都放在连续连接中，成本结构和普通文本调用不同。推理强度越高，复杂任务越稳，延迟和费用也可能上升。开发者最终会把任务分层：闲聊和简单查询用低成本路径，改签、支付、投诉处理和医疗金融类<strong class="signal">高影响</strong>动作则需要更强模型、更严格确认和更完整日志。语音入口是否普及，取决于这套分层能不能被产品团队做得足够可靠。</p><p>还有一个容易被低估的层面是组织采用。语音代理进入客服、销售、医疗问询或金融服务后，企业不能只测模型听得准不准，还要测员工是否愿意接管、用户是否知道自己在和 AI 交互、通话记录如何保存、质检如何复盘、投诉如何追责。语音系统越像真人，边界提示越不能含糊。长期看，语音 AI 的竞争会落在“自然”和“可治理”之间的平衡。</p><p>因此，衡量这类模型的标准也要换一套。传统语音工具看识别准确率、合成自然度和单轮延迟；实时任务入口还要看连续会话成功率、工具调用错误率、<strong class="signal">关键</strong>动作确认率、人工接管率和用户中途放弃率。</p><p><strong class="signal">后续</strong>最值得观察的变量不在“声音像不像人”，而在产品工程。开发者是否形成新的语音代理设计范式：短状态提示、可打断、可撤销、<strong class="signal">关键</strong>动作二次确认、人工接管、工具状态可听见。Twilio、Zoom、Salesforce、Zendesk、车机和客服平台是否把这些模型接入真实流程，也比单次演示更重要。语音 AI 的下一步并非只是增加聊天入口，它更像是把口头互动接到真实软件系统里。</p>
     </article>
+    <aside class="companion-rail">
+      <p><b>核心锚点</b><br>OpenAI<br>2026-05-07</p>
+      <p><b>主题</b><br>ai-tools / voice-ai / developer-tooling</p>
+      <p><b>返回</b><br><a href="../../">信息流首页</a></p>
+    </aside>
     
     <section class="backmatter">
       <div class="module">
         <h2>不确定性</h2>
-        <ul><li>专项行动的具体执法案例、处罚尺度和平台整改要求还需要<strong class="signal">后续</strong>公开材料验证。</li><li>“数字泔水”“过度迎合”“情感依赖”等概念在具体应用中的边界需要案例化解释。</li><li>本文为公开政策研究，不构成法律意见或合规建议。</li><li>不同地方网信部门和平台的执行力度可能存在差异。</li></ul>
+        <ul><li>三类模型在真实生产环境里的端到端延迟、稳定性、成本和打断恢复仍需独立案例验证。</li><li>实时翻译的语言组合、口音、噪声和领域词表现不能从官方描述直接外推。</li><li>服务端控制、工具调用审计、用户授权和录音转写合规会因行业不同而显著变化。</li></ul>
       </div>
       <div class="module">
         <h2>后续观察</h2>
-        <ul><li>专项行动期间公开通报的典型 AI 应用违法违规案例</li><li>生成式 AI 服务备案、深度合成标识和拟人化互动服务的执行衔接</li><li>应用商店、短视频平台、直播平台对 AI 生成内容和虚拟人的治理动作</li><li>未成年人保护、情感陪伴服务时长提醒和身份告知的产品实现</li><li>MCN、账号矩阵和 AI 内容工具商是否被纳入处罚链条</li></ul>
+        <ul><li>Realtime API 在 WebRTC、WebSocket、SIP 三类连接中的成本、质量和稳定性差异。</li><li>客服、会议、车机、跨境销售和教育平台是否把 voice-to-action 接入<strong class="signal">核心</strong>业务流程。</li><li>平台政策是否要求更清楚的 AI 身份提示、录音同意、保存期限和人工接管机制。</li></ul>
       </div>
       <div class="module sources-module">
         <h2>研究来源</h2>
-        <ul class="source-list"><li><a href="https://www.cac.gov.cn/2026-04/30/c_1779289298718765.htm">中央网信办部署开展“清朗·整治AI应用乱象”专项行动</a><span class="source-meta">中央网信办</span></li><li><a href="https://www.cac.gov.cn/2026-04/10/c_1777558395078289.htm">人工智能拟人化互动服务管理暂行办法</a><span class="source-meta">中央网信办</span></li><li><a href="https://www.cac.gov.cn/2026-04/03/c_1776952388655846.htm">专家解读｜以人为本划定数字虚拟人服务边界</a><span class="source-meta">中国网信网</span></li><li><a href="https://en.people.cn/n3/2026/0502/c90000-20452585.html">China launches campaign to rectify improper AI content production</a><span class="source-meta">People&#x27;s Daily Online</span></li><li><a href="https://www.mlex.com/articles/2471828/china-launches-four-month-crackdown-targeting-disorder-in-ai-applications">China launches four-month crackdown targeting disorder in AI applications</a><span class="source-meta">MLex</span></li></ul>
+        <ul class="source-list"><li><a href="https://openai.com/index/advancing-voice-intelligence-with-new-models-in-the-api/">Advancing voice intelligence with new models in the API</a><span class="source-meta">OpenAI</span></li><li><a href="https://developers.openai.com/api/docs/guides/realtime">Realtime and audio guide</a><span class="source-meta">OpenAI Developers</span></li><li><a href="https://developers.openai.com/api/docs/models/gpt-realtime-2">GPT-Realtime-2 model page</a><span class="source-meta">OpenAI Developers</span></li><li><a href="https://developers.openai.com/api/docs/models/gpt-realtime-translate">GPT-Realtime-Translate model page</a><span class="source-meta">OpenAI Developers</span></li><li><a href="https://developers.openai.com/api/docs/models/gpt-realtime-whisper">GPT-Realtime-Whisper model page</a><span class="source-meta">OpenAI Developers</span></li><li><a href="https://developers.openai.com/api/docs/guides/realtime-server-controls">Webhooks and server-side controls</a><span class="source-meta">OpenAI Developers</span></li></ul>
       </div>
     </section>
     
