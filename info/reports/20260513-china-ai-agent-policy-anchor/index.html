@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="briefing" data-layout="dossier">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>中国智能体政策落地：AI 监管对象从“会回答”转向“会执行”</title>
+  <style>
+    :root {
+      --paper: #fff3ea;
+      --ink: #171717;
+      --muted: #64615b;
+      --line: #1c1c1c;
+      --accent: #7f2f46;
+      --accent-two: #2364aa;
+      --accent-three: #e8d7a2;
+      --sand: #efe5cf;
+      --measure: 52rem;
+      --background-signature: dossier-folder;
+      --page-background: linear-gradient(90deg, rgba(127,47,70,.10) 0 10px, transparent 10px 100%), linear-gradient(180deg, rgba(232,215,162,.32), transparent 28rem), var(--paper);
+    }
+    * { box-sizing: border-box; }
+    html { background: #151515; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--page-background);
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      line-height: 1.86;
+      letter-spacing: 0;
+    }
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; overflow-wrap: anywhere; }
+    .issue-bar {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: .58rem clamp(1rem, 4vw, 3.2rem);
+      background: color-mix(in srgb, var(--paper) 92%, white);
+      border-bottom: 2px solid var(--line);
+      backdrop-filter: blur(12px);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+    }
+    .issue-bar strong { color: var(--accent); }
+    .issue-bar span:nth-child(2) { font-weight: 900; }
+    .issue-bar span:last-child { text-align: right; color: var(--muted); }
+    .magazine-cover {
+      min-height: clamp(420px, 62vh, 680px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(17rem, 25rem);
+      gap: clamp(2rem, 5vw, 4.2rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.5rem) clamp(1rem, 5vw, 5rem) clamp(2.2rem, 4vw, 3.2rem);
+      border-bottom: 2px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .magazine-cover::before {
+      content: "POLICY";
+      position: absolute;
+      left: clamp(.7rem, 3vw, 2rem);
+      top: clamp(4rem, 9vw, 7rem);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(5rem, 17vw, 17rem);
+      line-height: .75;
+      letter-spacing: 0;
+      color: color-mix(in srgb, var(--accent-two) 13%, transparent);
+      pointer-events: none;
+    }
+    .kicker {
+      display: inline-flex;
+      gap: .6rem;
+      align-items: center;
+      font-weight: 900;
+      color: var(--accent);
+      border: 2px solid var(--line);
+      padding: .22rem .55rem;
+      background: var(--accent-three);
+      width: fit-content;
+    }
+    h1 {
+      max-width: 12ch;
+      margin: 1.3rem 0 0;
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 7vw, 7.2rem);
+      line-height: .94;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .deck {
+      max-width: 56rem;
+      font-size: clamp(1.1rem, 1.65vw, 1.48rem);
+      line-height: 1.62;
+      margin: 2rem 0 0;
+      color: #24211d;
+      border-left: .65rem solid var(--accent);
+      padding-left: 1.2rem;
+    }
+    .cover-meta { align-self: stretch; display: grid; align-content: end; gap: 1rem; }
+    .cover-card {
+      border: 2px solid var(--line);
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 9px 9px 0 var(--accent-two);
+    }
+    .cover-card h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.35; color: var(--accent); }
+    .cover-card ol, .cover-card ul { margin: 0; padding-left: 1.15rem; }
+    .cover-card li { margin: .48rem 0; line-height: 1.55; }
+    .article-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.6rem, 3vw, 3.2rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .editor-note {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(10rem, 15rem) minmax(0, 1fr);
+      gap: 1.2rem;
+      border-top: 5px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: 1rem 0 1.1rem;
+      color: var(--muted);
+      font-size: .94rem;
+      line-height: 1.7;
+    }
+    .editor-note b {
+      display: block;
+      color: var(--ink);
+      font-size: .82rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .25rem;
+    }
+    .editor-note p { margin: 0; }
+    .magazine-article { min-width: 0; font-size: clamp(1.04rem, 1.05vw, 1.18rem); }
+    .article-shell > .magazine-article { grid-column: 1; }
+    .magazine-article p { margin: 0 0 1.35rem; text-align: justify; text-wrap: pretty; }
+    .magazine-article .lede {
+      font-size: clamp(1.24rem, 2vw, 1.58rem);
+      line-height: 1.75;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+    .dropcap {
+      float: left;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 5.8rem;
+      line-height: .8;
+      padding: .18rem .55rem .1rem 0;
+      color: var(--accent);
+    }
+    .magazine-emphasis {
+      margin: 2rem 0 !important;
+      padding: 1.1rem 1.25rem;
+      border-left: .45rem solid var(--accent-two);
+      background: linear-gradient(90deg, color-mix(in srgb, var(--accent-two) 12%, transparent), transparent 78%);
+      font-weight: 600;
+    }
+    .pullquote {
+      margin: 2.4rem -4rem 2.4rem 0;
+      padding: 1.1rem 0 1.2rem 1.5rem;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      background: var(--paper);
+    }
+    .pullquote span { color: var(--accent); font-size: .78rem; font-weight: 900; letter-spacing: .13em; }
+    .pullquote p {
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-size: clamp(1.6rem, 3vw, 2.45rem);
+      line-height: 1.28;
+      margin: .35rem 0 0;
+      text-align: left;
+    }
+    .metric {
+      font-variant-numeric: tabular-nums;
+      color: var(--accent);
+      font-weight: 900;
+      background: linear-gradient(transparent 55%, color-mix(in srgb, var(--accent-three) 65%, transparent) 0);
+    }
+    .signal {
+      font-weight: 900;
+      text-decoration: underline;
+      text-decoration-color: var(--accent-two);
+      text-decoration-thickness: .18em;
+      text-underline-offset: .14em;
+    }
+    .companion-rail {
+      position: sticky;
+      top: 3.8rem;
+      grid-column: 2;
+      align-self: start;
+      border-top: 5px solid var(--line);
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+      padding-top: 1rem;
+    }
+    .companion-rail b { color: var(--ink); }
+    .backmatter {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.2rem;
+      margin-top: 2.4rem;
+      border-top: 2px solid var(--line);
+      padding-top: 1.4rem;
+    }
+    .module { background: #fff; border: 2px solid var(--line); padding: 1rem 1.1rem; box-shadow: 6px 6px 0 var(--sand); }
+    .module h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.3; color: var(--accent); }
+    .module ul { margin: 0; padding-left: 1.1rem; }
+    .module li { margin: .5rem 0; line-height: 1.58; }
+    .source-list li { display: grid; gap: .12rem; margin-bottom: .8rem; }
+    .source-meta { color: var(--muted); font-size: .86rem; }
+    .source-meta::before { content: "来源 · "; }
+    .sources-module { grid-column: 1 / -1; }
+    .newspaper-masthead {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.8rem) clamp(1rem, 4vw, 3rem) 1.6rem;
+      border-bottom: 5px double var(--line);
+    }
+    .newspaper-kicker {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.4rem, 3vw, 3rem);
+      line-height: 1;
+      color: var(--accent);
+      text-transform: uppercase;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: .35rem 0;
+    }
+    .newspaper-masthead h1 {
+      max-width: 20ch;
+      font-size: clamp(2.6rem, 5.5vw, 6.2rem);
+      line-height: .98;
+    }
+    .newspaper-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem 1.1rem;
+      margin-top: 1rem;
+      padding-top: .8rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .market-strip {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr 1fr;
+      gap: 1rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      border-bottom: 2px solid var(--line);
+      background: color-mix(in srgb, var(--accent-three) 26%, var(--paper));
+      font-size: .94rem;
+      line-height: 1.55;
+    }
+    .market-strip b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .08em; }
+    .market-strip p, .market-strip ol, .market-strip ul { margin: .35rem 0 0; }
+    .market-strip ol, .market-strip ul { padding-left: 1.1rem; }
+    .newspaper-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .newspaper-article .lede {
+      column-span: all;
+      border-top: 2px solid var(--line);
+      padding-top: 1rem;
+    }
+    .newspaper-article { grid-column: 1; }
+    .newspaper-rail {
+      position: sticky;
+      top: 3.8rem;
+      border-left: 2px solid var(--line);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .dossier-cover {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.6rem) clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
+      gap: clamp(1.5rem, 4vw, 3.8rem);
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+    }
+    .dossier-stamp {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      align-self: start;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      color: var(--accent);
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: color-mix(in srgb, var(--accent-three) 35%, white);
+    }
+    .dossier-cover h1 {
+      max-width: 18ch;
+      font-size: clamp(2.7rem, 6vw, 6.6rem);
+      line-height: .98;
+    }
+    .dossier-summary {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.5vw, 1.36rem);
+      border-left: .45rem solid var(--accent);
+      padding-left: 1rem;
+    }
+    .dossier-source { color: var(--muted); margin: 0; }
+    .dossier-shell {
+      display: grid;
+      grid-template-columns: minmax(12rem, 17rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .dossier-index {
+      position: sticky;
+      top: 3.8rem;
+      border-top: 5px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .dossier-index b { display: block; color: var(--ink); margin-bottom: .6rem; }
+    .dossier-index ol { margin: 0 0 1rem; padding-left: 1.1rem; }
+    .dossier-article { grid-column: 2; }
+    .field-cover {
+      min-height: clamp(460px, 64vh, 720px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr);
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      border-bottom: 2px solid var(--line);
+      background:
+        linear-gradient(135deg, transparent 0 48%, color-mix(in srgb, var(--accent-three) 24%, transparent) 48% 52%, transparent 52%),
+        var(--paper);
+    }
+    .field-topline {
+      grid-column: 1 / -1;
+      width: fit-content;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: .25rem .7rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .field-cover h1 {
+      max-width: 16ch;
+      font-size: clamp(2.8rem, 6.4vw, 7rem);
+    }
+    .field-deck {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.55vw, 1.38rem);
+      line-height: 1.62;
+      border-left: .5rem solid var(--accent-two);
+      padding-left: 1rem;
+    }
+    .field-map {
+      border: 2px solid var(--line);
+      background: rgba(255,255,255,.76);
+      padding: 1rem;
+      box-shadow: 10px 10px 0 color-mix(in srgb, var(--accent) 70%, black);
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+    .field-map b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .1em; }
+    .field-map ol { margin: .55rem 0 1rem; padding-left: 1.2rem; }
+    .field-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(13rem, 17rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .field-log {
+      position: sticky;
+      top: 3.8rem;
+      border-left: .35rem solid var(--accent-two);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .field-article { grid-column: 1; }
+    .lab-cover {
+      padding: clamp(2.6rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      min-height: clamp(420px, 58vh, 650px);
+      display: grid;
+      align-content: center;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+      background:
+        linear-gradient(90deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        linear-gradient(0deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        var(--paper);
+    }
+    .lab-label {
+      width: fit-content;
+      background: var(--ink);
+      color: #fff;
+      padding: .28rem .65rem;
+      font-size: .82rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .lab-cover h1 {
+      max-width: 22ch;
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 5.8rem);
+      line-height: 1.04;
+    }
+    .lab-deck {
+      max-width: 62rem;
+      font-size: clamp(1.06rem, 1.45vw, 1.32rem);
+      border-top: 2px solid var(--accent);
+      padding-top: 1rem;
+    }
+    .protocol-strip {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .75rem;
+      border-bottom: 2px solid var(--line);
+      font-size: .88rem;
+    }
+    .protocol-strip div {
+      border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
+      padding: .75rem;
+      background: rgba(255,255,255,.68);
+      min-width: 0;
+    }
+    .protocol-strip b {
+      display: block;
+      color: var(--accent-two);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .protocol-strip span { overflow-wrap: anywhere; }
+    .lab-shell {
+      display: grid;
+      grid-template-columns: minmax(14rem, 19rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .lab-notes {
+      position: sticky;
+      top: 3.8rem;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      background: #fff;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .lab-notes b { color: var(--ink); }
+    .lab-notes ol { padding-left: 1.1rem; }
+    .lab-article { grid-column: 2; }
+    footer { color: var(--muted); padding: 0 clamp(1rem, 4vw, 3rem) 3rem; max-width: 1220px; margin: 0 auto; font-size: .9rem; }
+    @media (max-width: 1100px) {
+      .magazine-cover { grid-template-columns: 1fr; min-height: auto; }
+      .cover-meta { max-width: 42rem; }
+      .article-shell { grid-template-columns: 1fr; }
+      .editor-note { grid-template-columns: 1fr; }
+      .companion-rail { position: static; grid-column: 1; }
+      .backmatter { grid-column: 1; grid-template-columns: 1fr; }
+      .pullquote { margin-right: 0; }
+      h1 { max-width: 11ch; }
+      .market-strip, .protocol-strip { grid-template-columns: 1fr; }
+      .newspaper-shell, .dossier-shell, .field-shell, .lab-shell { grid-template-columns: 1fr; }
+      .newspaper-rail, .dossier-index, .field-log, .lab-notes { position: static; }
+      .dossier-article, .lab-article { grid-column: 1; }
+      .dossier-cover, .field-cover { grid-template-columns: 1fr; min-height: auto; }
+      .dossier-stamp { grid-column: 1; grid-row: auto; }
+    }
+    @media (max-width: 640px) {
+      .issue-bar { grid-template-columns: 1fr; gap: .15rem; }
+      .issue-bar span:last-child { text-align: left; }
+      .magazine-cover { padding-top: 2.4rem; }
+      h1 { font-size: clamp(2.65rem, 16vw, 4.8rem); }
+      .deck { border-left-width: .45rem; padding-left: .8rem; }
+      .magazine-article p { text-align: left; }
+      .dropcap { font-size: 4.6rem; }
+      .module { box-shadow: 4px 4px 0 var(--sand); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="issue-bar"><span><strong>Infohub</strong> article</span><span>Magazine research page</span><span>2026-05-11</span></div>
+  <header class="dossier-cover">
+    <div class="dossier-stamp">POLICY / GOVERNANCE</div>
+    <h1>中国智能体政策落地：AI 监管对象从“会回答”转向“会执行”</h1>
+    <p class="dossier-summary">国家网信办、国家发改委、工信部联合印发《智能体规范应用与创新发展实施意见》，把具备自主感知、记忆、决策、交互和执行能力的智能体作为新的政策对象。<strong class="signal">关键</strong>变化是：治理重心从生成内容转向权限、行为、执行链和可问责。</p>
+    <p class="dossier-source"><a href="https://www.ce.cn/xwzx/gnsz/gdxw/202605/t20260511_2956859.shtml">三部门：促进智能体规范应用与创新发展</a> · 经济参考报 / 中国经济网 · 2026-05-11</p>
+  </header>
+  <main class="dossier-shell">
+    <aside class="dossier-index">
+      <b>案卷索引</b>
+      <ol><li>为什么智能体需要独立于生成式 AI 的政策框架？</li><li>“安全可控、规范有序、创新驱动、应用牵引”如何同时作用于产业和监管？</li><li><strong class="metric">19 个</strong>典型应用场景背后，<strong class="signal">真正</strong>要解决的是哪类落地问题？</li></ol>
+      <p><a href="../../">返回信息流首页</a></p>
+    </aside>
+    <article class="magazine-article dossier-article">
+      <p class="lede"><span class="dropcap">智</span>能体政策的出现，说明 AI 治理对象变了。过去两三年的监管重点主要是生成式 AI：模型输出什么内容，是否造谣、侵权、歧视，是否标识合成内容，是否备案。智能体则不同。中国经济网转载经济参考报的报道说，三部门印发《智能体规范应用与创新发展实施意见》，并把智能体定义为具备自主感知、记忆、决策、交互与执行能力的智能系统。这里最<strong class="signal">关键</strong>的两个字是“执行”。会回答的 AI 主要影响信息环境；会执行的 AI 会影响账户、设备、流程、交易、政务和物理世界。</p><p class="magazine-emphasis">这就是为什么政策同时强调创新和安全。手机助手、终端智能管家、云端智能体正在规模化出现，它们能替用户处理日程、文件、表单、客服、采购、运营、政务和生产任务。便利背后是更高权限：访问通讯录、邮件、位置、文件、业务系统、支付接口、工业控制系统。报道提到的<strong class="signal">隐私</strong>泄露、越权操作和行为失控，不是抽象<strong class="signal">风险</strong>，而是智能体从“建议者”变成“操作者”之后必然出现的新边界。</p><p>四方面举措可以理解为一套从底座到落地的政策链。第一是夯实发展基础，包括技术底座、工具链和标准协议；第二是守牢安全底线，包括产品准则、<strong class="signal">风险</strong>防范、治理体系和行业自律；第三是强化应用牵引，用科学研究、产业发展、消费、民生和社会治理等场景推动产品优化；第四是建设创新生态。这个结构和中国近几年“人工智能+”政策一致：不是先等通用 AGI 成熟，而是用场景牵引模型、数据、算力和标准共同演进。</p><aside class="pullquote"><span>摘句</span><p>智能体需要标准协议，是因为它本质上是跨系统协作。</p></aside><p>智能体需要标准协议，是因为它本质上是跨系统协作。一个能办事的智能体不能只停留在聊天窗口，它要调用工具、读取权限、连接企业系统、理解业务流程，还要和其他智能体协同。如果没有统一接口、权限边界、日志记录和异常回滚机制，企业和政府部门很难大规模采用。政策强调标准体系，实际是在降低智能体研发、适配和应用门槛，也是在为未来的责任追踪打基础。</p><p><strong class="metric">19 个</strong>典型应用场景的意义不只是“列方向”。智能体的难点从来不是演示，而是可复制部署。科学研究需要文献、实验、数据和代码协作；产业发展需要供应链、设备、质量和销售闭环；提振消费需要导购、售后、权益和支付；民生福祉与社会治理需要<strong class="signal">隐私</strong>、身份、流程和问责。政策用典型场景牵引，是要让企业把智能体从单次炫技变成可评估、可推广、可纠偏的工程系统。</p><p>和美国 CAISI、OpenAI Daybreak、Google Gemini Intelligence 放在一起看，这条中国政策有一个鲜明差异：美国叙事更偏前沿模型<strong class="signal">风险</strong>、企业平台和国家安全测试；中国文件更强调应用牵引、场景开放、标准协议和分类分级治理。两边都在面对同一件事：AI 代理开始获得执行权。只要系统能跨应用、跨设备、跨组织执行任务，监管就必须关心权限、日志、责任、撤销、数据流和异常处置。</p><p class="magazine-emphasis">这份政策也会影响创业方向。过去很多 AI 应用靠包装模型能力和提示词流程；智能体政策落地后，<strong class="signal">真正</strong>有价值的产品会更接近行业软件：有权限体系、有审计、有场景数据、有操作边界、有失败回滚、有合规服务。企业级智能体平台、终端智能管家、工业智能体、政务智能体、客服和营销智能体，都需要从“能跑 demo”转向“能被组织放心授权”。</p><p><strong class="signal">后续</strong>观察不应只看有多少公司发布“智能体产品”，而应看三个问题。第一，是否形成明确的智能体分类分级治理框架，不同权限和影响范围对应不同审查强度。第二，标准协议能否真的降低接入成本，而不是变成新的形式合规。第三，典型场景是否出现可量化成效，例如办事时间缩短、错误率下降、能耗降低、客服转化提升、工业故障预警改善。智能体政策的本质是把 AI 从内容产业推进到组织执行层。这个推进越成功，安全可控就越不能是口号。</p><p>政策背后还有一条国产化和生态安全线。智能体若要进入政府、央企、制造、金融、能源和交通场景，不能长期依赖不透明的外部平台。模型、工具链、插件协议、运行框架和数据治理都需要可控替代。三部门强调创新生态和标准协议，实际也在为国内厂商建立共同接口，避免各家智能体系统互不兼容，导致行业客户被单一平台锁定。</p><p class="magazine-emphasis">智能体治理和内容治理的不同，还体现在责任链。生成式 AI 输出一段错误文字，责任可以围绕内容标识、投诉、删除和用户判断展开；智能体若执行了错误转账、错误审批、错误下单、错误停机或错误发送文件，后果更直接。责任需要沿着“用户授权、系统理解、工具调用、第三方接口、执行确认、日志留存”追踪。没有可审计日志，智能体规模化部署会被组织<strong class="signal">风险</strong>部门挡住。</p><p>对地方政府来说，智能体是一个双刃剑。一方面，它可以提高政务服务、热线、审批、公共安全和基层治理效率；另一方面，它可能把复杂政策解释、个人信息处理和行政决定交给系统。政务场景尤其不能只追求自动化率，还要保留人工复核、申诉渠道和责任主体。文件强调规范应用，说明政策已经意识到“能办事”会触碰公共权力边界。</p><p>产业端则会分化。通用聊天产品的门槛会下降，<strong class="signal">真正</strong>难的变成行业流程、私有数据、权限系统和落地服务。一个制造智能体要懂设备、工艺、质检和安全规程；金融智能体要懂合规、风控和客户适当性；医疗智能体要处理临床安全和数据保护。通用模型只是底座，行业智能体的护城河更可能来自场景数据、流程知识、集成能力和可信交付。</p><p>未来一两年，中国智能体生态可能会同时出现两种路线：一种是大厂平台提供统一智能体开发框架、插件市场和权限体系；另一种是行业厂商围绕能源、制造、政务、金融、教育做垂直智能体。前者有规模和生态，后者有场景和数据。政策若能把接口、<strong class="signal">风险</strong>等级和审计要求讲清，可能促成两种路线协作；若标准模糊，就会出现重复建设和形式合规。</p><p>智能体还会改变数据流动方式。传统应用通常在用户明确操作时调用数据；智能体为了完成任务，可能主动检索、长期记忆、跨系统拼接和预测下一步需求。这会让最小必要原则、数据保存期限、训练与推理数据边界、企业内部权限隔离都变得更复杂。监管若只盯输出内容，很难覆盖这些后台数据流。</p><p>对个人用户来说，智能体<strong class="signal">信任</strong>会比聊天机器人更难建立。用户可以容忍一个聊天回答不够好，但很难容忍它错误发送文件、自动取消订单或把私人信息填到错误表单。消费级智能体若要普及，需要默认低权限、<strong class="signal">关键</strong>动作确认、可撤销、可解释和清晰记录。政策层面的规范应用，最终会落到这些产品细节上。</p>
+    </article>
+    
+    <section class="backmatter">
+      <div class="module">
+        <h2>不确定性</h2>
+        <ul><li>目前公开材料主要是新闻报道和政策解读，实施意见全文及细则需继续核对官方发布。</li><li><strong class="metric">19 个</strong>典型场景的具体名单和评估指标需要以<strong class="signal">后续</strong>文件为准。</li><li>智能体监管与既有生成式 AI、算法推荐、数据安全和网络安全规则的衔接仍待观察。</li></ul>
+      </div>
+      <div class="module">
+        <h2>后续观察</h2>
+        <ul><li>三部门是否发布全文、配套标准、试点名单和合规服务体系。</li><li>地方政府和行业主管部门是否推出智能体示范场景。</li><li>企业级智能体产品是否开始披露权限管理、日志审计、回滚和<strong class="signal">风险</strong>控制方案。</li></ul>
+      </div>
+      <div class="module sources-module">
+        <h2>研究来源</h2>
+        <ul class="source-list"><li><a href="https://www.ce.cn/xwzx/gnsz/gdxw/202605/t20260511_2956859.shtml">三部门：促进智能体规范应用与创新发展</a><span class="source-meta">中国经济网 / 经济参考报</span></li><li><a href="https://www.cagd.gov.cn/v/2026/01/8560.html">2026年中国AI发展趋势前瞻</a><span class="source-meta">新华社 / 广东网信网转载</span></li><li><a href="https://www.gov.cn/">关于深入实施“人工智能+”行动的意见</a><span class="source-meta">国务院</span></li><li><a href="https://www.nea.gov.cn/20260508/4dae97ca01d348e4871bb8654be34b3a/c.html">关于促进人工智能与能源双向赋能的行动方案</a><span class="source-meta">国家能源局</span></li></ul>
+      </div>
+    </section>
+    
+  </main>
+  <footer>公开资料研究索引，包含来源链接、研究报告和不确定性提示。</footer>
+
+</body>
+</html>

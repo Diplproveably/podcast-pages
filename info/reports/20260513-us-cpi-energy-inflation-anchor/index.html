@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="ledger" data-layout="newspaper">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>美国 4 月 CPI 的危险信号：能源涨价正在重写降息叙事</title>
+  <style>
+    :root {
+      --paper: #f5f1e3;
+      --ink: #171717;
+      --muted: #64615b;
+      --line: #1c1c1c;
+      --accent: #0d5c63;
+      --accent-two: #b54d1f;
+      --accent-three: #f0c84b;
+      --sand: #efe5cf;
+      --measure: 52rem;
+      --background-signature: ledger-newsprint;
+      --page-background: repeating-linear-gradient(0deg, rgba(13,92,99,.045) 0 1px, transparent 1px 13px), repeating-linear-gradient(90deg, rgba(181,77,31,.035) 0 1px, transparent 1px 86px), var(--paper);
+    }
+    * { box-sizing: border-box; }
+    html { background: #151515; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--page-background);
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      line-height: 1.86;
+      letter-spacing: 0;
+    }
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; overflow-wrap: anywhere; }
+    .issue-bar {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: .58rem clamp(1rem, 4vw, 3.2rem);
+      background: color-mix(in srgb, var(--paper) 92%, white);
+      border-bottom: 2px solid var(--line);
+      backdrop-filter: blur(12px);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+    }
+    .issue-bar strong { color: var(--accent); }
+    .issue-bar span:nth-child(2) { font-weight: 900; }
+    .issue-bar span:last-child { text-align: right; color: var(--muted); }
+    .magazine-cover {
+      min-height: clamp(420px, 62vh, 680px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(17rem, 25rem);
+      gap: clamp(2rem, 5vw, 4.2rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.5rem) clamp(1rem, 5vw, 5rem) clamp(2.2rem, 4vw, 3.2rem);
+      border-bottom: 2px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .magazine-cover::before {
+      content: "RISK";
+      position: absolute;
+      left: clamp(.7rem, 3vw, 2rem);
+      top: clamp(4rem, 9vw, 7rem);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(5rem, 17vw, 17rem);
+      line-height: .75;
+      letter-spacing: 0;
+      color: color-mix(in srgb, var(--accent-two) 13%, transparent);
+      pointer-events: none;
+    }
+    .kicker {
+      display: inline-flex;
+      gap: .6rem;
+      align-items: center;
+      font-weight: 900;
+      color: var(--accent);
+      border: 2px solid var(--line);
+      padding: .22rem .55rem;
+      background: var(--accent-three);
+      width: fit-content;
+    }
+    h1 {
+      max-width: 12ch;
+      margin: 1.3rem 0 0;
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 7vw, 7.2rem);
+      line-height: .94;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .deck {
+      max-width: 56rem;
+      font-size: clamp(1.1rem, 1.65vw, 1.48rem);
+      line-height: 1.62;
+      margin: 2rem 0 0;
+      color: #24211d;
+      border-left: .65rem solid var(--accent);
+      padding-left: 1.2rem;
+    }
+    .cover-meta { align-self: stretch; display: grid; align-content: end; gap: 1rem; }
+    .cover-card {
+      border: 2px solid var(--line);
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 9px 9px 0 var(--accent-two);
+    }
+    .cover-card h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.35; color: var(--accent); }
+    .cover-card ol, .cover-card ul { margin: 0; padding-left: 1.15rem; }
+    .cover-card li { margin: .48rem 0; line-height: 1.55; }
+    .article-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.6rem, 3vw, 3.2rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .editor-note {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(10rem, 15rem) minmax(0, 1fr);
+      gap: 1.2rem;
+      border-top: 5px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: 1rem 0 1.1rem;
+      color: var(--muted);
+      font-size: .94rem;
+      line-height: 1.7;
+    }
+    .editor-note b {
+      display: block;
+      color: var(--ink);
+      font-size: .82rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .25rem;
+    }
+    .editor-note p { margin: 0; }
+    .magazine-article { min-width: 0; font-size: clamp(1.04rem, 1.05vw, 1.18rem); }
+    .article-shell > .magazine-article { grid-column: 1; }
+    .magazine-article p { margin: 0 0 1.35rem; text-align: justify; text-wrap: pretty; }
+    .magazine-article .lede {
+      font-size: clamp(1.24rem, 2vw, 1.58rem);
+      line-height: 1.75;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+    .dropcap {
+      float: left;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 5.8rem;
+      line-height: .8;
+      padding: .18rem .55rem .1rem 0;
+      color: var(--accent);
+    }
+    .magazine-emphasis {
+      margin: 2rem 0 !important;
+      padding: 1.1rem 1.25rem;
+      border-left: .45rem solid var(--accent-two);
+      background: linear-gradient(90deg, color-mix(in srgb, var(--accent-two) 12%, transparent), transparent 78%);
+      font-weight: 600;
+    }
+    .pullquote {
+      margin: 2.4rem -4rem 2.4rem 0;
+      padding: 1.1rem 0 1.2rem 1.5rem;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      background: var(--paper);
+    }
+    .pullquote span { color: var(--accent); font-size: .78rem; font-weight: 900; letter-spacing: .13em; }
+    .pullquote p {
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-size: clamp(1.6rem, 3vw, 2.45rem);
+      line-height: 1.28;
+      margin: .35rem 0 0;
+      text-align: left;
+    }
+    .metric {
+      font-variant-numeric: tabular-nums;
+      color: var(--accent);
+      font-weight: 900;
+      background: linear-gradient(transparent 55%, color-mix(in srgb, var(--accent-three) 65%, transparent) 0);
+    }
+    .signal {
+      font-weight: 900;
+      text-decoration: underline;
+      text-decoration-color: var(--accent-two);
+      text-decoration-thickness: .18em;
+      text-underline-offset: .14em;
+    }
+    .companion-rail {
+      position: sticky;
+      top: 3.8rem;
+      grid-column: 2;
+      align-self: start;
+      border-top: 5px solid var(--line);
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+      padding-top: 1rem;
+    }
+    .companion-rail b { color: var(--ink); }
+    .backmatter {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.2rem;
+      margin-top: 2.4rem;
+      border-top: 2px solid var(--line);
+      padding-top: 1.4rem;
+    }
+    .module { background: #fff; border: 2px solid var(--line); padding: 1rem 1.1rem; box-shadow: 6px 6px 0 var(--sand); }
+    .module h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.3; color: var(--accent); }
+    .module ul { margin: 0; padding-left: 1.1rem; }
+    .module li { margin: .5rem 0; line-height: 1.58; }
+    .source-list li { display: grid; gap: .12rem; margin-bottom: .8rem; }
+    .source-meta { color: var(--muted); font-size: .86rem; }
+    .source-meta::before { content: "来源 · "; }
+    .sources-module { grid-column: 1 / -1; }
+    .newspaper-masthead {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.8rem) clamp(1rem, 4vw, 3rem) 1.6rem;
+      border-bottom: 5px double var(--line);
+    }
+    .newspaper-kicker {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.4rem, 3vw, 3rem);
+      line-height: 1;
+      color: var(--accent);
+      text-transform: uppercase;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: .35rem 0;
+    }
+    .newspaper-masthead h1 {
+      max-width: 20ch;
+      font-size: clamp(2.6rem, 5.5vw, 6.2rem);
+      line-height: .98;
+    }
+    .newspaper-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem 1.1rem;
+      margin-top: 1rem;
+      padding-top: .8rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .market-strip {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr 1fr;
+      gap: 1rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      border-bottom: 2px solid var(--line);
+      background: color-mix(in srgb, var(--accent-three) 26%, var(--paper));
+      font-size: .94rem;
+      line-height: 1.55;
+    }
+    .market-strip b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .08em; }
+    .market-strip p, .market-strip ol, .market-strip ul { margin: .35rem 0 0; }
+    .market-strip ol, .market-strip ul { padding-left: 1.1rem; }
+    .newspaper-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .newspaper-article .lede {
+      column-span: all;
+      border-top: 2px solid var(--line);
+      padding-top: 1rem;
+    }
+    .newspaper-article { grid-column: 1; }
+    .newspaper-rail {
+      position: sticky;
+      top: 3.8rem;
+      border-left: 2px solid var(--line);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .dossier-cover {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.6rem) clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
+      gap: clamp(1.5rem, 4vw, 3.8rem);
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+    }
+    .dossier-stamp {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      align-self: start;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      color: var(--accent);
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: color-mix(in srgb, var(--accent-three) 35%, white);
+    }
+    .dossier-cover h1 {
+      max-width: 18ch;
+      font-size: clamp(2.7rem, 6vw, 6.6rem);
+      line-height: .98;
+    }
+    .dossier-summary {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.5vw, 1.36rem);
+      border-left: .45rem solid var(--accent);
+      padding-left: 1rem;
+    }
+    .dossier-source { color: var(--muted); margin: 0; }
+    .dossier-shell {
+      display: grid;
+      grid-template-columns: minmax(12rem, 17rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .dossier-index {
+      position: sticky;
+      top: 3.8rem;
+      border-top: 5px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .dossier-index b { display: block; color: var(--ink); margin-bottom: .6rem; }
+    .dossier-index ol { margin: 0 0 1rem; padding-left: 1.1rem; }
+    .dossier-article { grid-column: 2; }
+    .field-cover {
+      min-height: clamp(460px, 64vh, 720px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr);
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      border-bottom: 2px solid var(--line);
+      background:
+        linear-gradient(135deg, transparent 0 48%, color-mix(in srgb, var(--accent-three) 24%, transparent) 48% 52%, transparent 52%),
+        var(--paper);
+    }
+    .field-topline {
+      grid-column: 1 / -1;
+      width: fit-content;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: .25rem .7rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .field-cover h1 {
+      max-width: 16ch;
+      font-size: clamp(2.8rem, 6.4vw, 7rem);
+    }
+    .field-deck {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.55vw, 1.38rem);
+      line-height: 1.62;
+      border-left: .5rem solid var(--accent-two);
+      padding-left: 1rem;
+    }
+    .field-map {
+      border: 2px solid var(--line);
+      background: rgba(255,255,255,.76);
+      padding: 1rem;
+      box-shadow: 10px 10px 0 color-mix(in srgb, var(--accent) 70%, black);
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+    .field-map b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .1em; }
+    .field-map ol { margin: .55rem 0 1rem; padding-left: 1.2rem; }
+    .field-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(13rem, 17rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .field-log {
+      position: sticky;
+      top: 3.8rem;
+      border-left: .35rem solid var(--accent-two);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .field-article { grid-column: 1; }
+    .lab-cover {
+      padding: clamp(2.6rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      min-height: clamp(420px, 58vh, 650px);
+      display: grid;
+      align-content: center;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+      background:
+        linear-gradient(90deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        linear-gradient(0deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        var(--paper);
+    }
+    .lab-label {
+      width: fit-content;
+      background: var(--ink);
+      color: #fff;
+      padding: .28rem .65rem;
+      font-size: .82rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .lab-cover h1 {
+      max-width: 22ch;
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 5.8rem);
+      line-height: 1.04;
+    }
+    .lab-deck {
+      max-width: 62rem;
+      font-size: clamp(1.06rem, 1.45vw, 1.32rem);
+      border-top: 2px solid var(--accent);
+      padding-top: 1rem;
+    }
+    .protocol-strip {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .75rem;
+      border-bottom: 2px solid var(--line);
+      font-size: .88rem;
+    }
+    .protocol-strip div {
+      border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
+      padding: .75rem;
+      background: rgba(255,255,255,.68);
+      min-width: 0;
+    }
+    .protocol-strip b {
+      display: block;
+      color: var(--accent-two);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .protocol-strip span { overflow-wrap: anywhere; }
+    .lab-shell {
+      display: grid;
+      grid-template-columns: minmax(14rem, 19rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .lab-notes {
+      position: sticky;
+      top: 3.8rem;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      background: #fff;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .lab-notes b { color: var(--ink); }
+    .lab-notes ol { padding-left: 1.1rem; }
+    .lab-article { grid-column: 2; }
+    footer { color: var(--muted); padding: 0 clamp(1rem, 4vw, 3rem) 3rem; max-width: 1220px; margin: 0 auto; font-size: .9rem; }
+    @media (max-width: 1100px) {
+      .magazine-cover { grid-template-columns: 1fr; min-height: auto; }
+      .cover-meta { max-width: 42rem; }
+      .article-shell { grid-template-columns: 1fr; }
+      .editor-note { grid-template-columns: 1fr; }
+      .companion-rail { position: static; grid-column: 1; }
+      .backmatter { grid-column: 1; grid-template-columns: 1fr; }
+      .pullquote { margin-right: 0; }
+      h1 { max-width: 11ch; }
+      .market-strip, .protocol-strip { grid-template-columns: 1fr; }
+      .newspaper-shell, .dossier-shell, .field-shell, .lab-shell { grid-template-columns: 1fr; }
+      .newspaper-rail, .dossier-index, .field-log, .lab-notes { position: static; }
+      .dossier-article, .lab-article { grid-column: 1; }
+      .dossier-cover, .field-cover { grid-template-columns: 1fr; min-height: auto; }
+      .dossier-stamp { grid-column: 1; grid-row: auto; }
+    }
+    @media (max-width: 640px) {
+      .issue-bar { grid-template-columns: 1fr; gap: .15rem; }
+      .issue-bar span:last-child { text-align: left; }
+      .magazine-cover { padding-top: 2.4rem; }
+      h1 { font-size: clamp(2.65rem, 16vw, 4.8rem); }
+      .deck { border-left-width: .45rem; padding-left: .8rem; }
+      .magazine-article p { text-align: left; }
+      .dropcap { font-size: 4.6rem; }
+      .module { box-shadow: 4px 4px 0 var(--sand); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="issue-bar"><span><strong>Infohub</strong> article</span><span>Magazine research page</span><span>2026-05-12</span></div>
+  <header class="newspaper-masthead">
+    <div class="newspaper-kicker">MARKETS / POLICY LEDGER</div>
+    <h1>美国 4 月 CPI 的危险信号：能源涨价正在重写降息叙事</h1>
+    <p class="deck">美国 <strong class="metric">4 月</strong> CPI 环比上涨 <strong class="metric">0.6%</strong>，同比 <strong class="metric">3.8%</strong>；<strong class="signal">核心</strong> CPI 环比 <strong class="metric">0.4%</strong>、同比 <strong class="metric">2.8%</strong>。最醒目的不是核心服务重新抬头，而是能源同比 <strong class="metric">17.9%</strong>、汽油 <strong class="metric">28.4%</strong>、燃油 <strong class="metric">54.3%</strong>、机票 <strong class="metric">20.7%</strong>，说明伊朗战争和能源冲击已经开始进入家庭账单与政策预期。</p>
+    <div class="newspaper-meta">
+      <span>U.S. Bureau of Labor Statistics</span>
+      <span>2026-05-12</span>
+      <span>finance-macro / markets / geopolitics</span>
+    </div>
+  </header>
+  <section class="market-strip">
+    <div>
+      <b>新闻锚点</b>
+      <p><a href="https://www.bls.gov/news.release/archives/cpi_05122026.htm">Consumer Price Index News Release - April 2026</a></p>
+    </div>
+    <div>
+      <b>研究问题</b>
+      <ol><li><strong class="metric">4 月</strong> CPI 到底是一次能源扰动，还是通胀二次上行的开始？</li><li>能源、住房、机票和服务项怎样改变 Fed 的降息约束？</li><li>这份数据和中美峰会、霍尔木兹<strong class="signal">风险</strong>之间有什么实际联系？</li></ol>
+    </div>
+    <div>
+      <b>后续变量</b>
+      <ul><li><strong class="metric">5 月</strong> CPI 和 PCE 发布时间及<strong class="signal">核心</strong>服务趋势。</li><li>Brent/WTI、美国汽油价格、霍尔木兹航运恢复情况。</li><li>FOMC 官员讲话、利率期货和通胀预期指标。</li><li>航空、零售、物流企业财报中对能源成本的表述。</li></ul>
+    </div>
+  </section>
+  <main class="newspaper-shell">
+    <article class="magazine-article newspaper-article">
+      <p class="lede"><span class="dropcap">4</span> 月 CPI 的标题数字已经足够刺眼：美国 CPI-U 环比上涨 <strong class="metric">0.6%</strong>，前一个月是 <strong class="metric">0.9%</strong>；同比涨幅从 <strong class="metric">3 月</strong>的 <strong class="metric">3.3%</strong>升到 <strong class="metric">3.8%</strong>。如果只看“比上月低”，会错过<strong class="signal">真正</strong>的问题。通胀没有继续按去年底和今年初的路径温和回落，反而在能源冲击下重新向上。BLS 同时给出<strong class="signal">核心</strong> CPI：剔除食品和能源后环比 <strong class="metric">0.4%</strong>，同比 <strong class="metric">2.8%</strong>，也高于前一个月的同比 <strong class="metric">2.6%</strong>。这说明能源不是唯一变量，它正在和住房、旅行、日用品、服务价格一起改变通胀图谱。</p><p class="magazine-emphasis">能源项是这份报告的主线。BLS 数据显示，能源指数过去 <strong class="metric">12 个月</strong>上涨 <strong class="metric">17.9%</strong>，能源商品上涨 <strong class="metric">29.2%</strong>，汽油上涨 <strong class="metric">28.4%</strong>，燃油上涨 <strong class="metric">54.3%</strong>。这些数字和普通家庭的体感高度相关，因为汽油、取暖、航空出行、物流成本会把国际油价的波动转成每天能看见的账单。美国通胀最麻烦的地方正在这里：如果能源只是单月脉冲，央行可以相对耐心；如果能源通过运费、航空、食品加工、消费者通胀预期进入更广泛价格，它就不再只是“<strong class="signal">核心</strong>外”的噪音。</p><p><strong class="signal">核心</strong>项并不轻松。<strong class="metric">4 月</strong>核心 CPI 环比 <strong class="metric">0.4%</strong>，住房环比 <strong class="metric">0.6%</strong>，业主等价租金和租金都上涨 <strong class="metric">0.5%</strong>，外宿住宿上涨 <strong class="metric">2.4%</strong>。机票环比涨 <strong class="metric">2.8%</strong>，同比涨 <strong class="metric">20.7%</strong>。这些项目把能源冲击和服务价格粘性接了起来：油价推高航空成本，旅行需求与票价管理放大波动；住房则继续提供慢变量支撑，使核心通胀即使在商品端缓和时也难以下行。BLS 的细项还显示，家庭用品与运营、个人护理、服装、教育等都在上涨，说明涨价并未完全局限在油箱里。</p><aside class="pullquote"><span>摘句</span><p>这会让 Fed 的反应函数更窄。</p></aside><p>这会让 Fed 的反应函数更窄。央行关心的不是某个 CPI 单月读数，而是通胀是否重新形成广泛性和持续性。若能源涨价带来真实收入下降，消费会承压；若能源涨价带来通胀预期上行，降息空间会收缩；若油价冲击同时推低增长和推高通胀，政策会落入更差的组合。Fed <strong class="metric">5 月</strong>金融稳定报告已经把地缘冲突、油气价格、AI、私人信贷和通胀放在同一组<strong class="signal">风险</strong>里，这说明央行看见的不只是价格指数，而是能源、资产价格和信用条件之间的联动。</p><p>这份 CPI 也解释了为什么特朗普访华新闻里会同时出现伊朗、贸易和通胀。AP 会前报道提到，美国和以色列同伊朗的战争压低了特朗普国内声望，也因能源价格推升通胀。中美会谈表面上可以谈农产品和飞机，深层却绕不开霍尔木兹和能源市场。中国不一定会按美方希望施压伊朗，但如果海峡关闭和油气运输阻塞继续扩大，全球制造业、航运、食品和消费都会受影响。<strong class="metric">4 月</strong> CPI 让能源外交变成了国内经济议题。</p><p>对市场来说，<strong class="signal">真正</strong>的危险不是“CPI 高一点”，而是旧叙事失效。此前较乐观的路径是：通胀缓慢回落，经济放缓但不失速，Fed 在合适时点释放宽松，<strong class="signal">风险</strong>资产继续从 AI 资本开支和盈利预期中获得支撑。<strong class="metric">4 月</strong> CPI 把这条路径重新拉紧。能源冲击若持续，债券市场需要重新定价通胀补偿；股票市场需要面对折现率和成本端压力；消费股和运输链条要承受汽油、机票、物流和实际收入的挤压。</p><p class="magazine-emphasis">不过，把这份数据直接读成“通胀失控”也过早。<strong class="signal">核心</strong>同比仍低于总 CPI，部分能源涨幅来自地缘冲击和基数效应，住房通胀虽有粘性但不是 2021-<strong class="metric">2022 年</strong>式的全面爆炸。问题在于，政策容错率已经下降。下一份 CPI、PPI、进口价格、汽油零售价、租金新签约数据、消费者通胀预期和 FOMC 表述，会共同决定这是不是一次尖峰，还是通胀重新抬头的早期阶段。今天应该记住的数字不是一个，而是一组：<strong class="metric">0.6%</strong>、<strong class="metric">3.8%</strong>、<strong class="metric">0.4%</strong>、<strong class="metric">2.8%</strong>、<strong class="metric">17.9%</strong>、<strong class="metric">28.4%</strong>、<strong class="metric">20.7%</strong>。它们合在一起，说明美国宏观叙事从“通胀回落等待降息”转向了“能源冲击测试政策耐心”。</p><p>还要把食品项放进图里。BLS 显示食品指数同比上涨 <strong class="metric">4.0%</strong>，其中外食上涨 <strong class="metric">4.3%</strong>、在家食品上涨 <strong class="metric">3.8%</strong>。食品不是这次 CPI 最大的涨价项，但它对居民体感很重要。汽油和食品同时上涨时，低收入家庭的可支配现金会更快被压缩，消费结构会从可选消费退向必需品。宏观叙事里的“软着陆”如果不能解释这种体感，就会在政治层面失去说服力。</p><p>能源冲击的二阶影响尤其值得看。企业不会在油价上涨当天立刻全面调价，但物流、包装、冷链、航空、快递、塑料、化工和农业投入都会在之后几周或几个月陆续反映。CPI 把很多价格变化压缩成一个月度读数，实际传导却是链式的。若企业认为油价上涨只是短期，就会吞掉部分利润；若认为冲击持续，就会重新报价、缩短合同期限或增加燃油附加费。</p><p class="magazine-emphasis">住房项的粘性让 Fed 更难忽略数据。租金和业主等价租金属于慢变量，即使新租约降温，也需要时间进入指数。能源价格则是快变量，几周内就能改变总 CPI。快变量抬头、慢变量不降，会产生一种政策夹击：央行既不能因为能源波动就过度反应，也不能在<strong class="signal">核心</strong>服务仍有韧性时提前庆祝通胀任务结束。<strong class="metric">4 月</strong>数据恰好处在这个尴尬位置。</p><p>这份数据还会改变财政与外交空间。高通胀环境下，政府推出补贴、减税或能源救助会被质疑推高需求；不采取行动又会让居民实际收入受压。外交上，白宫更需要油价稳定和供应链安全；贸易上，关税若提高进口价格，也会和能源冲击叠加。也就是说，CPI 报告不是一个孤立统计发布，它会反过来限制总统、财政部、能源部门和贸易谈判团队的选择。</p><p><strong class="signal">后续</strong>最该盯的是“广度”。如果 <strong class="metric">5 月</strong>数据只显示能源回落、<strong class="signal">核心</strong>服务温和、租金继续降温，这次 CPI 可能会被回头看成战争驱动的尖峰；如果机票、租金、医疗、个人护理、服装、汽车保险和食品继续扩散，市场就会重新讨论 <strong class="metric">2022 年</strong>以后被压住的通胀心理是否复燃。对政策而言，最危险的从来不是一个高读数，而是多个部门同时开始相信高价格会持续。</p><p>另一个需要校准的点是实际利率。若名义利率不动、通胀预期上升，实际利率会下降，可能短期支撑<strong class="signal">风险</strong>资产；但若市场认为 Fed 因通胀粘性必须更久维持高利率，名义利率和实际利率又会一起上行。CPI 数据因此会通过两个方向影响资产价格：一边是通胀侵蚀现金流和购买力，另一边是利率重估改变估值。这个双重传导比单纯讨论“降不降息”更接近市场真实反应。</p><p>从居民角度看，能源和机票涨价还会改变行为。汽油价格上升会压缩郊区通勤家庭预算，机票上涨会推迟或减少旅行，外食和个人护理涨价则会让服务消费更谨慎。如果企业在财报中开始讨论客流、客单价和促销压力，说明 CPI 已经从统计表进入企业经营。宏观数据最终会落到这些微观信号上。</p>
+    </article>
+    <aside class="newspaper-rail">
+      <p><b>读法</b><br>这篇应写成一篇宏观数据读片：用几个关键数字切开，不做投资建议，不给利率预测，只解释能源冲击怎样穿过 CPI、家庭预算、央行反应函数和外交议程。版式适合金融报纸型，穿插数字标牌和一两个解释框。</p>
+      <p><b>主题</b><br>finance-macro / markets / geopolitics</p>
+      <p><b>返回</b><br><a href="../../">信息流首页</a></p>
+    </aside>
+    
+    <section class="backmatter">
+      <div class="module">
+        <h2>不确定性</h2>
+        <ul><li>CPI 不等于 PCE，Fed 更关注的 PCE 通胀仍需<strong class="signal">后续</strong>数据验证。</li><li>能源价格受战争、航运和政策影响很大，未来几周可能快速反转或继续恶化。</li><li>单月数据不能确认长期通胀趋势，需要结合工资、预期、租金和企业定价调查。</li></ul>
+      </div>
+      <div class="module">
+        <h2>后续观察</h2>
+        <ul><li><strong class="metric">5 月</strong> CPI 和 PCE 发布时间及<strong class="signal">核心</strong>服务趋势。</li><li>Brent/WTI、美国汽油价格、霍尔木兹航运恢复情况。</li><li>FOMC 官员讲话、利率期货和通胀预期指标。</li><li>航空、零售、物流企业财报中对能源成本的表述。</li></ul>
+      </div>
+      <div class="module sources-module">
+        <h2>研究来源</h2>
+        <ul class="source-list"><li><a href="https://www.bls.gov/news.release/archives/cpi_05122026.htm">Consumer Price Index News Release - 2026 M04 Results</a><span class="source-meta">BLS</span></li><li><a href="https://www.bls.gov/cpi/">CPI Home: Latest Numbers</a><span class="source-meta">BLS</span></li><li><a href="https://www.federalreserve.gov/publications/financial-stability-report.htm">Financial Stability Report, May 2026</a><span class="source-meta">Federal Reserve</span></li><li><a href="https://apnews.com/article/trump-xi-china-trip-arrival-353c768987542843e2033aa684266879">Trump set to meet with Xi in Beijing as war and inflation weigh on his presidency</a><span class="source-meta">AP News</span></li></ul>
+      </div>
+    </section>
+    
+  </main>
+  <footer>公开资料研究索引，包含来源链接、研究报告和不确定性提示。</footer>
+
+</body>
+</html>

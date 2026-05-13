@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="lab" data-layout="lab">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CAISI 扩大前沿模型测试：美国 AI 治理正在从口号转向发布前闸门</title>
+  <style>
+    :root {
+      --paper: #f0f7fb;
+      --ink: #171717;
+      --muted: #64615b;
+      --line: #1c1c1c;
+      --accent: #2b4c7e;
+      --accent-two: #7b2d26;
+      --accent-three: #b8d8d8;
+      --sand: #efe5cf;
+      --measure: 52rem;
+      --background-signature: lab-blueprint;
+      --page-background: linear-gradient(90deg, rgba(43,76,126,.08) 1px, transparent 1px) 0 0 / 32px 32px, linear-gradient(0deg, rgba(43,76,126,.08) 1px, transparent 1px) 0 0 / 32px 32px, linear-gradient(180deg, rgba(184,216,216,.24), transparent 34rem), var(--paper);
+    }
+    * { box-sizing: border-box; }
+    html { background: #151515; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--page-background);
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      line-height: 1.86;
+      letter-spacing: 0;
+    }
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; overflow-wrap: anywhere; }
+    .issue-bar {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: .58rem clamp(1rem, 4vw, 3.2rem);
+      background: color-mix(in srgb, var(--paper) 92%, white);
+      border-bottom: 2px solid var(--line);
+      backdrop-filter: blur(12px);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+    }
+    .issue-bar strong { color: var(--accent); }
+    .issue-bar span:nth-child(2) { font-weight: 900; }
+    .issue-bar span:last-child { text-align: right; color: var(--muted); }
+    .magazine-cover {
+      min-height: clamp(420px, 62vh, 680px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(17rem, 25rem);
+      gap: clamp(2rem, 5vw, 4.2rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.5rem) clamp(1rem, 5vw, 5rem) clamp(2.2rem, 4vw, 3.2rem);
+      border-bottom: 2px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .magazine-cover::before {
+      content: "LAB";
+      position: absolute;
+      left: clamp(.7rem, 3vw, 2rem);
+      top: clamp(4rem, 9vw, 7rem);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(5rem, 17vw, 17rem);
+      line-height: .75;
+      letter-spacing: 0;
+      color: color-mix(in srgb, var(--accent-two) 13%, transparent);
+      pointer-events: none;
+    }
+    .kicker {
+      display: inline-flex;
+      gap: .6rem;
+      align-items: center;
+      font-weight: 900;
+      color: var(--accent);
+      border: 2px solid var(--line);
+      padding: .22rem .55rem;
+      background: var(--accent-three);
+      width: fit-content;
+    }
+    h1 {
+      max-width: 12ch;
+      margin: 1.3rem 0 0;
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 7vw, 7.2rem);
+      line-height: .94;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .deck {
+      max-width: 56rem;
+      font-size: clamp(1.1rem, 1.65vw, 1.48rem);
+      line-height: 1.62;
+      margin: 2rem 0 0;
+      color: #24211d;
+      border-left: .65rem solid var(--accent);
+      padding-left: 1.2rem;
+    }
+    .cover-meta { align-self: stretch; display: grid; align-content: end; gap: 1rem; }
+    .cover-card {
+      border: 2px solid var(--line);
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 9px 9px 0 var(--accent-two);
+    }
+    .cover-card h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.35; color: var(--accent); }
+    .cover-card ol, .cover-card ul { margin: 0; padding-left: 1.15rem; }
+    .cover-card li { margin: .48rem 0; line-height: 1.55; }
+    .article-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.6rem, 3vw, 3.2rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .editor-note {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(10rem, 15rem) minmax(0, 1fr);
+      gap: 1.2rem;
+      border-top: 5px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: 1rem 0 1.1rem;
+      color: var(--muted);
+      font-size: .94rem;
+      line-height: 1.7;
+    }
+    .editor-note b {
+      display: block;
+      color: var(--ink);
+      font-size: .82rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .25rem;
+    }
+    .editor-note p { margin: 0; }
+    .magazine-article { min-width: 0; font-size: clamp(1.04rem, 1.05vw, 1.18rem); }
+    .article-shell > .magazine-article { grid-column: 1; }
+    .magazine-article p { margin: 0 0 1.35rem; text-align: justify; text-wrap: pretty; }
+    .magazine-article .lede {
+      font-size: clamp(1.24rem, 2vw, 1.58rem);
+      line-height: 1.75;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+    .dropcap {
+      float: left;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 5.8rem;
+      line-height: .8;
+      padding: .18rem .55rem .1rem 0;
+      color: var(--accent);
+    }
+    .magazine-emphasis {
+      margin: 2rem 0 !important;
+      padding: 1.1rem 1.25rem;
+      border-left: .45rem solid var(--accent-two);
+      background: linear-gradient(90deg, color-mix(in srgb, var(--accent-two) 12%, transparent), transparent 78%);
+      font-weight: 600;
+    }
+    .pullquote {
+      margin: 2.4rem -4rem 2.4rem 0;
+      padding: 1.1rem 0 1.2rem 1.5rem;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      background: var(--paper);
+    }
+    .pullquote span { color: var(--accent); font-size: .78rem; font-weight: 900; letter-spacing: .13em; }
+    .pullquote p {
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-size: clamp(1.6rem, 3vw, 2.45rem);
+      line-height: 1.28;
+      margin: .35rem 0 0;
+      text-align: left;
+    }
+    .metric {
+      font-variant-numeric: tabular-nums;
+      color: var(--accent);
+      font-weight: 900;
+      background: linear-gradient(transparent 55%, color-mix(in srgb, var(--accent-three) 65%, transparent) 0);
+    }
+    .signal {
+      font-weight: 900;
+      text-decoration: underline;
+      text-decoration-color: var(--accent-two);
+      text-decoration-thickness: .18em;
+      text-underline-offset: .14em;
+    }
+    .companion-rail {
+      position: sticky;
+      top: 3.8rem;
+      grid-column: 2;
+      align-self: start;
+      border-top: 5px solid var(--line);
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+      padding-top: 1rem;
+    }
+    .companion-rail b { color: var(--ink); }
+    .backmatter {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.2rem;
+      margin-top: 2.4rem;
+      border-top: 2px solid var(--line);
+      padding-top: 1.4rem;
+    }
+    .module { background: #fff; border: 2px solid var(--line); padding: 1rem 1.1rem; box-shadow: 6px 6px 0 var(--sand); }
+    .module h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.3; color: var(--accent); }
+    .module ul { margin: 0; padding-left: 1.1rem; }
+    .module li { margin: .5rem 0; line-height: 1.58; }
+    .source-list li { display: grid; gap: .12rem; margin-bottom: .8rem; }
+    .source-meta { color: var(--muted); font-size: .86rem; }
+    .source-meta::before { content: "来源 · "; }
+    .sources-module { grid-column: 1 / -1; }
+    .newspaper-masthead {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.8rem) clamp(1rem, 4vw, 3rem) 1.6rem;
+      border-bottom: 5px double var(--line);
+    }
+    .newspaper-kicker {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.4rem, 3vw, 3rem);
+      line-height: 1;
+      color: var(--accent);
+      text-transform: uppercase;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: .35rem 0;
+    }
+    .newspaper-masthead h1 {
+      max-width: 20ch;
+      font-size: clamp(2.6rem, 5.5vw, 6.2rem);
+      line-height: .98;
+    }
+    .newspaper-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem 1.1rem;
+      margin-top: 1rem;
+      padding-top: .8rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .market-strip {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr 1fr;
+      gap: 1rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      border-bottom: 2px solid var(--line);
+      background: color-mix(in srgb, var(--accent-three) 26%, var(--paper));
+      font-size: .94rem;
+      line-height: 1.55;
+    }
+    .market-strip b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .08em; }
+    .market-strip p, .market-strip ol, .market-strip ul { margin: .35rem 0 0; }
+    .market-strip ol, .market-strip ul { padding-left: 1.1rem; }
+    .newspaper-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .newspaper-article .lede {
+      column-span: all;
+      border-top: 2px solid var(--line);
+      padding-top: 1rem;
+    }
+    .newspaper-article { grid-column: 1; }
+    .newspaper-rail {
+      position: sticky;
+      top: 3.8rem;
+      border-left: 2px solid var(--line);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .dossier-cover {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.6rem) clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
+      gap: clamp(1.5rem, 4vw, 3.8rem);
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+    }
+    .dossier-stamp {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      align-self: start;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      color: var(--accent);
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: color-mix(in srgb, var(--accent-three) 35%, white);
+    }
+    .dossier-cover h1 {
+      max-width: 18ch;
+      font-size: clamp(2.7rem, 6vw, 6.6rem);
+      line-height: .98;
+    }
+    .dossier-summary {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.5vw, 1.36rem);
+      border-left: .45rem solid var(--accent);
+      padding-left: 1rem;
+    }
+    .dossier-source { color: var(--muted); margin: 0; }
+    .dossier-shell {
+      display: grid;
+      grid-template-columns: minmax(12rem, 17rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .dossier-index {
+      position: sticky;
+      top: 3.8rem;
+      border-top: 5px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .dossier-index b { display: block; color: var(--ink); margin-bottom: .6rem; }
+    .dossier-index ol { margin: 0 0 1rem; padding-left: 1.1rem; }
+    .dossier-article { grid-column: 2; }
+    .field-cover {
+      min-height: clamp(460px, 64vh, 720px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr);
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      border-bottom: 2px solid var(--line);
+      background:
+        linear-gradient(135deg, transparent 0 48%, color-mix(in srgb, var(--accent-three) 24%, transparent) 48% 52%, transparent 52%),
+        var(--paper);
+    }
+    .field-topline {
+      grid-column: 1 / -1;
+      width: fit-content;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: .25rem .7rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .field-cover h1 {
+      max-width: 16ch;
+      font-size: clamp(2.8rem, 6.4vw, 7rem);
+    }
+    .field-deck {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.55vw, 1.38rem);
+      line-height: 1.62;
+      border-left: .5rem solid var(--accent-two);
+      padding-left: 1rem;
+    }
+    .field-map {
+      border: 2px solid var(--line);
+      background: rgba(255,255,255,.76);
+      padding: 1rem;
+      box-shadow: 10px 10px 0 color-mix(in srgb, var(--accent) 70%, black);
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+    .field-map b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .1em; }
+    .field-map ol { margin: .55rem 0 1rem; padding-left: 1.2rem; }
+    .field-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(13rem, 17rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .field-log {
+      position: sticky;
+      top: 3.8rem;
+      border-left: .35rem solid var(--accent-two);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .field-article { grid-column: 1; }
+    .lab-cover {
+      padding: clamp(2.6rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      min-height: clamp(420px, 58vh, 650px);
+      display: grid;
+      align-content: center;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+      background:
+        linear-gradient(90deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        linear-gradient(0deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        var(--paper);
+    }
+    .lab-label {
+      width: fit-content;
+      background: var(--ink);
+      color: #fff;
+      padding: .28rem .65rem;
+      font-size: .82rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .lab-cover h1 {
+      max-width: 22ch;
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 5.8rem);
+      line-height: 1.04;
+    }
+    .lab-deck {
+      max-width: 62rem;
+      font-size: clamp(1.06rem, 1.45vw, 1.32rem);
+      border-top: 2px solid var(--accent);
+      padding-top: 1rem;
+    }
+    .protocol-strip {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .75rem;
+      border-bottom: 2px solid var(--line);
+      font-size: .88rem;
+    }
+    .protocol-strip div {
+      border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
+      padding: .75rem;
+      background: rgba(255,255,255,.68);
+      min-width: 0;
+    }
+    .protocol-strip b {
+      display: block;
+      color: var(--accent-two);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .protocol-strip span { overflow-wrap: anywhere; }
+    .lab-shell {
+      display: grid;
+      grid-template-columns: minmax(14rem, 19rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .lab-notes {
+      position: sticky;
+      top: 3.8rem;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      background: #fff;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .lab-notes b { color: var(--ink); }
+    .lab-notes ol { padding-left: 1.1rem; }
+    .lab-article { grid-column: 2; }
+    footer { color: var(--muted); padding: 0 clamp(1rem, 4vw, 3rem) 3rem; max-width: 1220px; margin: 0 auto; font-size: .9rem; }
+    @media (max-width: 1100px) {
+      .magazine-cover { grid-template-columns: 1fr; min-height: auto; }
+      .cover-meta { max-width: 42rem; }
+      .article-shell { grid-template-columns: 1fr; }
+      .editor-note { grid-template-columns: 1fr; }
+      .companion-rail { position: static; grid-column: 1; }
+      .backmatter { grid-column: 1; grid-template-columns: 1fr; }
+      .pullquote { margin-right: 0; }
+      h1 { max-width: 11ch; }
+      .market-strip, .protocol-strip { grid-template-columns: 1fr; }
+      .newspaper-shell, .dossier-shell, .field-shell, .lab-shell { grid-template-columns: 1fr; }
+      .newspaper-rail, .dossier-index, .field-log, .lab-notes { position: static; }
+      .dossier-article, .lab-article { grid-column: 1; }
+      .dossier-cover, .field-cover { grid-template-columns: 1fr; min-height: auto; }
+      .dossier-stamp { grid-column: 1; grid-row: auto; }
+    }
+    @media (max-width: 640px) {
+      .issue-bar { grid-template-columns: 1fr; gap: .15rem; }
+      .issue-bar span:last-child { text-align: left; }
+      .magazine-cover { padding-top: 2.4rem; }
+      h1 { font-size: clamp(2.65rem, 16vw, 4.8rem); }
+      .deck { border-left-width: .45rem; padding-left: .8rem; }
+      .magazine-article p { text-align: left; }
+      .dropcap { font-size: 4.6rem; }
+      .module { box-shadow: 4px 4px 0 var(--sand); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="issue-bar"><span><strong>Infohub</strong> article</span><span>Magazine research page</span><span>2026-05-05</span></div>
+  <header class="lab-cover">
+    <div class="lab-label">SECURITY / TECHNICAL SYSTEMS</div>
+    <h1>CAISI 扩大前沿模型测试：美国 AI 治理正在从口号转向发布前闸门</h1>
+    <p class="lab-deck">CAISI 与 Google DeepMind、Microsoft、xAI 建立前沿模型测试合作，并与 OpenAI、Anthropic 的既有合作形成五大实验室覆盖。重点不是“政府给模型盖章”，而是美国把前沿模型发布前的国家安全测试、网络<strong class="signal">风险</strong>评估和标准制定纳入制度化流程。</p>
+  </header>
+  <section class="protocol-strip">
+    <div><b>Anchor</b><span><a href="https://www.nist.gov/caisi">CAISI signs agreements regarding frontier AI national security testing with Google DeepMind, Microsoft and xAI</a></span></div>
+    <div><b>Source</b><span>NIST / CAISI</span></div>
+    <div><b>Date</b><span>2026-05-05</span></div>
+    <div><b>Scope</b><span>ai-policy / ai-security / us-policy</span></div>
+  </section>
+  <main class="lab-shell">
+    <aside class="lab-notes">
+      <b>Research prompts</b>
+      <ol><li>CAISI 的测试到底是监管、标准、还是自愿合作？</li><li>五大实验室覆盖后，发布前测试能解决什么<strong class="signal">风险</strong>？</li><li>自愿框架、模型访问深度和军事使用重叠会留下哪些缺口？</li></ol>
+      <p>这篇应像一位技术政策研究员在拆解制度机器：少用宏大词，多写测试权限、模型版本、风险域和问责缺口。视觉适合技术实验室型，配合测试台、闸门、访问级别等元素。</p>
+      <p><a href="../../">返回信息流首页</a></p>
+    </aside>
+    <article class="magazine-article lab-article">
+      <p class="lede"><span class="dropcap">C</span>AISI 的新协议很容易被写成“美国政府要审批 AI 模型”。这个说法太粗。NIST 页面对 CAISI 的定位更具体：它是美国政府内部面向商业 AI 系统测试和协同研究的主要接口，负责建立自愿协议、开展可能涉及国家安全<strong class="signal">风险</strong>的非保密评估，并把重点放在网络安全、生物安全、化学武器等可展示风险上。它不像金融监管那样有强制牌照，也不像传统产品安全认证那样给出一个可上市的合格标志。它更接近一个国家级测试台。</p><p class="magazine-emphasis"><strong class="metric">5 月</strong> <strong class="metric">5 日</strong>的变化在于覆盖面扩大。Axios 报道称，美国政府与 Google DeepMind、Microsoft、xAI 达成新合作，同时 OpenAI 和 Anthropic 的既有合作也在更新。Cloud Security Alliance 的研究笔记把这称为五大实验室覆盖：Google、Microsoft、xAI、OpenAI、Anthropic 都进入了 CAISI 前沿模型评估体系。对美国 AI 治理来说，这比单个公司发布安全报告更重要，因为它把发布前评估从企业自述推进到政府测量科学和跨机构<strong class="signal">风险</strong>视角。</p><p>所谓发布前测试，最<strong class="signal">关键</strong>的是访问深度。只拿到公开聊天界面，评估者看到的是产品外壳；拿到带安全护栏的模型，评估者看到的是经过滤波后的行为；若能在受控条件下接触更接近原始能力的版本，才更可能发现真实的网络、欺骗、生物、化学或代理能力<strong class="signal">风险</strong>。CSA 的笔记特别强调，参与开发者可能提供包括弱化护栏版本在内的访问，使国家安全测试能够看到表层测试捕捉不到的问题。这个细节决定了 CAISI 是象征性审阅，还是有效红队。</p><aside class="pullquote"><span>摘句</span><p>CAISI 的价值来自三个方面。</p></aside><p>CAISI 的价值来自三个方面。第一，它能在模型公开部署前发现可修复的安全问题，避免<strong class="signal">高影响</strong>漏洞随产品一起推向市场。第二，它能积累跨模型、跨实验室的测量方法，让“模型很危险”或“模型已经安全”不再完全依赖企业话术。第三，它能把 AI 模型纳入美国国家安全和产业标准体系，使网络攻防、生物安全、<strong class="signal">关键</strong>基础设施和外国模型<strong class="signal">风险</strong>成为正式评估议题。NIST 页面列出的职能已经说明，CAISI 同国防部、能源部、国土安全部、OSTP 和情报界都有协调关系。</p><p>但自愿框架的缺口也很清楚。开发者愿意提交什么模型、提交什么版本、测试结果公开到什么程度、发现问题后是否延迟发布、第三方能否复核，都不是完全透明的。如果五大实验室都进入体系，CAISI 会获得更高声誉；与此同时，企业也可能把“已经和 CAISI 合作”当作安全背书。这里的<strong class="signal">关键</strong>区别必须写清：CAISI 评估状态是尽职调查输入，不是全面安全认证。完成评估不等于模型在所有使用场景中安全。</p><p>另一个复杂点是军民重叠。前沿模型既面向企业办公、软件开发和消费者产品，也进入国防、情报和<strong class="signal">关键</strong>基础设施。CSA 笔记提醒，Google、Microsoft 和 xAI 还存在不同形式的五角大楼 AI 使用关系。CAISI 的非保密评估和军事环境中的模型部署，可能使用不同配置、不同安全过滤、不同访问权限。一个模型在商业发布前通过某类测试，并不自动覆盖它在分类或军事场景中的全部行为。</p><p class="magazine-emphasis">这条新闻应放在 <strong class="metric">2026 年</strong>美国 AI 治理转向中理解。特朗普政府的 AI 政策总体更强调加速、竞争和国家优势，但 CAISI 扩大测试说明“加速”并不等于完全放弃安全闸门。美国可能正在形成一种和欧盟不同的治理路径：不先写一部横向综合 AI 法，而是用标准机构、政府采购、前沿模型自愿协议、国家安全测试和企业合作，把最前沿模型纳入软性但<strong class="signal">高影响</strong>的发布流程。</p><p><strong class="signal">后续</strong><strong class="signal">真正</strong>要看的是评估结果是否能改变发布行为。如果 CAISI 只发布模糊新闻稿，价值有限；如果它能披露足够多的测试范围、<strong class="signal">风险</strong>发现、修复动作和方法学边界，即便不公开敏感细节，也会让市场、企业客户和盟友监管者有更可信的参照。今天这条锚点的意义不在于“美国突然变安全派”，而在于前沿模型正在被当成<strong class="signal">关键</strong>基础设施一样处理：发布前要测试，测试需要权限，权限又会带来问责问题。</p><p>CAISI 的另一个意义在于国际协调。美国、英国、欧盟、日本和其他伙伴都在讨论前沿模型<strong class="signal">风险</strong>，但评估口径并不统一。若美国政府能把自己的评估方法、测试基准和风险分类做成熟，它就能在盟友监管和国际标准中占据主动。对企业来说，这也可能降低重复合规成本：如果 CAISI、英国 AISI 和其他机构的测试结果能够互认或共享方法，前沿模型发布将更接近航空、药品或网络安全中的跨国评估网络。</p><p class="magazine-emphasis">测试范围会决定治理效果。网络能力可以通过 CTF、真实漏洞复现、代码审计和攻击链模拟评估；生物和化学<strong class="signal">风险</strong>需要更谨慎，因为公开细节本身可能放大危害；自主代理能力则需要长任务、工具调用、欺骗、权限升级和持续执行测试。不同风险域不能用同一种排行榜解决。CAISI 若只是追求一个总分，会失去意义；若能形成任务级、场景级和风险级评估，价值会高得多。</p><p>企业参与也有现实利益。前沿实验室愿意让 CAISI 测试，不只因为公共责任，也因为这能提高企业客户、政府采购和国际伙伴的<strong class="signal">信任</strong>。大型客户购买模型能力时，会关心数据泄露、网络误用、合规、可靠性和责任分配。政府测试可以成为销售材料的一部分。正因如此，公开传播中更要避免把“参与测试”误写成“通过认证”。</p><p>CAISI 还会影响开源和开放权重争议。闭源模型可以在发布前给政府提供受控访问；开放权重模型一旦发布，外部复制和改造速度更快，撤回成本更高。美国若只和最大闭源实验室合作，就可能漏掉开放模型、国外模型和模型蒸馏带来的<strong class="signal">风险</strong>。NIST 页面提到 DeepSeek V4 Pro 评估，说明 CAISI 已经注意到非美国模型问题，但未来如何获得模型访问和技术细节仍是难题。</p><p>最值得期待的不是某次评估报告，而是方法学积累。前沿模型变化太快，单次测试很快过时；可一套持续更新的评估框架、<strong class="signal">风险</strong>分类、访问协议、披露规则和修复追踪机制会越来越有价值。CAISI 如果能把这些沉淀成标准，就会影响模型开发周期本身：公司在训练和上线前就按政府和行业测试项设计安全工作，而不是发布后补安全叙事。</p><p>对于普通用户和企业客户，CAISI 的最大外溢价值可能是建立可信词汇。现在每家公司都在说安全、可靠、对齐、红队、<strong class="signal">风险</strong>评估，但这些词的含义差异很大。政府测试若能把能力阈值、风险场景、缓解措施和残余风险说清，客户才能比较不同模型。没有共同词汇，市场只能听营销；有了共同词汇，安全才有可能进入采购、保险和责任分配。</p><p>这也会给小型实验室带来压力。大型公司有资源配合政府评估、提供模型访问、编写安全报告和接受持续监控；小公司如果没有类似能力，可能在政府和企业客户中处于劣势。治理体系越成熟，合规和评估成本越会成为行业门槛。政策制定者需要平衡前沿<strong class="signal">风险</strong>和创新生态，避免只剩少数巨头能够承担测试流程。</p>
+    </article>
+    
+    <section class="backmatter">
+      <div class="module">
+        <h2>不确定性</h2>
+        <ul><li>CAISI 相关协议的完整文本和模型访问细节未全部公开。</li><li>评估发现可能因安全原因不完全披露，外界难以判断测试深度。</li><li>自愿框架能否覆盖非美国实验室和开源权重模型仍不确定。</li></ul>
+      </div>
+      <div class="module">
+        <h2>后续观察</h2>
+        <ul><li>CAISI 是否发布 Google、Microsoft、xAI 具体模型评估结果。</li><li>评估是否导致模型延迟发布、功能限制或安全修复。</li><li>美国是否把自愿测试升级为行政命令、采购条件或立法义务。</li></ul>
+      </div>
+      <div class="module sources-module">
+        <h2>研究来源</h2>
+        <ul class="source-list"><li><a href="https://www.nist.gov/caisi">Center for AI Standards and Innovation (CAISI)</a><span class="source-meta">NIST</span></li><li><a href="https://www.axios.com/2026/05/05/us-frontier-ai-testing-white-house-pivots-safety">U.S. ramps up frontier AI testing as White House pivots toward safety</a><span class="source-meta">Axios</span></li><li><a href="https://labs.cloudsecurityalliance.org/research/csa-research-note-caisi-frontier-ai-testing-agreements-20260/">CAISI Frontier Testing Agreements Reach Five Labs</a><span class="source-meta">Cloud Security Alliance</span></li><li><a href="https://www.nist.gov/caisi">CAISI Evaluation of DeepSeek V4 Pro</a><span class="source-meta">NIST</span></li><li><a href="https://openai.com/">Working with US CAISI and UK AISI to Build More Secure AI Systems</a><span class="source-meta">OpenAI</span></li></ul>
+      </div>
+    </section>
+    
+  </main>
+  <footer>公开资料研究索引，包含来源链接、研究报告和不确定性提示。</footer>
+
+</body>
+</html>

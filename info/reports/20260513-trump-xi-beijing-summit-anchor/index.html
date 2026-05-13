@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="ledger" data-layout="newspaper">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>中美元首北京会：真正要测试的是危机管理，而不是握手本身</title>
+  <style>
+    :root {
+      --paper: #f5f1e3;
+      --ink: #171717;
+      --muted: #64615b;
+      --line: #1c1c1c;
+      --accent: #0d5c63;
+      --accent-two: #b54d1f;
+      --accent-three: #f0c84b;
+      --sand: #efe5cf;
+      --measure: 52rem;
+      --background-signature: ledger-newsprint;
+      --page-background: repeating-linear-gradient(0deg, rgba(13,92,99,.045) 0 1px, transparent 1px 13px), repeating-linear-gradient(90deg, rgba(181,77,31,.035) 0 1px, transparent 1px 86px), var(--paper);
+    }
+    * { box-sizing: border-box; }
+    html { background: #151515; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--page-background);
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      line-height: 1.86;
+      letter-spacing: 0;
+    }
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; overflow-wrap: anywhere; }
+    .issue-bar {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: .58rem clamp(1rem, 4vw, 3.2rem);
+      background: color-mix(in srgb, var(--paper) 92%, white);
+      border-bottom: 2px solid var(--line);
+      backdrop-filter: blur(12px);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+    }
+    .issue-bar strong { color: var(--accent); }
+    .issue-bar span:nth-child(2) { font-weight: 900; }
+    .issue-bar span:last-child { text-align: right; color: var(--muted); }
+    .magazine-cover {
+      min-height: clamp(420px, 62vh, 680px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(17rem, 25rem);
+      gap: clamp(2rem, 5vw, 4.2rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.5rem) clamp(1rem, 5vw, 5rem) clamp(2.2rem, 4vw, 3.2rem);
+      border-bottom: 2px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .magazine-cover::before {
+      content: "RISK";
+      position: absolute;
+      left: clamp(.7rem, 3vw, 2rem);
+      top: clamp(4rem, 9vw, 7rem);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(5rem, 17vw, 17rem);
+      line-height: .75;
+      letter-spacing: 0;
+      color: color-mix(in srgb, var(--accent-two) 13%, transparent);
+      pointer-events: none;
+    }
+    .kicker {
+      display: inline-flex;
+      gap: .6rem;
+      align-items: center;
+      font-weight: 900;
+      color: var(--accent);
+      border: 2px solid var(--line);
+      padding: .22rem .55rem;
+      background: var(--accent-three);
+      width: fit-content;
+    }
+    h1 {
+      max-width: 12ch;
+      margin: 1.3rem 0 0;
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 7vw, 7.2rem);
+      line-height: .94;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .deck {
+      max-width: 56rem;
+      font-size: clamp(1.1rem, 1.65vw, 1.48rem);
+      line-height: 1.62;
+      margin: 2rem 0 0;
+      color: #24211d;
+      border-left: .65rem solid var(--accent);
+      padding-left: 1.2rem;
+    }
+    .cover-meta { align-self: stretch; display: grid; align-content: end; gap: 1rem; }
+    .cover-card {
+      border: 2px solid var(--line);
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 9px 9px 0 var(--accent-two);
+    }
+    .cover-card h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.35; color: var(--accent); }
+    .cover-card ol, .cover-card ul { margin: 0; padding-left: 1.15rem; }
+    .cover-card li { margin: .48rem 0; line-height: 1.55; }
+    .article-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.6rem, 3vw, 3.2rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .editor-note {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(10rem, 15rem) minmax(0, 1fr);
+      gap: 1.2rem;
+      border-top: 5px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: 1rem 0 1.1rem;
+      color: var(--muted);
+      font-size: .94rem;
+      line-height: 1.7;
+    }
+    .editor-note b {
+      display: block;
+      color: var(--ink);
+      font-size: .82rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .25rem;
+    }
+    .editor-note p { margin: 0; }
+    .magazine-article { min-width: 0; font-size: clamp(1.04rem, 1.05vw, 1.18rem); }
+    .article-shell > .magazine-article { grid-column: 1; }
+    .magazine-article p { margin: 0 0 1.35rem; text-align: justify; text-wrap: pretty; }
+    .magazine-article .lede {
+      font-size: clamp(1.24rem, 2vw, 1.58rem);
+      line-height: 1.75;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+    .dropcap {
+      float: left;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 5.8rem;
+      line-height: .8;
+      padding: .18rem .55rem .1rem 0;
+      color: var(--accent);
+    }
+    .magazine-emphasis {
+      margin: 2rem 0 !important;
+      padding: 1.1rem 1.25rem;
+      border-left: .45rem solid var(--accent-two);
+      background: linear-gradient(90deg, color-mix(in srgb, var(--accent-two) 12%, transparent), transparent 78%);
+      font-weight: 600;
+    }
+    .pullquote {
+      margin: 2.4rem -4rem 2.4rem 0;
+      padding: 1.1rem 0 1.2rem 1.5rem;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      background: var(--paper);
+    }
+    .pullquote span { color: var(--accent); font-size: .78rem; font-weight: 900; letter-spacing: .13em; }
+    .pullquote p {
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-size: clamp(1.6rem, 3vw, 2.45rem);
+      line-height: 1.28;
+      margin: .35rem 0 0;
+      text-align: left;
+    }
+    .metric {
+      font-variant-numeric: tabular-nums;
+      color: var(--accent);
+      font-weight: 900;
+      background: linear-gradient(transparent 55%, color-mix(in srgb, var(--accent-three) 65%, transparent) 0);
+    }
+    .signal {
+      font-weight: 900;
+      text-decoration: underline;
+      text-decoration-color: var(--accent-two);
+      text-decoration-thickness: .18em;
+      text-underline-offset: .14em;
+    }
+    .companion-rail {
+      position: sticky;
+      top: 3.8rem;
+      grid-column: 2;
+      align-self: start;
+      border-top: 5px solid var(--line);
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+      padding-top: 1rem;
+    }
+    .companion-rail b { color: var(--ink); }
+    .backmatter {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.2rem;
+      margin-top: 2.4rem;
+      border-top: 2px solid var(--line);
+      padding-top: 1.4rem;
+    }
+    .module { background: #fff; border: 2px solid var(--line); padding: 1rem 1.1rem; box-shadow: 6px 6px 0 var(--sand); }
+    .module h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.3; color: var(--accent); }
+    .module ul { margin: 0; padding-left: 1.1rem; }
+    .module li { margin: .5rem 0; line-height: 1.58; }
+    .source-list li { display: grid; gap: .12rem; margin-bottom: .8rem; }
+    .source-meta { color: var(--muted); font-size: .86rem; }
+    .source-meta::before { content: "来源 · "; }
+    .sources-module { grid-column: 1 / -1; }
+    .newspaper-masthead {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.8rem) clamp(1rem, 4vw, 3rem) 1.6rem;
+      border-bottom: 5px double var(--line);
+    }
+    .newspaper-kicker {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.4rem, 3vw, 3rem);
+      line-height: 1;
+      color: var(--accent);
+      text-transform: uppercase;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: .35rem 0;
+    }
+    .newspaper-masthead h1 {
+      max-width: 20ch;
+      font-size: clamp(2.6rem, 5.5vw, 6.2rem);
+      line-height: .98;
+    }
+    .newspaper-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem 1.1rem;
+      margin-top: 1rem;
+      padding-top: .8rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .market-strip {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr 1fr;
+      gap: 1rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      border-bottom: 2px solid var(--line);
+      background: color-mix(in srgb, var(--accent-three) 26%, var(--paper));
+      font-size: .94rem;
+      line-height: 1.55;
+    }
+    .market-strip b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .08em; }
+    .market-strip p, .market-strip ol, .market-strip ul { margin: .35rem 0 0; }
+    .market-strip ol, .market-strip ul { padding-left: 1.1rem; }
+    .newspaper-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .newspaper-article .lede {
+      column-span: all;
+      border-top: 2px solid var(--line);
+      padding-top: 1rem;
+    }
+    .newspaper-article { grid-column: 1; }
+    .newspaper-rail {
+      position: sticky;
+      top: 3.8rem;
+      border-left: 2px solid var(--line);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .dossier-cover {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.6rem) clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
+      gap: clamp(1.5rem, 4vw, 3.8rem);
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+    }
+    .dossier-stamp {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      align-self: start;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      color: var(--accent);
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: color-mix(in srgb, var(--accent-three) 35%, white);
+    }
+    .dossier-cover h1 {
+      max-width: 18ch;
+      font-size: clamp(2.7rem, 6vw, 6.6rem);
+      line-height: .98;
+    }
+    .dossier-summary {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.5vw, 1.36rem);
+      border-left: .45rem solid var(--accent);
+      padding-left: 1rem;
+    }
+    .dossier-source { color: var(--muted); margin: 0; }
+    .dossier-shell {
+      display: grid;
+      grid-template-columns: minmax(12rem, 17rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .dossier-index {
+      position: sticky;
+      top: 3.8rem;
+      border-top: 5px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .dossier-index b { display: block; color: var(--ink); margin-bottom: .6rem; }
+    .dossier-index ol { margin: 0 0 1rem; padding-left: 1.1rem; }
+    .dossier-article { grid-column: 2; }
+    .field-cover {
+      min-height: clamp(460px, 64vh, 720px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr);
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      border-bottom: 2px solid var(--line);
+      background:
+        linear-gradient(135deg, transparent 0 48%, color-mix(in srgb, var(--accent-three) 24%, transparent) 48% 52%, transparent 52%),
+        var(--paper);
+    }
+    .field-topline {
+      grid-column: 1 / -1;
+      width: fit-content;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: .25rem .7rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .field-cover h1 {
+      max-width: 16ch;
+      font-size: clamp(2.8rem, 6.4vw, 7rem);
+    }
+    .field-deck {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.55vw, 1.38rem);
+      line-height: 1.62;
+      border-left: .5rem solid var(--accent-two);
+      padding-left: 1rem;
+    }
+    .field-map {
+      border: 2px solid var(--line);
+      background: rgba(255,255,255,.76);
+      padding: 1rem;
+      box-shadow: 10px 10px 0 color-mix(in srgb, var(--accent) 70%, black);
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+    .field-map b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .1em; }
+    .field-map ol { margin: .55rem 0 1rem; padding-left: 1.2rem; }
+    .field-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(13rem, 17rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .field-log {
+      position: sticky;
+      top: 3.8rem;
+      border-left: .35rem solid var(--accent-two);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .field-article { grid-column: 1; }
+    .lab-cover {
+      padding: clamp(2.6rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      min-height: clamp(420px, 58vh, 650px);
+      display: grid;
+      align-content: center;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+      background:
+        linear-gradient(90deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        linear-gradient(0deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        var(--paper);
+    }
+    .lab-label {
+      width: fit-content;
+      background: var(--ink);
+      color: #fff;
+      padding: .28rem .65rem;
+      font-size: .82rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .lab-cover h1 {
+      max-width: 22ch;
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 5.8rem);
+      line-height: 1.04;
+    }
+    .lab-deck {
+      max-width: 62rem;
+      font-size: clamp(1.06rem, 1.45vw, 1.32rem);
+      border-top: 2px solid var(--accent);
+      padding-top: 1rem;
+    }
+    .protocol-strip {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .75rem;
+      border-bottom: 2px solid var(--line);
+      font-size: .88rem;
+    }
+    .protocol-strip div {
+      border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
+      padding: .75rem;
+      background: rgba(255,255,255,.68);
+      min-width: 0;
+    }
+    .protocol-strip b {
+      display: block;
+      color: var(--accent-two);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .protocol-strip span { overflow-wrap: anywhere; }
+    .lab-shell {
+      display: grid;
+      grid-template-columns: minmax(14rem, 19rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .lab-notes {
+      position: sticky;
+      top: 3.8rem;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      background: #fff;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .lab-notes b { color: var(--ink); }
+    .lab-notes ol { padding-left: 1.1rem; }
+    .lab-article { grid-column: 2; }
+    footer { color: var(--muted); padding: 0 clamp(1rem, 4vw, 3rem) 3rem; max-width: 1220px; margin: 0 auto; font-size: .9rem; }
+    @media (max-width: 1100px) {
+      .magazine-cover { grid-template-columns: 1fr; min-height: auto; }
+      .cover-meta { max-width: 42rem; }
+      .article-shell { grid-template-columns: 1fr; }
+      .editor-note { grid-template-columns: 1fr; }
+      .companion-rail { position: static; grid-column: 1; }
+      .backmatter { grid-column: 1; grid-template-columns: 1fr; }
+      .pullquote { margin-right: 0; }
+      h1 { max-width: 11ch; }
+      .market-strip, .protocol-strip { grid-template-columns: 1fr; }
+      .newspaper-shell, .dossier-shell, .field-shell, .lab-shell { grid-template-columns: 1fr; }
+      .newspaper-rail, .dossier-index, .field-log, .lab-notes { position: static; }
+      .dossier-article, .lab-article { grid-column: 1; }
+      .dossier-cover, .field-cover { grid-template-columns: 1fr; min-height: auto; }
+      .dossier-stamp { grid-column: 1; grid-row: auto; }
+    }
+    @media (max-width: 640px) {
+      .issue-bar { grid-template-columns: 1fr; gap: .15rem; }
+      .issue-bar span:last-child { text-align: left; }
+      .magazine-cover { padding-top: 2.4rem; }
+      h1 { font-size: clamp(2.65rem, 16vw, 4.8rem); }
+      .deck { border-left-width: .45rem; padding-left: .8rem; }
+      .magazine-article p { text-align: left; }
+      .dropcap { font-size: 4.6rem; }
+      .module { box-shadow: 4px 4px 0 var(--sand); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="issue-bar"><span><strong>Infohub</strong> article</span><span>Magazine research page</span><span>2026-05-13</span></div>
+  <header class="newspaper-masthead">
+    <div class="newspaper-kicker">MARKETS / POLICY LEDGER</div>
+    <h1>中美元首北京会：真正要测试的是危机管理，而不是握手本身</h1>
+    <p class="deck">特朗普 <strong class="metric">5 月</strong> <strong class="metric">13 日</strong>抵达北京，为 <strong class="metric">5 月</strong> 14-<strong class="metric">15 日</strong>与习近平会谈做准备。表面议程包括贸易、台湾、AI 和伊朗战争；更值得追踪的是双方能否把稀土、关税、霍尔木兹、台湾军售和 AI 竞争放进一套可反复运行的危机管理机制。</p>
+    <div class="newspaper-meta">
+      <span>AP News</span>
+      <span>2026-05-13</span>
+      <span>politics-policy / geopolitics / finance-macro</span>
+    </div>
+  </header>
+  <section class="market-strip">
+    <div>
+      <b>新闻锚点</b>
+      <p><a href="https://apnews.com/article/trump-xi-china-trip-arrival-353c768987542843e2033aa684266879">Trump set to meet with Xi in Beijing as war and inflation weigh on his presidency</a></p>
+    </div>
+    <div>
+      <b>研究问题</b>
+      <ol><li>这次峰会为什么很难产生大交易，却仍然可能改变市场和外交预期？</li><li>伊朗战争和霍尔木兹<strong class="signal">风险</strong>怎样把中美贸易议程推向能源安全议程？</li><li>如果出现所谓 Board of Trade 或类似机制，它会解决什么、又解决不了什么？</li></ol>
+    </div>
+    <div>
+      <b>后续变量</b>
+      <ul><li><strong class="metric">5 月</strong> 14-<strong class="metric">15 日</strong>双方正式声明、记者会和是否有联合机制文件。</li><li>美中贸易休战是否延长，稀土、关税、飞机和农产品采购是否出现可量化安排。</li><li>霍尔木兹航运恢复程度、Brent 油价、美国汽油价格和能源通胀预期。</li><li>台湾、AI 出口管制、模型安全、网络安全等议题是否进入<strong class="signal">后续</strong>工作组。</li></ul>
+    </div>
+  </section>
+  <main class="newspaper-shell">
+    <article class="magazine-article newspaper-article">
+      <p class="lede"><span class="dropcap">特</span>朗普抵达北京这件事本身已经不是重点。<strong class="metric">5 月</strong> <strong class="metric">13 日</strong>的新闻锚点在于：一个被战争、通胀、能源冲击和 AI 竞争同时压住的美国总统，带着对“成果”的需求来到北京；一个更重视稳定预期和战略姿态的中国领导层，则希望把过去一年重新打开的沟通通道固定下来。AP 的现场报道把几个<strong class="signal">关键</strong>词放在一起：战争、贸易、人工智能、国内通胀。它们不是并列议题，而是同一场压力测试的不同入口。</p><p class="magazine-emphasis">最容易被误读的是“会不会达成大交易”。从现有公开信息看，<strong class="signal">真正</strong>值得期待的不是一揽子和解，而是有限、可复用的摩擦管理工具。AP 提到美方希望启动类似“Board of Trade”的安排，用来处理两国分歧；CSIS 的判断也偏向温和，认为 <strong class="metric">5 月</strong> 14-<strong class="metric">15 日</strong>的会谈大概率只是朝稳定和可预测迈出相对有限的一步。这种机制即使成立，也不会消除半导体、关税、稀土、台湾和工业政策分歧；它的作用更像保险丝：在下一次制裁、出口管制或供应链反制出现时，至少有一条可以快速降温的制度化通道。</p><p>伊朗战争让这次峰会的含义变了。原本中美峰会可以主要谈贸易休战、农产品、飞机、稀土和 AI；现在霍尔木兹海峡、油气船舶、能源通胀和中东斡旋被推到前台。AP 报道说，战争已经导致霍尔木兹有效关闭，油气运输受阻，能源价格上升，并成为美国国内通胀压力的一部分。中国是全球最大油气进口国之一，也有战略库存、煤电基荷和可再生能源缓冲，但长期高油价会压低出口市场需求，并把外部冲击传导回制造业利润和居民消费。北京未必愿意按华盛顿的口径介入伊朗，但它也不希望能源冲击失控。</p><aside class="pullquote"><span>摘句</span><p>这就是双方潜在交集所在：不是谁替谁背书，而是双方都需要避免能源、金融和供应链一起失序。</p></aside><p>这就是双方潜在交集所在：不是谁替谁背书，而是双方都需要避免能源、金融和供应链一起失序。美国需要油价和通胀降温，因为 <strong class="metric">4 月</strong> CPI 已经显示能源价格正在重新抬头；中国需要出口需求、航运和原材料价格稳定，因为它仍在用制造业和高技术投资对冲内需修复的不确定性。峰会若能形成某种关于海上通道、能源供应和制裁执行边界的默契，即便没有写进联合声明，也可能比象征性采购订单更重要。</p><p>台湾问题是另一条硬边界。AP 的预览把台湾列为结构性摩擦之一，CSIS 会前简报也提到，习近平在 <strong class="metric">2 月</strong>通话中把台湾视为中美关系最重要问题。这里没有容易妥协的中间地带：北京关心美方军售、政治信号和“一个中国”表述；华盛顿内部则把台湾和印太盟友<strong class="signal">信任</strong>绑定在一起。峰会<strong class="signal">真正</strong>能做的，可能只是避免领导人层面的表述制造新的误判，例如避免把台湾安全、稀土供应、关税豁免或伊朗合作混成一笔交易。盟友最担心的恰恰是这种“大国私下交换”的想象。</p><p>AI 议题则把传统外交拉进了新的技术治理领域。双方都把 AI 视为国家竞争<strong class="signal">核心</strong>，美国正在加强 CAISI 对前沿模型的政府测试，中国也在推动智能体和“人工智能+”的应用治理。峰会若讨论 AI，短期更可能集中在出口管制、数据中心供应链、模型安全和军事误用<strong class="signal">风险</strong>，而不是抽象的全球 AI 伦理。这里最值得追踪的是：双方是否愿意建立最小限度的 AI 风险沟通机制，例如高风险模型、自动化网络攻击、军事 AI 误判和<strong class="signal">关键</strong>基础设施防护的热线或专家组。</p><p class="magazine-emphasis">北京的收益不一定来自具体让步，而来自“稳定本身”。Stimson 的分析认为，北京希望用一场高规格访问向国内外显示中美关系正在从过去几年的急剧竞争中进入可管理状态。这种稳定叙事能服务多个目标：降低外资和出口市场对突发脱钩的担忧，延长贸易休战，减少新关税或新出口管制的短期概率，也向欧洲、东盟和中东释放中国仍有能力管理大国关系的信号。对美国来说，稳定同样有国内政治价值：如果油价、通胀、股市和供应链压力同时放大，白宫需要证明总统外交能带来现实收益。</p><p>因此，这场峰会最重要的评估标准不应是公报里写了多少漂亮词，而是三类<strong class="signal">后续</strong>变量。第一，贸易机制有没有联系人、时间表、议题清单和危机升级程序；第二，伊朗和霍尔木兹问题上有没有出现可验证的运输恢复、油价降温或制裁执行协调；第三，台湾、AI、稀土和出口管制是否至少在未来几个月里没有被新的政治动作重新点燃。中美关系很难通过一次会谈转向合作，但可以通过一次会谈证明双方仍能把竞争关在轨道里。今天这条新闻的价值就在这里：它测试的不是握手礼仪，而是两个系统还能不能共同降低事故概率。</p><p>还有一个容易被忽略的层面：这场峰会发生在双方都需要管理第三方预期的时候。美国盟友会观察特朗普是否把欧洲、中东、台湾或印太安全议题当作同中国交易的筹码；中国周边国家会观察北京是否通过峰会获得更大行动空间；企业则会观察关税、出口管制、稀土审批和供应链审查是否出现短期缓和。领导人会面本身是一种信号资产，但信号一旦过度解释，也会制造新的误判。</p><p class="magazine-emphasis">贸易议题也比采购清单复杂。美国可以希望中国买更多飞机、农产品和能源，中国可以希望美国延长关税休战、减少技术限制、承认供应链互相依赖；可这些项目都受到国内政治约束。美国国会和安全机构不会轻易放松半导体与高端计算限制，中国也不会把稀土和<strong class="signal">关键</strong>矿产从产业安全工具箱里完全拿出来。较现实的成果是建立例外、许可、磋商和危机豁免机制，而非把结构性竞争一次解除。</p><p>如果峰会谈到 AI，最值得听的不是双方是否说“防止 AI <strong class="signal">风险</strong>”，而是有没有把 AI 和军事沟通、网络安全、<strong class="signal">关键</strong>基础设施联系起来。前沿模型可以用于代码、情报整理、舆论传播、无人系统、漏洞发现和自动化决策。中美若只谈一般伦理，效果会很有限；若能形成专家层面热线、演练或事故通报，才可能降低误判。由于双方都不愿暴露能力细节，这类机制往往会低调、技术化、结果不公开。</p><p>这场访问还会影响美国国内叙事。特朗普需要向选民证明，他能用个人外交压低物价、恢复贸易、结束战争或至少缓解冲击；但外交成果很难立刻变成汽油价格、食品价格和工资购买力。若峰会后油价没有回落，或 CPI 继续上行，白宫会把更多压力转向能源、关税和 Fed；若市场短暂缓和，政府会把它包装成领导人外交的胜利。峰会因此也会成为国内经济叙事的一部分。</p><p>最终评估这次峰会，要有耐心。第一天的照片、欢迎仪式和口头表述不如后面三个月重要：贸易工作组是否真的开会，企业许可是否加快，军方和外交热线是否保持，台湾海峡是否出现新的高烈度动作，油价是否回落，双方是否避免用国内政治语言互相激怒。中美关系的稳定从来不是一次声明，而是一连串没有升级成事故的小事。</p>
+    </article>
+    <aside class="newspaper-rail">
+      <p><b>读法</b><br>这篇应像一篇冷静的外交风险笔记：不写峰会花絮，也不押注戏剧性大交易，而是把贸易、能源、台湾和 AI 放在同一张危机管理图上。视觉上适合使用克制的报纸型或档案型版式，标题强，正文密度高，少量时间线和谈判筹码块即可。</p>
+      <p><b>主题</b><br>politics-policy / geopolitics / finance-macro</p>
+      <p><b>返回</b><br><a href="../../">信息流首页</a></p>
+    </aside>
+    
+    <section class="backmatter">
+      <div class="module">
+        <h2>不确定性</h2>
+        <ul><li>峰会正式会谈在 <strong class="metric">2026 年</strong> <strong class="metric">5 月</strong> 14-<strong class="metric">15 日</strong>，今天只能基于会前公开材料判断议程和预期，不能提前确认成果。</li><li>Board of Trade 或类似机制尚未有正式文本，功能、级别和约束力都不清楚。</li><li>伊朗战争、霍尔木兹通行和油价状态高度动态，任何判断都需要按<strong class="signal">后续</strong>市场和外交消息修订。</li></ul>
+      </div>
+      <div class="module">
+        <h2>后续观察</h2>
+        <ul><li><strong class="metric">5 月</strong> 14-<strong class="metric">15 日</strong>双方正式声明、记者会和是否有联合机制文件。</li><li>美中贸易休战是否延长，稀土、关税、飞机和农产品采购是否出现可量化安排。</li><li>霍尔木兹航运恢复程度、Brent 油价、美国汽油价格和能源通胀预期。</li><li>台湾、AI 出口管制、模型安全、网络安全等议题是否进入<strong class="signal">后续</strong>工作组。</li></ul>
+      </div>
+      <div class="module sources-module">
+        <h2>研究来源</h2>
+        <ul class="source-list"><li><a href="https://apnews.com/article/trump-xi-china-trip-arrival-353c768987542843e2033aa684266879">Trump set to meet with Xi in Beijing as war and inflation weigh on his presidency</a><span class="source-meta">AP News</span></li><li><a href="https://apnews.com/article/china-us-trump-xi-summit-1a0b28a9a7b9078d736ba94bf3b4d6e2">What to know about the Trump-Xi summit in Beijing</a><span class="source-meta">AP News</span></li><li><a href="https://apnews.com/article/trump-xi-iran-sanctions-trade-48b0ca751712ce473ffcd207997928af">Trump downplays differences with China’s Xi over Iran as he heads to Beijing</a><span class="source-meta">AP News</span></li><li><a href="https://www.csis.org/analysis/trump-xi-summit-beijing-managing-worlds-most-important-relationship">Trump-Xi Summit in Beijing: Managing the World’s Most Important Relationship</a><span class="source-meta">CSIS</span></li><li><a href="https://www.stimson.org/2026/high-hopes-in-beijing-about-trump-xi-summit/">High Hopes in Beijing About Trump-Xi Summit</a><span class="source-meta">Stimson Center</span></li><li><a href="https://www.axios.com/2026/05/11/trump-china-summit-iran-ai-xi-jinping">Trump&#x27;s legacy week</a><span class="source-meta">Axios</span></li></ul>
+      </div>
+    </section>
+    
+  </main>
+  <footer>公开资料研究索引，包含来源链接、研究报告和不确定性提示。</footer>
+
+</body>
+</html>
