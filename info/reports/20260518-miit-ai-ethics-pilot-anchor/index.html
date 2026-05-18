@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="briefing" data-layout="dossier">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 伦理审查先导计划：合规开始进入研发流程</title>
+  <style>
+    :root {
+      --paper: #fff3ea;
+      --ink: #171717;
+      --muted: #64615b;
+      --line: #1c1c1c;
+      --accent: #7f2f46;
+      --accent-two: #2364aa;
+      --accent-three: #e8d7a2;
+      --sand: #efe5cf;
+      --measure: 52rem;
+      --background-signature: dossier-folder;
+      --page-background: linear-gradient(90deg, rgba(127,47,70,.10) 0 10px, transparent 10px 100%), linear-gradient(180deg, rgba(232,215,162,.32), transparent 28rem), var(--paper);
+    }
+    * { box-sizing: border-box; }
+    html { background: #151515; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--page-background);
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      line-height: 1.86;
+      letter-spacing: 0;
+    }
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; overflow-wrap: anywhere; }
+    .issue-bar {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: .58rem clamp(1rem, 4vw, 3.2rem);
+      background: color-mix(in srgb, var(--paper) 92%, white);
+      border-bottom: 2px solid var(--line);
+      backdrop-filter: blur(12px);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+    }
+    .issue-bar strong { color: var(--accent); }
+    .issue-bar span:nth-child(2) { font-weight: 900; }
+    .issue-bar span:last-child { text-align: right; color: var(--muted); }
+    .magazine-cover {
+      min-height: clamp(420px, 62vh, 680px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(17rem, 25rem);
+      gap: clamp(2rem, 5vw, 4.2rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.5rem) clamp(1rem, 5vw, 5rem) clamp(2.2rem, 4vw, 3.2rem);
+      border-bottom: 2px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .magazine-cover::before {
+      content: "POLICY";
+      position: absolute;
+      left: clamp(.7rem, 3vw, 2rem);
+      top: clamp(4rem, 9vw, 7rem);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(5rem, 17vw, 17rem);
+      line-height: .75;
+      letter-spacing: 0;
+      color: color-mix(in srgb, var(--accent-two) 13%, transparent);
+      pointer-events: none;
+    }
+    .kicker {
+      display: inline-flex;
+      gap: .6rem;
+      align-items: center;
+      font-weight: 900;
+      color: var(--accent);
+      border: 2px solid var(--line);
+      padding: .22rem .55rem;
+      background: var(--accent-three);
+      width: fit-content;
+    }
+    h1 {
+      max-width: 12ch;
+      margin: 1.3rem 0 0;
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 7vw, 7.2rem);
+      line-height: .94;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .deck {
+      max-width: 56rem;
+      font-size: clamp(1.1rem, 1.65vw, 1.48rem);
+      line-height: 1.62;
+      margin: 2rem 0 0;
+      color: #24211d;
+      border-left: .65rem solid var(--accent);
+      padding-left: 1.2rem;
+    }
+    .cover-meta { align-self: stretch; display: grid; align-content: end; gap: 1rem; }
+    .cover-card {
+      border: 2px solid var(--line);
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 9px 9px 0 var(--accent-two);
+    }
+    .cover-card h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.35; color: var(--accent); }
+    .cover-card ol, .cover-card ul { margin: 0; padding-left: 1.15rem; }
+    .cover-card li { margin: .48rem 0; line-height: 1.55; }
+    .article-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.6rem, 3vw, 3.2rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .editor-note {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(10rem, 15rem) minmax(0, 1fr);
+      gap: 1.2rem;
+      border-top: 5px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: 1rem 0 1.1rem;
+      color: var(--muted);
+      font-size: .94rem;
+      line-height: 1.7;
+    }
+    .editor-note b {
+      display: block;
+      color: var(--ink);
+      font-size: .82rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .25rem;
+    }
+    .editor-note p { margin: 0; }
+    .reading-path {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(8rem, 12rem) minmax(0, 1fr);
+      gap: 1rem;
+      align-items: start;
+      margin: .2rem 0 1.4rem;
+      padding: 1rem 1.1rem;
+      border: 2px solid color-mix(in srgb, var(--accent) 55%, var(--line));
+      background: color-mix(in srgb, var(--accent-three) 22%, rgba(255,255,255,.72));
+      box-shadow: 7px 7px 0 color-mix(in srgb, var(--accent-two) 48%, transparent);
+    }
+    .reading-path b {
+      color: var(--accent);
+      font-size: .86rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .reading-path ol {
+      margin: 0;
+      padding-left: 1.1rem;
+      display: grid;
+      gap: .45rem;
+      color: #2b2b2b;
+      line-height: 1.62;
+    }
+    .magazine-article { min-width: 0; font-size: clamp(1.04rem, 1.05vw, 1.18rem); }
+    .article-shell > .magazine-article { grid-column: 1; }
+    .magazine-article p { margin: 0 0 1.35rem; text-align: justify; text-wrap: pretty; }
+    .magazine-article .lede {
+      font-size: clamp(1.24rem, 2vw, 1.58rem);
+      line-height: 1.75;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+    .dropcap {
+      float: left;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 5.8rem;
+      line-height: .8;
+      padding: .18rem .55rem .1rem 0;
+      color: var(--accent);
+    }
+    .magazine-emphasis {
+      margin: 2rem 0 !important;
+      padding: 1.1rem 1.25rem;
+      border-left: .45rem solid var(--accent-two);
+      background: linear-gradient(90deg, color-mix(in srgb, var(--accent-two) 12%, transparent), transparent 78%);
+      font-weight: 600;
+    }
+    .pullquote {
+      margin: 2.4rem -4rem 2.4rem 0;
+      padding: 1.1rem 0 1.2rem 1.5rem;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      background: var(--paper);
+    }
+    .pullquote span { color: var(--accent); font-size: .78rem; font-weight: 900; letter-spacing: .13em; }
+    .pullquote p {
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-size: clamp(1.6rem, 3vw, 2.45rem);
+      line-height: 1.28;
+      margin: .35rem 0 0;
+      text-align: left;
+    }
+    .metric {
+      font-variant-numeric: tabular-nums;
+      color: var(--accent);
+      font-weight: 900;
+      background: linear-gradient(transparent 55%, color-mix(in srgb, var(--accent-three) 65%, transparent) 0);
+    }
+    .signal {
+      font-weight: 900;
+      text-decoration: underline;
+      text-decoration-color: var(--accent-two);
+      text-decoration-thickness: .18em;
+      text-underline-offset: .14em;
+    }
+    .companion-rail {
+      position: sticky;
+      top: 3.8rem;
+      grid-column: 2;
+      align-self: start;
+      border-top: 5px solid var(--line);
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+      padding-top: 1rem;
+    }
+    .companion-rail b { color: var(--ink); }
+    .backmatter {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.2rem;
+      margin-top: 2.4rem;
+      border-top: 2px solid var(--line);
+      padding-top: 1.4rem;
+    }
+    .module { background: #fff; border: 2px solid var(--line); padding: 1rem 1.1rem; box-shadow: 6px 6px 0 var(--sand); }
+    .module h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.3; color: var(--accent); }
+    .module ul { margin: 0; padding-left: 1.1rem; }
+    .module li { margin: .5rem 0; line-height: 1.58; }
+    .source-list li { display: grid; gap: .12rem; margin-bottom: .8rem; }
+    .source-meta { color: var(--muted); font-size: .86rem; }
+    .source-meta::before { content: "来源 · "; }
+    .sources-module { grid-column: 1 / -1; }
+    .newspaper-masthead {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.8rem) clamp(1rem, 4vw, 3rem) 1.6rem;
+      border-bottom: 5px double var(--line);
+    }
+    .newspaper-kicker {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.4rem, 3vw, 3rem);
+      line-height: 1;
+      color: var(--accent);
+      text-transform: uppercase;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: .35rem 0;
+    }
+    .newspaper-masthead h1 {
+      max-width: 20ch;
+      font-size: clamp(2.6rem, 5.5vw, 6.2rem);
+      line-height: .98;
+    }
+    .newspaper-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem 1.1rem;
+      margin-top: 1rem;
+      padding-top: .8rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .market-strip {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr 1fr;
+      gap: 1rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      border-bottom: 2px solid var(--line);
+      background: color-mix(in srgb, var(--accent-three) 26%, var(--paper));
+      font-size: .94rem;
+      line-height: 1.55;
+    }
+    .market-strip b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .08em; }
+    .market-strip p, .market-strip ol, .market-strip ul { margin: .35rem 0 0; }
+    .market-strip ol, .market-strip ul { padding-left: 1.1rem; }
+    .newspaper-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .newspaper-article .lede {
+      column-span: all;
+      border-top: 2px solid var(--line);
+      padding-top: 1rem;
+    }
+    .newspaper-article { grid-column: 1; }
+    .newspaper-rail {
+      position: sticky;
+      top: 3.8rem;
+      border-left: 2px solid var(--line);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .dossier-cover {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.6rem) clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
+      gap: clamp(1.5rem, 4vw, 3.8rem);
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+    }
+    .dossier-stamp {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      align-self: start;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      color: var(--accent);
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: color-mix(in srgb, var(--accent-three) 35%, white);
+    }
+    .dossier-cover h1 {
+      max-width: 18ch;
+      font-size: clamp(2.7rem, 6vw, 6.6rem);
+      line-height: .98;
+    }
+    .dossier-summary {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.5vw, 1.36rem);
+      border-left: .45rem solid var(--accent);
+      padding-left: 1rem;
+    }
+    .dossier-source { color: var(--muted); margin: 0; }
+    .dossier-shell {
+      display: grid;
+      grid-template-columns: minmax(12rem, 17rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .dossier-index {
+      position: sticky;
+      top: 3.8rem;
+      border-top: 5px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .dossier-index b { display: block; color: var(--ink); margin-bottom: .6rem; }
+    .dossier-index ol { margin: 0 0 1rem; padding-left: 1.1rem; }
+    .dossier-article { grid-column: 2; }
+    .field-cover {
+      min-height: clamp(460px, 64vh, 720px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr);
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      border-bottom: 2px solid var(--line);
+      background:
+        linear-gradient(135deg, transparent 0 48%, color-mix(in srgb, var(--accent-three) 24%, transparent) 48% 52%, transparent 52%),
+        var(--paper);
+    }
+    .field-topline {
+      grid-column: 1 / -1;
+      width: fit-content;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: .25rem .7rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .field-cover h1 {
+      max-width: 16ch;
+      font-size: clamp(2.8rem, 6.4vw, 7rem);
+    }
+    .field-deck {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.55vw, 1.38rem);
+      line-height: 1.62;
+      border-left: .5rem solid var(--accent-two);
+      padding-left: 1rem;
+    }
+    .field-map {
+      border: 2px solid var(--line);
+      background: rgba(255,255,255,.76);
+      padding: 1rem;
+      box-shadow: 10px 10px 0 color-mix(in srgb, var(--accent) 70%, black);
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+    .field-map b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .1em; }
+    .field-map ol { margin: .55rem 0 1rem; padding-left: 1.2rem; }
+    .field-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(13rem, 17rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .field-log {
+      position: sticky;
+      top: 3.8rem;
+      border-left: .35rem solid var(--accent-two);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .field-article { grid-column: 1; }
+    .lab-cover {
+      padding: clamp(2.6rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      min-height: clamp(420px, 58vh, 650px);
+      display: grid;
+      align-content: center;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+      background:
+        linear-gradient(90deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        linear-gradient(0deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        var(--paper);
+    }
+    .lab-label {
+      width: fit-content;
+      background: var(--ink);
+      color: #fff;
+      padding: .28rem .65rem;
+      font-size: .82rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .lab-cover h1 {
+      max-width: 22ch;
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 5.8rem);
+      line-height: 1.04;
+    }
+    .lab-deck {
+      max-width: 62rem;
+      font-size: clamp(1.06rem, 1.45vw, 1.32rem);
+      border-top: 2px solid var(--accent);
+      padding-top: 1rem;
+    }
+    .protocol-strip {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .75rem;
+      border-bottom: 2px solid var(--line);
+      font-size: .88rem;
+    }
+    .protocol-strip div {
+      border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
+      padding: .75rem;
+      background: rgba(255,255,255,.68);
+      min-width: 0;
+    }
+    .protocol-strip b {
+      display: block;
+      color: var(--accent-two);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .protocol-strip span { overflow-wrap: anywhere; }
+    .lab-shell {
+      display: grid;
+      grid-template-columns: minmax(14rem, 19rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .lab-notes {
+      position: sticky;
+      top: 3.8rem;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      background: #fff;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .lab-notes b { color: var(--ink); }
+    .lab-notes ol { padding-left: 1.1rem; }
+    .lab-article { grid-column: 2; }
+    footer { color: var(--muted); padding: 0 clamp(1rem, 4vw, 3rem) 3rem; max-width: 1220px; margin: 0 auto; font-size: .9rem; }
+    @media (max-width: 1100px) {
+      .magazine-cover { grid-template-columns: 1fr; min-height: auto; }
+      .cover-meta { max-width: 42rem; }
+      .article-shell { grid-template-columns: 1fr; }
+      .editor-note { grid-template-columns: 1fr; }
+      .companion-rail { position: static; grid-column: 1; }
+      .backmatter { grid-column: 1; grid-template-columns: 1fr; }
+      .pullquote { margin-right: 0; }
+      h1 { max-width: 11ch; }
+      .market-strip, .protocol-strip { grid-template-columns: 1fr; }
+      .newspaper-shell, .dossier-shell, .field-shell, .lab-shell { grid-template-columns: 1fr; }
+      .newspaper-rail, .dossier-index, .field-log, .lab-notes { position: static; }
+      .dossier-article, .lab-article { grid-column: 1; }
+      .dossier-cover, .field-cover { grid-template-columns: 1fr; min-height: auto; }
+      .dossier-stamp { grid-column: 1; grid-row: auto; }
+    }
+    @media (max-width: 640px) {
+      .issue-bar { grid-template-columns: 1fr; gap: .15rem; }
+      .issue-bar span:last-child { text-align: left; }
+      .magazine-cover { padding-top: 2.4rem; }
+      h1 { font-size: clamp(2.65rem, 16vw, 4.8rem); }
+      .deck { border-left-width: .45rem; padding-left: .8rem; }
+      .magazine-article p { text-align: left; }
+      .dropcap { font-size: 4.6rem; }
+      .module { box-shadow: 4px 4px 0 var(--sand); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="issue-bar"><span><strong>Infohub</strong> article</span><span>Magazine research page</span><span>2026-05-09</span></div>
+  <header class="dossier-cover">
+    <div class="dossier-stamp">POLICY / GOVERNANCE</div>
+    <h1>AI 伦理审查先导计划：合规开始进入研发流程</h1>
+    <p class="dossier-summary">工信部办公厅 <strong class="metric">5 月</strong> <strong class="metric">9 日</strong>发布 AI 科技伦理审查与服务先导计划，准确看点不是新增一个泛化审批口号，而是把伦理审查推进到城市、企业、服务中心、专家复核、<strong class="signal">风险</strong>报送和标准验证。AI 合规正在从上线备案和内容治理，前移到研发立项、数据来源、模型评估和责任留痕。</p>
+    <p class="dossier-source"><a href="https://www.miit.gov.cn/zwgk/zcwj/wjfb/tz/art/2026/art_353d0d2a06ab4cebbfd53f97aec4ae24.html">工业和信息化部办公厅关于实施人工智能科技伦理审查与服务先导计划的通知</a> · 工业和信息化部 · 2026-05-09</p>
+  </header>
+  <main class="dossier-shell">
+    <aside class="dossier-index">
+      <b>案卷索引</b>
+      <ol><li>AI 科技伦理审查先导计划会怎样改变企业 AI 项目的立项和研发流程？</li><li>伦理审查、生成式 AI 备案、算法推荐和内容安全治理之间应怎样区分？</li><li>服务中心、专家复核、<strong class="signal">风险</strong>案例库和标准验证会不会形成新的合规服务市场？</li></ol>
+      <p><a href="../../">返回信息流首页</a></p>
+    </aside>
+    
+    <section class="reading-path">
+      <b>阅读路径</b>
+      <ol><li>先纠正发布机关和标题，说明准确锚点是工信部办公厅先导计划通知。</li><li>再把它放进 2021 伦理规范、2022 科技伦理治理意见、2023 科技伦理审查办法和 2026 AI 专门办法的链条里。</li><li>随后用企业项目流程展开：立项、数据、模型、日志、委员会、服务中心和专家复核。</li><li>再区分它和生成式 AI 备案、算法备案、内容审核、拟人化互动服务监管的关系。</li><li>最后列出先导城市、标准、案例库、服务中心能力和地方尺度这些<strong class="signal">后续</strong>变量。</li></ol>
+    </section>
+    
+    <article class="magazine-article dossier-article">
+      <p class="lede"><span class="dropcap">这</span>条新闻需要先把名称写准。<strong class="metric">2026 年</strong> <strong class="metric">5 月</strong>可核验的一手锚点，是《工业和信息化部办公厅关于实施人工智能科技伦理审查与服务先导计划的通知》，发文字号为工信厅科函〔2026〕199 号，成文日期 <strong class="metric">4 月</strong> <strong class="metric">28 日</strong>，发布日期 <strong class="metric">5 月</strong> <strong class="metric">9 日</strong>。它不是国家人工智能伦理委员会办公室单独发文，也不宜用转载标题替代原始标题。</p><p class="magazine-emphasis">先导计划承接的是 <strong class="metric">2026 年</strong> <strong class="metric">4 月</strong>发布的《人工智能科技伦理审查与服务办法（试行）》。再往上看，还有 <strong class="metric">2021 年</strong>《新一代人工智能伦理规范》、<strong class="metric">2022 年</strong>《关于加强科技伦理治理的意见》和 <strong class="metric">2023 年</strong>《科技伦理审查办法（试行）》。这些文件过去更多提供原则、一般程序和制度框架，<strong class="metric">5 月</strong>先导计划的变化在于把框架推到重点省份、重点城市和创新主体内部。</p><p>通知给出的目标很具体：打通部、省、市政府部门 AI 科技伦理审查与服务工作链条，推动重点城市率先落地，建设专业机构和人才队伍，验证并制定 <strong class="metric">5 项</strong>以上相关标准，基本建成人工智能科技伦理<strong class="signal">风险</strong>案例库，研发技术工具和方法，选树典型示范应用。这些词连起来看，政策目标已经从倡议进入流程建设。</p><aside class="pullquote"><span>摘句</span><p>它并不等于所有 AI 产品上线前都要统一审批。</p></aside><p>它并不等于所有 AI 产品上线前都要统一审批。适用范围指向境内开展、可能带来科技伦理<strong class="signal">风险</strong>挑战的 AI 科学研究、技术开发等活动，以及依法需要审查的其他科技活动。更准确的读法是：对高风险或具有明显伦理挑战的 AI 科技活动，研发过程需要更可审查、更可复核、更可追踪。</p><p>如果用一个企业 AI 项目来理解，第一步变化发生在立项。过去业务部门常用效率、成本、客户体验和技术可行性来写立项材料。伦理审查进入后，材料会多出应用人群、适用场景、潜在伤害、<strong class="signal">风险</strong>收益、替代方案、应急预案和责任人。项目能不能做，开始与它怎样识别风险、怎样接受监督绑定在一起。</p><p>第二步变化发生在数据。通知要求城市在人工智能基础底座领域必选推进，基础底座包括数据、算法和模型。办法也要求说明数据来源与获取方式，审查训练数据选择标准、<strong class="signal">隐私</strong>保护、偏见歧视等问题。对企业来说，数据集不再只是技术资产或商业壁垒，它也会成为伦理审查证据。来源不清、用途漂移、偏差不可解释的数据，会拖慢项目。</p><p class="magazine-emphasis">第三步变化发生在模型评估。过去很多内部评估盯准确率、延迟、成本和用户留存。伦理审查会把鲁棒性、可控性、透明可解释、偏见歧视、情感依赖、算法压榨、突发状况处理放进同一张评估表。模型评测从工程指标扩展为组织责任指标，这会改变产品经理、算法团队和法务合规之间的分工。</p><p>第四步是日志和责任链。办法强调记录数据、算法、模型、系统各环节信息，保障全链路可追踪。责任不会只留在模型团队，也会落到活动负责人、单位科技伦理委员会、地方服务中心、专家复核程序和主管部门<strong class="signal">风险</strong>报送网络。一个 AI 项目越靠近医疗、金融、教育、文化、未成年人和公共治理，越需要把“谁批准、谁复核、谁监测、谁处置”写明。</p><p>服务中心可能是这套机制里最实际的变量。通知要求探索建设人工智能科技伦理审查与服务中心，依托高校、科研机构、医疗卫生机构和第三方专业服务机构提供审查、复核、培训、咨询等服务。对于没有能力自建委员会的中小企业，这可能降低合规门槛；对于地方来说，也可能发展出新的 AI 合规服务市场。</p><p class="magazine-emphasis">先导计划还要求专家复核和标准验证。各省级工信主管部门要对符合清单的高<strong class="signal">风险</strong>人工智能科技活动及时开展专家复核，专项行动期间至少开展 3 次以上专家复核；各城市要把审查经验转化为标准规范。标准一旦形成，影响会超过单个试点，因为它可能进入招投标、项目验收、备案材料、行业认证和第三方评测。</p><p>这套机制与网信领域治理需要区分。生成式 AI 服务、算法推荐、深度合成、拟人化互动服务和内容标识都有自己的监管入口。伦理审查更靠近研发过程和科技活动<strong class="signal">风险</strong>，网信治理更靠近上线服务、内容安全、算法备案、个人信息和平台责任。二者会重叠，但不能混成一项制度。</p><p>分歧也在这里。官方文本强调服务、培训、标准、案例库、<strong class="signal">风险</strong>监测和中小微支持，企业实际体验则取决于地方服务中心能力、专家复核效率、材料口径是否清晰、跨地区项目能否互认。如果地方执行尺度差异很大，先导计划可能给企业提供清楚路径，也可能制造重复材料和流程摩擦。</p><p>高<strong class="signal">风险</strong>清单会成为企业最关心的文件之一。哪些 AI 科技活动需要专家复核，哪些只需要单位委员会审查，哪些可以依托服务中心完成，决定了项目周期和责任强度。清单如果写得过粗，会让企业倾向保守；清单如果能结合场景、影响人群和可逆性分层，反而能给创新主体留下更明确的试错空间。</p><p>地方试点的能力差异也会被放大。北京、上海、广东、浙江等 AI 产业基础较强的地区，更容易找到高校、研究机构、医疗机构和第三方服务商参与；产业基础较弱的城市可能更依赖省级统筹和外部专家。先导计划若要<strong class="signal">真正</strong>服务中小企业，就不能只把审查能力集中在少数头部机构。</p><p>这套制度还会推动企业内部文档化。<strong class="signal">风险</strong>评估、数据来源、模型评测、日志留痕、应急预案和人工监督，以前常散落在产品、算法、法务和安全团队各自的文件夹里。伦理审查要求它们被放进同一套证据链。文档负担会增加，但它也迫使企业把原本口头化、经验化的风险判断写成可复盘材料。</p><p>对产品团队来说，文档化的价值不只在应付检查。它会迫使团队提前写清模型适用边界、用户告知方式、误判后的人工接管、数据删除和事故上报。很多 AI <strong class="signal">风险</strong>并非来自模型突然失控，而是来自上线前没有人说清楚失败后谁负责、如何停止、怎样恢复。</p><p>更大的产业影响，是 AI 合规正在前移。过去许多企业把合规看作上线前补材料、备案、内容审核和<strong class="signal">隐私</strong>政策。先导计划推动的是研发中途的合规：立项前<strong class="signal">风险</strong>评估，数据来源说明，模型偏见测试，日志留痕，委员会审查，服务中心咨询，必要时专家复核。越早把这些动作放进项目节奏，越不容易在上线前被迫返工。</p><p>这不会让所有项目都变慢。低<strong class="signal">风险</strong>办公助手、内部知识检索和普通自动化工具，可能只需要较轻的自查和记录。医疗辅助、金融风控、教育评价、未成年人陪伴、公共安全、情感依赖和可替代人类判断的系统，则更可能触发更重的材料和复核。重点不在“AI 一律管死”，而在风险等级与流程强度是否匹配。</p><p><strong class="signal">后续</strong>观察点非常明确。<strong class="metric">5 月</strong> <strong class="metric">20 日</strong>前，各省级工信主管部门需要报送实施方案；<strong class="metric">6 月</strong> <strong class="metric">1 日</strong>至 <strong class="metric">11 月</strong> <strong class="metric">30 日</strong>进入实施周期；工信部会按月跟踪推进；行动期满后城市提交总结报告并接受综合评估。先导城市名单、地方细则、服务中心资质、专家复核案例、<strong class="metric">5 项</strong>以上标准和<strong class="signal">风险</strong>案例库，都会告诉我们这项制度究竟如何落地。</p>
+    </article>
+    
+    <section class="backmatter">
+      <div class="module">
+        <h2>不确定性</h2>
+        <ul><li>先导城市名单尚未由通知直接列明，需等待省级工信主管部门方案和<strong class="signal">后续</strong>公告。</li><li>伦理审查与服务中心的资质、收费、责任和审查质量仍需地方细则明确。</li><li>审查结果互认在跨地区、跨行业和产学研联合项目中能否顺畅执行仍不确定。</li><li>相关标准是否会成为事实上的招投标或备案门槛，需要观察<strong class="signal">后续</strong>实践。</li></ul>
+      </div>
+      <div class="module">
+        <h2>后续观察</h2>
+        <ul><li><strong class="metric">2026 年</strong> <strong class="metric">5 月</strong> <strong class="metric">20 日</strong>前各省实施方案与先导城市名单。</li><li><strong class="metric">2026 年</strong> <strong class="metric">6 月</strong> <strong class="metric">1 日</strong>至 <strong class="metric">11 月</strong> <strong class="metric">30 日</strong>实施期内的月度进展、专家复核案例和服务中心建设。</li><li><strong class="metric">5 项</strong>以上相关标准、<strong class="signal">风险</strong>案例库、伦理课堂和风险监测服务网络。</li><li>网信办 AI 应用乱象整治、拟人化互动服务办法和智能体发展意见与伦理审查的衔接。</li></ul>
+      </div>
+      <div class="module sources-module">
+        <h2>研究来源</h2>
+        <ul class="source-list"><li><a href="https://www.miit.gov.cn/zwgk/zcwj/wjfb/tz/art/2026/art_353d0d2a06ab4cebbfd53f97aec4ae24.html">工业和信息化部办公厅关于实施人工智能科技伦理审查与服务先导计划的通知</a><span class="source-meta">工业和信息化部</span></li><li><a href="https://www.miit.gov.cn/jgsj/kjs/wjfb/art/2026/art_2995f16b28504ddcbb604e918eb15759.html">人工智能科技伦理审查与服务办法（试行）</a><span class="source-meta">工业和信息化部</span></li><li><a href="https://kjs.moa.gov.cn/gzdt/202605/t20260514_6484163.htm">人工智能科技伦理审查与服务办法（试行）完整转载</a><span class="source-meta">农业农村部</span></li><li><a href="https://www.most.gov.cn/xxgk/xinxifenlei/fdzdgknr/fgzc/gfxwj/gfxwj2022/202203/t20220321_179899.html">关于加强科技伦理治理的意见</a><span class="source-meta">科技部</span></li><li><a href="https://www.most.gov.cn/xxgk/xinxifenlei/fdzdgknr/fgzc/gfxwj/gfxwj2023/202310/t20231008_188309.html">科技伦理审查办法（试行）</a><span class="source-meta">科技部</span></li><li><a href="https://www.cac.gov.cn/2026-04/10/c_1777558395023172.htm">人工智能拟人化互动服务管理暂行办法发布信息</a><span class="source-meta">中央网信办</span></li><li><a href="https://www.cac.gov.cn/2026-05/08/c_1779979789523320.htm">智能体规范应用与创新发展实施意见</a><span class="source-meta">中央网信办</span></li></ul>
+      </div>
+    </section>
+    
+  </main>
+  <footer>公开资料研究索引，包含来源链接、研究报告和不确定性提示。</footer>
+
+</body>
+</html>

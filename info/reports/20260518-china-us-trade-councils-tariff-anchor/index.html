@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="ledger" data-layout="newspaper">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>中美经贸初步成果：清单化降温比宏大和解更值得跟踪</title>
+  <style>
+    :root {
+      --paper: #f5f1e3;
+      --ink: #171717;
+      --muted: #64615b;
+      --line: #1c1c1c;
+      --accent: #0d5c63;
+      --accent-two: #b54d1f;
+      --accent-three: #f0c84b;
+      --sand: #efe5cf;
+      --measure: 52rem;
+      --background-signature: ledger-newsprint;
+      --page-background: repeating-linear-gradient(0deg, rgba(13,92,99,.045) 0 1px, transparent 1px 13px), repeating-linear-gradient(90deg, rgba(181,77,31,.035) 0 1px, transparent 1px 86px), var(--paper);
+    }
+    * { box-sizing: border-box; }
+    html { background: #151515; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--page-background);
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      line-height: 1.86;
+      letter-spacing: 0;
+    }
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; overflow-wrap: anywhere; }
+    .issue-bar {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: .58rem clamp(1rem, 4vw, 3.2rem);
+      background: color-mix(in srgb, var(--paper) 92%, white);
+      border-bottom: 2px solid var(--line);
+      backdrop-filter: blur(12px);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+    }
+    .issue-bar strong { color: var(--accent); }
+    .issue-bar span:nth-child(2) { font-weight: 900; }
+    .issue-bar span:last-child { text-align: right; color: var(--muted); }
+    .magazine-cover {
+      min-height: clamp(420px, 62vh, 680px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(17rem, 25rem);
+      gap: clamp(2rem, 5vw, 4.2rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.5rem) clamp(1rem, 5vw, 5rem) clamp(2.2rem, 4vw, 3.2rem);
+      border-bottom: 2px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .magazine-cover::before {
+      content: "RISK";
+      position: absolute;
+      left: clamp(.7rem, 3vw, 2rem);
+      top: clamp(4rem, 9vw, 7rem);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(5rem, 17vw, 17rem);
+      line-height: .75;
+      letter-spacing: 0;
+      color: color-mix(in srgb, var(--accent-two) 13%, transparent);
+      pointer-events: none;
+    }
+    .kicker {
+      display: inline-flex;
+      gap: .6rem;
+      align-items: center;
+      font-weight: 900;
+      color: var(--accent);
+      border: 2px solid var(--line);
+      padding: .22rem .55rem;
+      background: var(--accent-three);
+      width: fit-content;
+    }
+    h1 {
+      max-width: 12ch;
+      margin: 1.3rem 0 0;
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 7vw, 7.2rem);
+      line-height: .94;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .deck {
+      max-width: 56rem;
+      font-size: clamp(1.1rem, 1.65vw, 1.48rem);
+      line-height: 1.62;
+      margin: 2rem 0 0;
+      color: #24211d;
+      border-left: .65rem solid var(--accent);
+      padding-left: 1.2rem;
+    }
+    .cover-meta { align-self: stretch; display: grid; align-content: end; gap: 1rem; }
+    .cover-card {
+      border: 2px solid var(--line);
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 9px 9px 0 var(--accent-two);
+    }
+    .cover-card h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.35; color: var(--accent); }
+    .cover-card ol, .cover-card ul { margin: 0; padding-left: 1.15rem; }
+    .cover-card li { margin: .48rem 0; line-height: 1.55; }
+    .article-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.6rem, 3vw, 3.2rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .editor-note {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(10rem, 15rem) minmax(0, 1fr);
+      gap: 1.2rem;
+      border-top: 5px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: 1rem 0 1.1rem;
+      color: var(--muted);
+      font-size: .94rem;
+      line-height: 1.7;
+    }
+    .editor-note b {
+      display: block;
+      color: var(--ink);
+      font-size: .82rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .25rem;
+    }
+    .editor-note p { margin: 0; }
+    .reading-path {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(8rem, 12rem) minmax(0, 1fr);
+      gap: 1rem;
+      align-items: start;
+      margin: .2rem 0 1.4rem;
+      padding: 1rem 1.1rem;
+      border: 2px solid color-mix(in srgb, var(--accent) 55%, var(--line));
+      background: color-mix(in srgb, var(--accent-three) 22%, rgba(255,255,255,.72));
+      box-shadow: 7px 7px 0 color-mix(in srgb, var(--accent-two) 48%, transparent);
+    }
+    .reading-path b {
+      color: var(--accent);
+      font-size: .86rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .reading-path ol {
+      margin: 0;
+      padding-left: 1.1rem;
+      display: grid;
+      gap: .45rem;
+      color: #2b2b2b;
+      line-height: 1.62;
+    }
+    .magazine-article { min-width: 0; font-size: clamp(1.04rem, 1.05vw, 1.18rem); }
+    .article-shell > .magazine-article { grid-column: 1; }
+    .magazine-article p { margin: 0 0 1.35rem; text-align: justify; text-wrap: pretty; }
+    .magazine-article .lede {
+      font-size: clamp(1.24rem, 2vw, 1.58rem);
+      line-height: 1.75;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+    .dropcap {
+      float: left;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 5.8rem;
+      line-height: .8;
+      padding: .18rem .55rem .1rem 0;
+      color: var(--accent);
+    }
+    .magazine-emphasis {
+      margin: 2rem 0 !important;
+      padding: 1.1rem 1.25rem;
+      border-left: .45rem solid var(--accent-two);
+      background: linear-gradient(90deg, color-mix(in srgb, var(--accent-two) 12%, transparent), transparent 78%);
+      font-weight: 600;
+    }
+    .pullquote {
+      margin: 2.4rem -4rem 2.4rem 0;
+      padding: 1.1rem 0 1.2rem 1.5rem;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      background: var(--paper);
+    }
+    .pullquote span { color: var(--accent); font-size: .78rem; font-weight: 900; letter-spacing: .13em; }
+    .pullquote p {
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-size: clamp(1.6rem, 3vw, 2.45rem);
+      line-height: 1.28;
+      margin: .35rem 0 0;
+      text-align: left;
+    }
+    .metric {
+      font-variant-numeric: tabular-nums;
+      color: var(--accent);
+      font-weight: 900;
+      background: linear-gradient(transparent 55%, color-mix(in srgb, var(--accent-three) 65%, transparent) 0);
+    }
+    .signal {
+      font-weight: 900;
+      text-decoration: underline;
+      text-decoration-color: var(--accent-two);
+      text-decoration-thickness: .18em;
+      text-underline-offset: .14em;
+    }
+    .companion-rail {
+      position: sticky;
+      top: 3.8rem;
+      grid-column: 2;
+      align-self: start;
+      border-top: 5px solid var(--line);
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+      padding-top: 1rem;
+    }
+    .companion-rail b { color: var(--ink); }
+    .backmatter {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.2rem;
+      margin-top: 2.4rem;
+      border-top: 2px solid var(--line);
+      padding-top: 1.4rem;
+    }
+    .module { background: #fff; border: 2px solid var(--line); padding: 1rem 1.1rem; box-shadow: 6px 6px 0 var(--sand); }
+    .module h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.3; color: var(--accent); }
+    .module ul { margin: 0; padding-left: 1.1rem; }
+    .module li { margin: .5rem 0; line-height: 1.58; }
+    .source-list li { display: grid; gap: .12rem; margin-bottom: .8rem; }
+    .source-meta { color: var(--muted); font-size: .86rem; }
+    .source-meta::before { content: "来源 · "; }
+    .sources-module { grid-column: 1 / -1; }
+    .newspaper-masthead {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.8rem) clamp(1rem, 4vw, 3rem) 1.6rem;
+      border-bottom: 5px double var(--line);
+    }
+    .newspaper-kicker {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.4rem, 3vw, 3rem);
+      line-height: 1;
+      color: var(--accent);
+      text-transform: uppercase;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: .35rem 0;
+    }
+    .newspaper-masthead h1 {
+      max-width: 20ch;
+      font-size: clamp(2.6rem, 5.5vw, 6.2rem);
+      line-height: .98;
+    }
+    .newspaper-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem 1.1rem;
+      margin-top: 1rem;
+      padding-top: .8rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .market-strip {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr 1fr;
+      gap: 1rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      border-bottom: 2px solid var(--line);
+      background: color-mix(in srgb, var(--accent-three) 26%, var(--paper));
+      font-size: .94rem;
+      line-height: 1.55;
+    }
+    .market-strip b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .08em; }
+    .market-strip p, .market-strip ol, .market-strip ul { margin: .35rem 0 0; }
+    .market-strip ol, .market-strip ul { padding-left: 1.1rem; }
+    .newspaper-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .newspaper-article .lede {
+      column-span: all;
+      border-top: 2px solid var(--line);
+      padding-top: 1rem;
+    }
+    .newspaper-article { grid-column: 1; }
+    .newspaper-rail {
+      position: sticky;
+      top: 3.8rem;
+      border-left: 2px solid var(--line);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .dossier-cover {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.6rem) clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
+      gap: clamp(1.5rem, 4vw, 3.8rem);
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+    }
+    .dossier-stamp {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      align-self: start;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      color: var(--accent);
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: color-mix(in srgb, var(--accent-three) 35%, white);
+    }
+    .dossier-cover h1 {
+      max-width: 18ch;
+      font-size: clamp(2.7rem, 6vw, 6.6rem);
+      line-height: .98;
+    }
+    .dossier-summary {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.5vw, 1.36rem);
+      border-left: .45rem solid var(--accent);
+      padding-left: 1rem;
+    }
+    .dossier-source { color: var(--muted); margin: 0; }
+    .dossier-shell {
+      display: grid;
+      grid-template-columns: minmax(12rem, 17rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .dossier-index {
+      position: sticky;
+      top: 3.8rem;
+      border-top: 5px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .dossier-index b { display: block; color: var(--ink); margin-bottom: .6rem; }
+    .dossier-index ol { margin: 0 0 1rem; padding-left: 1.1rem; }
+    .dossier-article { grid-column: 2; }
+    .field-cover {
+      min-height: clamp(460px, 64vh, 720px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr);
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      border-bottom: 2px solid var(--line);
+      background:
+        linear-gradient(135deg, transparent 0 48%, color-mix(in srgb, var(--accent-three) 24%, transparent) 48% 52%, transparent 52%),
+        var(--paper);
+    }
+    .field-topline {
+      grid-column: 1 / -1;
+      width: fit-content;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: .25rem .7rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .field-cover h1 {
+      max-width: 16ch;
+      font-size: clamp(2.8rem, 6.4vw, 7rem);
+    }
+    .field-deck {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.55vw, 1.38rem);
+      line-height: 1.62;
+      border-left: .5rem solid var(--accent-two);
+      padding-left: 1rem;
+    }
+    .field-map {
+      border: 2px solid var(--line);
+      background: rgba(255,255,255,.76);
+      padding: 1rem;
+      box-shadow: 10px 10px 0 color-mix(in srgb, var(--accent) 70%, black);
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+    .field-map b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .1em; }
+    .field-map ol { margin: .55rem 0 1rem; padding-left: 1.2rem; }
+    .field-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(13rem, 17rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .field-log {
+      position: sticky;
+      top: 3.8rem;
+      border-left: .35rem solid var(--accent-two);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .field-article { grid-column: 1; }
+    .lab-cover {
+      padding: clamp(2.6rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      min-height: clamp(420px, 58vh, 650px);
+      display: grid;
+      align-content: center;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+      background:
+        linear-gradient(90deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        linear-gradient(0deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        var(--paper);
+    }
+    .lab-label {
+      width: fit-content;
+      background: var(--ink);
+      color: #fff;
+      padding: .28rem .65rem;
+      font-size: .82rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .lab-cover h1 {
+      max-width: 22ch;
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 5.8rem);
+      line-height: 1.04;
+    }
+    .lab-deck {
+      max-width: 62rem;
+      font-size: clamp(1.06rem, 1.45vw, 1.32rem);
+      border-top: 2px solid var(--accent);
+      padding-top: 1rem;
+    }
+    .protocol-strip {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .75rem;
+      border-bottom: 2px solid var(--line);
+      font-size: .88rem;
+    }
+    .protocol-strip div {
+      border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
+      padding: .75rem;
+      background: rgba(255,255,255,.68);
+      min-width: 0;
+    }
+    .protocol-strip b {
+      display: block;
+      color: var(--accent-two);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .protocol-strip span { overflow-wrap: anywhere; }
+    .lab-shell {
+      display: grid;
+      grid-template-columns: minmax(14rem, 19rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .lab-notes {
+      position: sticky;
+      top: 3.8rem;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      background: #fff;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .lab-notes b { color: var(--ink); }
+    .lab-notes ol { padding-left: 1.1rem; }
+    .lab-article { grid-column: 2; }
+    footer { color: var(--muted); padding: 0 clamp(1rem, 4vw, 3rem) 3rem; max-width: 1220px; margin: 0 auto; font-size: .9rem; }
+    @media (max-width: 1100px) {
+      .magazine-cover { grid-template-columns: 1fr; min-height: auto; }
+      .cover-meta { max-width: 42rem; }
+      .article-shell { grid-template-columns: 1fr; }
+      .editor-note { grid-template-columns: 1fr; }
+      .companion-rail { position: static; grid-column: 1; }
+      .backmatter { grid-column: 1; grid-template-columns: 1fr; }
+      .pullquote { margin-right: 0; }
+      h1 { max-width: 11ch; }
+      .market-strip, .protocol-strip { grid-template-columns: 1fr; }
+      .newspaper-shell, .dossier-shell, .field-shell, .lab-shell { grid-template-columns: 1fr; }
+      .newspaper-rail, .dossier-index, .field-log, .lab-notes { position: static; }
+      .dossier-article, .lab-article { grid-column: 1; }
+      .dossier-cover, .field-cover { grid-template-columns: 1fr; min-height: auto; }
+      .dossier-stamp { grid-column: 1; grid-row: auto; }
+    }
+    @media (max-width: 640px) {
+      .issue-bar { grid-template-columns: 1fr; gap: .15rem; }
+      .issue-bar span:last-child { text-align: left; }
+      .magazine-cover { padding-top: 2.4rem; }
+      h1 { font-size: clamp(2.65rem, 16vw, 4.8rem); }
+      .deck { border-left-width: .45rem; padding-left: .8rem; }
+      .magazine-article p { text-align: left; }
+      .dropcap { font-size: 4.6rem; }
+      .module { box-shadow: 4px 4px 0 var(--sand); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="issue-bar"><span><strong>Infohub</strong> article</span><span>Magazine research page</span><span>2026-05-16</span></div>
+  <header class="newspaper-masthead">
+    <div class="newspaper-kicker">MARKETS / POLICY LEDGER</div>
+    <h1>中美经贸初步成果：清单化降温比宏大和解更值得跟踪</h1>
+    <p class="deck">商务部 <strong class="metric">5 月</strong> <strong class="metric">16 日</strong>披露中美经贸磋商初步成果，信息密度不在“积极成果”四个字，而在关税清单、贸易和投资理事会、农产品准入、飞机采购与零部件供应这些可执行节点。它更像把贸易冲突转入可持续谈判和可验证清单，而不是给长期竞争画上句号。</p>
+    <div class="newspaper-meta">
+      <span>商务部</span>
+      <span>2026-05-16</span>
+      <span>trade-policy / china-us / macro / supply-chain</span>
+    </div>
+  </header>
+  <section class="market-strip">
+    <div>
+      <b>新闻锚点</b>
+      <p><a href="https://www.mofcom.gov.cn/syxwfb/art/2026/art_0e8dac7e772e4339bf622ddc7717e5e1.html">商务部新闻发言人就中美经贸磋商初步成果答记者问</a></p>
+    </div>
+    <div>
+      <b>研究问题</b>
+      <ol><li>中美经贸初步成果中的哪些事项已经宣布，哪些仍停留在细节磋商阶段？</li><li>贸易理事会和投资理事会如果<strong class="signal">真正</strong>运转，会怎样改变中美经贸摩擦的处理方式？</li><li>关税、农产品准入、航空采购和<strong class="signal">关键</strong>供应链安排会通过哪些数据被验证？</li></ol>
+    </div>
+    <div>
+      <b>后续变量</b>
+      <ul><li>中方税则、海关、农业检疫和商务部门<strong class="signal">后续</strong>公告。</li><li>USTR、白宫、美国商务部、美国财政部是否公布执行清单和豁免安排。</li><li>Boeing 订单簿、交付数据和发动机零部件供应安排。</li><li>USDA 出口销售周报、中国海关月度进口数据、人民币汇率和 CNH 波动率。</li></ul>
+    </div>
+  </section>
+  <main class="newspaper-shell">
+    
+    <section class="reading-path">
+      <b>阅读路径</b>
+      <ol><li>先区分初步成果与完整协议，避免把积极共识写成已经锁定的细节。</li><li>再把中方商务部口径与白宫事实清单并置，说明双方公开叙事的颗粒度差异。</li><li>随后拆解四类执行节点：关税清单、理事会化、农产品非关税壁垒、飞机采购和供应保障。</li><li>再讨论市场传导：<strong class="signal">风险</strong>溢价、人民币、供应链订单和农产品数据如何受到影响。</li><li>最后给出<strong class="signal">后续</strong>验证变量，让读者用公告、订单簿、海关和 USDA 数据继续跟踪。</li></ol>
+    </section>
+    
+    <article class="magazine-article newspaper-article">
+      <p class="lede"><span class="dropcap">商</span>务部 <strong class="metric">2026 年</strong> <strong class="metric">5 月</strong> <strong class="metric">16 日</strong>的答记者问，最需要认真读的地方是措辞。它说中美经贸团队达成“初步成果”，双方就有关关税安排形成“积极共识”，并且仍在就成果细节继续磋商。这个边界很重要：新闻已经足够具体，足以说明双边关系在降温；它还没有具体到可以替代协议文本、税则公告和执行清单。</p><p class="magazine-emphasis">时间线很密。商务部 <strong class="metric">5 月</strong> <strong class="metric">10 日</strong>预告，何立峰将于 <strong class="metric">5 月</strong> <strong class="metric">12 日</strong>至 <strong class="metric">13 日</strong>率团赴韩国与美方举行经贸磋商。<strong class="metric">5 月</strong> <strong class="metric">13 日</strong>，经贸团队在韩国会谈。<strong class="metric">5 月</strong> <strong class="metric">14 日</strong>，中美元首在北京会晤。<strong class="metric">5 月</strong> <strong class="metric">16 日</strong>，商务部公布初步成果。这个顺序说明，经贸团队先把可谈项目准备出来，再由元首会晤定调，随后双方继续把成果细节往可执行文本上推。</p><p>公布事项里最容易被市场口号吞掉的是“同等规模的各自关注产品降税”。这句话没有给出产品清单、降税幅度、期限和执行日，却透露了谈判方法。它指向清单化、对等化、分批化，而非一揽子取消关税。对企业和市场来说，<strong class="signal">真正</strong>影响利润表的不是降温气氛，而是清单覆盖农产品、工业中间品、消费品、航空设备还是<strong class="signal">关键</strong>材料。</p><aside class="pullquote"><span>摘句</span><p>贸易理事会和投资理事会可能比单个订单更值得跟踪。</p></aside><p>贸易理事会和投资理事会可能比单个订单更值得跟踪。中美经贸摩擦过去常由突发关税、临时谈判和高层通话推动，市场容易在消息之间剧烈摆动。如果理事会有固定会议、明确授权、议题清单和执行反馈，它就能把一部分危机管理变成议程管理。反过来，如果没有频率、层级和执行机制，理事会会更像一次会晤后的政治缓冲器。</p><p>农产品非关税壁垒是最细，也最能检验执行力的一组议题。商务部列举了乳制品和水产品自动扣留、介质盆景输美、山东禽流感无疫区认定，也列举了美方牛肉设施注册、部分州禽肉输华等关切。这些事项很难靠一句政治表态落地，它们要进入检疫证书、设施名单、海关通关、装船和销售数据。<strong class="signal">后续</strong>跟踪时，部门公告会比峰会形容词更有用。</p><p>航空采购与供应保障放在同一条里也很有信息量。中方采购美国飞机，对美国是制造业和出口就业符号；美方保障飞机发动机、零部件对华供应，对中国航空公司意味着适航、维修、航材和运营安全。飞机不是一次性货物，它绑定长期零部件、发动机维护、融资和交付周期。任何公开报道里的“购买数量”，都还要经过公司订单簿和交付数据验证。</p><p class="magazine-emphasis">美国白宫 <strong class="metric">5 月</strong> <strong class="metric">17 日</strong>的事实清单比中方答记者问更具体，也更像面向国内政治的成果展示。白宫写到贸易和投资委员会、稀土与<strong class="signal">关键</strong>矿物、200 架美国制造波音飞机、每年至少 170 亿美元农产品采购、牛肉和禽肉市场准入等。公开稿可以引用这些内容作为美方口径，但不能把它们自动等同于双方共同文本。两边叙事颗粒度不同，本身就是研究对象。</p><p>这次磋商的宏观意义，首先是降低尾部<strong class="signal">风险</strong>。企业最怕的不是一两个百分点的关税变化，而是关税、出口管制、非关税壁垒和行政执法突然叠加，导致订单、库存和投资计划失去边界。若清单化机制能够运行，企业至少能把一部分风险放进排期和合同里。它不消除竞争，却可能让竞争更可预期。</p><p>投资理事会尤其值得单独跟踪。贸易理事会处理货物和部分非敏感商品，投资理事会则会碰到更复杂的领域：并购审查、供应链本地化、数据安全、工厂选址、合资结构和利润汇回。中美企业过去几年最缺的不是商业兴趣，而是政策边界。若投资理事会能把若干问题从临时游说变成常设议题，它会直接影响跨国企业是否愿意恢复中长期资本开支。</p><p class="magazine-emphasis">关税清单也会影响供应链绕行的速度。过去企业为了避开关税和地缘<strong class="signal">风险</strong>，把一部分装配、采购和转口放到第三地。如果双方只对少数政治象征产品降税，供应链不会大规模回流；如果中间品、航空零部件、农业和部分消费链条出现稳定安排，企业才可能重新计算直接贸易和第三地贸易的成本差。这个变化不会靠一周市场反应完成，而会体现在订单和物流数据里。</p><p>还有一个容易被忽略的层面是执行部门之间的协调。降税需要税则和海关，农产品准入需要检疫和监管，飞机采购需要企业合同、金融安排和适航支持，零部件供应又可能涉及出口许可。高层共识只是入口，<strong class="signal">真正</strong>改变企业体验的是这些部门能否在同一时间表上更新规则。任何一个环节迟滞，都会让政治成果停在新闻层面。</p><p>理事会如果有效，也会留下可审计的节奏：首次会议何时召开，议题是否公开，是否设工作组，是否允许企业或行业协会反馈，是否发布阶段性执行清单。没有这些节奏，市场只能反复解读政治表态；有了这些节奏，企业才可能把中美摩擦写进年度采购、库存和资本开支计划。</p><p>金融市场的传导也要写得更精确。中美经贸降温可能压低中国资产<strong class="signal">风险</strong>溢价，支撑人民币汇率预期，也可能让航空、农产品、物流和部分外贸链条的盈利假设修复。可这些都是条件命题。只要产品清单、执行日和监督机制没有公布，资产价格反应更接近风险溢价变化，而不是现金流已经落地。</p><p>贸易数据还提醒我们，逆差缩小并不自动说明贸易关系修复。USTR 的 <strong class="metric">2026 年</strong>《National Trade Estimate》显示，美国对华货物贸易逆差在 <strong class="metric">2025 年</strong>下降很多，但这可能来自双边直接贸易收缩、关税抬高和供应链绕行。若<strong class="signal">后续</strong>对华直接贸易回升，同时越南、墨西哥、台湾等地中间转口结构继续扩大，那说明贸易网络只是换了路径。</p><p>农产品也是这样。采购承诺只有落进 USDA 出口销售周报、中国海关进口数据、企业合同和港口装卸数据，才算穿过了政治叙事。中国会继续比较美国、巴西、阿根廷等来源的价格、运费、汇率和关税条件。即使出现采购承诺，它也未必改变长期供应结构，只能说明短期谈判里农产品仍是最容易被量化的交换项目。</p><p>这份答记者问因此更适合被读作一张执行地图。上层是元首共识，中层是贸易和投资理事会，底层是关税清单、农产品准入、飞机订单和零部件供应。<strong class="signal">真正</strong>的变量会沿着这张图逐步出现：税委会公告、海关规则、检疫名单、USTR 文件、波音订单簿、USDA 数据、人民币汇率和企业资本开支指引。</p><p>公开写作时需要压住两种冲动。一种是把它写成“大和解”，另一种是把它写成“毫无意义”。更准确的判断在中间：它可能是一次有效的阶段性降温，并试图把贸易战的若干部分转入清单谈判；它也仍然处在初步成果阶段，敏感技术、出口管制、投资安全、<strong class="signal">关键</strong>矿物和产业政策分歧没有因此消失。</p><p>接下来几周，最值得看的不是评论文章，而是执行文件。商务部、关税税则委员会、海关总署、农业农村部是否公布细则；USTR、白宫、美国商务部和财政部是否释放执行清单；Boeing 是否确认订单；USDA 周报是否出现对华采购上升；贸易理事会和投资理事会是否公布首次会议日期。政策降温能否转成商业确定性，要靠这些更枯燥的材料来回答。</p>
+    </article>
+    <aside class="newspaper-rail">
+      <p><b>读法</b><br>克制的政策机制备忘录，不写峰会胜负叙事。文章从商务部答记者问的措辞边界进入，沿着清单、机构、执行层级和后续数据走，给读者一张可验证的观察表。</p>
+      <p><b>主题</b><br>trade-policy / china-us / macro / supply-chain</p>
+      <p><b>返回</b><br><a href="../../">信息流首页</a></p>
+    </aside>
+    
+    <section class="backmatter">
+      <div class="module">
+        <h2>不确定性</h2>
+        <ul><li>是否会公布中美联合声明或更具体协议文本仍不确定。</li><li>产品降税清单、幅度、期限、执行日和监督机制尚未公开。</li><li>贸易理事会和投资理事会的层级、会议频率、授权范围和争端处理方式尚未明确。</li><li>飞机采购的订单主体、机型、交付周期和融资安排仍需公司层面确认。</li></ul>
+      </div>
+      <div class="module">
+        <h2>后续观察</h2>
+        <ul><li>中方税则、海关、农业检疫和商务部门<strong class="signal">后续</strong>公告。</li><li>USTR、白宫、美国商务部、美国财政部是否公布执行清单和豁免安排。</li><li>Boeing 订单簿、交付数据和发动机零部件供应安排。</li><li>USDA 出口销售周报、中国海关月度进口数据、人民币汇率和 CNH 波动率。</li></ul>
+      </div>
+      <div class="module sources-module">
+        <h2>研究来源</h2>
+        <ul class="source-list"><li><a href="https://www.mofcom.gov.cn/syxwfb/art/2026/art_0e8dac7e772e4339bf622ddc7717e5e1.html">商务部新闻发言人就中美经贸磋商初步成果答记者问</a><span class="source-meta">商务部</span></li><li><a href="https://www.mofcom.gov.cn/syxwfb/art/2026/art_b0c5ef711dfc41da8f1ca6374622ef6d.html">商务部新闻发言人就中美经贸磋商有关问题答记者问</a><span class="source-meta">商务部</span></li><li><a href="https://www.whitehouse.gov/fact-sheets/2026/05/fact-sheet-president-donald-j-trump-secures-historic-deals-with-china-delivering-for-american-workers-farmers-and-industry/">President Donald J. Trump Secures Historic Deals with China</a><span class="source-meta">White House</span></li><li><a href="https://ustr.gov/sites/default/files/files/Press/Releases/2026/2026%20NTE%20Report%20_%20Final.pdf">2026 National Trade Estimate Report</a><span class="source-meta">USTR</span></li><li><a href="https://www.mfa.gov.cn/web/gjhdq_676201/gj_676203/bmz_679954/1206_680528/xgxw_680534/202605/t20260514_11910264.shtml">习近平同美国总统特朗普会晤相关通稿</a><span class="source-meta">外交部</span></li><li><a href="https://www.mfa.gov.cn/wjdt_674879/gjldrhd_674881/202605/t20260515_11911080.shtml">中美元首小范围会晤相关通稿</a><span class="source-meta">外交部</span></li></ul>
+      </div>
+    </section>
+    
+  </main>
+  <footer>公开资料研究索引，包含来源链接、研究报告和不确定性提示。</footer>
+
+</body>
+</html>

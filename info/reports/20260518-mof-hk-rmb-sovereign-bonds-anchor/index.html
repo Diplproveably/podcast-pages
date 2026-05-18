@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="ledger" data-layout="newspaper">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>财政部香港 840 亿元人民币国债：离岸人民币从资金池走向资产池</title>
+  <style>
+    :root {
+      --paper: #f5f1e3;
+      --ink: #171717;
+      --muted: #64615b;
+      --line: #1c1c1c;
+      --accent: #0d5c63;
+      --accent-two: #b54d1f;
+      --accent-three: #f0c84b;
+      --sand: #efe5cf;
+      --measure: 52rem;
+      --background-signature: ledger-newsprint;
+      --page-background: repeating-linear-gradient(0deg, rgba(13,92,99,.045) 0 1px, transparent 1px 13px), repeating-linear-gradient(90deg, rgba(181,77,31,.035) 0 1px, transparent 1px 86px), var(--paper);
+    }
+    * { box-sizing: border-box; }
+    html { background: #151515; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--page-background);
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      line-height: 1.86;
+      letter-spacing: 0;
+    }
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; overflow-wrap: anywhere; }
+    .issue-bar {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: .58rem clamp(1rem, 4vw, 3.2rem);
+      background: color-mix(in srgb, var(--paper) 92%, white);
+      border-bottom: 2px solid var(--line);
+      backdrop-filter: blur(12px);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+    }
+    .issue-bar strong { color: var(--accent); }
+    .issue-bar span:nth-child(2) { font-weight: 900; }
+    .issue-bar span:last-child { text-align: right; color: var(--muted); }
+    .magazine-cover {
+      min-height: clamp(420px, 62vh, 680px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(17rem, 25rem);
+      gap: clamp(2rem, 5vw, 4.2rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.5rem) clamp(1rem, 5vw, 5rem) clamp(2.2rem, 4vw, 3.2rem);
+      border-bottom: 2px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .magazine-cover::before {
+      content: "RISK";
+      position: absolute;
+      left: clamp(.7rem, 3vw, 2rem);
+      top: clamp(4rem, 9vw, 7rem);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(5rem, 17vw, 17rem);
+      line-height: .75;
+      letter-spacing: 0;
+      color: color-mix(in srgb, var(--accent-two) 13%, transparent);
+      pointer-events: none;
+    }
+    .kicker {
+      display: inline-flex;
+      gap: .6rem;
+      align-items: center;
+      font-weight: 900;
+      color: var(--accent);
+      border: 2px solid var(--line);
+      padding: .22rem .55rem;
+      background: var(--accent-three);
+      width: fit-content;
+    }
+    h1 {
+      max-width: 12ch;
+      margin: 1.3rem 0 0;
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 7vw, 7.2rem);
+      line-height: .94;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .deck {
+      max-width: 56rem;
+      font-size: clamp(1.1rem, 1.65vw, 1.48rem);
+      line-height: 1.62;
+      margin: 2rem 0 0;
+      color: #24211d;
+      border-left: .65rem solid var(--accent);
+      padding-left: 1.2rem;
+    }
+    .cover-meta { align-self: stretch; display: grid; align-content: end; gap: 1rem; }
+    .cover-card {
+      border: 2px solid var(--line);
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 9px 9px 0 var(--accent-two);
+    }
+    .cover-card h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.35; color: var(--accent); }
+    .cover-card ol, .cover-card ul { margin: 0; padding-left: 1.15rem; }
+    .cover-card li { margin: .48rem 0; line-height: 1.55; }
+    .article-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.6rem, 3vw, 3.2rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .editor-note {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(10rem, 15rem) minmax(0, 1fr);
+      gap: 1.2rem;
+      border-top: 5px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: 1rem 0 1.1rem;
+      color: var(--muted);
+      font-size: .94rem;
+      line-height: 1.7;
+    }
+    .editor-note b {
+      display: block;
+      color: var(--ink);
+      font-size: .82rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .25rem;
+    }
+    .editor-note p { margin: 0; }
+    .reading-path {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(8rem, 12rem) minmax(0, 1fr);
+      gap: 1rem;
+      align-items: start;
+      margin: .2rem 0 1.4rem;
+      padding: 1rem 1.1rem;
+      border: 2px solid color-mix(in srgb, var(--accent) 55%, var(--line));
+      background: color-mix(in srgb, var(--accent-three) 22%, rgba(255,255,255,.72));
+      box-shadow: 7px 7px 0 color-mix(in srgb, var(--accent-two) 48%, transparent);
+    }
+    .reading-path b {
+      color: var(--accent);
+      font-size: .86rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .reading-path ol {
+      margin: 0;
+      padding-left: 1.1rem;
+      display: grid;
+      gap: .45rem;
+      color: #2b2b2b;
+      line-height: 1.62;
+    }
+    .magazine-article { min-width: 0; font-size: clamp(1.04rem, 1.05vw, 1.18rem); }
+    .article-shell > .magazine-article { grid-column: 1; }
+    .magazine-article p { margin: 0 0 1.35rem; text-align: justify; text-wrap: pretty; }
+    .magazine-article .lede {
+      font-size: clamp(1.24rem, 2vw, 1.58rem);
+      line-height: 1.75;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+    .dropcap {
+      float: left;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 5.8rem;
+      line-height: .8;
+      padding: .18rem .55rem .1rem 0;
+      color: var(--accent);
+    }
+    .magazine-emphasis {
+      margin: 2rem 0 !important;
+      padding: 1.1rem 1.25rem;
+      border-left: .45rem solid var(--accent-two);
+      background: linear-gradient(90deg, color-mix(in srgb, var(--accent-two) 12%, transparent), transparent 78%);
+      font-weight: 600;
+    }
+    .pullquote {
+      margin: 2.4rem -4rem 2.4rem 0;
+      padding: 1.1rem 0 1.2rem 1.5rem;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      background: var(--paper);
+    }
+    .pullquote span { color: var(--accent); font-size: .78rem; font-weight: 900; letter-spacing: .13em; }
+    .pullquote p {
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-size: clamp(1.6rem, 3vw, 2.45rem);
+      line-height: 1.28;
+      margin: .35rem 0 0;
+      text-align: left;
+    }
+    .metric {
+      font-variant-numeric: tabular-nums;
+      color: var(--accent);
+      font-weight: 900;
+      background: linear-gradient(transparent 55%, color-mix(in srgb, var(--accent-three) 65%, transparent) 0);
+    }
+    .signal {
+      font-weight: 900;
+      text-decoration: underline;
+      text-decoration-color: var(--accent-two);
+      text-decoration-thickness: .18em;
+      text-underline-offset: .14em;
+    }
+    .companion-rail {
+      position: sticky;
+      top: 3.8rem;
+      grid-column: 2;
+      align-self: start;
+      border-top: 5px solid var(--line);
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+      padding-top: 1rem;
+    }
+    .companion-rail b { color: var(--ink); }
+    .backmatter {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.2rem;
+      margin-top: 2.4rem;
+      border-top: 2px solid var(--line);
+      padding-top: 1.4rem;
+    }
+    .module { background: #fff; border: 2px solid var(--line); padding: 1rem 1.1rem; box-shadow: 6px 6px 0 var(--sand); }
+    .module h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.3; color: var(--accent); }
+    .module ul { margin: 0; padding-left: 1.1rem; }
+    .module li { margin: .5rem 0; line-height: 1.58; }
+    .source-list li { display: grid; gap: .12rem; margin-bottom: .8rem; }
+    .source-meta { color: var(--muted); font-size: .86rem; }
+    .source-meta::before { content: "来源 · "; }
+    .sources-module { grid-column: 1 / -1; }
+    .newspaper-masthead {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.8rem) clamp(1rem, 4vw, 3rem) 1.6rem;
+      border-bottom: 5px double var(--line);
+    }
+    .newspaper-kicker {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.4rem, 3vw, 3rem);
+      line-height: 1;
+      color: var(--accent);
+      text-transform: uppercase;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: .35rem 0;
+    }
+    .newspaper-masthead h1 {
+      max-width: 20ch;
+      font-size: clamp(2.6rem, 5.5vw, 6.2rem);
+      line-height: .98;
+    }
+    .newspaper-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem 1.1rem;
+      margin-top: 1rem;
+      padding-top: .8rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .market-strip {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr 1fr;
+      gap: 1rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      border-bottom: 2px solid var(--line);
+      background: color-mix(in srgb, var(--accent-three) 26%, var(--paper));
+      font-size: .94rem;
+      line-height: 1.55;
+    }
+    .market-strip b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .08em; }
+    .market-strip p, .market-strip ol, .market-strip ul { margin: .35rem 0 0; }
+    .market-strip ol, .market-strip ul { padding-left: 1.1rem; }
+    .newspaper-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .newspaper-article .lede {
+      column-span: all;
+      border-top: 2px solid var(--line);
+      padding-top: 1rem;
+    }
+    .newspaper-article { grid-column: 1; }
+    .newspaper-rail {
+      position: sticky;
+      top: 3.8rem;
+      border-left: 2px solid var(--line);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .dossier-cover {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.6rem) clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
+      gap: clamp(1.5rem, 4vw, 3.8rem);
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+    }
+    .dossier-stamp {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      align-self: start;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      color: var(--accent);
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: color-mix(in srgb, var(--accent-three) 35%, white);
+    }
+    .dossier-cover h1 {
+      max-width: 18ch;
+      font-size: clamp(2.7rem, 6vw, 6.6rem);
+      line-height: .98;
+    }
+    .dossier-summary {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.5vw, 1.36rem);
+      border-left: .45rem solid var(--accent);
+      padding-left: 1rem;
+    }
+    .dossier-source { color: var(--muted); margin: 0; }
+    .dossier-shell {
+      display: grid;
+      grid-template-columns: minmax(12rem, 17rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .dossier-index {
+      position: sticky;
+      top: 3.8rem;
+      border-top: 5px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .dossier-index b { display: block; color: var(--ink); margin-bottom: .6rem; }
+    .dossier-index ol { margin: 0 0 1rem; padding-left: 1.1rem; }
+    .dossier-article { grid-column: 2; }
+    .field-cover {
+      min-height: clamp(460px, 64vh, 720px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr);
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      border-bottom: 2px solid var(--line);
+      background:
+        linear-gradient(135deg, transparent 0 48%, color-mix(in srgb, var(--accent-three) 24%, transparent) 48% 52%, transparent 52%),
+        var(--paper);
+    }
+    .field-topline {
+      grid-column: 1 / -1;
+      width: fit-content;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: .25rem .7rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .field-cover h1 {
+      max-width: 16ch;
+      font-size: clamp(2.8rem, 6.4vw, 7rem);
+    }
+    .field-deck {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.55vw, 1.38rem);
+      line-height: 1.62;
+      border-left: .5rem solid var(--accent-two);
+      padding-left: 1rem;
+    }
+    .field-map {
+      border: 2px solid var(--line);
+      background: rgba(255,255,255,.76);
+      padding: 1rem;
+      box-shadow: 10px 10px 0 color-mix(in srgb, var(--accent) 70%, black);
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+    .field-map b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .1em; }
+    .field-map ol { margin: .55rem 0 1rem; padding-left: 1.2rem; }
+    .field-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(13rem, 17rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .field-log {
+      position: sticky;
+      top: 3.8rem;
+      border-left: .35rem solid var(--accent-two);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .field-article { grid-column: 1; }
+    .lab-cover {
+      padding: clamp(2.6rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      min-height: clamp(420px, 58vh, 650px);
+      display: grid;
+      align-content: center;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+      background:
+        linear-gradient(90deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        linear-gradient(0deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        var(--paper);
+    }
+    .lab-label {
+      width: fit-content;
+      background: var(--ink);
+      color: #fff;
+      padding: .28rem .65rem;
+      font-size: .82rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .lab-cover h1 {
+      max-width: 22ch;
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 5.8rem);
+      line-height: 1.04;
+    }
+    .lab-deck {
+      max-width: 62rem;
+      font-size: clamp(1.06rem, 1.45vw, 1.32rem);
+      border-top: 2px solid var(--accent);
+      padding-top: 1rem;
+    }
+    .protocol-strip {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .75rem;
+      border-bottom: 2px solid var(--line);
+      font-size: .88rem;
+    }
+    .protocol-strip div {
+      border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
+      padding: .75rem;
+      background: rgba(255,255,255,.68);
+      min-width: 0;
+    }
+    .protocol-strip b {
+      display: block;
+      color: var(--accent-two);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .protocol-strip span { overflow-wrap: anywhere; }
+    .lab-shell {
+      display: grid;
+      grid-template-columns: minmax(14rem, 19rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .lab-notes {
+      position: sticky;
+      top: 3.8rem;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      background: #fff;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .lab-notes b { color: var(--ink); }
+    .lab-notes ol { padding-left: 1.1rem; }
+    .lab-article { grid-column: 2; }
+    footer { color: var(--muted); padding: 0 clamp(1rem, 4vw, 3rem) 3rem; max-width: 1220px; margin: 0 auto; font-size: .9rem; }
+    @media (max-width: 1100px) {
+      .magazine-cover { grid-template-columns: 1fr; min-height: auto; }
+      .cover-meta { max-width: 42rem; }
+      .article-shell { grid-template-columns: 1fr; }
+      .editor-note { grid-template-columns: 1fr; }
+      .companion-rail { position: static; grid-column: 1; }
+      .backmatter { grid-column: 1; grid-template-columns: 1fr; }
+      .pullquote { margin-right: 0; }
+      h1 { max-width: 11ch; }
+      .market-strip, .protocol-strip { grid-template-columns: 1fr; }
+      .newspaper-shell, .dossier-shell, .field-shell, .lab-shell { grid-template-columns: 1fr; }
+      .newspaper-rail, .dossier-index, .field-log, .lab-notes { position: static; }
+      .dossier-article, .lab-article { grid-column: 1; }
+      .dossier-cover, .field-cover { grid-template-columns: 1fr; min-height: auto; }
+      .dossier-stamp { grid-column: 1; grid-row: auto; }
+    }
+    @media (max-width: 640px) {
+      .issue-bar { grid-template-columns: 1fr; gap: .15rem; }
+      .issue-bar span:last-child { text-align: left; }
+      .magazine-cover { padding-top: 2.4rem; }
+      h1 { font-size: clamp(2.65rem, 16vw, 4.8rem); }
+      .deck { border-left-width: .45rem; padding-left: .8rem; }
+      .magazine-article p { text-align: left; }
+      .dropcap { font-size: 4.6rem; }
+      .module { box-shadow: 4px 4px 0 var(--sand); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="issue-bar"><span><strong>Infohub</strong> article</span><span>Magazine research page</span><span>2026-05-06</span></div>
+  <header class="newspaper-masthead">
+    <div class="newspaper-kicker">MARKETS / POLICY LEDGER</div>
+    <h1>财政部香港 840 亿元人民币国债：离岸人民币从资金池走向资产池</h1>
+    <p class="deck">财政部 <strong class="metric">5 月</strong> <strong class="metric">6 日</strong>公告 <strong class="metric">2026 年</strong>将在香港分六期发行 <strong class="metric">840 亿元</strong>人民币国债，其中前两期 <strong class="metric">295 亿元</strong>已在 <strong class="metric">2 月</strong>和 <strong class="metric">4 月</strong>发行。它的财政总量意义有限，市场结构意义更强：香港离岸人民币需要主权债、期限曲线、回购抵押品和<strong class="signal">风险</strong>管理工具，才能从结算和存款延伸为融资与投资市场。</p>
+    <div class="newspaper-meta">
+      <span>财政部</span>
+      <span>2026-05-06</span>
+      <span>finance / macro / hong-kong / rmb-internationalization</span>
+    </div>
+  </header>
+  <section class="market-strip">
+    <div>
+      <b>新闻锚点</b>
+      <p><a href="https://bgt.mof.gov.cn/zhuantilanmu/rdwyh/czyw/202605/t20260506_3989062.htm">财政部今年将在香港发行840亿元人民币国债</a></p>
+    </div>
+    <div>
+      <b>研究问题</b>
+      <ol><li><strong class="metric">840 亿元</strong>人民币国债对中央财政融资和香港离岸人民币市场分别意味着什么？</li><li>离岸人民币市场为什么需要主权债供给、期限曲线和高等级抵押品？</li><li>这件事如何与香港金管局人民币流动性工具、回购和固定收益市场路线图连接？</li></ol>
+    </div>
+    <div>
+      <b>后续变量</b>
+      <ul><li>后四期国债招标公告、期限和投标结果。</li><li>香港人民币存款、人民币贷款、CNH HIBOR、CNH-CNY 利差和掉期点。</li><li>RMB Business Facility 使用率、离岸人民币回购市场成交量和抵押品范围。</li><li>点心债发行量、主权债二级市场成交和潜在离岸人民币国债期货或<strong class="signal">风险</strong>管理工具。</li></ul>
+    </div>
+  </section>
+  <main class="newspaper-shell">
+    
+    <section class="reading-path">
+      <b>阅读路径</b>
+      <ol><li>先核准数字：全年六期合计 <strong class="metric">840 亿元</strong>人民币，前两期已发行 <strong class="metric">295 亿元</strong>。</li><li>再说明它对中央财政总量影响有限，对香港离岸人民币市场结构影响更强。</li><li>随后拆解资产池逻辑：存款、国债、回购、收益率曲线和<strong class="signal">风险</strong>管理工具怎样连接。</li><li>再区分财政部人民币国债、香港特区政府人民币债和人民银行离岸央票。</li><li>最后列出后四期发行、认购倍数、CNH 流动性和二级市场成交等<strong class="signal">后续</strong>变量。</li></ol>
+    </section>
+    
+    <article class="magazine-article newspaper-article">
+      <p class="lede"><span class="dropcap">财</span>政部 <strong class="metric">2026 年</strong> <strong class="metric">5 月</strong> <strong class="metric">6 日</strong>公告，经国务院批准，<strong class="metric">2026 年</strong>将在香港特别行政区分六期发行 <strong class="metric">840 亿元</strong>人民币国债。其中前两期共 <strong class="metric">295 亿元</strong>已分别于 <strong class="metric">2 月</strong>、<strong class="metric">4 月</strong>发行。这里的数字需要先写准：<strong class="metric">840 亿元</strong>人民币等于 RMB 84 billion，是全年六期合计，不是 <strong class="metric">5 月</strong>单期发行，也不是 840 billion。</p><p class="magazine-emphasis">前两期已经给出市场建设的轮廓。<strong class="metric">2 月</strong> <strong class="metric">11 日</strong>招标、<strong class="metric">2 月</strong> <strong class="metric">13 日</strong>交割的一期合计 <strong class="metric">140 亿元</strong>，覆盖 <strong class="metric">2 年</strong>、<strong class="metric">3 年</strong>、<strong class="metric">5 年</strong>、<strong class="metric">10 年</strong>和 <strong class="metric">30 年</strong>。<strong class="metric">4 月</strong> <strong class="metric">22 日</strong>招标、<strong class="metric">4 月</strong> <strong class="metric">24 日</strong>交割的第二期合计 <strong class="metric">155 亿元</strong>，继续增发 <strong class="metric">2028 年</strong>期、<strong class="metric">2029 年</strong>期、<strong class="metric">2031 年</strong>期，并新发 <strong class="metric">15 年</strong>期。期限从短端延到 <strong class="metric">30 年</strong>，说明这不是只补一段短期资金。</p><p>把它看成中央财政融资新闻当然可以，但这不是最有解释力的角度。<strong class="metric">840 亿元</strong>人民币相对中央政府全年国债融资规模很小，对财政总量的影响有限。它更像一个市场基础设施动作：中央政府把自己的主权信用稳定放进香港离岸人民币市场，让市场有更多高等级、期限清楚、可交易、可抵押的人民币资产。</p><aside class="pullquote"><span>摘句</span><p>香港离岸人民币市场过去的优势主要是清算、存款、贸易结算和跨境通道。</p></aside><p>香港离岸人民币市场过去的优势主要是清算、存款、贸易结算和跨境通道。问题在于，只有资金池还不够。一个成熟货币市场需要可投资资产、<strong class="signal">风险</strong>基准、回购抵押品和衍生品定价锚。人民币国际化如果只停在支付占比和跨境结算，资产端会偏薄；财政部在香港持续发行国债，补的是资产端的底座。</p><p>截至 <strong class="metric">2026 年</strong> <strong class="metric">3 月</strong>，香港人民币存款约 <strong class="metric">1.035 万亿元</strong>。存款规模说明香港有人民币资金，但存款本身不能自动变成深度市场。银行、基金、保险、企业财资部门需要把人民币放进不同期限和信用层级的工具里。中央政府人民币国债提供的是离岸市场里信用层级最高、最容易成为定价参考的一类资产。</p><p>财政部国债与香港金管局的人民币流动性工具应放在一起看。金管局 <strong class="metric">2026 年</strong> <strong class="metric">1 月</strong>宣布把 RMB Business Facility 规模从 <strong class="metric">1000 亿元</strong>扩大至 <strong class="metric">2000 亿元</strong>人民币，目标是把在岸人民币流动性更有序地引入离岸市场。国债供给提供高等级资产，流动性工具和回购安排提升这些资产的融资属性。资产能被融资、抵押和回购，才会成为市场底层资产。</p><p class="magazine-emphasis">收益率曲线是另一个被低估的层面。<strong class="metric">2 年</strong>、<strong class="metric">3 年</strong>、<strong class="metric">5 年</strong>、<strong class="metric">10 年</strong>、<strong class="metric">15 年</strong>、<strong class="metric">30 年</strong>这些期限点位，可以让离岸人民币债券市场形成更完整的主权基准。<strong class="signal">后续</strong>金融机构、企业、地方相关主体或国际发行人在香港发行人民币债时，需要参考这样的曲线来确定信用利差。没有稳定主权曲线，点心债市场很容易停留在零散发行。</p><p>离岸曲线与在岸曲线不能简单画等号。离岸人民币国债收益率同时受在岸利率、CNH 流动性、汇率预期、跨境资金安排、投资者结构和香港市场<strong class="signal">风险</strong>偏好影响。CNH-CNY 利差、掉期点和套保成本会改变投资者对同一信用主体的定价。正因如此，香港需要自己的离岸人民币基准，而不是机械复制境内债券市场。</p><p>也要区分几种工具。财政部在香港发行的是中央政府人民币国债，主要功能是主权债供给、曲线建设和财政融资。香港特区政府人民币债属于特区政府融资和本地债券市场建设。人民银行离岸央票更偏向短期流动性和离岸人民币预期管理。三者都影响香港人民币市场，但政策目标、发行主体和市场含义不同。</p><p class="magazine-emphasis">这件事也不能写成“香港融资救财政”。中央政府财政融资主体仍在境内市场，香港发行规模的象征和结构意义更强。它向离岸市场提供安全资产，向投资者提供期限选择，向回购市场提供抵押品，向人民币国际化提供资产端载体。财政意义存在，但不是主线。</p><p>发行对象和基础设施也说明了市场属性。香港金管局文件显示，财政部通过 CMU BID 招标，合资格 CMU 成员和机构投资者参与，普通投资者若要认购需要通过合资格投标人。相关安排还依赖 Regulation S 的离岸发行框架。这不是面向居民储蓄的零售故事，而是面向机构资产配置和市场基础设施的主权债供给。</p><p>抵押品属性会影响银行资产负债表。银行持有高等级人民币债券后，可以在回购和流动性工具中更灵活地管理资金。若离岸人民币市场缺少可接受抵押品，资金多也可能沉淀为低效率存款；若抵押品体系成熟，银行可以在期限转换、客户融资和市场做市之间更顺畅地调度人民币。</p><p>这也是为什么一级发行和二级流动性要一起看。国债发行成功只说明机构愿意认购；二级市场报价、回购折扣、做市深度和跨境托管便利性，才决定它能否成为日常资产负债管理工具。离岸人民币市场<strong class="signal">真正</strong>需要的不是一次热闹发行，而是反复可用的定价和融资基础。</p><p>期限结构还会影响企业发行。企业在香港发人民币债时，需要知道 <strong class="metric">2 年</strong>、<strong class="metric">3 年</strong>、<strong class="metric">5 年</strong>、<strong class="metric">10 年</strong>乃至更长端的主权基准在哪里。主权曲线越密，信用利差越容易被解释；主权曲线太稀，企业发行就更依赖个案询价和关系型需求。财政部连续供给的价值，就在于把离岸人民币债券从单点发行推向可比较的曲线市场。</p><p>香港固定收益和货币市场路线图也让这件事更有<strong class="signal">上下文</strong>。SFC 与金管局 <strong class="metric">2025 年</strong>发布的路线图强调一级发行、二级市场流动性、离岸人民币业务和基础设施。财政部主权债稳定供给可以与债券通、互换通、回购、托管结算和潜在<strong class="signal">风险</strong>管理工具一起工作。单期债券发行有限，连续发行和市场基础设施叠加才会改变深度。</p><p>投资者需求不能只看发行总额。<strong class="signal">真正</strong>需要跟踪的是认购倍数、最高和最低接纳利率或价格、分配比例、二级市场成交、回购使用情况和持有人结构。一级市场认购火热，如果二级市场不活跃，曲线仍然可能很薄。国债能否成为抵押品和交易基准，取决于发行之后的市场生活，而不只是公告当天的金额。</p><p>这也会影响人民币国际化的理解方式。人民币成为国际货币，不能只靠跨境支付份额；它还需要境外投资者愿意持有人民币资产，银行愿意用人民币资产融资，企业愿意用人民币发行债券，市场可以管理汇率和利率<strong class="signal">风险</strong>。财政部香港国债、金管局流动性工具和固定收益市场路线图共同构成一条资产负债表路径。</p><p><strong class="signal">后续</strong>看点主要在剩余四期。具体发行日期、期限分布、单期金额和是否继续增发既有券还需要官方公告。每次投标结果会告诉我们离岸需求是否稳定，CNH HIBOR、CNH-CNY 利差、人民币存款、人民币贷款和点心债发行量会告诉我们市场是否吸收得住。若回购和二级成交同步上升，这条曲线才会更像<strong class="signal">真正</strong>的定价基础设施。</p><p>写这类题目要避开两种夸张。它不是财政部大规模转向香港融资，也不是人民币国际化一夜突破。更稳的表达是：中央政府正在给香港离岸人民币市场增加高等级、可期限化、可抵押的资产供给。资金池只有资金，资产池才有定价、融资和<strong class="signal">风险</strong>管理。<strong class="metric">840 亿元</strong>的意义正在这里。</p>
+    </article>
+    <aside class="newspaper-rail">
+      <p><b>读法</b><br>金融报纸型机制稿，不写成财政刺激或市场喊单。文章从金额核验进入，逐步解释中央政府信用、香港离岸人民币资产池、回购抵押品、收益率曲线和人民币国际化之间的关系。</p>
+      <p><b>主题</b><br>finance / macro / hong-kong / rmb-internationalization</p>
+      <p><b>返回</b><br><a href="../../">信息流首页</a></p>
+    </aside>
+    
+    <section class="backmatter">
+      <div class="module">
+        <h2>不确定性</h2>
+        <ul><li>剩余四期的具体发行日期、期限分布、单期金额和是否增发既有券尚未完全公开。</li><li>离岸需求强弱不能只看发行规模，还要看认购倍数、接纳利率、二级市场成交和回购使用。</li><li>离岸人民币国债能否成为稳定定价锚，取决于市场流动性和投资者结构。</li><li>CNH 汇率预期和套保成本可能显著影响离岸人民币债需求。</li></ul>
+      </div>
+      <div class="module">
+        <h2>后续观察</h2>
+        <ul><li>后四期国债招标公告、期限和投标结果。</li><li>香港人民币存款、人民币贷款、CNH HIBOR、CNH-CNY 利差和掉期点。</li><li>RMB Business Facility 使用率、离岸人民币回购市场成交量和抵押品范围。</li><li>点心债发行量、主权债二级市场成交和潜在离岸人民币国债期货或<strong class="signal">风险</strong>管理工具。</li></ul>
+      </div>
+      <div class="module sources-module">
+        <h2>研究来源</h2>
+        <ul class="source-list"><li><a href="https://bgt.mof.gov.cn/zhuantilanmu/rdwyh/czyw/202605/t20260506_3989062.htm">财政部今年将在香港发行840亿元人民币国债</a><span class="source-meta">财政部</span></li><li><a href="https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/02/20260205-3/">Ministry of Finance issues Renminbi Sovereign Bonds through CMU</a><span class="source-meta">香港金管局</span></li><li><a href="https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/02/20260211-3/">Result of the tenders of RMB Sovereign Bonds held on 11 February 2026</a><span class="source-meta">香港金管局</span></li><li><a href="https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/04/20260416-3/">Ministry of Finance issues Renminbi Sovereign Bonds through CMU, April 2026</a><span class="source-meta">香港金管局</span></li><li><a href="https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/04/20260422-3/">Result of the tenders of RMB Sovereign Bonds held on 22 April 2026</a><span class="source-meta">香港金管局</span></li><li><a href="https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/01/20260126-3/">RMB Business Facility expansion</a><span class="source-meta">香港金管局</span></li><li><a href="https://www.hkma.gov.hk/eng/news-and-media/press-releases/2025/09/20250925-3/">Hong Kong fixed income and currency markets roadmap</a><span class="source-meta">香港金管局</span></li></ul>
+      </div>
+    </section>
+    
+  </main>
+  <footer>公开资料研究索引，包含来源链接、研究报告和不确定性提示。</footer>
+
+</body>
+</html>

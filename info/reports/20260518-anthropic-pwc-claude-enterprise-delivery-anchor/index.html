@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="signal" data-layout="editorial">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PwC 的 3 万人 Claude 认证：企业 AI 从买工具走向交付体系</title>
+  <style>
+    :root {
+      --paper: #fff8ec;
+      --ink: #171717;
+      --muted: #64615b;
+      --line: #1c1c1c;
+      --accent: #d63f2f;
+      --accent-two: #0b8fa3;
+      --accent-three: #b7d73a;
+      --sand: #efe5cf;
+      --measure: 52rem;
+      --background-signature: editorial-columns;
+      --page-background: linear-gradient(90deg, rgba(214,63,47,.065) 1px, transparent 1px) 0 0 / 34px 34px, linear-gradient(180deg, rgba(11,143,163,.055), transparent 34rem), var(--paper);
+    }
+    * { box-sizing: border-box; }
+    html { background: #151515; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--page-background);
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      line-height: 1.86;
+      letter-spacing: 0;
+    }
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; overflow-wrap: anywhere; }
+    .issue-bar {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: .58rem clamp(1rem, 4vw, 3.2rem);
+      background: color-mix(in srgb, var(--paper) 92%, white);
+      border-bottom: 2px solid var(--line);
+      backdrop-filter: blur(12px);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+    }
+    .issue-bar strong { color: var(--accent); }
+    .issue-bar span:nth-child(2) { font-weight: 900; }
+    .issue-bar span:last-child { text-align: right; color: var(--muted); }
+    .magazine-cover {
+      min-height: clamp(420px, 62vh, 680px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(17rem, 25rem);
+      gap: clamp(2rem, 5vw, 4.2rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.5rem) clamp(1rem, 5vw, 5rem) clamp(2.2rem, 4vw, 3.2rem);
+      border-bottom: 2px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .magazine-cover::before {
+      content: "DEFAULT";
+      position: absolute;
+      left: clamp(.7rem, 3vw, 2rem);
+      top: clamp(4rem, 9vw, 7rem);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(5rem, 17vw, 17rem);
+      line-height: .75;
+      letter-spacing: 0;
+      color: color-mix(in srgb, var(--accent-two) 13%, transparent);
+      pointer-events: none;
+    }
+    .kicker {
+      display: inline-flex;
+      gap: .6rem;
+      align-items: center;
+      font-weight: 900;
+      color: var(--accent);
+      border: 2px solid var(--line);
+      padding: .22rem .55rem;
+      background: var(--accent-three);
+      width: fit-content;
+    }
+    h1 {
+      max-width: 12ch;
+      margin: 1.3rem 0 0;
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 7vw, 7.2rem);
+      line-height: .94;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .deck {
+      max-width: 56rem;
+      font-size: clamp(1.1rem, 1.65vw, 1.48rem);
+      line-height: 1.62;
+      margin: 2rem 0 0;
+      color: #24211d;
+      border-left: .65rem solid var(--accent);
+      padding-left: 1.2rem;
+    }
+    .cover-meta { align-self: stretch; display: grid; align-content: end; gap: 1rem; }
+    .cover-card {
+      border: 2px solid var(--line);
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 9px 9px 0 var(--accent-two);
+    }
+    .cover-card h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.35; color: var(--accent); }
+    .cover-card ol, .cover-card ul { margin: 0; padding-left: 1.15rem; }
+    .cover-card li { margin: .48rem 0; line-height: 1.55; }
+    .article-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.6rem, 3vw, 3.2rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .editor-note {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(10rem, 15rem) minmax(0, 1fr);
+      gap: 1.2rem;
+      border-top: 5px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: 1rem 0 1.1rem;
+      color: var(--muted);
+      font-size: .94rem;
+      line-height: 1.7;
+    }
+    .editor-note b {
+      display: block;
+      color: var(--ink);
+      font-size: .82rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .25rem;
+    }
+    .editor-note p { margin: 0; }
+    .reading-path {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(8rem, 12rem) minmax(0, 1fr);
+      gap: 1rem;
+      align-items: start;
+      margin: .2rem 0 1.4rem;
+      padding: 1rem 1.1rem;
+      border: 2px solid color-mix(in srgb, var(--accent) 55%, var(--line));
+      background: color-mix(in srgb, var(--accent-three) 22%, rgba(255,255,255,.72));
+      box-shadow: 7px 7px 0 color-mix(in srgb, var(--accent-two) 48%, transparent);
+    }
+    .reading-path b {
+      color: var(--accent);
+      font-size: .86rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .reading-path ol {
+      margin: 0;
+      padding-left: 1.1rem;
+      display: grid;
+      gap: .45rem;
+      color: #2b2b2b;
+      line-height: 1.62;
+    }
+    .magazine-article { min-width: 0; font-size: clamp(1.04rem, 1.05vw, 1.18rem); }
+    .article-shell > .magazine-article { grid-column: 1; }
+    .magazine-article p { margin: 0 0 1.35rem; text-align: justify; text-wrap: pretty; }
+    .magazine-article .lede {
+      font-size: clamp(1.24rem, 2vw, 1.58rem);
+      line-height: 1.75;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+    .dropcap {
+      float: left;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 5.8rem;
+      line-height: .8;
+      padding: .18rem .55rem .1rem 0;
+      color: var(--accent);
+    }
+    .magazine-emphasis {
+      margin: 2rem 0 !important;
+      padding: 1.1rem 1.25rem;
+      border-left: .45rem solid var(--accent-two);
+      background: linear-gradient(90deg, color-mix(in srgb, var(--accent-two) 12%, transparent), transparent 78%);
+      font-weight: 600;
+    }
+    .pullquote {
+      margin: 2.4rem -4rem 2.4rem 0;
+      padding: 1.1rem 0 1.2rem 1.5rem;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      background: var(--paper);
+    }
+    .pullquote span { color: var(--accent); font-size: .78rem; font-weight: 900; letter-spacing: .13em; }
+    .pullquote p {
+      font-family: Georgia, "Times New Roman", "SimSun", serif;
+      font-size: clamp(1.6rem, 3vw, 2.45rem);
+      line-height: 1.28;
+      margin: .35rem 0 0;
+      text-align: left;
+    }
+    .metric {
+      font-variant-numeric: tabular-nums;
+      color: var(--accent);
+      font-weight: 900;
+      background: linear-gradient(transparent 55%, color-mix(in srgb, var(--accent-three) 65%, transparent) 0);
+    }
+    .signal {
+      font-weight: 900;
+      text-decoration: underline;
+      text-decoration-color: var(--accent-two);
+      text-decoration-thickness: .18em;
+      text-underline-offset: .14em;
+    }
+    .companion-rail {
+      position: sticky;
+      top: 3.8rem;
+      grid-column: 2;
+      align-self: start;
+      border-top: 5px solid var(--line);
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+      padding-top: 1rem;
+    }
+    .companion-rail b { color: var(--ink); }
+    .backmatter {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.2rem;
+      margin-top: 2.4rem;
+      border-top: 2px solid var(--line);
+      padding-top: 1.4rem;
+    }
+    .module { background: #fff; border: 2px solid var(--line); padding: 1rem 1.1rem; box-shadow: 6px 6px 0 var(--sand); }
+    .module h2 { margin: 0 0 .7rem; font-size: 1rem; line-height: 1.3; color: var(--accent); }
+    .module ul { margin: 0; padding-left: 1.1rem; }
+    .module li { margin: .5rem 0; line-height: 1.58; }
+    .source-list li { display: grid; gap: .12rem; margin-bottom: .8rem; }
+    .source-meta { color: var(--muted); font-size: .86rem; }
+    .source-meta::before { content: "来源 · "; }
+    .sources-module { grid-column: 1 / -1; }
+    .newspaper-masthead {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.8rem) clamp(1rem, 4vw, 3rem) 1.6rem;
+      border-bottom: 5px double var(--line);
+    }
+    .newspaper-kicker {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.4rem, 3vw, 3rem);
+      line-height: 1;
+      color: var(--accent);
+      text-transform: uppercase;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: .35rem 0;
+    }
+    .newspaper-masthead h1 {
+      max-width: 20ch;
+      font-size: clamp(2.6rem, 5.5vw, 6.2rem);
+      line-height: .98;
+    }
+    .newspaper-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem 1.1rem;
+      margin-top: 1rem;
+      padding-top: .8rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .market-strip {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr 1fr;
+      gap: 1rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      border-bottom: 2px solid var(--line);
+      background: color-mix(in srgb, var(--accent-three) 26%, var(--paper));
+      font-size: .94rem;
+      line-height: 1.55;
+    }
+    .market-strip b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .08em; }
+    .market-strip p, .market-strip ol, .market-strip ul { margin: .35rem 0 0; }
+    .market-strip ol, .market-strip ul { padding-left: 1.1rem; }
+    .newspaper-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(14rem, 18rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .newspaper-article .lede {
+      column-span: all;
+      border-top: 2px solid var(--line);
+      padding-top: 1rem;
+    }
+    .newspaper-article { grid-column: 1; }
+    .newspaper-rail {
+      position: sticky;
+      top: 3.8rem;
+      border-left: 2px solid var(--line);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .dossier-cover {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.6rem) clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
+      gap: clamp(1.5rem, 4vw, 3.8rem);
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+    }
+    .dossier-stamp {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      align-self: start;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      color: var(--accent);
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: color-mix(in srgb, var(--accent-three) 35%, white);
+    }
+    .dossier-cover h1 {
+      max-width: 18ch;
+      font-size: clamp(2.7rem, 6vw, 6.6rem);
+      line-height: .98;
+    }
+    .dossier-summary {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.5vw, 1.36rem);
+      border-left: .45rem solid var(--accent);
+      padding-left: 1rem;
+    }
+    .dossier-source { color: var(--muted); margin: 0; }
+    .dossier-shell {
+      display: grid;
+      grid-template-columns: minmax(12rem, 17rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .dossier-index {
+      position: sticky;
+      top: 3.8rem;
+      border-top: 5px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .dossier-index b { display: block; color: var(--ink); margin-bottom: .6rem; }
+    .dossier-index ol { margin: 0 0 1rem; padding-left: 1.1rem; }
+    .dossier-article { grid-column: 2; }
+    .field-cover {
+      min-height: clamp(460px, 64vh, 720px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr);
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: end;
+      padding: clamp(2.4rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      border-bottom: 2px solid var(--line);
+      background:
+        linear-gradient(135deg, transparent 0 48%, color-mix(in srgb, var(--accent-three) 24%, transparent) 48% 52%, transparent 52%),
+        var(--paper);
+    }
+    .field-topline {
+      grid-column: 1 / -1;
+      width: fit-content;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: .25rem .7rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .field-cover h1 {
+      max-width: 16ch;
+      font-size: clamp(2.8rem, 6.4vw, 7rem);
+    }
+    .field-deck {
+      max-width: 58rem;
+      font-size: clamp(1.08rem, 1.55vw, 1.38rem);
+      line-height: 1.62;
+      border-left: .5rem solid var(--accent-two);
+      padding-left: 1rem;
+    }
+    .field-map {
+      border: 2px solid var(--line);
+      background: rgba(255,255,255,.76);
+      padding: 1rem;
+      box-shadow: 10px 10px 0 color-mix(in srgb, var(--accent) 70%, black);
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+    .field-map b { color: var(--accent-two); text-transform: uppercase; letter-spacing: .1em; }
+    .field-map ol { margin: .55rem 0 1rem; padding-left: 1.2rem; }
+    .field-shell {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(13rem, 17rem);
+      gap: clamp(1.8rem, 3vw, 3.4rem);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .field-log {
+      position: sticky;
+      top: 3.8rem;
+      border-left: .35rem solid var(--accent-two);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+    .field-article { grid-column: 1; }
+    .lab-cover {
+      padding: clamp(2.6rem, 6vw, 5.2rem) clamp(1rem, 5vw, 5rem);
+      min-height: clamp(420px, 58vh, 650px);
+      display: grid;
+      align-content: center;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+      background:
+        linear-gradient(90deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        linear-gradient(0deg, rgba(43,76,126,.07) 1px, transparent 1px) 0 0 / 34px 34px,
+        var(--paper);
+    }
+    .lab-label {
+      width: fit-content;
+      background: var(--ink);
+      color: #fff;
+      padding: .28rem .65rem;
+      font-size: .82rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .lab-cover h1 {
+      max-width: 22ch;
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 5.8rem);
+      line-height: 1.04;
+    }
+    .lab-deck {
+      max-width: 62rem;
+      font-size: clamp(1.06rem, 1.45vw, 1.32rem);
+      border-top: 2px solid var(--accent);
+      padding-top: 1rem;
+    }
+    .protocol-strip {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .75rem;
+      border-bottom: 2px solid var(--line);
+      font-size: .88rem;
+    }
+    .protocol-strip div {
+      border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
+      padding: .75rem;
+      background: rgba(255,255,255,.68);
+      min-width: 0;
+    }
+    .protocol-strip b {
+      display: block;
+      color: var(--accent-two);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .protocol-strip span { overflow-wrap: anywhere; }
+    .lab-shell {
+      display: grid;
+      grid-template-columns: minmax(14rem, 19rem) minmax(0, var(--measure));
+      gap: clamp(1.8rem, 4vw, 3.8rem);
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .lab-notes {
+      position: sticky;
+      top: 3.8rem;
+      border: 2px solid var(--accent);
+      padding: 1rem;
+      background: #fff;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.62;
+    }
+    .lab-notes b { color: var(--ink); }
+    .lab-notes ol { padding-left: 1.1rem; }
+    .lab-article { grid-column: 2; }
+    footer { color: var(--muted); padding: 0 clamp(1rem, 4vw, 3rem) 3rem; max-width: 1220px; margin: 0 auto; font-size: .9rem; }
+    @media (max-width: 1100px) {
+      .magazine-cover { grid-template-columns: 1fr; min-height: auto; }
+      .cover-meta { max-width: 42rem; }
+      .article-shell { grid-template-columns: 1fr; }
+      .editor-note { grid-template-columns: 1fr; }
+      .companion-rail { position: static; grid-column: 1; }
+      .backmatter { grid-column: 1; grid-template-columns: 1fr; }
+      .pullquote { margin-right: 0; }
+      h1 { max-width: 11ch; }
+      .market-strip, .protocol-strip { grid-template-columns: 1fr; }
+      .newspaper-shell, .dossier-shell, .field-shell, .lab-shell { grid-template-columns: 1fr; }
+      .newspaper-rail, .dossier-index, .field-log, .lab-notes { position: static; }
+      .dossier-article, .lab-article { grid-column: 1; }
+      .dossier-cover, .field-cover { grid-template-columns: 1fr; min-height: auto; }
+      .dossier-stamp { grid-column: 1; grid-row: auto; }
+    }
+    @media (max-width: 640px) {
+      .issue-bar { grid-template-columns: 1fr; gap: .15rem; }
+      .issue-bar span:last-child { text-align: left; }
+      .magazine-cover { padding-top: 2.4rem; }
+      h1 { font-size: clamp(2.65rem, 16vw, 4.8rem); }
+      .deck { border-left-width: .45rem; padding-left: .8rem; }
+      .magazine-article p { text-align: left; }
+      .dropcap { font-size: 4.6rem; }
+      .module { box-shadow: 4px 4px 0 var(--sand); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="issue-bar"><span><strong>Infohub</strong> article</span><span>Magazine research page</span><span>2026-05-14</span></div>
+  <header class="magazine-cover">
+    <div>
+      <div class="kicker">AI TOOLS / PRODUCT ENTRANCE</div>
+      <h1>PwC 的 3 万人 Claude 认证：企业 AI 从买工具走向交付体系</h1>
+      <p class="deck">Anthropic 与 PwC 扩大战略合作，最值得跟踪的信号不是一次模型采购，而是 Claude 被放进咨询公司的项目交付、认证体系和业务单元里。企业 AI 的商业化正在进入更重的组织层：权限、审计、行业方法论、项目经理、认证人员和可复制方案包共同决定它能否产生价值。</p>
+    </div>
+    <aside class="cover-meta">
+      <div class="cover-card">
+        <h2>研究问题</h2>
+        <ol><li>PwC 为什么把 Claude 放进认证、项目交付和独立业务组，而不只做内部效率工具？</li><li>企业 AI 落地的瓶颈会怎样从模型能力转向权限、审计、流程重构和行业责任链？</li><li>咨询公司围绕模型建立交付资产后，AI 商业化会从席位订阅转向哪些新的收入形态？</li></ol>
+      </div>
+      <div class="cover-card">
+        <h2>新闻锚点</h2>
+        <p><a href="https://www.anthropic.com/news/pwc-expanded-partnership">PwC is deploying Claude to build technology, execute deals, and reinvent enterprise functions for clients</a><br>Anthropic</p>
+      </div>
+    </aside>
+  </header>
+  <main class="article-shell">
+    <section class="editor-note">
+      <p><b>Reading mode</b>这是一篇以新闻锚点展开的杂志式研究长文。正文保持原始报告顺序，页面只做阅读组织和视觉强调。</p>
+      <p><b>Editorial voice</b>冷静的产业机制稿，带一点怀疑精神。文章从 3 万人认证切入，压低战略合作的宣传噪声，把读者带到咨询交付、组织复制、业务单元重组和企业治理这些更硬的变量里。</p>
+    </section>
+    
+    <section class="reading-path">
+      <b>阅读路径</b>
+      <ol><li>先抓住 30,000 名认证人员这个组织信号，说明它比单纯采购 Claude 更能解释企业 AI 的落地方式。</li><li>再把合作放进 Anthropic 的伙伴网络和服务公司动作里，看模型公司怎样借助咨询公司进入复杂行业。</li><li>随后拆开三层机制：采购对象变成可治理系统，交付主体变成咨询团队，认证体系变成可调度产能。</li><li>再保留反证：企业 AI 使用率高不等于价值已经规模化，案例数字也需要视为公司披露而非独立审计。</li><li>最后列出<strong class="signal">后续</strong>指标：认证进度、Office of the CFO 客户案例、Claude Cowork 审计能力和行业项目取消率。</li></ol>
+    </section>
+    
+    <article class="magazine-article">
+      <p class="lede"><span class="dropcap">2</span><strong class="metric">026 年</strong> <strong class="metric">5 月</strong> <strong class="metric">14 日</strong>，Anthropic 与 PwC 扩大战略合作。公告里最醒目的数字是 30,000 名 PwC 专业人员将接受 Claude 认证，最容易被忽略的细节则是 PwC 要把 Claude Code、Claude Cowork 和 Claude 本体放进咨询交付、交易执行和企业函数重构。单看标题，这像一次大型客户采购；顺着组织动作看，它更像专业服务公司在给 AI 时代重新搭一套交付机器。</p><p class="magazine-emphasis">这套机器的第一部分是全员工具。PwC 将从美国团队开始部署 Claude Code 和 Cowork，再扩展到全球数十万名专业人员。Claude Code 面向软件构建和主机现代化，Cowork 面向电子表格、文档、演示和企业数据连接，Claude 本体则承担推理、分析和协作入口。三者并排出现，说明企业客户购买的对象已经不再是一个孤立聊天窗口，而是贯穿知识工作、代码工作和业务流程的组合系统。</p><p>第二部分是认证。咨询公司最重要的资产从来不只是方法论文档，还包括谁能把方法论卖出去、讲清楚、落到客户系统里并承担交付责任。30,000 人认证意味着 PwC 要在内部建立一层新的能力标签：谁能使用 Claude 做财务流程重构，谁能用 Claude Code 改造旧系统，谁能把模型接入客户数据，谁能在监管行业里解释审计和责任边界。认证不是培训新闻，它是产能组织方式的变化。</p><aside class="pullquote"><span>摘句</span><p>Anthropic 近一年的动作让这件事更清楚。</p></aside><p>Anthropic 近一年的动作让这件事更清楚。它先后与 Deloitte 扩大合作，推出 Claude Partner Network，又与大型投资机构和服务商筹建企业 AI 服务公司。路线并不神秘：模型公司不可能靠自己的客户成功团队吃下所有银行、保险、医疗、制造和政府项目，于是需要咨询公司、系统集成商和行业交付团队把模型包装成可采购、可部署、可治理的方案。</p><p>PwC 的特殊性在于它没有把 Claude 只放在内部助手的位置。公告称双方合作聚焦 agentic technology build、AI-native deal-making 和 enterprise function reinvention。换成更朴素的话，就是代码交付、交易尽调、财务、供应链、HR、网络安全和工程组织都可能被重写。PwC 还要推出基于 Claude 的 Office of the CFO 财务业务组，这比“员工用上 AI”更有分量，因为它把 AI 放进了一条可售卖的专业服务产品线。</p><p>Office of the CFO 这条线值得单独看。财务转型过去常见的任务包括预算规划、差异分析、月结流程、控制测试、RFP、系统改造和国际薪酬。AI 如果只是帮人写邮件，价值很快触顶；如果能进入这些流程，就会触碰企业最敏感的账、权限、审计证据和责任链。Anthropic 和 PwC 的联合说法里有“regulated industries”和“auditability”，这不是装饰词，银行、保险、医疗等行业<strong class="signal">真正</strong>会问的正是这些问题。</p><p class="magazine-emphasis">这也解释了为什么咨询公司会成为企业 AI 的重要渠道。很多企业并不缺模型试用名额，它们缺的是把模型接进旧系统、清理数据权限、设计审批流程、建立日志、训练员工、处理失败回滚的团队。模型 API 是原材料，咨询交付把它变成项目预算。到了这一层，AI 产品的竞争不只发生在模型榜单上，也发生在谁有行业模板、谁能通过安全审查、谁能把失败案例写进下一版方案。</p><p>MCP 和 Cowork 的意义也在这里。Anthropic 把 Model Context Protocol 讲成连接企业数据和工具的协议，Cowork 又强调角色权限、连接器、预算、使用分析和观测能力。这些能力不如模型智商听起来兴奋，却更接近企业采购单上的硬条件。没有连接器、权限边界和审计轨迹，专业服务公司很难把模型嵌进客户的财务、法务、网络安全和医疗流程。</p><p>公告披露的生产案例很适合做锚点，但不宜过度外推。保险承保从 10 周压到 10 天，安全工作从小时缩到分钟，交付改善最高 <strong class="metric">70%</strong>，这些都是公司披露的案例效果。它们能说明 PwC 和 Anthropic 正在真实客户环境里找到了若干高杠杆流程，却不能证明所有企业函数都会得到类似收益。样本边界、基准口径、失败项目和长期维护成本仍然未知。</p><p class="magazine-emphasis">反证来自更大的企业 AI 采用数据。McKinsey 的 <strong class="metric">2025 年</strong>调查显示，很多组织已经在至少一个业务功能中常规使用 AI，但企业级扩展和利润影响仍有限。Gartner 也提示，许多 agentic AI 项目可能会因为成本、价值不清或<strong class="signal">风险</strong>控制不足而取消。PwC 自己的 CEO 调查同样显示，只有少数 CEO 同时看到成本下降和收入增长。高使用率与高回报之间还有一道很厚的组织墙。</p><p>这道墙会让专业服务公司的角色变重。客户希望看到的不是“模型能回答问题”，而是一个流程如何被重新拆分：哪些步骤由模型准备，哪些由系统自动执行，哪些由专家审核，哪些必须留下人工批准，哪些证据进入审计底稿。咨询公司过去卖变革管理和行业经验，现在会把模型、连接器、权限、日志和人类监督一起卖进去。</p><p>客户侧的采购逻辑也会跟着变。以前采购 SaaS 更容易按账号、功能和安全认证比较；采购 AI 交付体系时，客户会追问模型如何接入数据仓库，输出如何进入 ERP、CRM、工单或财务系统，模型失败时谁回滚，审计人员能否复盘每一次工具调用。这些问题听起来琐碎，却决定了企业 AI 能否从演示走进<strong class="signal">核心</strong>流程。</p><p>对 PwC 这类公司来说，认证人员还会改变内部项目经济学。一个团队里不再只需要行业合伙人、业务顾问、技术顾问和项目经理，还需要懂模型边界、提示工程、代码代理、数据权限、连接器和<strong class="signal">风险</strong>控制的复合角色。30,000 人认证如果真的落地，PwC 会拥有一套可跨行业调度的 AI 交付劳动力，这会改变项目报价、交付周期和人才晋升路径。</p><p>这里也有一个更现实的商业问题。AI 提高交付效率后，咨询公司会把收益让给客户，还是扩大项目范围并提高利润率？如果承保周期真的从 10 周缩到 10 天，客户买到的是更低价格、更多项目、还是更高速度？这会影响专业服务业的计费方式。过去按人天和团队规模计费的项目，未来可能更强调成果、平台订阅、可复用资产和持续运营。</p><p>所以这条新闻的看点不在“Anthropic 又拿下大客户”。更值得跟踪的是企业 AI 的组织形态正在变重：认证人员、联合卓越中心、财务业务组、行业案例、连接器协议、审计能力和服务商生态共同组成新的落地路径。模型仍然重要，但在复杂行业里，模型只是进入预算的入口，<strong class="signal">真正</strong>决定成败的是谁能把它变成稳定流程。</p><p><strong class="signal">后续</strong>观察可以从四个地方开始。第一，PwC 是否披露认证进度和认证人员的项目利用率。第二，Office of the CFO 是否产生可核验客户案例和收入线索。第三，Claude Cowork 是否继续补齐企业级权限、审计、数据保留和人工批准能力。第四，Gartner 所说的项目取消潮是否到来，以及失败原因落在模型、数据、组织阻力、成本还是治理责任上。</p>
+    </article>
+    <aside class="companion-rail">
+      <p><b>核心锚点</b><br>Anthropic<br>2026-05-14</p>
+      <p><b>主题</b><br>ai-tools / enterprise-ai / professional-services / developer-tooling</p>
+      <p><b>返回</b><br><a href="../../">信息流首页</a></p>
+    </aside>
+    
+    <section class="backmatter">
+      <div class="module">
+        <h2>不确定性</h2>
+        <ul><li>PwC 的 30,000 人认证标准、考试深度、实操要求和续证机制尚未公开。</li><li>公司披露的最高 <strong class="metric">70%</strong> 改善没有独立审计口径，不能直接外推到所有行业项目。</li><li>Claude Cowork 在大规模知识工作场景里的权限边界、错误追责和长期维护成本仍需生产案例验证。</li></ul>
+      </div>
+      <div class="module">
+        <h2>后续观察</h2>
+        <ul><li>PwC 是否披露认证进度、认证人员项目利用率和 Office of the CFO 客户案例。</li><li>Claude Cowork 的审计、日志、权限和企业连接器能力是否持续增强。</li><li>咨询公司围绕 Claude 的服务是否形成差异化资产，还是演变成同质化实施竞争。</li><li>监管行业客户是否允许 agentic workflow 进入承保、财务控制、医疗运营和网络安全响应。</li></ul>
+      </div>
+      <div class="module sources-module">
+        <h2>研究来源</h2>
+        <ul class="source-list"><li><a href="https://www.anthropic.com/news/pwc-expanded-partnership">PwC is deploying Claude to build technology, execute deals, and reinvent enterprise functions for clients</a><span class="source-meta">Anthropic</span></li><li><a href="https://www.pwc.com/us/en/about-us/newsroom/press-releases/anthropic-pwc-expand-alliance-agentic-enterprise.html">PwC and Anthropic expand alliance for agentic AI</a><span class="source-meta">PwC</span></li><li><a href="https://www.anthropic.com/news/claude-partner-network">Claude Partner Network</a><span class="source-meta">Anthropic</span></li><li><a href="https://claude.com/blog/cowork-for-enterprise">Claude Cowork for enterprise</a><span class="source-meta">Claude</span></li><li><a href="https://www.anthropic.com/news/model-context-protocol">Model Context Protocol</a><span class="source-meta">Anthropic</span></li><li><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai">The state of AI in 2025</a><span class="source-meta">McKinsey</span></li><li><a href="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027">Gartner predicts over 40% of agentic AI projects will be canceled by end of 2027</a><span class="source-meta">Gartner</span></li></ul>
+      </div>
+    </section>
+    
+  </main>
+  <footer>公开资料研究索引，包含来源链接、研究报告和不确定性提示。</footer>
+
+</body>
+</html>
